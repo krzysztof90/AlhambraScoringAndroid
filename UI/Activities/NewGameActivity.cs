@@ -21,31 +21,62 @@ namespace AlhambraScoringAndroid.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            Dictionary<string, List<(ExpansionModule, string)>> extensions = new Dictionary<string, List<(ExpansionModule, string)>>()
+            Dictionary<string, List<ExpansionModule>> extensions = new Dictionary<string, List<ExpansionModule>>()
             {
-                ["DESIGNER EXPANSION MODULES"] = new List<(ExpansionModule, string)>() {
-                    ((  ExpansionModule.DesignerNewBuildingGrounds, "New Building Grounds")),
-                    (( ExpansionModule.DesignerMajorConstructionProjects, "Major Construction Projects")),
-                    (( ExpansionModule.DesignerPalaceStaff, "Palace Staff")),
-                    (( ExpansionModule.DesignerOrchards, "Orchards")),
-                    (( ExpansionModule.DesignerTravellingCraftsmen, "Travelling Craftsmen")),
-                    (( ExpansionModule.DesignerBathhouses, "Bathhouses")),
-                    (( ExpansionModule.DesignerWishingWell, "Wishing Well")),
-                    (( ExpansionModule.DesignerFreshColors, "Fresh Colors")),
-                    (( ExpansionModule.DesignerPalaceDesigners, "Palace Designers")),
-                    (( ExpansionModule.DesignerAlhambraZoo, "Alhambra Zoo")),
-                    (( ExpansionModule.DesignerGatesWithoutEnd, "Gates without End")),
-                    (( ExpansionModule.DesignerBuildingsOfPower, "Buildings of Power")),
-                    ((ExpansionModule.DesignerExtensions, "Extensions" )),
-                    (( ExpansionModule.DesignerHandymen, "Handymen")),
-                    (( ExpansionModule.DesignerPersonalBuildingMarket, "Personal Building Market")),
-                    (( ExpansionModule.DesignerTreasures, "Treasures")),
-                    (( ExpansionModule.DesignerCaliphsGuidelines, "Caliph’s Guidelines"))},
+                ["EXPANSION MODULES"] = new List<ExpansionModule>()
+                {
+                    ExpansionModule.ExpansionViziersFavour,
+                    ExpansionModule.ExpansionCurrencyExchangeCards,
+                    ExpansionModule.ExpansionBonusCards, 
+                    ExpansionModule.ExpansionSquares, 
+                    ExpansionModule.ExpansionCityGates,
+                    ExpansionModule.ExpansionDiamonds, 
+                    ExpansionModule.ExpansionCharacters,
+                    ExpansionModule.ExpansionCamps, 
+                    ExpansionModule.ExpansionCityWalls,
+                    ExpansionModule.ExpansionThieves, 
+                    ExpansionModule.ExpansionChange, 
+                    ExpansionModule.ExpansionStreetTrader,
+                    ExpansionModule.ExpansionTreasureChamber,
+                    ExpansionModule.ExpansionMasterBuilders, 
+                    ExpansionModule.ExpansionInvaders, 
+                    ExpansionModule.ExpansionBazaars, 
+                    ExpansionModule.ExpansionNewScoreCards,
+                    ExpansionModule.ExpansionPowerOfSultan,
+                    ExpansionModule.ExpansionCaravanserai, 
+                    ExpansionModule.ExpansionArtOfTheMoors,
+                    ExpansionModule.ExpansionFalconers, 
+                    ExpansionModule.ExpansionWatchtowers, 
+                    ExpansionModule.ExpansionBuildingSites, 
+                    ExpansionModule.ExpansionExchangeCertificates,
+                },
+                ["QUEENIE EXPANSION MODULES"] = new List<ExpansionModule>()
+                {
+                    ExpansionModule.QueenieMagicalBuildings,
+                    ExpansionModule.QueenieMedina, 
+                },
+                ["DESIGNER EXPANSION MODULES"] = new List<ExpansionModule>() {
+                    ExpansionModule.DesignerNewBuildingGrounds,
+                    ExpansionModule.DesignerMajorConstructionProjects,
+                    ExpansionModule.DesignerPalaceStaff,
+                    ExpansionModule.DesignerOrchards,
+                    ExpansionModule.DesignerTravellingCraftsmen,
+                    ExpansionModule.DesignerBathhouses,
+                    ExpansionModule.DesignerWishingWell,
+                    ExpansionModule.DesignerFreshColors,
+                    ExpansionModule.DesignerPalaceDesigners,
+                    ExpansionModule.DesignerAlhambraZoo,
+                    ExpansionModule.DesignerGatesWithoutEnd,
+                    ExpansionModule.DesignerBuildingsOfPower,
+                    ExpansionModule.DesignerExtensions,
+                    ExpansionModule.DesignerHandymen,
+                    ExpansionModule.FanPersonalBuildingMarket,
+                    ExpansionModule.FanTreasures,
+                    ExpansionModule.FanCaliphsGuidelines},
             };
             //TODO caliphs chose
 
             expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);
-            //ExpandListCheckBoxAdapter adapter = new ExpandListCheckBoxAdapter(this, extensions.ToDictionary(d => d.Key, d => d.Value.Select(l => l.Item2).ToList()));
             ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions);
             expandableListView.SetAdapter(adapter);
 

@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using AlhambraScoringAndroid.Tools;
+using Android.Content;
 using Android.Graphics;
 using Android.Views;
 using Android.Widget;
@@ -8,24 +9,24 @@ using System.Linq;
 
 namespace AlhambraScoringAndroid.UI
 {
-    public class ExpandListCheckBoxAdapter<T> : BaseExpandableListAdapter
+    public class ExpandListCheckBoxAdapter<EnumType> : BaseExpandableListAdapter where EnumType : struct, IConvertible, IComparable, IFormattable
     {
         private readonly Context Context;
-        private readonly Dictionary<string, Dictionary<T, (string, bool)>> listWithSelections;
+        private readonly Dictionary<string, Dictionary<EnumType, bool>> listWithSelections;
 
-        public IEnumerable<T> SelectedList => listWithSelections.SelectMany(d => d.Value).Where(d => d.Value.Item2).Select(d => d.Key);
+        public IEnumerable<EnumType> SelectedList => listWithSelections.SelectMany(d => d.Value).Where(d => d.Value).Select(d => d.Key);
 
-        public ExpandListCheckBoxAdapter(Context context, Dictionary<string, List<(T, string)>> expandableListDetail)
+        public ExpandListCheckBoxAdapter(Context context, Dictionary<string, List<EnumType>> expandableListDetail)
         {
             Context = context;
 
             //TODO unique validation
-            listWithSelections = expandableListDetail.ToDictionary(d => d.Key, d => d.Value.ToDictionary(l => l.Item1, l => (l.Item2, false)));
+            listWithSelections = expandableListDetail.ToDictionary(d => d.Key, d => d.Value.ToDictionary(l => l, l => false));
         }
 
         public override Java.Lang.Object GetChild(int groupPosition, int childPosition)
         {
-            return listWithSelections.ElementAt(groupPosition).Value.ElementAt(childPosition).Value.Item1;
+            return listWithSelections.ElementAt(groupPosition).Value.ElementAt(childPosition).Key.GetEnumDescription();
         }
 
         public override long GetChildId(int groupPosition, int childPosition)
@@ -91,9 +92,9 @@ namespace AlhambraScoringAndroid.UI
                 {
                     ExpandListCheckBoxPosition groupAndChild = (ExpandListCheckBoxPosition)checkBox.Tag;
 
-                    T key = listWithSelections.ElementAt(groupAndChild.GroupPosition).Value.ElementAt(groupAndChild.ChildPosition).Key;
+                    EnumType key = listWithSelections.ElementAt(groupAndChild.GroupPosition).Value.ElementAt(groupAndChild.ChildPosition).Key;
 
-                    listWithSelections.ElementAt(groupAndChild.GroupPosition).Value[key] = (listWithSelections.ElementAt(groupAndChild.GroupPosition).Value[key].Item1, !listWithSelections.ElementAt(groupAndChild.GroupPosition).Value[key].Item2);
+                    listWithSelections.ElementAt(groupAndChild.GroupPosition).Value[key] = !listWithSelections.ElementAt(groupAndChild.GroupPosition).Value[key];
                 });
 
                 convertView.Tag = checkBox;
@@ -107,7 +108,7 @@ namespace AlhambraScoringAndroid.UI
 
             checkBox.Tag = new ExpandListCheckBoxPosition(groupPosition, childPosition);
             /// shit android
-            checkBox.Checked = listWithSelections.ElementAt(groupPosition).Value.ElementAt(childPosition).Value.Item2;
+            checkBox.Checked = listWithSelections.ElementAt(groupPosition).Value.ElementAt(childPosition).Value;
 
             return convertView;
         }

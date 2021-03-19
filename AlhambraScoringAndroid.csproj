@@ -65,6 +65,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="UI\Activities\BaseActivity.cs" />
     <Compile Include="UI\Activities\GameInProgressActivity.cs" />
     <Compile Include="UI\Activities\GamePlayersChoseActivity.cs" />

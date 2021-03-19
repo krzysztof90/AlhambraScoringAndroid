@@ -17,7 +17,8 @@ namespace AlhambraScoringAndroid
         //TODO confirm new game
         //TODO confirm back when on score screen
         //TODO another expansion modules
-        //TODO github. "Scoring calculator for Alhambra board game"
+        //TODO labelki słownik
+        //TODO google play "I would appreciate any feedback", BGG
 
         public MyApplication(IntPtr javaReference, Android.Runtime.JniHandleOwnership transfer) : base(javaReference, transfer)
         {

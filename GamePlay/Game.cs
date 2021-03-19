@@ -407,7 +407,7 @@ namespace AlhambraScoringAndroid.GamePlay
                     }
             }
 
-            if (HasModule(ExpansionModule.DesignerTreasures))
+            if (HasModule(ExpansionModule.FanTreasures))
             {
                 //Treasures: treasures' value
                 if (RoundNumber == 3)
@@ -420,7 +420,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 }
             }
 
-            if (HasModule(ExpansionModule.DesignerCaliphsGuidelines))
+            if (HasModule(ExpansionModule.FanCaliphsGuidelines))
             {
                 if (RoundNumber == 3)
                 {

@@ -20,7 +20,7 @@ namespace AlhambraScoringAndroid
             Context = context;
         }
 
-        ICharSequence IInputFilter.FilterFormatted(ICharSequence source, int start, int end, ISpanned? dest, int dstart, int dend)
+        ICharSequence IInputFilter.FilterFormatted(ICharSequence source, int start, int end, ISpanned dest, int dstart, int dend)
         {
             string newString = dest.ToString();
             if (dstart > (dest.Length() - 1))
