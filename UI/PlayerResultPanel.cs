@@ -1,4 +1,5 @@
-﻿using AlhambraScoringAndroid.GamePlay;
+﻿using AlhambraScoringAndroid.Activities;
+using AlhambraScoringAndroid.GamePlay;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -11,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AlhambraScoringAndroid
+namespace AlhambraScoringAndroid.UI
 {
     public class PlayerResultPanel : LinearLayout
     {
@@ -19,6 +20,8 @@ namespace AlhambraScoringAndroid
 
         private TextView textViewName;
         private TextView textViewScore;
+        private Button addPoint1Button;
+        private Button addPoint2Button;
 
         public PlayerResultPanel(Context context) : base(context)
         {
@@ -28,41 +31,47 @@ namespace AlhambraScoringAndroid
         {
         }
 
-        public void initialize(GameInProgressActivity gameActivity, int playerNumber)
+        public void Initialize(GameInProgressActivity gameActivity, int playerNumber)
         {
             GameInProgressActivity GameActivity = gameActivity;
             PlayerNumber = playerNumber;
 
             LayoutInflater layoutInflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
-            View view = layoutInflater.Inflate(Resource.Layout.view_playerresult, this);
+            View view = layoutInflater.Inflate(Resource.Layout.view_player_result, this);
 
             textViewName = FindViewById<TextView>(Resource.Id.textViewName);
             textViewScore = FindViewById<TextView>(Resource.Id.textViewScore);
 
-            textViewName.Text = GameActivity.getGame().getPlayer(playerNumber).Name;
+            textViewName.Text = GameActivity.Game.GetPlayer(playerNumber).Name;
 
-            Button addPoint1Button = FindViewById<Button>(Resource.Id.point1Button);
+            addPoint1Button = FindViewById<Button>(Resource.Id.point1Button);
             addPoint1Button.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                GameActivity.addPoints(PlayerNumber, 1);
+                GameActivity.AddPoints(PlayerNumber, 1);
             });
-            Button addPoint2Button = FindViewById<Button>(Resource.Id.point2Button);
+            addPoint2Button = FindViewById<Button>(Resource.Id.point2Button);
             addPoint2Button.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                GameActivity.addPoints(PlayerNumber, 2);
+                GameActivity.AddPoints(PlayerNumber, 2);
             });
 
-            if (GameActivity.getGame().getPlayer(playerNumber).Dirk
-            || !(GameActivity.getGame().hasModule(ExpansionModule.DesignerPalaceDesigners) || GameActivity.getGame().hasModule(ExpansionModule.DesignerGatesWithoutEnd)))
+            if (GameActivity.Game.GetPlayer(playerNumber).Dirk
+            || !(GameActivity.Game.HasModule(ExpansionModule.DesignerPalaceDesigners) || GameActivity.Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)))
             {
                 addPoint1Button.Visibility = ViewStates.Gone;
                 addPoint2Button.Visibility = ViewStates.Gone;
             }
         }
 
-        public void setScore(int score)
+        public void SetScore(int score)
         {
             textViewScore.Text = score.ToString();
+        }
+
+        public void HidePointButtons()
+        {
+            addPoint1Button.Visibility = ViewStates.Gone;
+            addPoint2Button.Visibility = ViewStates.Gone;
         }
     }
 }

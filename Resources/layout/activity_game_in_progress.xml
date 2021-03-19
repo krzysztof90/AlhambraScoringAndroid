@@ -4,15 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GameInProgressActivity">
+    android:layout_height="match_parent">
 
     <include
         android:id="@+id/include"
         layout="@layout/content_main"
          />
 
-    <AlhambraScoringAndroid.PlayerResultPanel
+    <AlhambraScoringAndroid.UI.PlayerResultPanel
         android:id="@+id/playerResultPanel1"
         android:layout_height="40dp"
         android:layout_width="match_parent"
@@ -20,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
          />
 
-    <AlhambraScoringAndroid.PlayerResultPanel
+    <AlhambraScoringAndroid.UI.PlayerResultPanel
         android:id="@+id/playerResultPanel2"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -28,7 +27,7 @@
         app:layout_constraintTop_toBottomOf="@+id/playerResultPanel1"
          />
 
-    <AlhambraScoringAndroid.PlayerResultPanel
+    <AlhambraScoringAndroid.UI.PlayerResultPanel
         android:id="@+id/playerResultPanel3"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -36,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/playerResultPanel2"
          />
 
-    <AlhambraScoringAndroid.PlayerResultPanel
+    <AlhambraScoringAndroid.UI.PlayerResultPanel
         android:id="@+id/playerResultPanel4"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -44,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/playerResultPanel3"
          />
 
-    <AlhambraScoringAndroid.PlayerResultPanel
+    <AlhambraScoringAndroid.UI.PlayerResultPanel
         android:id="@+id/playerResultPanel5"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -52,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/playerResultPanel4"
          />
 
-    <AlhambraScoringAndroid.PlayerResultPanel
+    <AlhambraScoringAndroid.UI.PlayerResultPanel
         android:id="@+id/playerResultPanel6"
         android:layout_width="match_parent"
         android:layout_height="40dp"

@@ -1,33 +1,24 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
     public class Player
     {
-        public  const String DirkName = "Dirk";
+        public const string DirkName = "Dirk";
 
-        public String Name;
-        public bool Dirk;
+        public string Name { get; private set; }
+        public bool Dirk { get; private set; }
 
-        public int Score;
+        public int Score { get; private set; }
 
-        protected Player(String name, bool dirk)
+        protected Player(string name, bool dirk)
         {
             Name = name;
             Dirk = dirk;
             Score = 0;
         }
 
-        public Player(String name): this(name, false)
+        public Player(string name) : this(name, false)
         {
         }
 

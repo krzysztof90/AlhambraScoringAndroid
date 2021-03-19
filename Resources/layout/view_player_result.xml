@@ -15,6 +15,7 @@
         android:layout_height="20dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/textViewScore"
         android:layout_width="50dp"

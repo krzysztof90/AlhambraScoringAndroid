@@ -1,61 +1,44 @@
-﻿using Android.App;
-using Android.Content;
-using Android.Content.Res;
-using Android.OS;
-using Android.Runtime;
+﻿using Android.Content;
 using Android.Text;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AlhambraScoringAndroid.UI
 {
-    public class ScoreLineNumberView : LinearLayout
+    public class ScoreLineNumberView : ScoreLineViewBase<int>
     {
-        TextView textView;
-        EditText editText;
-
-        public int defaultValue;
-        private int storedValue;
-        public Action changeMethod;
-
-        public void setDefaultValue(int value)
-        {
-            defaultValue = value;
-        }
+        private TextView textView;
+        private EditText editText;
 
         public ScoreLineNumberView(Context context, IAttributeSet attrs) : base(context, attrs)
         {
-            Inflate(context, Resource.Layout.view_gamescorelinenumber, this);
+        }
 
-            TypedArray typedArray = context.ObtainStyledAttributes(attrs, new int[] { Resource.Attribute.labelValue });
-            string label = typedArray.GetText(0);
-            typedArray.Recycle();
+        protected override int ResourceLayout => Resource.Layout.view_game_score_line_number;
 
+        protected override void CreateControls()
+        {
             textView = FindViewById<TextView>(Resource.Id.scoreLineLabel);
             editText = FindViewById<EditText>(Resource.Id.scoreLineNumber);
+        }
 
-            defaultValue = 0;
-            storedValue = 0;
-
+        protected override void SetControlsProperties()
+        {
             editText.TextChanged += new EventHandler<Android.Text.TextChangedEventArgs>((object sender, Android.Text.TextChangedEventArgs e) =>
             {
                 bool restore = false;
                 bool handleTextChanged = false;
                 foreach (StackTraceElement element in Thread.CurrentThread().GetStackTrace())
                 {
-                    //TODO method str
-                    if (element.MethodName=="onRestoreInstanceState")
+                    if (element.ClassName == "android.widget.TextView" && element.MethodName == "onRestoreInstanceState")
                     {
                         restore = true;
                         break;
                     }
-                    if (element.MethodName == "handleTextChanged")
+                    if (element.ClassName == "android.widget.TextView" && element.MethodName == "handleTextChanged")
                     {
                         handleTextChanged = true;
                     }
@@ -63,44 +46,36 @@ namespace AlhambraScoringAndroid.UI
 
                 if (!restore)
                 {
-                    storedValue = getValue();
+                    AssignStoredValue();
                     if (!handleTextChanged)
                         editText.SetSelection(editText.Text.Length);
                 }
 
-                changeMethod?.Invoke();
+                OnValueChange?.Invoke();
             });
-
-            textView.Text=label;
         }
 
-        public void restoreNumber()
+        protected override void SetLabel(string label)
         {
-            setNumber(storedValue);
+            textView.Text = label;
         }
 
-        public void setNumberRange(int min, int max)
+        protected override void SetValue(int value)
+        {
+            editText.Text = value.ToString();
+        }
+
+        protected override int GetValue()
+        {
+            string text = editText.Text;
+            if (text.Length == 0 || this.Visibility == ViewStates.Gone)
+                return DefaultValue;
+            return Int32.Parse(text);
+        }
+
+        public void SetNumberRange(int min, int max)
         {
             editText.SetFilters(new IInputFilter[] { new MinMaxFilter(Context, min, max) });
         }
-
-        public void setNumber(int number)
-        {
-            editText.Text=number.ToString();
-        }
-
-        private int getValue()
-        {
-            string text = editText.Text;
-            if (text.Length== 0 || this.Visibility == ViewStates.Gone)
-                return defaultValue;
-            return Int32.Parse(text);
-        }
-        public int getNumber()
-        {
-            return storedValue;
-        }
-
     }
-
 }

@@ -1,15 +1,10 @@
-﻿using AlhambraScoringAndroid.GamePlay;
+﻿using AlhambraScoringAndroid.Activities;
+using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.UI;
 using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AlhambraScoringAndroid
 {
@@ -32,56 +27,57 @@ namespace AlhambraScoringAndroid
             base.OnCreate();
         }
 
-        //TODO metody z dużej litery
-        //TODO property
-        public Game game;
-        public Game getGame()
-        {
-            return game;
-        }
-        GameInProgressActivity gameInProgressActivity;
+        public Game Game { get; private set; }
+        private GameInProgressActivity gameInProgressActivity;
 
-        public void newGame()
+        private void NewActivity(Type activityType)
         {
-            game = new Game(ApplicationContext);
-            StartActivity(new Intent(ApplicationContext, typeof(NewGameActivity)));
+            Intent intent = new Intent(ApplicationContext, activityType);
+            intent.AddFlags(ActivityFlags.NewTask);
+            StartActivity(intent);
         }
 
-        public void gameApplyModules(IEnumerable<ExpansionModule> modules)
+        public void NewGame()
         {
-            game.setModules(modules);
-            StartActivity(new Intent(ApplicationContext, typeof(GamePlayersChoseActivity)));
+            Game = new Game(ApplicationContext);
+            NewActivity(typeof(NewGameActivity));
         }
 
-        public void gameStart(List<String> players)
+        public void GameApplyModules(IEnumerable<ExpansionModule> modules)
         {
-            game.setPlayers(players);
-            StartActivity(new Intent(ApplicationContext, typeof(GameInProgressActivity)));
+            Game.SetModules(modules);
+            NewActivity(typeof(GamePlayersChoseActivity));
         }
 
-        public void gameRoundScore(GameInProgressActivity activity)
+        public void GameStart(List<string> players)
+        {
+            Game.SetPlayers(players);
+            NewActivity(typeof(GameInProgressActivity));
+        }
+
+        public void GameRoundScore(GameInProgressActivity activity)
         {
             gameInProgressActivity = activity;
-            StartActivity(new Intent(ApplicationContext, typeof(GameScoreActivity)));
+            NewActivity(typeof(GameScoreActivity));
         }
 
-        public void submitScore(GameScoreActivity activity, List<PlaceholderPlayerScoreFragment> scorePanels)
+        public void SubmitScore(GameScoreActivity activity, List<PlaceholderPlayerScoreFragment> scorePanels)
         {
-            if (game.validateScore(scorePanels))
+            if (Game.ValidateScore(scorePanels))
             {
-                game.score(scorePanels);
-                game.setNextRound();
+                Game.Score(scorePanels);
+                Game.SetNextRound();
                 activity.Finish();
                 gameInProgressActivity.PrepareRound();
             }
         }
 
-        public void submitScoreBeforeAssignLeftoverBuildings(GameScoreActivity activity, List<PlaceholderPlayerScoreBeforeAssignLeftoverFragment> scorePanels)
+        public void SubmitScoreBeforeAssignLeftoverBuildings(GameScoreActivity activity, List<PlaceholderPlayerScoreBeforeAssignLeftoverFragment> scorePanels)
         {
-            if (game.validateScoreBeforeAssignLeftoverBuildings(scorePanels))
+            if (Game.ValidateScoreBeforeAssignLeftoverBuildings(scorePanels))
             {
-                game.scoreBeforeAssignLeftoverBuildings(scorePanels);
-                game.setNextRound();
+                Game.ScoreBeforeAssignLeftoverBuildings(scorePanels);
+                Game.SetNextRound();
                 activity.Finish();
                 gameInProgressActivity.PrepareRound();
             }

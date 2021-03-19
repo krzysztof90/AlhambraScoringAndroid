@@ -1,32 +1,25 @@
-﻿using AlhambraScoringAndroid.GamePlay;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using AlhambraScoringAndroid.Activities;
+using AlhambraScoringAndroid.GamePlay;
 using AndroidX.Fragment.App;
 using Java.Lang;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AlhambraScoringAndroid.UI
 {
     public class PlayersScoreSectionsPagerAdapter : FragmentPagerAdapter
     {
-        public GameScoreActivity activity;
-        private PlaceholderPlayerScoreFragment[] PlayerScoreFragments;
-        private PlaceholderPlayerScoreBeforeAssignLeftoverFragment[] PlayerScoreBeforeAssignLeftoverFragments;
+        public readonly GameScoreActivity activity;
+        private readonly PlaceholderPlayerScoreFragment[] PlayerScoreFragments;
+        private readonly PlaceholderPlayerScoreBeforeAssignLeftoverFragment[] PlayerScoreBeforeAssignLeftoverFragments;
 
         public List<PlaceholderPlayerScoreFragment> AllPlayerScoreFragments
         {
             get
             {
-                for (int i = 0; i < activity.getGame().getPlayersCount; i++)
+                for (int i = 0; i < activity.Game.PlayersCount; i++)
                     if (PlayerScoreFragments[i] == null)
-                        PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, activity.getGame());
+                        PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, activity.Game);
                 return PlayerScoreFragments.ToList();
             }
         }
@@ -34,9 +27,9 @@ namespace AlhambraScoringAndroid.UI
         {
             get
             {
-                for (int i = 0; i < activity.getGame().getPlayersCount; i++)
+                for (int i = 0; i < activity.Game.PlayersCount; i++)
                     if (PlayerScoreBeforeAssignLeftoverFragments[i] == null)
-                        PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, activity.getGame());
+                        PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, activity.Game);
                 return PlayerScoreBeforeAssignLeftoverFragments.ToList();
             }
         }
@@ -44,23 +37,23 @@ namespace AlhambraScoringAndroid.UI
         public PlayersScoreSectionsPagerAdapter(GameScoreActivity context, AndroidX.Fragment.App.FragmentManager fm) : base(fm)
         {
             activity = context;
-            PlayerScoreFragments = new PlaceholderPlayerScoreFragment[activity.getGame().getPlayersCount];
-            PlayerScoreBeforeAssignLeftoverFragments = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment[activity.getGame().getPlayersCount];
+            PlayerScoreFragments = new PlaceholderPlayerScoreFragment[activity.Game.PlayersCount];
+            PlayerScoreBeforeAssignLeftoverFragments = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment[activity.Game.PlayersCount];
         }
 
         public override AndroidX.Fragment.App.Fragment GetItem(int position)
         {
-            if (position < activity.getGame().getPlayersCount)
+            if (position < activity.Game.PlayersCount)
             {
-                if (activity.getGame().ScoreRound != ScoringRound.ThirdBeforeLeftover)
+                if (activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
                 {
-                    PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, activity.getGame());
+                    PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, activity.Game);
                     PlayerScoreFragments[position] = playerScoreFragment;
                     return playerScoreFragment;
                 }
                 else
                 {
-                    PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, activity.getGame());
+                    PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, activity.Game);
                     PlayerScoreBeforeAssignLeftoverFragments[position] = playerScoreFragment;
                     return playerScoreFragment;
                 }
@@ -71,26 +64,28 @@ namespace AlhambraScoringAndroid.UI
 
         public override ICharSequence GetPageTitleFormatted(int position)
         {
-            if (position < activity.getGame().getPlayersCount)
-                return new Java.Lang.String(activity.getGame().getPlayer(position + 1).Name);
+            if (position < activity.Game.PlayersCount)
+                return new Java.Lang.String(activity.Game.GetPlayer(position + 1).Name);
             else
                 return new Java.Lang.String("Submit");
         }
 
-        public override int Count => activity.getGame().getPlayersCount + 1;
+        public override int Count => activity.Game.PlayersCount + 1;
 
-        //TODO czy potrzebne?
-        public void restoreValues(int position)
+        /// <summary>
+        /// shit android
+        /// </summary>
+        public void RestoreValues(int position)
         {
-            if (activity.getGame().ScoreRound != ScoringRound.ThirdBeforeLeftover)
-                PlayerScoreFragments[position].restoreValues();
+            if (activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
+                PlayerScoreFragments[position].RestoreValues();
             else
-                PlayerScoreBeforeAssignLeftoverFragments[position].restoreValues();
+                PlayerScoreBeforeAssignLeftoverFragments[position].RestoreValues();
         }
 
-        public void submit()
+        public void Submit()
         {
-            activity.submit();
+            activity.Submit();
         }
     }
 }

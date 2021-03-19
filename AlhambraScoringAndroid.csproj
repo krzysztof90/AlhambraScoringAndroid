@@ -65,23 +65,25 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseActivity.cs" />
-    <Compile Include="GameInProgressActivity.cs" />
-    <Compile Include="GamePlayersChoseActivity.cs" />
+    <Compile Include="UI\Activities\BaseActivity.cs" />
+    <Compile Include="UI\Activities\GameInProgressActivity.cs" />
+    <Compile Include="UI\Activities\GamePlayersChoseActivity.cs" />
     <Compile Include="GamePlay\BuildingType.cs" />
     <Compile Include="GamePlay\ExpansionModule.cs" />
     <Compile Include="GamePlay\Game.cs" />
     <Compile Include="GamePlay\Player.cs" />
     <Compile Include="GamePlay\ScoringRound.cs" />
-    <Compile Include="GameScoreActivity.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="UI\Activities\GameScoreActivity.cs" />
+    <Compile Include="UI\Activities\MainActivity.cs" />
     <Compile Include="MinMaxFilter.cs" />
     <Compile Include="MyApplication.cs" />
-    <Compile Include="NewGameActivity.cs" />
-    <Compile Include="PlayerResultPanel.cs" />
+    <Compile Include="UI\Activities\NewGameActivity.cs" />
+    <Compile Include="UI\ExpandListCheckBoxPosition.cs" />
+    <Compile Include="UI\PlayerResultPanel.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\CollectionsOperations.cs" />
+    <Compile Include="Tools\ValidateUtils.cs" />
     <Compile Include="UI\ExpandListCheckBoxAdapter.cs" />
     <Compile Include="UI\PlaceholderPlayerScoreBeforeAssignLeftoverFragment.cs" />
     <Compile Include="UI\PlaceholderPlayerScoreFragment.cs" />
@@ -90,9 +92,9 @@
     <Compile Include="UI\PlayersScoreSectionsPagerAdapter.cs" />
     <Compile Include="UI\ScoreLineCheckBoxView.cs" />
     <Compile Include="UI\ScoreLineNumberView.cs" />
+    <Compile Include="UI\ScoreLineViewBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -152,17 +154,17 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_gameinprogress.xml">
+    <AndroidResource Include="Resources\layout\activity_game_in_progress.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_gameplayerschose.xml">
+    <AndroidResource Include="Resources\layout\activity_game_players_chose.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_gamescore.xml">
+    <AndroidResource Include="Resources\layout\activity_game_score.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -172,7 +174,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_newgame.xml">
+    <AndroidResource Include="Resources\layout\activity_new_game.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -202,17 +204,17 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_gamescorelinecheckbox.xml">
+    <AndroidResource Include="Resources\layout\view_game_score_line_checkbox.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_gamescorelinenumber.xml">
+    <AndroidResource Include="Resources\layout\view_game_score_line_number.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_playerresult.xml">
+    <AndroidResource Include="Resources\layout\view_player_result.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -1,36 +1,26 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
+using AlhambraScoringAndroid.Tools;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using static Android.Widget.AdapterView;
 
-namespace AlhambraScoringAndroid
+namespace AlhambraScoringAndroid.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "Wybór graczy", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GamePlayersChoseActivity : BaseActivity
     {
-        //TODO equals
-        //TODO string.empty
-
-        protected override int getContentView()
-        {
-            return Resource.Layout.activity_gameplayerschose;
-        }
+        protected override int ContentView => Resource.Layout.activity_game_players_chose;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             Spinner spinner = FindViewById<Spinner>(Resource.Id.players_count_spinner);
-            ArrayAdapter adapter = ArrayAdapter.CreateFromResource(this,
-                    Resource.Array.players_count_array, Android.Resource.Layout.SimpleSpinnerItem);
+            ArrayAdapter adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.players_count_array, Android.Resource.Layout.SimpleSpinnerItem);
             adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
             spinner.Adapter = adapter;
             spinner.ItemSelected += Spinner_ItemSelected;
@@ -57,9 +47,9 @@ namespace AlhambraScoringAndroid
 
                 try
                 {
-                    application().gameStart(players);
+                    Application.GameStart(players);
                 }
-                catch (Exception exception)
+                catch (NameValidationException exception)
                 {
                     Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
                 }
@@ -73,7 +63,7 @@ namespace AlhambraScoringAndroid
             EditText editText5 = FindViewById<EditText>(Resource.Id.text_player5);
             editText5.Visibility = (e.Position + 2 < 5 ? ViewStates.Gone : ViewStates.Visible);
             EditText editText4 = FindViewById<EditText>(Resource.Id.text_player4);
-            editText4.Visibility = (e.Position+ 2 < 4 ? ViewStates.Gone : ViewStates.Visible);
+            editText4.Visibility = (e.Position + 2 < 4 ? ViewStates.Gone : ViewStates.Visible);
             EditText editText3 = FindViewById<EditText>(Resource.Id.text_player3);
             if (e.Position + 2 != 2)
             {

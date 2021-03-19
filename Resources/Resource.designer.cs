@@ -5350,19 +5350,19 @@ namespace AlhambraScoringAndroid
 			public const int abc_tooltip = 2131492891;
 			
 			// aapt resource value: 0x7F0C001C
-			public const int activity_gameinprogress = 2131492892;
+			public const int activity_game_in_progress = 2131492892;
 			
 			// aapt resource value: 0x7F0C001D
-			public const int activity_gameplayerschose = 2131492893;
+			public const int activity_game_players_chose = 2131492893;
 			
 			// aapt resource value: 0x7F0C001E
-			public const int activity_gamescore = 2131492894;
+			public const int activity_game_score = 2131492894;
 			
 			// aapt resource value: 0x7F0C001F
 			public const int activity_main = 2131492895;
 			
 			// aapt resource value: 0x7F0C0020
-			public const int activity_newgame = 2131492896;
+			public const int activity_new_game = 2131492896;
 			
 			// aapt resource value: 0x7F0C0021
 			public const int browser_actions_context_menu_page = 2131492897;
@@ -5470,13 +5470,13 @@ namespace AlhambraScoringAndroid
 			public const int support_simple_spinner_dropdown_item = 2131492931;
 			
 			// aapt resource value: 0x7F0C0044
-			public const int view_gamescorelinecheckbox = 2131492932;
+			public const int view_game_score_line_checkbox = 2131492932;
 			
 			// aapt resource value: 0x7F0C0045
-			public const int view_gamescorelinenumber = 2131492933;
+			public const int view_game_score_line_number = 2131492933;
 			
 			// aapt resource value: 0x7F0C0046
-			public const int view_playerresult = 2131492934;
+			public const int view_player_result = 2131492934;
 			
 			static Layout()
 			{

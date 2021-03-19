@@ -1,28 +1,22 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
+using AlhambraScoringAndroid.UI;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace AlhambraScoringAndroid
+namespace AlhambraScoringAndroid.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "Wyniki", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameInProgressActivity : BaseActivity
     {
         private readonly List<PlayerResultPanel> resultPanels;
 
-        Button roundScoreButton;
+        private Button roundScoreButton;
 
-        protected override int getContentView()
-        {
-            return Resource.Layout.activity_gameinprogress;
-        }
+        protected override int ContentView => Resource.Layout.activity_game_in_progress;
 
         public GameInProgressActivity()
         {
@@ -39,25 +33,26 @@ namespace AlhambraScoringAndroid
             PlayerResultPanel resultPanel4 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel4);
             PlayerResultPanel resultPanel5 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel5);
             PlayerResultPanel resultPanel6 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel6);
-            resultPanel1.initialize(this, 1);
+            //TODO show players colors
+            resultPanel1.Initialize(this, 1);
             resultPanels.Add(resultPanel1);
-            resultPanel2.initialize(this, 2);
+            resultPanel2.Initialize(this, 2);
             resultPanels.Add(resultPanel2);
-            resultPanel3.initialize(this, 3);
+            resultPanel3.Initialize(this, 3);
             resultPanels.Add(resultPanel3);
-            if (application().getGame().getPlayersCount > 3)
+            if (Application.Game.PlayersCount > 3)
             {
-                resultPanel4.initialize(this, 4);
+                resultPanel4.Initialize(this, 4);
                 resultPanels.Add(resultPanel4);
             }
-            if (application().getGame().getPlayersCount > 4)
+            if (Application.Game.PlayersCount > 4)
             {
-                resultPanel5.initialize(this, 5);
+                resultPanel5.Initialize(this, 5);
                 resultPanels.Add(resultPanel5);
             }
-            if (application().getGame().getPlayersCount > 5)
+            if (Application.Game.PlayersCount > 5)
             {
-                resultPanel6.initialize(this, 6);
+                resultPanel6.Initialize(this, 6);
                 resultPanels.Add(resultPanel6);
             }
 
@@ -65,15 +60,15 @@ namespace AlhambraScoringAndroid
 
             roundScoreButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                application().gameRoundScore(this);
+                Application.GameRoundScore(this);
             });
 
             PrepareRound();
         }
 
-        public void addPoints(int player, int score)
+        public void AddPoints(int player, int score)
         {
-            application().getGame().PlayerAddScore(player, score);
+            Application.Game.PlayerAddScore(player, score);
             ShowScore();
         }
 
@@ -81,7 +76,7 @@ namespace AlhambraScoringAndroid
         {
             ShowScore();
 
-            switch (application().getGame().ScoreRound)
+            switch (Application.Game.ScoreRound)
             {
                 case ScoringRound.First:
                     roundScoreButton.Text = "1st round";
@@ -97,22 +92,24 @@ namespace AlhambraScoringAndroid
                     break;
                 case ScoringRound.Finish:
                     roundScoreButton.Visibility = ViewStates.Gone;
+                    foreach (PlayerResultPanel resultPanel in resultPanels)
+                        resultPanel.HidePointButtons();
                     break;
             }
         }
 
         private void ShowScore()
         {
-            resultPanels[0].setScore(application().getGame().getPlayer(1).Score);
-            resultPanels[1].setScore(application().getGame().getPlayer(2).Score);
-            resultPanels[2].setScore(application().getGame().getPlayer(3).Score);
-            if (application().getGame().getPlayersCount > 3)
-                resultPanels[3].setScore(application().getGame().getPlayer(4).Score);
-            if (application().getGame().getPlayersCount > 4)
-                resultPanels[4].setScore(application().getGame().getPlayer(5).Score);
-            if (application().getGame().getPlayersCount > 5)
-                resultPanels[5].setScore(application().getGame().getPlayer(6).Score);
+            //TODO sort
+            resultPanels[0].SetScore(Application.Game.GetPlayer(1).Score);
+            resultPanels[1].SetScore(Application.Game.GetPlayer(2).Score);
+            resultPanels[2].SetScore(Application.Game.GetPlayer(3).Score);
+            if (Application.Game.PlayersCount > 3)
+                resultPanels[3].SetScore(Application.Game.GetPlayer(4).Score);
+            if (Application.Game.PlayersCount > 4)
+                resultPanels[4].SetScore(Application.Game.GetPlayer(5).Score);
+            if (Application.Game.PlayersCount > 5)
+                resultPanels[5].SetScore(Application.Game.GetPlayer(6).Score);
         }
     }
-
 }
