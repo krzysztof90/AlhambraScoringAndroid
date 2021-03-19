@@ -18,6 +18,15 @@ namespace AlhambraScoringAndroid.GamePlay
             [BuildingType.Garden] = new List<int>[] { new List<int> { 5 }, new List<int> { 12, 5 }, new List<int> { 20, 12, 5 } },
             [BuildingType.Tower] = new List<int>[] { new List<int> { 6 }, new List<int> { 13, 6 }, new List<int> { 21, 13, 6 } },
         };
+        public static Dictionary<BuildingType, int> BonusCardsMaxCount = new Dictionary<BuildingType, int>()
+        {
+            [BuildingType.Pavilion] = 1,
+            [BuildingType.Seraglio] = 1,
+            [BuildingType.Arcades] = 2,
+            [BuildingType.Chambers] = 2,
+            [BuildingType.Garden] = 3,
+            [BuildingType.Tower] = 3
+        };
 
         private readonly Context Context;
 
@@ -149,6 +158,23 @@ namespace AlhambraScoringAndroid.GamePlay
                     return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość budynków {mapEntry.Key}");
             }
 
+            int playerBonusCardsMax = 1;
+            if (PlayersCount < 6)
+                playerBonusCardsMax++;
+            if (PlayersCount < 4)
+                playerBonusCardsMax++;
+
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                if (scorePanels[i].BonusCardsBuildingsCount.Sum(c => c.Value)> playerBonusCardsMax)
+                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość kart bonusowych");
+            }
+            foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
+            {
+                if (scorePanels.Sum(p => p.BonusCardsBuildingsCount[mapEntry.Key] )> mapEntry.Value)
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość kart bonusowych {mapEntry.Key}");
+            }
+
             for (int i = 0; i < PlayersCount; i++)
                 if (scorePanels[i].BuildingsWithoutServantTile > scorePanels[i].AllBuildingsCount)
                     return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba budynków bez żetonu sługi przekracza liczbę wszystkich budynków");
@@ -172,9 +198,9 @@ namespace AlhambraScoringAndroid.GamePlay
                 allFruits += scorePanels[i].FaceDownFruitsCount;
             }
             if (faceDownFruitsSum > 35)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona maksymalna ilość pojedynczych owoców");
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość pojedynczych owoców");
             if (allFruits > 56)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona maksymalna ilość owoców");
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość owoców");
 
             List<int> wishingWellsAvailablePoints = new List<int>() { 3, 3, 4, 4, 5, 5 }.GetCombinationsSums();
 
@@ -185,7 +211,7 @@ namespace AlhambraScoringAndroid.GamePlay
                     return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów z fontann");
             }
             if (wishingWellsPointsSum > 24)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona maksymalna ilość punktów z fontann");
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość punktów z fontann");
 
             int animalsPointsSum = scorePanels.Sum(p => p.AnimalsPoints);
             for (int i = 0; i < PlayersCount; i++)
@@ -194,7 +220,7 @@ namespace AlhambraScoringAndroid.GamePlay
                     return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość zwierząt");
             }
             if (animalsPointsSum > 24)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona maksymalna ilość zwierząt");
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość zwierząt");
 
             foreach (KeyValuePair<BuildingType, int> mapEntry in BuildingsMaxCount)
             {
@@ -216,13 +242,24 @@ namespace AlhambraScoringAndroid.GamePlay
                 blackDiceTotalPipsSum += blackDiceTotalPips;
             }
             if (blackDiceTotalPipsSum > 18)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona maksymalna liczba oczek na czarnych kostkach");
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna liczba oczek na czarnych kostkach");
             if (blackDicesMinimumNumber > 3)
                 return ValidateUtils.CheckFailed(Context, $"Przekroczona ilość użytych czarnych kostek");
 
+            foreach (KeyValuePair<BuildingType, int> mapEntry in BuildingsMaxCount)
+            {
+                for (int i = 0; i < PlayersCount; i++)
+                {
+                    if (scorePanels[i].BuildingsCount[mapEntry.Key] > scorePanels[i].ExtensionsBuildingsCount[mapEntry.Key])
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba rozszerzeń przekracza liczbę wszystkich budynków {mapEntry.Key}");
+                }
+                if (scorePanels.Sum(p => p.ExtensionsBuildingsCount[mapEntry.Key]) > 2)
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość rozszerzeń {mapEntry.Key}");
+            }
+
             int handymenTilesHighestNumberSum = scorePanels.Sum(p => p.HandymenTilesHighestNumber);
             if (handymenTilesHighestNumberSum > 48)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona maksymalna ilość złotych rączek");
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość złotych rączek");
 
             List<int> treasuresAvailableValues = new List<int>() { 1, 2, 3, 4, 5, 6 }.GetCombinationsSums();
 
@@ -231,6 +268,8 @@ namespace AlhambraScoringAndroid.GamePlay
                 if (!treasuresAvailableValues.Contains(scorePanels[i].TreasuresValue))
                     return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów ze skarbów");
             }
+
+            //TODO caliphs validation: 3 and the same
 
             for (int i = 0; i < PlayersCount; i++)
             {
@@ -261,6 +300,12 @@ namespace AlhambraScoringAndroid.GamePlay
                 for (int i = 0; i < PlayersCount; i++)
                 {
                     int alhambraCount = scorePanels[i].BuildingsCount[scoring.Key];
+                    //Extensions: extended buildings
+                    if (HasModule(ExpansionModule.DesignerExtensions))
+                        alhambraCount += scorePanels[i].ExtensionsBuildingsCount[scoring.Key];
+                    //Bonus Cards: extra buildings
+                    if (HasModule(ExpansionModule.ExpansionBonusCards))
+                            alhambraCount += scorePanels[i].BonusCardsBuildingsCount[scoring.Key];
                     if (alhambraCount != 0)
                     {
                         int currentPlace = 1;
@@ -268,7 +313,11 @@ namespace AlhambraScoringAndroid.GamePlay
                         for (int j = 0; j < PlayersCount; j++)
                             if (j != i)
                             {
-                                int otherPlayerAlhambraBuildingsCount = scorePanels[j].BuildingsCount[scoring.Key];
+                                int otherPlayerAlhambraBuildingsCount = scorePanels[j].BuildingsCount[scoring.Key] ;
+                                    if (HasModule(ExpansionModule.DesignerExtensions))
+                                        otherPlayerAlhambraBuildingsCount += scorePanels[j].ExtensionsBuildingsCount[scoring.Key];
+                    if (HasModule(ExpansionModule.ExpansionBonusCards))
+                            otherPlayerAlhambraBuildingsCount += scorePanels[j].BonusCardsBuildingsCount[scoring.Key];
                                 if (otherPlayerAlhambraBuildingsCount > alhambraCount)
                                     currentPlace++;
                                 else if (otherPlayerAlhambraBuildingsCount == alhambraCount)

@@ -65,20 +65,6 @@ namespace AlhambraScoringAndroid.UI
         {
             layout.Visibility = (layout.Visibility == ViewStates.Visible && condition) ? ViewStates.Visible : ViewStates.Gone;
         }
-
-        protected int GetNumberValue(ScoreLineNumberView control)
-        {
-            //if (control == null)
-            //    return 0;
-            return control.Value;
-        }
-
-        protected bool GetCheckBoxValue(ScoreLineCheckBoxView control)
-        {
-            //if (control == null)
-            //    return false;
-            return control.Value;
-        }
     }
 
 }

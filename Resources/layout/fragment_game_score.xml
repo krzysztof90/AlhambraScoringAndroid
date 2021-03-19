@@ -57,10 +57,46 @@
             app:layout_constraintTop_toBottomOf="@+id/gardenCountNumericUpDown"
             app:labelValue="Towers number"/>
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/buildingsWithoutServantTileNumericUpDown"
+            android:id="@+id/bonusCardsPavilionCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/towerCountNumericUpDown"
+            app:labelValue="Bonus cards Pavilions number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/bonusCardsSeraglioCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bonusCardsPavilionCountNumericUpDown"
+            app:labelValue="Bonus cards Seraglios number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/bonusCardsArcadesCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bonusCardsSeraglioCountNumericUpDown"
+            app:labelValue="Bonus cards Arcades number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/bonusCardsChambersCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bonusCardsArcadesCountNumericUpDown"
+            app:labelValue="Bonus cards Chambers number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/bonusCardsGardenCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bonusCardsChambersCountNumericUpDown"
+            app:labelValue="Bonus cards Gardens number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/bonusCardsTowerCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bonusCardsGardenCountNumericUpDown"
+            app:labelValue="Bonus cards Towers number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/buildingsWithoutServantTileNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bonusCardsTowerCountNumericUpDown"
             app:labelValue="Number of buildings without a servant tile"/>
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/completedGroupOfFruitBoard1CheckBox"
@@ -201,10 +237,46 @@
             app:layout_constraintTop_toBottomOf="@+id/ownedSemiBuildingTowerCheckBox"
             app:labelValue="Black dice total pips"/>
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/handymenTilesHighestNumberNumericUpDown"
+            android:id="@+id/extensionsPavilionCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/blackDiceTotalPipsNumericUpDown"
+            app:labelValue="Extended buildings Pavilion number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/extensionsSeraglioCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/extensionsPavilionCountNumericUpDown"
+            app:labelValue="Extended buildings Seraglio number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/extensionsArcadesCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/extensionsSeraglioCountNumericUpDown"
+            app:labelValue="Extended buildings Arcades number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/extensionsChambersCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/extensionsArcadesCountNumericUpDown"
+            app:labelValue="Extended buildings Chambers number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/extensionsGardenCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/extensionsChambersCountNumericUpDown"
+            app:labelValue="Extended buildings Garden number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/extensionsTowerCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/extensionsGardenCountNumericUpDown"
+            app:labelValue="Extended buildings Tower number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/handymenTilesHighestNumberNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/extensionsTowerCountNumericUpDown"
             app:labelValue="Highest number of adjacent tiles occupied by handymen"/>
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/treasuresValueNumericUpDown"
@@ -272,6 +344,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/mission9Grids22CountNumericUpDown"
             app:labelValue="Second longest wall"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

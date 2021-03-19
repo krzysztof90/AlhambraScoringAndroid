@@ -32,6 +32,6 @@ namespace AlhambraScoringAndroid.UI
         {
         }
 
-        public int BuildingsWithoutServantTile => GetNumberValue(buildingsWithoutServantTileNumericUpDown);
+        public int BuildingsWithoutServantTile => buildingsWithoutServantTileNumericUpDown.Value;
     }
 }
