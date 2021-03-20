@@ -28,8 +28,6 @@ namespace AlhambraScoringAndroid.Activities
             Button startButton = FindViewById<Button>(Resource.Id.startButton2);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                //TODO validate names on the run
-
                 List<string> players = new List<string>();
 
                 int playersCount = spinner.SelectedItemPosition + 2;

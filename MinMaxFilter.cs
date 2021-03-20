@@ -22,11 +22,7 @@ namespace AlhambraScoringAndroid
 
         ICharSequence IInputFilter.FilterFormatted(ICharSequence source, int start, int end, ISpanned dest, int dstart, int dend)
         {
-            string newString = dest.ToString();
-            if (dstart > (dest.Length() - 1))
-                newString += source;
-            else
-                newString = newString.Substring(0, dstart) + source.ToString().Substring(start, end) + newString.Substring(dend);
+            string newString = dest.ToString().Substring(0, dstart) + source.ToString().Substring(start, end) + dest.ToString().Substring(dend);
 
             if (Int32.TryParse(newString, out int input))
             {

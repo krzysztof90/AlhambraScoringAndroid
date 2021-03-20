@@ -13,7 +13,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/wallsCountNumericUpDown"
@@ -344,7 +344,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/mission9Grids22CountNumericUpDown"
             app:labelValue="Second longest wall"/>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

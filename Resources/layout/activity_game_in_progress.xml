@@ -7,64 +7,73 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/include"
-        layout="@layout/content_main"
-         />
+        layout="@layout/content_main"/>
 
-    <AlhambraScoringAndroid.UI.PlayerResultPanel
-        android:id="@+id/playerResultPanel1"
-        android:layout_height="40dp"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_marginTop="60dp"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <AlhambraScoringAndroid.UI.PlayerResultPanel
-        android:id="@+id/playerResultPanel2"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/playerResultPanel1"
-         />
+            <AlhambraScoringAndroid.UI.PlayerResultPanel
+                android:id="@+id/playerResultPanel1"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <AlhambraScoringAndroid.UI.PlayerResultPanel
+                android:id="@+id/playerResultPanel2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel1"/>
+            <AlhambraScoringAndroid.UI.PlayerResultPanel
+                android:id="@+id/playerResultPanel3"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel2"/>
+            <AlhambraScoringAndroid.UI.PlayerResultPanel
+                android:id="@+id/playerResultPanel4"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel3"/>
+            <AlhambraScoringAndroid.UI.PlayerResultPanel
+                android:id="@+id/playerResultPanel5"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel4"/>
+            <AlhambraScoringAndroid.UI.PlayerResultPanel
+                android:id="@+id/playerResultPanel6"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel5"/>
 
-    <AlhambraScoringAndroid.UI.PlayerResultPanel
-        android:id="@+id/playerResultPanel3"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/playerResultPanel2"
-         />
-
-    <AlhambraScoringAndroid.UI.PlayerResultPanel
-        android:id="@+id/playerResultPanel4"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/playerResultPanel3"
-         />
-
-    <AlhambraScoringAndroid.UI.PlayerResultPanel
-        android:id="@+id/playerResultPanel5"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/playerResultPanel4"
-         />
-
-    <AlhambraScoringAndroid.UI.PlayerResultPanel
-        android:id="@+id/playerResultPanel6"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/playerResultPanel5"
-        />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/roundScoreButton"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="75dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

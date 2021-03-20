@@ -7,78 +7,84 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/include"
-        layout="@layout/content_main"
-         />
+        layout="@layout/content_main"/>
 
-    <Spinner
-        android:id="@+id/players_count_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="fill_parent"
         android:layout_marginTop="60dp"
-        app:layout_constraintTop_toTopOf="@+id/include"
-         />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/text_player1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/players_count_spinner"
-         />
+            <Spinner
+                android:id="@+id/players_count_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-    <EditText
-        android:id="@+id/text_player2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/text_player1"
-         />
+            <EditText
+                android:id="@+id/text_player1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/players_count_spinner"/>
+            <EditText
+                android:id="@+id/text_player2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/text_player1"/>
+            <EditText
+                android:id="@+id/text_player3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/text_player2"/>
+            <EditText
+                android:id="@+id/text_player4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/text_player3"/>
+            <EditText
+                android:id="@+id/text_player5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/text_player4"/>
+            <EditText
+                android:id="@+id/text_player6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                app:layout_constraintTop_toBottomOf="@+id/text_player5"/>
 
-    <EditText
-        android:id="@+id/text_player3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/text_player2"
-         />
-
-    <EditText
-        android:id="@+id/text_player4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/text_player3"
-         />
-
-    <EditText
-        android:id="@+id/text_player5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/text_player4"
-         />
-
-    <EditText
-        android:id="@+id/text_player6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@+id/text_player5"
-         />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/startButton2"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="75dp"
         android:text="Start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="75dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

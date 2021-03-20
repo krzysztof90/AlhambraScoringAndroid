@@ -20,7 +20,7 @@ namespace AlhambraScoringAndroid.UI
         {
             Context = context;
 
-            //TODO unique validation
+            //TODO unique validation, ArgumentException
             listWithSelections = expandableListDetail.ToDictionary(d => d.Key, d => d.Value.ToDictionary(l => l, l => false));
         }
 

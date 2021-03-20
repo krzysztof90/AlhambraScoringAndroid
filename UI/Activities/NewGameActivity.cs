@@ -11,8 +11,6 @@ namespace AlhambraScoringAndroid.Activities
     [Activity(Label = "Nowa gra", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class NewGameActivity : BaseActivity
     {
-        //TODO layout
-
         private ExpandableListView expandableListView;
 
         protected override int ContentView => Resource.Layout.activity_new_game;

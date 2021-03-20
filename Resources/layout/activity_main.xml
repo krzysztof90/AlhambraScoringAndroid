@@ -7,7 +7,6 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/include2"
         layout="@layout/content_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
