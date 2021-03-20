@@ -20,8 +20,10 @@ namespace AlhambraScoringAndroid.UI
         {
             Context = context;
 
-            //TODO unique validation, ArgumentException
             listWithSelections = expandableListDetail.ToDictionary(d => d.Key, d => d.Value.ToDictionary(l => l, l => false));
+
+            if (expandableListDetail.SelectMany(d => d.Value).Distinct().Count() != expandableListDetail.SelectMany(d => d.Value).Count())
+                throw new ArgumentException();
         }
 
         public override Java.Lang.Object GetChild(int groupPosition, int childPosition)
