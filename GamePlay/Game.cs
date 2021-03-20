@@ -250,7 +250,7 @@ namespace AlhambraScoringAndroid.GamePlay
             {
                 for (int i = 0; i < PlayersCount; i++)
                 {
-                    if (scorePanels[i].BuildingsCount[mapEntry.Key] > scorePanels[i].ExtensionsBuildingsCount[mapEntry.Key])
+                    if (scorePanels[i].ExtensionsBuildingsCount[mapEntry.Key] > scorePanels[i].BuildingsCount[mapEntry.Key])
                         return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba rozszerzeń przekracza liczbę wszystkich budynków {mapEntry.Key}");
                 }
                 if (scorePanels.Sum(p => p.ExtensionsBuildingsCount[mapEntry.Key]) > 2)

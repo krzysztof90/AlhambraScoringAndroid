@@ -20,7 +20,6 @@ namespace AlhambraScoringAndroid
         //TODO labelki słownik
         //TODO google play "I would appreciate any feedback", BGG
         //TODO nieptrzebne referencje, nuget
-        //TODO generacja ikony
 
         public MyApplication(IntPtr javaReference, Android.Runtime.JniHandleOwnership transfer) : base(javaReference, transfer)
         {

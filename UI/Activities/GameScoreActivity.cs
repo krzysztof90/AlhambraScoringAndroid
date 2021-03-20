@@ -1,6 +1,7 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.UI;
 using Android.App;
+using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Widget;
@@ -11,7 +12,7 @@ using static Google.Android.Material.Tabs.TabLayout;
 
 namespace AlhambraScoringAndroid.Activities
 {
-    [Activity(Label = "Punktacja", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "Punktacja", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameScoreActivity : BaseActivity
     {
         private PlayersScoreSectionsPagerAdapter sectionsPagerAdapter;
@@ -20,6 +21,8 @@ namespace AlhambraScoringAndroid.Activities
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            //TODO błąd aplikacji przy przekręcaniu ekranu
+
             base.OnCreate(savedInstanceState);
 
             sectionsPagerAdapter = new PlayersScoreSectionsPagerAdapter(this, SupportFragmentManager);

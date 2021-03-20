@@ -9,8 +9,8 @@ namespace AlhambraScoringAndroid.UI
 {
     public abstract class PlaceholderPlayerScoreFragmentBase : AndroidX.Fragment.App.Fragment
     {
-        public int PlayerNumber {  get; private set; }
-        protected Game Game{  get; private set; }
+        public int PlayerNumber { get; private set; }
+        protected Game Game { get; private set; }
 
         protected bool IsDirk { get; private set; }
         protected bool IsFinalRound { get; private set; }
@@ -58,7 +58,7 @@ namespace AlhambraScoringAndroid.UI
         public void RestoreValues()
         {
             foreach (IScoreLineView control in Controls)
-                    control.RestoreValue();
+                control.RestoreValue();
         }
 
         protected void AddConditionToVisible(LinearLayout layout, bool condition)
