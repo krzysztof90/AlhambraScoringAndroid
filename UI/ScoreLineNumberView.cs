@@ -1,4 +1,5 @@
 ﻿using Android.Content;
+using Android.Content.Res;
 using Android.Text;
 using Android.Util;
 using Android.Views;
@@ -55,9 +56,15 @@ namespace AlhambraScoringAndroid.UI
             });
         }
 
-        protected override void SetLabel(string label)
+        protected override void SetLabelAndColor(string label, ColorStateList color)
         {
             textView.Text = label;
+            if (color != null)
+            {
+                textView.SetTextColor(color);
+                if (color.DefaultColor == -658699)
+                textView.SetShadowLayer(1, 1, 1, Android.Graphics.Color.Black);
+            }
         }
 
         protected override void SetValue(int value)

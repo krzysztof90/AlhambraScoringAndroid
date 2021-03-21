@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="UI\Activities\BaseActivity.cs" />
+    <Compile Include="UI\Activities\GameDetailsActivity.cs" />
     <Compile Include="UI\Activities\GameInProgressActivity.cs" />
     <Compile Include="UI\Activities\GamePlayersChoseActivity.cs" />
     <Compile Include="GamePlay\BuildingType.cs" />
@@ -216,6 +217,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\view_player_result.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_game_details.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

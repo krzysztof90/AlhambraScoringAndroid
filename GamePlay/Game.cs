@@ -103,20 +103,22 @@ namespace AlhambraScoringAndroid.GamePlay
         {
             Players = new List<Player>();
 
-            AddPlayer(playersNames[0]);
-            AddPlayer(playersNames[1]);
+            bool twoPlayers = playersNames.Count == 2;
+
+            AddPlayer(playersNames[0], twoPlayers);
+            AddPlayer(playersNames[1], twoPlayers);
             if (playersNames.Count > 2)
             {
-                AddPlayer(playersNames[2]);
+                AddPlayer(playersNames[2], twoPlayers);
                 if (playersNames.Count > 3)
                 {
-                    AddPlayer(playersNames[3]);
+                    AddPlayer(playersNames[3], twoPlayers);
                     if (playersNames.Count > 4)
                     {
-                        AddPlayer(playersNames[4]);
+                        AddPlayer(playersNames[4], twoPlayers);
                         if (playersNames.Count > 5)
                         {
-                            AddPlayer(playersNames[5]);
+                            AddPlayer(playersNames[5], twoPlayers);
                         }
                     }
                 }
@@ -127,11 +129,11 @@ namespace AlhambraScoringAndroid.GamePlay
             ScoreRound = ScoringRound.First;
         }
 
-        private void AddPlayer(string name)
+        private void AddPlayer(string name, bool twoPlayers)
         {
             if (String.IsNullOrEmpty(name))
                 throw new NameValidationException("Empty name");
-            if (name.Equals(Player.DirkName, StringComparison.OrdinalIgnoreCase))
+            if (name.Equals(Player.DirkName, StringComparison.OrdinalIgnoreCase) && twoPlayers)
                 throw new NameValidationException("Dirk is reserved name");
             if (Players.Any(p => name.Equals(p.Name, StringComparison.OrdinalIgnoreCase)))
                 throw new NameValidationException("Duplicates names");
@@ -150,6 +152,8 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public bool ValidateScore(List<PlaceholderPlayerScoreFragment> scorePanels)
         {
+            //TODO walidacja danych na podstawie wcześniejszych submitów
+
             foreach (KeyValuePair<BuildingType, int> mapEntry in BuildingsMaxCount)
             {
                 int playersBuildings = scorePanels.Sum(p => p.BuildingsCount[mapEntry.Key]);

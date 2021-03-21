@@ -10,7 +10,7 @@ using Google.Android.Material.Tabs;
 using System;
 using static Google.Android.Material.Tabs.TabLayout;
 
-namespace AlhambraScoringAndroid.Activities
+namespace AlhambraScoringAndroid.UI.Activities
 {
     [Activity(Label = "Punktacja", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameScoreActivity : BaseActivity

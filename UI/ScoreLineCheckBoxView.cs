@@ -1,4 +1,5 @@
 ﻿using Android.Content;
+using Android.Content.Res;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -30,9 +31,15 @@ namespace AlhambraScoringAndroid.UI
             });
         }
 
-        protected override void SetLabel(string label)
+        protected override void SetLabelAndColor(string label, ColorStateList color)
         {
             scoreLineCheckBox.Text = label;
+            if (color != null)
+            {
+                scoreLineCheckBox.SetTextColor(color);
+                if (color.DefaultColor == -658699)
+                    scoreLineCheckBox.SetShadowLayer(1, 1, 1, Android.Graphics.Color.Black);
+            }
         }
 
         protected override void SetValue(bool value)

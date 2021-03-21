@@ -6,7 +6,7 @@ using Android.Widget;
 using System;
 using System.Collections.Generic;
 
-namespace AlhambraScoringAndroid.Activities
+namespace AlhambraScoringAndroid.UI.Activities
 {
     [Activity(Label = "Nowa gra", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class NewGameActivity : BaseActivity

@@ -1,6 +1,6 @@
-﻿using AlhambraScoringAndroid.Activities;
-using AlhambraScoringAndroid.GamePlay;
+﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.UI;
+using AlhambraScoringAndroid.UI.Activities;
 using Android.App;
 using Android.Content;
 using System;
@@ -18,6 +18,7 @@ namespace AlhambraScoringAndroid
         //TODO confirm back when on score screen
         //TODO another expansion modules
         //TODO labelki słownik
+        //TODO iOS
         //TODO google play "I would appreciate any feedback", BGG
         //TODO nieptrzebne referencje, nuget
 
@@ -83,6 +84,12 @@ namespace AlhambraScoringAndroid
                 activity.Finish();
                 gameInProgressActivity.PrepareRound();
             }
+        }
+
+        public void GameShowDetails()
+        {
+            //TODO  Grid, w kolumnach obrazki
+            NewActivity(typeof(GameDetailsActivity));
         }
     }
 }

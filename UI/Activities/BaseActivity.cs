@@ -4,7 +4,7 @@ using Android.Views;
 using AndroidX.AppCompat.App;
 using AndroidX.AppCompat.Widget;
 
-namespace AlhambraScoringAndroid.Activities
+namespace AlhambraScoringAndroid.UI.Activities
 {
     public abstract class BaseActivity : AppCompatActivity
     {

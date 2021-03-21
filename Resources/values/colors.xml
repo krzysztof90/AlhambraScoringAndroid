@@ -3,4 +3,10 @@
     <color name="colorPrimary">#2c3e50</color>
     <color name="colorPrimaryDark">#1B3147</color>
     <color name="colorAccent">#3498db</color>
+    <color name="colorPavilion">#6cbad2</color>
+    <color name="colorSeraglio">#dd635f</color>
+    <color name="colorArcades">#b17f49</color>
+    <color name="colorChambers">#f5f2f5</color>
+    <color name="colorGarden">#86ac34</color>
+    <color name="colorTower">#bf8cbd</color>
 </resources>

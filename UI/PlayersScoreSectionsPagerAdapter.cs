@@ -1,5 +1,5 @@
-﻿using AlhambraScoringAndroid.Activities;
-using AlhambraScoringAndroid.GamePlay;
+﻿using AlhambraScoringAndroid.GamePlay;
+using AlhambraScoringAndroid.UI.Activities;
 using AndroidX.Fragment.App;
 using Java.Lang;
 using System.Collections.Generic;

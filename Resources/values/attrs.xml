@@ -2,5 +2,6 @@
 <resources>
   <declare-styleable name="CustomView">
     <attr name="labelValue" format="string" />
+    <attr name="textColor" format="color|reference" />
   </declare-styleable>
 </resources>

@@ -7,7 +7,7 @@ using Android.Widget;
 using System;
 using System.Collections.Generic;
 
-namespace AlhambraScoringAndroid.Activities
+namespace AlhambraScoringAndroid.UI.Activities
 {
     [Activity(Label = "Wyniki", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameInProgressActivity : BaseActivity
@@ -33,7 +33,6 @@ namespace AlhambraScoringAndroid.Activities
             PlayerResultPanel resultPanel4 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel4);
             PlayerResultPanel resultPanel5 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel5);
             PlayerResultPanel resultPanel6 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel6);
-            //TODO show players colors
             resultPanel1.Initialize(this, 1);
             resultPanels.Add(resultPanel1);
             resultPanel2.Initialize(this, 2);
@@ -60,7 +59,10 @@ namespace AlhambraScoringAndroid.Activities
 
             roundScoreButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.GameRoundScore(this);
+                if (Application.Game.ScoreRound != ScoringRound.Finish)
+                    Application.GameRoundScore(this);
+                else
+                    Application.GameShowDetails();
             });
 
             PrepareRound();
@@ -91,7 +93,8 @@ namespace AlhambraScoringAndroid.Activities
                     roundScoreButton.Text = "3rd round";
                     break;
                 case ScoringRound.Finish:
-                    roundScoreButton.Visibility = ViewStates.Gone;
+                    //roundScoreButton.Visibility = ViewStates.Gone;
+                    roundScoreButton.Text = "Zapisz i pokaż szczegóły";
                     foreach (PlayerResultPanel resultPanel in resultPanels)
                         resultPanel.HidePointButtons();
                     break;

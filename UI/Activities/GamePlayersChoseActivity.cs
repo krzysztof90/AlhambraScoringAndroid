@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using static Android.Widget.AdapterView;
 
-namespace AlhambraScoringAndroid.Activities
+namespace AlhambraScoringAndroid.UI.Activities
 {
     [Activity(Label = "Wybór graczy", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GamePlayersChoseActivity : BaseActivity

@@ -21,7 +21,7 @@ namespace AlhambraScoringAndroid.UI
         protected abstract int ResourceLayout { get; }
         protected abstract void CreateControls();
         protected abstract void SetControlsProperties();
-        protected abstract void SetLabel(string label);
+        protected abstract void SetLabelAndColor(string label, ColorStateList color);
         protected abstract void SetValue(T value);
         protected abstract T GetValue();
 
@@ -29,15 +29,17 @@ namespace AlhambraScoringAndroid.UI
         {
             Inflate(context, ResourceLayout, this);
 
-            TypedArray typedArray = context.ObtainStyledAttributes(attrs, new int[] { Resource.Attribute.labelValue });
+            //TODO zmiana textColor na labelColor
+            TypedArray typedArray = context.ObtainStyledAttributes(attrs, new int[] { Resource.Attribute.labelValue, Resource.Attribute.textColor });
             string label = typedArray.GetText(0);
+            ColorStateList color = typedArray.GetColorStateList(1);
             typedArray.Recycle();
 
             DefaultValue = default(T);
 
             CreateControls();
             SetControlsProperties();
-            SetLabel(label);
+            SetLabelAndColor(label, color);
         }
 
         public void Initialize()
