@@ -8,7 +8,7 @@
 
     <include
         layout="@layout/content_main"/>
-    
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_marginTop="60dp"
@@ -33,7 +33,7 @@
                         android:layout_height="150dp"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
-                
+
                 <TableRow
                     android:id="@+id/headerRound1"
                     android:layout_width="fill_parent"
@@ -105,7 +105,7 @@
                         android:layout_height="@dimen/game_details_cell_height"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
-                
+
                 <TableRow
                     android:id="@+id/headerRound2"
                     android:layout_width="fill_parent"
@@ -177,7 +177,7 @@
                         android:layout_height="@dimen/game_details_cell_height"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
-                
+
                 <TableRow
                     android:id="@+id/headerRound3"
                     android:layout_width="fill_parent"
@@ -249,7 +249,7 @@
                         android:layout_height="@dimen/game_details_cell_height"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
-                
+
                 <TableRow
                     android:id="@+id/headerRoundSum"
                     android:layout_width="fill_parent"
@@ -330,11 +330,13 @@
                     android:id="@+id/contentTable"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
-                    
-    <include
-        layout="@layout/details_row_header"/>
-    <include
-        layout="@layout/details_row_header"/>
+
+                    <include
+                    android:id="@+id/headerRow1"
+                        layout="@layout/details_row_header"/>
+                    <include
+                    android:id="@+id/headerRow2"
+                        layout="@layout/details_row_header"/>
 
                 </TableLayout>
             </HorizontalScrollView>

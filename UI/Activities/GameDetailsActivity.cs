@@ -27,7 +27,9 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            //TODO w headerRow tylko ikony, help text po kliknięciu
+            contentTable = FindViewById<TableLayout>(Resource.Id.contentTable);
+
+            //TODO w headerRow na ikonach help text po kliknięciu
 
             TableRow headerPlayer11 = FindViewById<TableRow>(Resource.Id.headerPlayer11);
             TableRow headerPlayer12 = FindViewById<TableRow>(Resource.Id.headerPlayer12);
@@ -134,7 +136,36 @@ namespace AlhambraScoringAndroid.UI.Activities
                 headerTextPlayerSum6.Text = Game.GetPlayer(6).Name;
             }
 
-            contentTable = FindViewById<TableLayout>(Resource.Id.contentTable);
+            TableRow headerRow1 = FindViewById<TableRow>(Resource.Id.headerRow1);
+            TableRow headerRow2 = FindViewById<TableRow>(Resource.Id.headerRow2);
+            foreach (TableRow headerRow in new TableRow[] { headerRow1, headerRow2 })
+            {
+                SetVisibility(headerRow.FindViewById<LinearLayout>(Resource.Id.headerImmediatelyPoints), Game.HasModule(ExpansionModule.DesignerPalaceDesigners) || Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerImmediatelyPointsPalaceDesigners), Game.HasModule(ExpansionModule.DesignerPalaceDesigners));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerImmediatelyPointsGatesWithoutEnd),  Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+                SetVisibility(headerRow.FindViewById<LinearLayout>(Resource.Id.headerBonuses), Game.HasModule(ExpansionModule.ExpansionBonusCards) || Game.HasModule(ExpansionModule.DesignerExtensions) || Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBonusesBonusCards), Game.HasModule(ExpansionModule.ExpansionBonusCards));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBonusesExtensions), Game.HasModule(ExpansionModule.DesignerExtensions));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBonusesGatesWithoutEnd), Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBuildingsWithoutServantTile), Game.HasModule(ExpansionModule.DesignerPalaceStaff));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerOrchards), Game.HasModule(ExpansionModule.DesignerOrchards) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBathhouses), Game.HasModule(ExpansionModule.DesignerBathhouses));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerWishingWells), Game.HasModule(ExpansionModule.DesignerWishingWell));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerCompletedProjects), Game.HasModule(ExpansionModule.DesignerFreshColors));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerAnimals), Game.HasModule(ExpansionModule.DesignerAlhambraZoo));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBlackDices), Game.HasModule(ExpansionModule.DesignerBuildingsOfPower));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerHandymen), Game.HasModule(ExpansionModule.DesignerHandymen));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerTreasures), Game.HasModule(ExpansionModule.FanTreasures) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission1), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission2), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission3), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission4), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission5), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission6), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission7), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission8), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission9), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            }
 
             AddPlayerDetailsRoundBlock(ScoringRound.First);
             if (Game.ScoreRound == ScoringRound.ThirdBeforeLeftover || Game.ScoreRound == ScoringRound.Third || Game.ScoreRound == ScoringRound.Finish)
@@ -194,17 +225,63 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         private void AddPlayerDetailsRow(ScoreDetails scoreDetails)
         {
-            //TODO Bonus  "(+20)"
-
             TableRow row = (TableRow)LayoutInflater.From(this).Inflate(Resource.Layout.details_row, null);
-            (row.FindViewById<TextView>(Resource.Id.resultWalls)).Text = scoreDetails.WallLength.ToString();
-            (row.FindViewById<TextView>(Resource.Id.resultPavilion)).Text = scoreDetails.PavilionNumber.ToString();
-            (row.FindViewById<TextView>(Resource.Id.resultSeraglio)).Text = scoreDetails.SeraglioNumber.ToString();
-            (row.FindViewById<TextView>(Resource.Id.resultArcades)).Text = scoreDetails.ArcadesNumber.ToString();
-            (row.FindViewById<TextView>(Resource.Id.resultBonuses)).Text = $"(+{scoreDetails.BuildingsBonuses})";
-            (row.FindViewById<TextView>(Resource.Id.resultBuildingsWithoutServantTile)).Text = $"-{scoreDetails.BuildingsWithoutServantTile}";
+            row.FindViewById<TextView>(Resource.Id.resultImmediatelyPoints).Text = scoreDetails.ImmediatelyPoints.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultWalls).Text = scoreDetails.WallLength.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultPavilion).Text = scoreDetails.PavilionNumber.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultSeraglio).Text = scoreDetails.SeraglioNumber.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultArcades).Text = scoreDetails.ArcadesNumber.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultChambers).Text = scoreDetails.ChambersNumber.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultGarden).Text = scoreDetails.GardenNumber.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultTower).Text = scoreDetails.TowerNumber.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultBonuses).Text = $"(+{scoreDetails.BuildingsBonuses})";
+            row.FindViewById<TextView>(Resource.Id.resultBuildingsWithoutServantTile).Text = $"-{scoreDetails.BuildingsWithoutServantTile}";
+            row.FindViewById<TextView>(Resource.Id.resultOrchards).Text = scoreDetails.Orchards.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultBathhouses).Text = scoreDetails.Bathhouses.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultWishingWells).Text = scoreDetails.WishingWells.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultCompletedProjects).Text = scoreDetails.CompletedProjects.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultAnimals).Text = scoreDetails.Animals.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultBlackDices).Text = scoreDetails.BlackDices.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultHandymen).Text = scoreDetails.Handymen.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultTreasures).Text = scoreDetails.Treasures.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission1).Text = scoreDetails.Mission1.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission2).Text = scoreDetails.Mission2.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission3).Text = scoreDetails.Mission3.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission4).Text = scoreDetails.Mission4.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission5).Text = scoreDetails.Mission5.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission6).Text = scoreDetails.Mission6.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission7).Text = scoreDetails.Mission7.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission8).Text = scoreDetails.Mission8.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultMission9).Text = scoreDetails.Mission9.ToString();
+
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultImmediatelyPoints), Game.HasModule(ExpansionModule.DesignerPalaceDesigners) || Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultBonuses), Game.HasModule(ExpansionModule.DesignerExtensions) || Game.HasModule(ExpansionModule.ExpansionBonusCards) || Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultBuildingsWithoutServantTile), Game.HasModule(ExpansionModule.DesignerPalaceStaff));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultOrchards), Game.HasModule(ExpansionModule.DesignerOrchards) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultBathhouses), Game.HasModule(ExpansionModule.DesignerBathhouses));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultWishingWells), Game.HasModule(ExpansionModule.DesignerWishingWell));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultCompletedProjects), Game.HasModule(ExpansionModule.DesignerFreshColors));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultAnimals), Game.HasModule(ExpansionModule.DesignerAlhambraZoo));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultBlackDices), Game.HasModule(ExpansionModule.DesignerBuildingsOfPower));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultHandymen), Game.HasModule(ExpansionModule.DesignerHandymen));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultTreasures), Game.HasModule(ExpansionModule.FanTreasures) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission1), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission2), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission3), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission4), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission5), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission6), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission7), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission8), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission9), Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.ScoreRound == ScoringRound.Finish);
+
             contentTable.AddView(row, contentTable.ChildCount - 1);
             contentTable.RequestLayout();
+        }
+
+        protected void SetVisibility(View view, bool condition)
+        {
+            view.Visibility = condition ? ViewStates.Visible : ViewStates.Gone;
         }
     }
 }
