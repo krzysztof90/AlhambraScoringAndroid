@@ -1,0 +1,33 @@
+﻿namespace AlhambraScoringAndroid.GamePlay
+{
+    public enum ScoreType
+    {
+        Immediately,
+        WallLength,
+        PavilionNumber,
+        SeraglioNumber,
+        ArcadesNumber,
+        ChambersNumber,
+        GardenNumber,
+        TowerNumber,
+        BuildingsBonuses,
+        BuildingsWithoutServantTile,
+        Orchards,
+        Bathhouses,
+        WishingWells,
+        CompletedProjects,
+        Animals,
+        BlackDices,
+        Handymen,
+        Treasures,
+        Mission1,
+        Mission2,
+        Mission3,
+        Mission4,
+        Mission5,
+        Mission6,
+        Mission7,
+        Mission8,
+        Mission9,
+    }
+}

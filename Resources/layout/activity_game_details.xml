@@ -8,7 +8,7 @@
 
     <include
         layout="@layout/content_main"/>
-
+    
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_marginTop="60dp"
@@ -16,15 +16,12 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TableLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="100dp"
                 android:layout_height="match_parent">
 
@@ -34,43 +31,294 @@
                     <TextView
                         android:layout_width="100dp"
                         android:layout_height="150dp"
-                        android:text="NULL"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
+                
                 <TableRow
+                    android:id="@+id/headerRound1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:text="Runda 1"
+                        android:textStyle="bold"
                         android:layout_width="100dp"
-                        android:layout_height="20dp"
-                        android:text="Text 1"
+                        android:layout_height="@dimen/game_details_cell_height"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
                 <TableRow
+                    android:id="@+id/headerPlayer11"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/headerTextPlayer11"
                         android:layout_width="100dp"
-                        android:layout_height="20dp"
-                        android:text="Text 2"
+                        android:layout_height="@dimen/game_details_cell_height"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
                 <TableRow
+                    android:id="@+id/headerPlayer12"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/headerTextPlayer12"
                         android:layout_width="100dp"
-                        android:layout_height="20dp"
-                        android:text="Text 3"
+                        android:layout_height="@dimen/game_details_cell_height"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
                 <TableRow
+                    android:id="@+id/headerPlayer13"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/headerTextPlayer13"
                         android:layout_width="100dp"
-                        android:layout_height="20dp"
-                        android:text="Text 4"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer14"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer14"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer15"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer15"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer16"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer16"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                
+                <TableRow
+                    android:id="@+id/headerRound2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Runda 2"
+                        android:textStyle="bold"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer21"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer21"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer22"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer22"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer23"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer23"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer24"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer24"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer25"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer25"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer26"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer26"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                
+                <TableRow
+                    android:id="@+id/headerRound3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Runda 3"
+                        android:textStyle="bold"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer31"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer31"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer32"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer32"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer33"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer33"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer34"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer34"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer35"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer35"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayer36"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayer36"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                
+                <TableRow
+                    android:id="@+id/headerRoundSum"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Suma"
+                        android:textStyle="bold"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayerSum1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayerSum1"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayerSum2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayerSum2"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayerSum3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayerSum3"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayerSum4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayerSum4"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayerSum5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayerSum5"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
+                        android:layout_marginStart="10dp"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/headerPlayerSum6"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/headerTextPlayerSum6"
+                        android:layout_width="100dp"
+                        android:layout_height="@dimen/game_details_cell_height"
                         android:layout_marginStart="10dp"/>
                 </TableRow>
             </TableLayout>
@@ -79,69 +327,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TableLayout
-                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/contentTable"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
+                    
+    <include
+        layout="@layout/details_row_header"/>
+    <include
+        layout="@layout/details_row_header"/>
 
-                    <TableRow
-                        android:id="@+id/headerRow"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="150dp"
-                        android:text="Header 1"
-                        android:layout_marginStart="10dp"/>
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="150dp"
-                        android:text="Header 2"
-                        android:layout_marginStart="10dp"/>
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="150dp"
-                        android:text="Header 3"
-                        android:layout_marginStart="10dp"/>
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="150dp"
-                        android:text="Header 4"
-                        android:layout_marginStart="10dp"/>
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="150dp"
-                        android:text="Header 5"
-                        android:layout_marginStart="10dp"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="20dp"
-                        android:text="Content 1"
-                        android:layout_marginStart="10dp"/>
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="20dp"
-                        android:text="Content 2"
-                        android:layout_marginStart="10dp"/>
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="20dp"
-                        android:text="Content 3"
-                        android:layout_marginStart="10dp"/>
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="20dp"
-                        android:text="Content 4"
-                        android:layout_marginStart="10dp"/>
-                            <TextView
-                        android:layout_width="50dp"
-                        android:layout_height="20dp"
-                        android:text="Content 5"
-                        android:layout_marginStart="10dp"/>
-                    </TableRow>
                 </TableLayout>
             </HorizontalScrollView>
 

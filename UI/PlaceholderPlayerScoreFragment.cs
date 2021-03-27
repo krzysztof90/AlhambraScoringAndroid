@@ -348,81 +348,81 @@ namespace AlhambraScoringAndroid.UI
             secondLongestWallNumericUpDown.Visibility = BlackDiceTotalPips != 0 || Mission4Available ? ViewStates.Visible : ViewStates.Gone;
         }
 
-        public int WallLength => wallsCountNumericUpDown.Value;
+        public int WallLength => GetNumberValue(wallsCountNumericUpDown);
         public Dictionary<BuildingType, int> BuildingsCount =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = pavilionCountNumericUpDown.Value,
-                [BuildingType.Seraglio] = seraglioCountNumericUpDown.Value,
-                [BuildingType.Arcades] = arcadesCountNumericUpDown.Value,
-                [BuildingType.Chambers] = chambersCountNumericUpDown.Value,
-                [BuildingType.Garden] = gardenCountNumericUpDown.Value,
-                [BuildingType.Tower] = towerCountNumericUpDown.Value,
+                [BuildingType.Pavilion] = GetNumberValue(pavilionCountNumericUpDown),
+                [BuildingType.Seraglio] = GetNumberValue(seraglioCountNumericUpDown),
+                [BuildingType.Arcades] = GetNumberValue(arcadesCountNumericUpDown),
+                [BuildingType.Chambers] = GetNumberValue(chambersCountNumericUpDown),
+                [BuildingType.Garden] = GetNumberValue(gardenCountNumericUpDown),
+                [BuildingType.Tower] = GetNumberValue(towerCountNumericUpDown),
             };
         public Dictionary<BuildingType, int> BonusCardsBuildingsCount =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = bonusCardsPavilionCountNumericUpDown.Value,
-                [BuildingType.Seraglio] = bonusCardsSeraglioCountNumericUpDown.Value,
-                [BuildingType.Arcades] = bonusCardsArcadesCountNumericUpDown.Value,
-                [BuildingType.Chambers] = bonusCardsChambersCountNumericUpDown.Value,
-                [BuildingType.Garden] = bonusCardsGardenCountNumericUpDown.Value,
-                [BuildingType.Tower] = bonusCardsTowerCountNumericUpDown.Value,
+                [BuildingType.Pavilion] = GetNumberValue(bonusCardsPavilionCountNumericUpDown),
+                [BuildingType.Seraglio] = GetNumberValue(bonusCardsSeraglioCountNumericUpDown),
+                [BuildingType.Arcades] = GetNumberValue(bonusCardsArcadesCountNumericUpDown),
+                [BuildingType.Chambers] = GetNumberValue(bonusCardsChambersCountNumericUpDown),
+                [BuildingType.Garden] = GetNumberValue(bonusCardsGardenCountNumericUpDown),
+                [BuildingType.Tower] = GetNumberValue(bonusCardsTowerCountNumericUpDown),
             };
-        public int BuildingsWithoutServantTile => buildingsWithoutServantTileNumericUpDown.Value;
-        public bool CompletedGroupOfFruitBoard1 => completedGroupOfFruitBoard1CheckBox.Value;
-        public bool CompletedGroupOfFruitBoard2 => completedGroupOfFruitBoard2CheckBox.Value;
-        public bool CompletedGroupOfFruitBoard3 => completedGroupOfFruitBoard3CheckBox.Value;
-        public bool CompletedGroupOfFruitBoard4 => completedGroupOfFruitBoard4CheckBox.Value;
-        public bool CompletedGroupOfFruitBoard5 => completedGroupOfFruitBoard5CheckBox.Value;
-        public bool CompletedGroupOfFruitBoard6 => completedGroupOfFruitBoard6CheckBox.Value;
-        public int FaceDownFruitsCount => faceDownFruitsCountNumericUpDown.Value;
-        public int BathhousesPoints => bathhousesPointsNumericUpDown.Value;
-        public int WishingWellsPoints => wishingWellsPointsNumericUpDown.Value;
+        public int BuildingsWithoutServantTile => GetNumberValue(buildingsWithoutServantTileNumericUpDown);
+        public bool CompletedGroupOfFruitBoard1 => GetCheckBoxValue(completedGroupOfFruitBoard1CheckBox);
+        public bool CompletedGroupOfFruitBoard2 => GetCheckBoxValue(completedGroupOfFruitBoard2CheckBox);
+        public bool CompletedGroupOfFruitBoard3 => GetCheckBoxValue(completedGroupOfFruitBoard3CheckBox);
+        public bool CompletedGroupOfFruitBoard4 => GetCheckBoxValue(completedGroupOfFruitBoard4CheckBox);
+        public bool CompletedGroupOfFruitBoard5 => GetCheckBoxValue(completedGroupOfFruitBoard5CheckBox);
+        public bool CompletedGroupOfFruitBoard6 => GetCheckBoxValue(completedGroupOfFruitBoard6CheckBox);
+        public int FaceDownFruitsCount => GetNumberValue(faceDownFruitsCountNumericUpDown);
+        public int BathhousesPoints => GetNumberValue(bathhousesPointsNumericUpDown);
+        public int WishingWellsPoints => GetNumberValue(wishingWellsPointsNumericUpDown);
         public Dictionary<BuildingType, bool> CompletedProjects =>
             new Dictionary<BuildingType, bool>()
             {
-                [BuildingType.Pavilion] = completedProjectPavilionCheckBox.Value,
-                [BuildingType.Seraglio] = completedProjectSeraglioCheckBox.Value,
-                [BuildingType.Arcades] = completedProjectArcadesCheckBox.Value,
-                [BuildingType.Chambers] = completedProjectChambersCheckBox.Value,
-                [BuildingType.Garden] = completedProjectGardenCheckBox.Value,
-                [BuildingType.Tower] = completedProjectTowerCheckBox.Value,
+                [BuildingType.Pavilion] = GetCheckBoxValue(completedProjectPavilionCheckBox),
+                [BuildingType.Seraglio] = GetCheckBoxValue(completedProjectSeraglioCheckBox),
+                [BuildingType.Arcades] = GetCheckBoxValue(completedProjectArcadesCheckBox),
+                [BuildingType.Chambers] = GetCheckBoxValue(completedProjectChambersCheckBox),
+                [BuildingType.Garden] = GetCheckBoxValue(completedProjectGardenCheckBox),
+                [BuildingType.Tower] = GetCheckBoxValue(completedProjectTowerCheckBox),
             };
-        public int AnimalsPoints => animalsPointsNumericUpDown.Value;
+        public int AnimalsPoints => GetNumberValue(animalsPointsNumericUpDown);
         public Dictionary<BuildingType, bool> OwnedSemiBuildings =>
             new Dictionary<BuildingType, bool>()
             {
-                [BuildingType.Pavilion] = ownedSemiBuildingPavilionCheckBox.Value,
-                [BuildingType.Seraglio] = ownedSemiBuildingSeraglioCheckBox.Value,
-                [BuildingType.Arcades] = ownedSemiBuildingArcadesCheckBox.Value,
-                [BuildingType.Chambers] = ownedSemiBuildingChambersCheckBox.Value,
-                [BuildingType.Garden] = ownedSemiBuildingGardenCheckBox.Value,
-                [BuildingType.Tower] = ownedSemiBuildingTowerCheckBox.Value,
+                [BuildingType.Pavilion] = GetCheckBoxValue(ownedSemiBuildingPavilionCheckBox),
+                [BuildingType.Seraglio] = GetCheckBoxValue(ownedSemiBuildingSeraglioCheckBox),
+                [BuildingType.Arcades] = GetCheckBoxValue(ownedSemiBuildingArcadesCheckBox),
+                [BuildingType.Chambers] = GetCheckBoxValue(ownedSemiBuildingChambersCheckBox),
+                [BuildingType.Garden] = GetCheckBoxValue(ownedSemiBuildingGardenCheckBox),
+                [BuildingType.Tower] = GetCheckBoxValue(ownedSemiBuildingTowerCheckBox),
             };
-        public int BlackDiceTotalPips => blackDiceTotalPipsNumericUpDown.Value;
+        public int BlackDiceTotalPips => GetNumberValue(blackDiceTotalPipsNumericUpDown);
         public Dictionary<BuildingType, int> ExtensionsBuildingsCount =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = extensionsPavilionCountNumericUpDown.Value,
-                [BuildingType.Seraglio] = extensionsSeraglioCountNumericUpDown.Value,
-                [BuildingType.Arcades] = extensionsArcadesCountNumericUpDown.Value,
-                [BuildingType.Chambers] = extensionsChambersCountNumericUpDown.Value,
-                [BuildingType.Garden] = extensionsGardenCountNumericUpDown.Value,
-                [BuildingType.Tower] = extensionsTowerCountNumericUpDown.Value,
+                [BuildingType.Pavilion] = GetNumberValue(extensionsPavilionCountNumericUpDown),
+                [BuildingType.Seraglio] = GetNumberValue(extensionsSeraglioCountNumericUpDown),
+                [BuildingType.Arcades] = GetNumberValue(extensionsArcadesCountNumericUpDown),
+                [BuildingType.Chambers] = GetNumberValue(extensionsChambersCountNumericUpDown),
+                [BuildingType.Garden] = GetNumberValue(extensionsGardenCountNumericUpDown),
+                [BuildingType.Tower] = GetNumberValue(extensionsTowerCountNumericUpDown),
             };
-        public int HandymenTilesHighestNumber => handymenTilesHighestNumberNumericUpDown.Value;
-        public int TreasuresValue => treasuresValueNumericUpDown.Value;
-        public int Mission1Count => mission1RowsCountNumericUpDown.Value;
-        public int Mission2Count => mission2ColumnsCountNumericUpDown.Value;
-        public int Mission3Count => mission3Adjacent2BuildingsCountNumericUpDown.Value;
-        public bool Mission4Available => mission4SecondLongestWallCheckBox.Value;
-        public int Mission5Count => mission5LongestDiagonalLineNumericUpDown.Value;
-        public int Mission6Count => mission6DoubleWallCountNumericUpDown.Value;
-        public int Mission7Count => mission7DiffernetTypesNumberNumericUpDown.Value;
-        public int Mission8Count => mission8PathBuildingsNumberNumericUpDown.Value;
-        public int Mission9Count => mission9Grids22CountNumericUpDown.Value;
-        public int SecondLongestWallLength => secondLongestWallNumericUpDown.Value;
+        public int HandymenTilesHighestNumber => GetNumberValue(handymenTilesHighestNumberNumericUpDown);
+        public int TreasuresValue => GetNumberValue(treasuresValueNumericUpDown);
+        public int Mission1Count => GetNumberValue(mission1RowsCountNumericUpDown);
+        public int Mission2Count => GetNumberValue(mission2ColumnsCountNumericUpDown);
+        public int Mission3Count => GetNumberValue(mission3Adjacent2BuildingsCountNumericUpDown);
+        public bool Mission4Available => GetCheckBoxValue(mission4SecondLongestWallCheckBox);
+        public int Mission5Count => GetNumberValue(mission5LongestDiagonalLineNumericUpDown);
+        public int Mission6Count => GetNumberValue(mission6DoubleWallCountNumericUpDown);
+        public int Mission7Count => GetNumberValue(mission7DiffernetTypesNumberNumericUpDown);
+        public int Mission8Count => GetNumberValue(mission8PathBuildingsNumberNumericUpDown);
+        public int Mission9Count => GetNumberValue(mission9Grids22CountNumericUpDown);
+        public int SecondLongestWallLength => GetNumberValue(secondLongestWallNumericUpDown);
 
         public int AllBuildingsCount => BuildingsCount.Sum(b => b.Value);
     }

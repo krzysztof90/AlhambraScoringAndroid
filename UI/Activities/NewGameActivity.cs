@@ -19,6 +19,7 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
+            //TODO ikony do wszystkich dodatków
             Dictionary<string, List<ExpansionModule>> extensions = new Dictionary<string, List<ExpansionModule>>()
             {
                 ["EXPANSION MODULES"] = new List<ExpansionModule>()
@@ -72,6 +73,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                     ExpansionModule.FanTreasures,
                     ExpansionModule.FanCaliphsGuidelines},
             };
+            //TODO GRANADA radio buttony: No Granada (domyślnie zaznaczone), Alhambra + Granada (dostępność dodatków), Only Granada (dostępność dodatków;  bez designers i fan (? - wielkość kaeflków w family box))
             //TODO caliphs chose
 
             expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);

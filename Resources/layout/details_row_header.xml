@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow
+    xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <!--android:layout_gravity="bottom"-->
+                        <ImageView
+                            android:layout_width="@dimen/game_details_cell_width"
+                            android:layout_height="150dp"
+                            android:src="@drawable/walls"/>
+                        <TextView
+                            android:layout_width="@dimen/game_details_cell_width"
+                            android:layout_height="150dp"
+                            android:text="Walls"
+                        android:textStyle="bold"
+                            android:layout_marginStart="10dp"/>
+                        <TextView
+                            android:layout_width="@dimen/game_details_cell_width"
+                            android:layout_height="150dp"
+                            android:text="Pavilions"
+                        android:textStyle="bold"
+                            android:layout_marginStart="10dp"/>
+                        <TextView
+                            android:layout_width="@dimen/game_details_cell_width"
+                            android:layout_height="150dp"
+                            android:text="sdklfj"
+                        android:textStyle="bold"
+                            android:layout_marginStart="10dp"/>
+                        <TextView
+                            android:layout_width="@dimen/game_details_cell_width"
+                            android:layout_height="150dp"
+                            android:text="kbisduflkj"
+                        android:textStyle="bold"
+                            android:layout_marginStart="10dp"/>
+                        <TextView
+                            android:layout_width="@dimen/game_details_cell_width"
+                            android:layout_height="150dp"
+                            android:text="Header 5"
+                        android:textStyle="bold"
+                            android:layout_marginStart="10dp"/>
+                    </TableRow>

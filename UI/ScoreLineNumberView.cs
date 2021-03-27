@@ -9,6 +9,7 @@ using System;
 
 namespace AlhambraScoringAndroid.UI
 {
+    //TODO jeżeli domyślna wartość nieustawiona (null) to nie ustawianie "0"
     public class ScoreLineNumberView : ScoreLineViewBase<int>
     {
         private TextView textView;

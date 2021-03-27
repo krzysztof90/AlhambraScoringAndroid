@@ -63,17 +63,23 @@
     </ScrollView>
 
     <Button
+        android:id="@+id/scoreDetailsButton"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="Pokaż szczegóły"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+    <Button
         android:id="@+id/roundScoreButton"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:text="Button"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toBottomOf="@+id/scoreDetailsButton" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="75dp" />
+        app:layout_constraintGuide_end="150dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

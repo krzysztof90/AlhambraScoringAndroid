@@ -11,6 +11,7 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
+        //TODO porządek w kolejności properties w layout
         //TODO revert submit points / add1/2 points
         //TODO store results
         //TODO restore state after application close
@@ -19,8 +20,18 @@ namespace AlhambraScoringAndroid
         //TODO another expansion modules
         //TODO labelki słownik
         //TODO iOS
+        //https://docs.microsoft.com/pl-pl/xamarin/
         //TODO google play "I would appreciate any feedback", BGG
         //TODO nieptrzebne referencje, nuget
+        //TODO package "companyname"
+        //TODO przetestować wszędzie obracanie ekranu
+        //TODO guideline górna część min height
+        //TODO wysokości i szerokości do zmiennych; 60dp = menu height
+        //TODO duży rozmiar aplikacji:
+        //https://heartbeat.fritz.ai/reducing-the-app-size-in-xamarin-deep-dive-7ddc9cb12688
+        //https://dzone.com/articles/how-to-optimize-and-reduce-android-apps-size-in-xa
+        //https://docs.microsoft.com/en-us/xamarin/android/deploy-test/linker
+
 
         public MyApplication(IntPtr javaReference, Android.Runtime.JniHandleOwnership transfer) : base(javaReference, transfer)
         {

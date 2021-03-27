@@ -15,6 +15,7 @@ namespace AlhambraScoringAndroid.UI.Activities
         private readonly List<PlayerResultPanel> resultPanels;
 
         private Button roundScoreButton;
+        private Button scoreDetailsButton;
 
         protected override int ContentView => Resource.Layout.activity_game_in_progress;
 
@@ -56,12 +57,16 @@ namespace AlhambraScoringAndroid.UI.Activities
             }
 
             roundScoreButton = FindViewById<Button>(Resource.Id.roundScoreButton);
+            scoreDetailsButton = FindViewById<Button>(Resource.Id.scoreDetailsButton);
 
             roundScoreButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
                 if (Application.Game.ScoreRound != ScoringRound.Finish)
                     Application.GameRoundScore(this);
-                else
+            });
+
+            scoreDetailsButton.Click += new EventHandler((object sender, EventArgs e) =>
+            {
                     Application.GameShowDetails();
             });
 
@@ -82,9 +87,11 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 case ScoringRound.First:
                     roundScoreButton.Text = "1st round";
+                    scoreDetailsButton.Visibility = ViewStates.Invisible;
                     break;
                 case ScoringRound.Second:
                     roundScoreButton.Text = "2nd round";
+                    scoreDetailsButton.Visibility = ViewStates.Visible;
                     break;
                 case ScoringRound.ThirdBeforeLeftover:
                     roundScoreButton.Text = "3rd round before leftover buildings are assigned";
@@ -93,8 +100,8 @@ namespace AlhambraScoringAndroid.UI.Activities
                     roundScoreButton.Text = "3rd round";
                     break;
                 case ScoringRound.Finish:
-                    //roundScoreButton.Visibility = ViewStates.Gone;
-                    roundScoreButton.Text = "Zapisz i pokaż szczegóły";
+                    roundScoreButton.Visibility = ViewStates.Invisible;
+                    scoreDetailsButton.Text = "Zapisz i pokaż szczegóły";
                     foreach (PlayerResultPanel resultPanel in resultPanels)
                         resultPanel.HidePointButtons();
                     break;

@@ -65,6 +65,8 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GamePlay\ScoreDetails.cs" />
+    <Compile Include="GamePlay\ScoreType.cs" />
     <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="UI\Activities\BaseActivity.cs" />
     <Compile Include="UI\Activities\GameDetailsActivity.cs" />
@@ -129,7 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Android.Support.Constraint.Layout">
@@ -222,6 +223,19 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_game_details.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\details_row.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\walls.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\details_row_header.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
