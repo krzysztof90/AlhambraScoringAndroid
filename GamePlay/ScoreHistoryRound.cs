@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
-    public class ScoreHistoryRound: ScoreHistory
+    public class ScoreHistoryRound : ScoreHistory
     {
         public ScoringRound ScoreRound { get; private set; }
         public List<(ScoreDetails scoreDetails1, ScoreDetails scoreDetails2, ScoreDetails scoreDetails3, ScoreDetails scoreMeantime)> InitialScoring { get; private set; }

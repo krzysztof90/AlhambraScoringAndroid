@@ -5,10 +5,10 @@ namespace AlhambraScoringAndroid.GamePlay
     public class ResultPlayerHistory
     {
         public string Name { get; set; }
-        public ScoreDetails ScoreDetails1 { get;  set; }
-        public ScoreDetails ScoreDetails2 { get;  set; }
-        public ScoreDetails ScoreDetails3 { get;  set; }
-        public ScoreDetails ScoreMeantime { get;  set; }
+        public ScoreDetails ScoreDetails1 { get; set; }
+        public ScoreDetails ScoreDetails2 { get; set; }
+        public ScoreDetails ScoreDetails3 { get; set; }
+        public ScoreDetails ScoreMeantime { get; set; }
 
         public ScoreDetails GetScoreDetails(ScoringRound round)
         {

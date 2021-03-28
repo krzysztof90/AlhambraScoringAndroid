@@ -40,8 +40,6 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            //TODO pokaż startTime i endTime
-
             base.OnCreate(savedInstanceState);
 
             TextView titleDate = FindViewById<TextView>(Resource.Id.titleDate);

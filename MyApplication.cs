@@ -55,7 +55,7 @@ namespace AlhambraScoringAndroid
 
         public void NewGamePrompt(Context context)
         {
-            if (Game?.GameStarted ?? false)
+            if ( Game?.GameInProgress  ??false)
             {
                 new AlertDialog.Builder(context)
                     .SetTitle("Closing Activity")
@@ -118,18 +118,19 @@ namespace AlhambraScoringAndroid
             }
         }
 
-        public void GameShowDetails()
+        public void GameShowDetails(GameInProgressActivity gameInProgressActivity)
         {
             CurrentResult = Game.GetResultHistory();
 
-            //TODO && !saved
-            if (Game.ScoreRound == ScoringRound.Finish)
+            if (Game.ScoreRound == ScoringRound.Finish && !Game.Saved)
             {
-                //TODO podmiana poprzedniego, jeżeli uruchamiane wcześniej
+                if (Results[Results.Count - 1].StartDateTime == CurrentResult.StartDateTime)
+                    Results.RemoveAt(Results.Count - 1);
                 Results.Add(CurrentResult);
                 SaveResults();
+                Game.Saved = true;
+                gameInProgressActivity.PrepareRound();
             }
-            //TODO usuń "Zapisz i [...]"
             NewActivity(typeof(GameDetailsActivity));
         }
 

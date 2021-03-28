@@ -48,6 +48,7 @@ namespace AlhambraScoringAndroid.GamePlay
         private List<Player> Players;
         public ScoringRound ScoreRound { get; private set; }
         public Stack<ScoreHistory> ScoreStack { get; private set; }
+        public bool Saved { get; set; }
 
         public Dictionary<BuildingType, int> BuildingsMaxCount =>
             new Dictionary<BuildingType, int>()
@@ -99,8 +100,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public int PlayersCount => Players.Count;
 
-        //TODO && !saved
-        public bool GameStarted => ScoreRound != ScoringRound.First || (Players != null && Players.Sum(p => p.Score) != 0);
+        public bool GameInProgress => (ScoreRound != ScoringRound.First || (Players != null && Players.Sum(p => p.Score) != 0)) && !Saved;
 
         public Game(Context context)
         {
@@ -146,6 +146,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
             ScoreRound = ScoringRound.First;
             ScoreStack = new Stack<ScoreHistory>();
+            Saved = false;
         }
 
         public void SetStartDateTime(DateTime dateTime)
@@ -153,7 +154,7 @@ namespace AlhambraScoringAndroid.GamePlay
             StartDateTime = dateTime;
         }
 
-        public void SetEndDateTime(DateTime dateTime)
+        public void SetEndDateTime(DateTime? dateTime)
         {
             EndDateTime = dateTime;
         }
@@ -599,6 +600,8 @@ namespace AlhambraScoringAndroid.GamePlay
         public void RevertScoring()
         {
             ScoreStack.Pop().Revert();
+            SetEndDateTime(null);
+            Saved = false;
         }
 
         public void SetNextRound()

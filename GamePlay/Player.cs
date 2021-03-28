@@ -64,7 +64,7 @@ namespace AlhambraScoringAndroid.GamePlay
             switch (scoreType)
             {
                 case ScoreType.Immediately:
-                ScoreMeantime.ImmediatelyPoints += score;
+                    ScoreMeantime.ImmediatelyPoints += score;
                     break;
                 case ScoreType.WallLength:
                     CurrentScoreDetails.WallLength += score;

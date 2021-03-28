@@ -30,7 +30,7 @@
         public int Mission8 { get; set; }
         public int Mission9 { get; set; }
 
-        public int Sum => ImmediatelyPoints + WallLength + PavilionNumber+ SeraglioNumber+ ArcadesNumber+ ChambersNumber+ GardenNumber+ TowerNumber- BuildingsWithoutServantTile + Orchards+ Bathhouses + WishingWells+ CompletedProjects+ Animals+ BlackDices+ Handymen+ Treasures + Mission1 + Mission2 + Mission3 + Mission4 + Mission5 + Mission6 + Mission7 + Mission8 + Mission9;
+        public int Sum => ImmediatelyPoints + WallLength + PavilionNumber + SeraglioNumber + ArcadesNumber + ChambersNumber + GardenNumber + TowerNumber - BuildingsWithoutServantTile + Orchards + Bathhouses + WishingWells + CompletedProjects + Animals + BlackDices + Handymen + Treasures + Mission1 + Mission2 + Mission3 + Mission4 + Mission5 + Mission6 + Mission7 + Mission8 + Mission9;
 
         public ScoreDetails Copy()
         {
@@ -58,15 +58,15 @@
             scoreDetails.BlackDices = scoreDetails1.BlackDices + scoreDetails2.BlackDices;
             scoreDetails.Handymen = scoreDetails1.Handymen + scoreDetails2.Handymen;
             scoreDetails.Treasures = scoreDetails1.Treasures + scoreDetails2.Treasures;
-            scoreDetails. Mission1 = scoreDetails1.Mission1 + scoreDetails2.Mission1;
-            scoreDetails. Mission2 = scoreDetails1.Mission2 + scoreDetails2.Mission2;
-            scoreDetails. Mission3 = scoreDetails1.Mission3 + scoreDetails2.Mission3;
-            scoreDetails. Mission4 = scoreDetails1.Mission4 + scoreDetails2.Mission4;
-            scoreDetails. Mission5 = scoreDetails1.Mission5 + scoreDetails2.Mission5;
-            scoreDetails. Mission6 = scoreDetails1.Mission6 + scoreDetails2.Mission6;
-            scoreDetails. Mission7 = scoreDetails1.Mission7 + scoreDetails2.Mission7;
-            scoreDetails. Mission8 = scoreDetails1.Mission8 + scoreDetails2.Mission8;
-            scoreDetails. Mission9 = scoreDetails1.Mission9 + scoreDetails2.Mission9;
+            scoreDetails.Mission1 = scoreDetails1.Mission1 + scoreDetails2.Mission1;
+            scoreDetails.Mission2 = scoreDetails1.Mission2 + scoreDetails2.Mission2;
+            scoreDetails.Mission3 = scoreDetails1.Mission3 + scoreDetails2.Mission3;
+            scoreDetails.Mission4 = scoreDetails1.Mission4 + scoreDetails2.Mission4;
+            scoreDetails.Mission5 = scoreDetails1.Mission5 + scoreDetails2.Mission5;
+            scoreDetails.Mission6 = scoreDetails1.Mission6 + scoreDetails2.Mission6;
+            scoreDetails.Mission7 = scoreDetails1.Mission7 + scoreDetails2.Mission7;
+            scoreDetails.Mission8 = scoreDetails1.Mission8 + scoreDetails2.Mission8;
+            scoreDetails.Mission9 = scoreDetails1.Mission9 + scoreDetails2.Mission9;
             return scoreDetails;
         }
     }

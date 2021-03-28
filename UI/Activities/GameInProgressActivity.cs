@@ -70,15 +70,12 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             scoreDetailsButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                //TODO przechowywanie wyników
-                Application.GameShowDetails();
+                Application.GameShowDetails(this);
             });
 
             scoreRevertButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                //TODO zmiana saved, EndDateTime
                 Application.Game.RevertScoring();
-                //ShowScore();
                 PrepareRound();
             });
 
@@ -87,7 +84,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         public override void OnBackPressed()
         {
-            if (Game.GameStarted)
+            if (Game.GameInProgress )
             {
                 new AlertDialog.Builder(this)
                     .SetTitle("Closing Activity")
@@ -112,7 +109,6 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             switch (Application.Game.ScoreRound)
             {
-                //TODO roundScoreButton.Visibility
                 case ScoringRound.First:
                     roundScoreButton.Text = "1st round";
                     scoreDetailsButton.Visibility = ViewStates.Invisible;
@@ -125,11 +121,16 @@ namespace AlhambraScoringAndroid.UI.Activities
                     roundScoreButton.Text = "3rd round before leftover buildings are assigned";
                     break;
                 case ScoringRound.Third:
+                    roundScoreButton.Visibility = ViewStates.Visible;
                     roundScoreButton.Text = "3rd round";
+                        scoreDetailsButton.Text = "Pokaż szczegóły";
                     break;
                 case ScoringRound.Finish:
                     roundScoreButton.Visibility = ViewStates.Invisible;
+                    if (!Application.Game.Saved)
                     scoreDetailsButton.Text = "Zapisz i pokaż szczegóły";
+                    else
+                    scoreDetailsButton.Text = "Pokaż szczegóły";
                     foreach (PlayerResultPanel resultPanel in resultPanels)
                         resultPanel.HidePointButtons();
                     break;
@@ -149,10 +150,9 @@ namespace AlhambraScoringAndroid.UI.Activities
             if (Application.Game.PlayersCount > 5)
                 resultPanels[5].SetScore(Application.Game.GetPlayer(6).Score);
 
-            //TODO && !saved
             if (Application.Game.ScoreStack.Count != 0)
             {
-                scoreRevertButton.Visibility =  ViewStates.Visible ;
+                scoreRevertButton.Visibility = ViewStates.Visible;
                 scoreRevertButton.Text = $"Cofnij {Application.Game.ScoreStack.Peek().FullDisplayName()}";
             }
             else
