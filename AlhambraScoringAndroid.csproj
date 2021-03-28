@@ -65,6 +65,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DialogInterfaceOnClickListener.cs" />
     <Compile Include="GamePlay\ScoreDetails.cs" />
     <Compile Include="GamePlay\ScoreType.cs" />
     <Compile Include="Tools\EnumOperations.cs" />

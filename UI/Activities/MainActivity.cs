@@ -24,25 +24,25 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             Application.NewGame();
             List<ExpansionModule> modules = new List<ExpansionModule>()
-                                      {
-                                             ExpansionModule.DesignerNewBuildingGrounds,
-           ExpansionModule.DesignerMajorConstructionProjects,
-           ExpansionModule.DesignerPalaceStaff,
-           ExpansionModule.DesignerOrchards,
-           ExpansionModule.DesignerTravellingCraftsmen,
-           ExpansionModule.DesignerBathhouses,
-           ExpansionModule.DesignerWishingWell,
-           ExpansionModule.DesignerFreshColors,
-           ExpansionModule.DesignerPalaceDesigners,
-           ExpansionModule.DesignerAlhambraZoo,
-           ExpansionModule.DesignerGatesWithoutEnd,
-           ExpansionModule.DesignerBuildingsOfPower,
-           ExpansionModule.DesignerExtensions,
-           ExpansionModule.DesignerHandymen,
-           ExpansionModule.FanPersonalBuildingMarket,
-           ExpansionModule.FanTreasures,
-           ExpansionModule.FanCaliphsGuidelines,
-    };
+            {
+                ExpansionModule.DesignerNewBuildingGrounds,
+                ExpansionModule.DesignerMajorConstructionProjects,
+                ExpansionModule.DesignerPalaceStaff,
+                ExpansionModule.DesignerOrchards,
+                ExpansionModule.DesignerTravellingCraftsmen,
+                ExpansionModule.DesignerBathhouses,
+                ExpansionModule.DesignerWishingWell,
+                ExpansionModule.DesignerFreshColors,
+                ExpansionModule.DesignerPalaceDesigners,
+                ExpansionModule.DesignerAlhambraZoo,
+                ExpansionModule.DesignerGatesWithoutEnd,
+                ExpansionModule.DesignerBuildingsOfPower,
+                ExpansionModule.DesignerExtensions,
+                ExpansionModule.DesignerHandymen,
+                ExpansionModule.FanPersonalBuildingMarket,
+                ExpansionModule.FanTreasures,
+                ExpansionModule.FanCaliphsGuidelines,
+            };
             Application.GameApplyModules(modules);
             List<string> players = new List<string>();
             players.Add("E");

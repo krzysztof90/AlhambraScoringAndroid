@@ -13,10 +13,7 @@ namespace AlhambraScoringAndroid
     {
         //TODO porządek w kolejności properties w layout
         //TODO revert submit points / add1/2 points
-        //TODO store results
         //TODO restore state after application close
-        //TODO confirm new game
-        //TODO confirm back when on score screen
         //TODO another expansion modules
         //TODO labelki słownik
         //TODO iOS
@@ -51,6 +48,22 @@ namespace AlhambraScoringAndroid
             StartActivity(intent);
         }
 
+        public void NewGamePrompt(Context context)
+        {
+            if (Game?.GameStarted ?? false)
+            {
+                new AlertDialog.Builder(context)
+                    .SetTitle("Closing Activity")
+                    .SetMessage("Are you sure you want to close this activity?")
+                    .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => NewGame()))
+                    .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
+                    .Show();
+            }
+            else
+                NewGame();
+        }
+
+        //TODO private
         public void NewGame()
         {
             Game = new Game(ApplicationContext);

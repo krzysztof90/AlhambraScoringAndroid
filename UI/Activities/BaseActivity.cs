@@ -38,7 +38,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             }
             if (id == Resource.Id.action_newGame)
             {
-                Application.NewGame();
+                Application.NewGamePrompt(this);
                 return true;
             }
 

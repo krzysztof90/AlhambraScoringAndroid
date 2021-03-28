@@ -93,6 +93,9 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public int PlayersCount => Players.Count();
 
+        //TODO && !saved
+        public bool GameStarted => ScoreRound != ScoringRound.First || (Players!=null &&Players.Sum(p => p.Score) != 0);
+
         public Game(Context context)
         {
             Context = context;

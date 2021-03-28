@@ -1,6 +1,7 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.UI;
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -67,10 +68,25 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             scoreDetailsButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                    Application.GameShowDetails();
+                Application.GameShowDetails();
             });
 
             PrepareRound();
+        }
+
+        public override void OnBackPressed()
+        {
+            if (Game.GameStarted)
+            {
+                new AlertDialog.Builder(this)
+                    .SetTitle("Closing Activity")
+                    .SetMessage("Are you sure you want to close this activity?")
+                    .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => base.OnBackPressed()))
+                    .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
+                    .Show();
+            }
+            else
+                base.OnBackPressed();
         }
 
         public void AddPoints(int player, int score)

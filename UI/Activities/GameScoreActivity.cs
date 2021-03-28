@@ -1,6 +1,7 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.UI;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
@@ -47,6 +48,16 @@ namespace AlhambraScoringAndroid.UI.Activities
                     sectionsPagerAdapter.RestoreValues(e.Position);
                 }
             });
+        }
+
+        public override void OnBackPressed()
+        {
+            new AlertDialog.Builder(this)
+                .SetTitle("Closing Activity")
+                .SetMessage("Are you sure you want to close this activity?")
+                .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => base.OnBackPressed()))
+                .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
+                .Show();
         }
 
         public void Submit()
