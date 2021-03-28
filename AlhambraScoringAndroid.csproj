@@ -67,6 +67,9 @@
   <ItemGroup>
     <Compile Include="DialogInterfaceOnClickListener.cs" />
     <Compile Include="GamePlay\ScoreDetails.cs" />
+    <Compile Include="GamePlay\ScoreHistory.cs" />
+    <Compile Include="GamePlay\ScoreHistoryImmediately.cs" />
+    <Compile Include="GamePlay\ScoreHistoryRound.cs" />
     <Compile Include="GamePlay\ScoreType.cs" />
     <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="UI\Activities\BaseActivity.cs" />

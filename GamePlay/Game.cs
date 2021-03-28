@@ -42,6 +42,7 @@ namespace AlhambraScoringAndroid.GamePlay
         private List<ExpansionModule> Modules;
         private List<Player> Players;
         public ScoringRound ScoreRound { get; private set; }
+        public Stack<ScoreHistory> ScoreStack { get; private set; }
 
         public Dictionary<BuildingType, int> BuildingsMaxCount =>
             new Dictionary<BuildingType, int>()
@@ -94,11 +95,12 @@ namespace AlhambraScoringAndroid.GamePlay
         public int PlayersCount => Players.Count();
 
         //TODO && !saved
-        public bool GameStarted => ScoreRound != ScoringRound.First || (Players!=null &&Players.Sum(p => p.Score) != 0);
+        public bool GameStarted => ScoreRound != ScoringRound.First || (Players != null && Players.Sum(p => p.Score) != 0);
 
         public Game(Context context)
         {
             Context = context;
+            ScoreStack = new Stack<ScoreHistory>();
         }
 
         public void SetModules(IEnumerable<ExpansionModule> modules)
@@ -160,6 +162,12 @@ namespace AlhambraScoringAndroid.GamePlay
         public void PlayerAddScore(int playerNumber, int score)
         {
             GetPlayer(playerNumber).AddScore(score, ScoreType.Immediately);
+            ScoreStack.Push(new ScoreHistoryImmediately(this, playerNumber, score));
+        }
+
+        public void PlayerRevertScore(int playerNumber, int score)
+        {
+            GetPlayer(playerNumber).RevertAddScore(score, ScoreType.Immediately);
         }
 
         public bool ValidateScore(List<PlaceholderPlayerScoreFragment> scorePanels)
@@ -354,6 +362,8 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public void Score(List<PlaceholderPlayerScoreFragment> scorePanels)
         {
+            List<(ScoreDetails scoreDetails1, ScoreDetails scoreDetails2, ScoreDetails scoreDetails3, ScoreDetails scoreMeantime)> initialScoring = Players.Select(p => (p.ScoreDetails1.Copy(), p.ScoreDetails2.Copy(), p.ScoreDetails3.Copy(), p.ScoreMeantime.Copy())).ToList();
+
             //wall
             for (int i = 0; i < PlayersCount; i++)
                 if (!Players[i].Dirk)
@@ -365,7 +375,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 for (int i = 0; i < PlayersCount; i++)
                 {
                     int buildingScore = GetBuildingScore(scorePanels, scoring.Key, i);
-                    int buildingScoreBonus = buildingScore-GetBuildingScore(scorePanels, scoring.Key, i, false);
+                    int buildingScoreBonus = buildingScore - GetBuildingScore(scorePanels, scoring.Key, i, false);
                     if (buildingScoreBonus < 0)
                         buildingScoreBonus = 0;
 
@@ -540,6 +550,17 @@ namespace AlhambraScoringAndroid.GamePlay
                         }
                 }
             }
+
+            ScoreStack.Push(new ScoreHistoryRound(this, ScoreRound, initialScoring));
+        }
+
+        public void RoundRevertScore(ScoringRound scoreRound, List<(ScoreDetails scoreDetails1, ScoreDetails scoreDetails2, ScoreDetails scoreDetails3, ScoreDetails scoreMeantime)> initialScoring)
+        {
+            ScoreRound = scoreRound;
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                Players[i].RestoreScore(initialScoring[i]);
+            }
         }
 
         public bool ValidateScoreBeforeAssignLeftoverBuildings(List<PlaceholderPlayerScoreBeforeAssignLeftoverFragment> scorePanels)
@@ -558,6 +579,11 @@ namespace AlhambraScoringAndroid.GamePlay
                     if (!Players[i].Dirk)
                         Players[i].RemoveScore(scorePanels[i].BuildingsWithoutServantTile, ScoreType.BuildingsWithoutServantTile);
             }
+        }
+
+        public void RevertScoring()
+        {
+            ScoreStack.Pop().Revert();
         }
 
         public void SetNextRound()
@@ -582,5 +608,4 @@ namespace AlhambraScoringAndroid.GamePlay
             }
         }
     }
-
 }

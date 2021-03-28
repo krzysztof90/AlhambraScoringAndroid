@@ -17,6 +17,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         private Button roundScoreButton;
         private Button scoreDetailsButton;
+        private Button scoreRevertButton;
 
         protected override int ContentView => Resource.Layout.activity_game_in_progress;
 
@@ -59,6 +60,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             roundScoreButton = FindViewById<Button>(Resource.Id.roundScoreButton);
             scoreDetailsButton = FindViewById<Button>(Resource.Id.scoreDetailsButton);
+            scoreRevertButton = FindViewById<Button>(Resource.Id.scoreRevertButton);
 
             roundScoreButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
@@ -68,7 +70,15 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             scoreDetailsButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
+                //TODO przechowywanie wyników
                 Application.GameShowDetails();
+            });
+
+            scoreRevertButton.Click += new EventHandler((object sender, EventArgs e) =>
+            {
+                Application.Game.RevertScoring();
+                //ShowScore();
+                PrepareRound();
             });
 
             PrepareRound();
@@ -136,6 +146,15 @@ namespace AlhambraScoringAndroid.UI.Activities
                 resultPanels[4].SetScore(Application.Game.GetPlayer(5).Score);
             if (Application.Game.PlayersCount > 5)
                 resultPanels[5].SetScore(Application.Game.GetPlayer(6).Score);
+
+            //TODO && !saved
+            if (Application.Game.ScoreStack.Count != 0)
+            {
+                scoreRevertButton.Visibility =  ViewStates.Visible ;
+                scoreRevertButton.Text = $"Cofnij {Application.Game.ScoreStack.Peek().FullDisplayName()}";
+            }
+            else
+                scoreRevertButton.Visibility = ViewStates.Invisible;
         }
     }
 }

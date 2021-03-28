@@ -12,7 +12,6 @@ namespace AlhambraScoringAndroid
     public class MyApplication : Application
     {
         //TODO porządek w kolejności properties w layout
-        //TODO revert submit points / add1/2 points
         //TODO restore state after application close
         //TODO another expansion modules
         //TODO labelki słownik

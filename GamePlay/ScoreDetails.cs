@@ -32,6 +32,11 @@
 
         public int Sum => ImmediatelyPoints + WallLength + PavilionNumber+ SeraglioNumber+ ArcadesNumber+ ChambersNumber+ GardenNumber+ TowerNumber- BuildingsWithoutServantTile + Orchards+ Bathhouses + WishingWells+ CompletedProjects+ Animals+ BlackDices+ Handymen+ Treasures + Mission1 + Mission2 + Mission3 + Mission4 + Mission5 + Mission6 + Mission7 + Mission8 + Mission9;
 
+        public ScoreDetails Copy()
+        {
+            return this + new ScoreDetails();
+        }
+
         public static ScoreDetails operator +(ScoreDetails scoreDetails1, ScoreDetails scoreDetails2)
         {
             ScoreDetails scoreDetails = new ScoreDetails();

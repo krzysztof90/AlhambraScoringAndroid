@@ -160,6 +160,19 @@ namespace AlhambraScoringAndroid.GamePlay
                     throw new ArgumentException();
             }
         }
+
+        public void RevertAddScore(int score, ScoreType scoreType)
+        {
+            AddScore(-score, scoreType);
+        }
+
+        public void RestoreScore((ScoreDetails scoreDetails1, ScoreDetails scoreDetails2, ScoreDetails scoreDetails3, ScoreDetails scoreMeantime) initialScoring)
+        {
+            ScoreDetails1 = initialScoring.scoreDetails1;
+            ScoreDetails2 = initialScoring.scoreDetails2;
+            ScoreDetails3 = initialScoring.scoreDetails3;
+            ScoreMeantime = initialScoring.scoreMeantime;
+        }
     }
 
 }
