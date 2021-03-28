@@ -15,6 +15,7 @@ namespace AlhambraScoringAndroid
     public class MyApplication : Application
     {
         //TODO podgląd wyników
+
         //TODO porządek w kolejności properties w layout
         //TODO restore state after application close
         //TODO another expansion modules
@@ -31,7 +32,6 @@ namespace AlhambraScoringAndroid
         //https://heartbeat.fritz.ai/reducing-the-app-size-in-xamarin-deep-dive-7ddc9cb12688
         //https://dzone.com/articles/how-to-optimize-and-reduce-android-apps-size-in-xa
         //https://docs.microsoft.com/en-us/xamarin/android/deploy-test/linker
-
 
         public MyApplication(IntPtr javaReference, Android.Runtime.JniHandleOwnership transfer) : base(javaReference, transfer)
         {

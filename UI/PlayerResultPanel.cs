@@ -62,10 +62,10 @@ namespace AlhambraScoringAndroid.UI
             textViewScore.Text = score.ToString();
         }
 
-        public void HidePointButtons()
+        public void ShowPointButtons(bool show)
         {
-            addPoint1Button.Visibility = ViewStates.Gone;
-            addPoint2Button.Visibility = ViewStates.Gone;
+            addPoint1Button.Visibility = show? ViewStates.Visible : ViewStates.Gone;
+            addPoint2Button.Visibility = show? ViewStates.Visible : ViewStates.Gone;
         }
     }
 }
