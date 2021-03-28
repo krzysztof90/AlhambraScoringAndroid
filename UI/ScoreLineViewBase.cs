@@ -29,10 +29,10 @@ namespace AlhambraScoringAndroid.UI
         {
             Inflate(context, ResourceLayout, this);
 
-            //TODO zmiana textColor na labelColor
-            TypedArray typedArray = context.ObtainStyledAttributes(attrs, new int[] { Resource.Attribute.labelValue, Resource.Attribute.textColor });
-            string label = typedArray.GetText(0);
-            ColorStateList color = typedArray.GetColorStateList(1);
+            //Must be alphabetically
+            TypedArray typedArray = context.ObtainStyledAttributes(attrs, new int[] { Resource.Attribute.labelColor, Resource.Attribute.labelValue}); 
+            string label = typedArray.GetText(1);
+            ColorStateList color = typedArray.GetColorStateList(0);
             typedArray.Recycle();
 
             DefaultValue = default(T);

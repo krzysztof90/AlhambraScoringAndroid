@@ -26,84 +26,84 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/wallsCountNumericUpDown"
             app:labelValue="Pavilions number"
-            app:textColor="@color/colorPavilion" />
+            app:labelColor="@color/colorPavilion" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/seraglioCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/pavilionCountNumericUpDown"
             app:labelValue="Seraglios number"
-            app:textColor="@color/colorSeraglio" />
+            app:labelColor="@color/colorSeraglio" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/arcadesCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/seraglioCountNumericUpDown"
             app:labelValue="Arcades number"
-            app:textColor="@color/colorArcades" />
+            app:labelColor="@color/colorArcades" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/chambersCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/arcadesCountNumericUpDown"
             app:labelValue="Chambers number"
-            app:textColor="@color/colorChambers" />
+            app:labelColor="@color/colorChambers" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/gardenCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/chambersCountNumericUpDown"
             app:labelValue="Gardens number"
-            app:textColor="@color/colorGarden" />
+            app:labelColor="@color/colorGarden" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/towerCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/gardenCountNumericUpDown"
             app:labelValue="Towers number"
-            app:textColor="@color/colorTower" />
+            app:labelColor="@color/colorTower" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/bonusCardsPavilionCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/towerCountNumericUpDown"
             app:labelValue="Bonus cards Pavilions number"
-            app:textColor="@color/colorPavilion" />
+            app:labelColor="@color/colorPavilion" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/bonusCardsSeraglioCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/bonusCardsPavilionCountNumericUpDown"
             app:labelValue="Bonus cards Seraglios number"
-            app:textColor="@color/colorSeraglio" />
+            app:labelColor="@color/colorSeraglio" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/bonusCardsArcadesCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/bonusCardsSeraglioCountNumericUpDown"
             app:labelValue="Bonus cards Arcades number"
-            app:textColor="@color/colorArcades" />
+            app:labelColor="@color/colorArcades" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/bonusCardsChambersCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/bonusCardsArcadesCountNumericUpDown"
             app:labelValue="Bonus cards Chambers number"
-            app:textColor="@color/colorChambers" />
+            app:labelColor="@color/colorChambers" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/bonusCardsGardenCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/bonusCardsChambersCountNumericUpDown"
             app:labelValue="Bonus cards Gardens number"
-            app:textColor="@color/colorGarden" />
+            app:labelColor="@color/colorGarden" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/bonusCardsTowerCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/bonusCardsGardenCountNumericUpDown"
             app:labelValue="Bonus cards Towers number"
-            app:textColor="@color/colorTower" />
+            app:labelColor="@color/colorTower" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/buildingsWithoutServantTileNumericUpDown"
             android:layout_width="wrap_content"
@@ -170,42 +170,42 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/wishingWellsPointsNumericUpDown"
             app:labelValue="Completed project for pavilions"
-            app:textColor="@color/colorPavilion" />
+            app:labelColor="@color/colorPavilion" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/completedProjectSeraglioCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/completedProjectPavilionCheckBox"
             app:labelValue="Completed project for seraglios"
-            app:textColor="@color/colorSeraglio" />
+            app:labelColor="@color/colorSeraglio" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/completedProjectArcadesCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/completedProjectSeraglioCheckBox"
             app:labelValue="Completed project for arcades"
-            app:textColor="@color/colorArcades" />
+            app:labelColor="@color/colorArcades" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/completedProjectChambersCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/completedProjectArcadesCheckBox"
             app:labelValue="Completed project for chambers"
-            app:textColor="@color/colorChambers" />
+            app:labelColor="@color/colorChambers" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/completedProjectGardenCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/completedProjectChambersCheckBox"
             app:labelValue="Completed project for gardens"
-            app:textColor="@color/colorGarden" />
+            app:labelColor="@color/colorGarden" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/completedProjectTowerCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/completedProjectGardenCheckBox"
             app:labelValue="Completed project for towers"
-            app:textColor="@color/colorTower" />
+            app:labelColor="@color/colorTower" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/animalsPointsNumericUpDown"
             android:layout_width="wrap_content"
@@ -218,42 +218,42 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/animalsPointsNumericUpDown"
             app:labelValue="Taken semi-building pavilion"
-            app:textColor="@color/colorPavilion" />
+            app:labelColor="@color/colorPavilion" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/ownedSemiBuildingSeraglioCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/ownedSemiBuildingPavilionCheckBox"
             app:labelValue="Taken semi-building seraglio"
-            app:textColor="@color/colorSeraglio" />
+            app:labelColor="@color/colorSeraglio" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/ownedSemiBuildingArcadesCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/ownedSemiBuildingSeraglioCheckBox"
             app:labelValue="Taken semi-building arcades"
-            app:textColor="@color/colorArcades" />
+            app:labelColor="@color/colorArcades" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/ownedSemiBuildingChambersCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/ownedSemiBuildingArcadesCheckBox"
             app:labelValue="Taken semi-building chambers"
-            app:textColor="@color/colorChambers" />
+            app:labelColor="@color/colorChambers" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/ownedSemiBuildingGardenCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/ownedSemiBuildingChambersCheckBox"
             app:labelValue="Taken semi-building garden"
-            app:textColor="@color/colorGarden" />
+            app:labelColor="@color/colorGarden" />
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/ownedSemiBuildingTowerCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/ownedSemiBuildingGardenCheckBox"
             app:labelValue="Taken semi-building tower"
-            app:textColor="@color/colorTower" />
+            app:labelColor="@color/colorTower" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/blackDiceTotalPipsNumericUpDown"
             android:layout_width="wrap_content"
@@ -266,42 +266,42 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/blackDiceTotalPipsNumericUpDown"
             app:labelValue="Extended buildings Pavilion number"
-            app:textColor="@color/colorPavilion" />
+            app:labelColor="@color/colorPavilion" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/extensionsSeraglioCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/extensionsPavilionCountNumericUpDown"
             app:labelValue="Extended buildings Seraglio number"
-            app:textColor="@color/colorSeraglio" />
+            app:labelColor="@color/colorSeraglio" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/extensionsArcadesCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/extensionsSeraglioCountNumericUpDown"
             app:labelValue="Extended buildings Arcades number"
-            app:textColor="@color/colorArcades" />
+            app:labelColor="@color/colorArcades" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/extensionsChambersCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/extensionsArcadesCountNumericUpDown"
             app:labelValue="Extended buildings Chambers number"
-            app:textColor="@color/colorChambers" />
+            app:labelColor="@color/colorChambers" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/extensionsGardenCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/extensionsChambersCountNumericUpDown"
             app:labelValue="Extended buildings Garden number"
-            app:textColor="@color/colorGarden" />
+            app:labelColor="@color/colorGarden" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/extensionsTowerCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/extensionsGardenCountNumericUpDown"
             app:labelValue="Extended buildings Tower number"
-            app:textColor="@color/colorTower" />
+            app:labelColor="@color/colorTower" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/handymenTilesHighestNumberNumericUpDown"
             android:layout_width="wrap_content"
