@@ -9,7 +9,6 @@ using System;
 
 namespace AlhambraScoringAndroid.UI
 {
-    //TODO jeżeli domyślna wartość nieustawiona (null) to nie ustawianie "0"
     public class ScoreLineNumberView : ScoreLineViewBase<int>
     {
         private TextView textView;
@@ -68,16 +67,20 @@ namespace AlhambraScoringAndroid.UI
             }
         }
 
-        protected override void SetValue(int value)
+        protected override void SetValue(int? value)
         {
+            if (value == null)
+                editText.Text = System.String.Empty;
+            else
             editText.Text = value.ToString();
         }
 
-        protected override int GetValue()
+        protected override int? GetValue()
         {
             string text = editText.Text;
             if (text.Length == 0 || this.Visibility == ViewStates.Gone)
-                return DefaultValue;
+                //return DefaultValue;
+                return null;
             return Int32.Parse(text);
         }
 

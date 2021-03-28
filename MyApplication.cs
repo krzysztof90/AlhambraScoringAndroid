@@ -20,9 +20,8 @@ namespace AlhambraScoringAndroid
         //https://docs.microsoft.com/pl-pl/xamarin/
         //TODO google play "I would appreciate any feedback", BGG
         //TODO nieptrzebne referencje, nuget
-        //TODO package "companyname"
+        //TODO minSdkVersion
         //TODO przetestować wszędzie obracanie ekranu
-        //TODO guideline górna część min height
         //TODO wysokości i szerokości do zmiennych; 60dp = menu height
         //TODO duży rozmiar aplikacji:
         //https://heartbeat.fritz.ai/reducing-the-app-size-in-xamarin-deep-dive-7ddc9cb12688
@@ -112,7 +111,6 @@ namespace AlhambraScoringAndroid
 
         public void GameShowDetails()
         {
-            //TODO  Grid, w kolumnach obrazki
             NewActivity(typeof(GameDetailsActivity));
         }
     }

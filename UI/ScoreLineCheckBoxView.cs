@@ -42,15 +42,16 @@ namespace AlhambraScoringAndroid.UI
             }
         }
 
-        protected override void SetValue(bool value)
+        protected override void SetValue(bool? value)
         {
-            scoreLineCheckBox.Checked = value;
+            scoreLineCheckBox.Checked = (value!=false);
         }
 
-        protected override bool GetValue()
+        protected override bool? GetValue()
         {
             if (this.Visibility == ViewStates.Gone)
-                return DefaultValue;
+                //return DefaultValue;
+                return null;
             return scoreLineCheckBox.Checked;
         }
     }

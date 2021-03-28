@@ -12,18 +12,18 @@ namespace AlhambraScoringAndroid.UI
         public void RestoreValue();
     }
 
-    public abstract class ScoreLineViewBase<T> : LinearLayout, IScoreLineView
+    public abstract class ScoreLineViewBase<T> : LinearLayout, IScoreLineView where T : struct
     {
         public T DefaultValue { get; set; }
-        protected T StoredValue { get; private set; }
+        protected T? StoredValue { get; private set; }
         public Action OnValueChange;
 
         protected abstract int ResourceLayout { get; }
         protected abstract void CreateControls();
         protected abstract void SetControlsProperties();
         protected abstract void SetLabelAndColor(string label, ColorStateList color);
-        protected abstract void SetValue(T value);
-        protected abstract T GetValue();
+        protected abstract void SetValue(T? value);
+        protected abstract T? GetValue();
 
         public ScoreLineViewBase(Context context, IAttributeSet attrs) : base(context, attrs)
         {
@@ -44,7 +44,8 @@ namespace AlhambraScoringAndroid.UI
 
         public void Initialize()
         {
-            StoredValue = DefaultValue;
+            //StoredValue = DefaultValue;
+            StoredValue = null;
         }
 
         protected void AssignStoredValue()
@@ -54,14 +55,15 @@ namespace AlhambraScoringAndroid.UI
 
         public void RestoreValue()
         {
-            Value = StoredValue;
+            //Value = StoredValue;
+                SetValue(StoredValue);
         }
 
         public T Value
         {
             get
             {
-                return StoredValue;
+                return StoredValue??DefaultValue;
             }
             set
             {
