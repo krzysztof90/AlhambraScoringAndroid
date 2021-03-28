@@ -30,5 +30,13 @@ namespace AlhambraScoringAndroid.Tools
             }
             return defaultValue;
         }
+
+        public static EnumType GetEnumByDescriptionValue<EnumType>(this string value) where EnumType : struct, IConvertible, IComparable, IFormattable
+        {
+            if (String.IsNullOrEmpty(value))
+                throw new ArgumentException();
+
+            return Enum.GetValues(typeof(EnumType)).Cast<EnumType>().Single(e => e.GetEnumDescription() == value);
+        }
     }
 }

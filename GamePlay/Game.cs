@@ -3,7 +3,9 @@ using AlhambraScoringAndroid.UI;
 using Android.Content;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Xml;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
@@ -38,6 +40,9 @@ namespace AlhambraScoringAndroid.GamePlay
         };
 
         private readonly Context Context;
+
+        public DateTime StartDateTime { get; private set; }
+        public DateTime? EndDateTime { get; private set; }
 
         private List<ExpansionModule> Modules;
         private List<Player> Players;
@@ -92,7 +97,7 @@ namespace AlhambraScoringAndroid.GamePlay
             }
         }
 
-        public int PlayersCount => Players.Count();
+        public int PlayersCount => Players.Count;
 
         //TODO && !saved
         public bool GameStarted => ScoreRound != ScoringRound.First || (Players != null && Players.Sum(p => p.Score) != 0);
@@ -100,7 +105,6 @@ namespace AlhambraScoringAndroid.GamePlay
         public Game(Context context)
         {
             Context = context;
-            ScoreStack = new Stack<ScoreHistory>();
         }
 
         public void SetModules(IEnumerable<ExpansionModule> modules)
@@ -141,6 +145,17 @@ namespace AlhambraScoringAndroid.GamePlay
                 Players.Add(Player.CreateDirk(this));
 
             ScoreRound = ScoringRound.First;
+            ScoreStack = new Stack<ScoreHistory>();
+        }
+
+        public void SetStartDateTime(DateTime dateTime)
+        {
+            StartDateTime = dateTime;
+        }
+
+        public void SetEndDateTime(DateTime dateTime)
+        {
+            EndDateTime = dateTime;
         }
 
         private void AddPlayer(string name, bool twoPlayers)
@@ -607,5 +622,18 @@ namespace AlhambraScoringAndroid.GamePlay
                     break;
             }
         }
+
+        public ResultHistory GetResultHistory()
+        {
+            return new ResultHistory()
+            {
+                StartDateTime = StartDateTime,
+                EndDateTime = EndDateTime,
+                Modules = Modules,
+                ScoreRound = ScoreRound,
+                Players = Players.Select(p => new ResultPlayerHistory() { Name = p.Name, ScoreDetails1 = p.ScoreDetails1, ScoreDetails2 = p.ScoreDetails2, ScoreDetails3 = p.ScoreDetails3, ScoreMeantime = p.ScoreMeantime }).ToList()
+            };
+        }
+
     }
 }

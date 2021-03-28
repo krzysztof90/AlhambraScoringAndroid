@@ -76,6 +76,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             scoreRevertButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
+                //TODO zmiana saved, EndDateTime
                 Application.Game.RevertScoring();
                 //ShowScore();
                 PrepareRound();
@@ -111,6 +112,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             switch (Application.Game.ScoreRound)
             {
+                //TODO roundScoreButton.Visibility
                 case ScoringRound.First:
                     roundScoreButton.Text = "1st round";
                     scoreDetailsButton.Visibility = ViewStates.Invisible;

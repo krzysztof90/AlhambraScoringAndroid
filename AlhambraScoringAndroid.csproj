@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DialogInterfaceOnClickListener.cs" />
+    <Compile Include="GamePlay\ResultHistory.cs" />
+    <Compile Include="GamePlay\ResultPlayerHistory.cs" />
     <Compile Include="GamePlay\ScoreDetails.cs" />
     <Compile Include="GamePlay\ScoreHistory.cs" />
     <Compile Include="GamePlay\ScoreHistoryImmediately.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="UI\ScoreLineCheckBoxView.cs" />
     <Compile Include="UI\ScoreLineNumberView.cs" />
     <Compile Include="UI\ScoreLineViewBase.cs" />
+    <Compile Include="Tools\XmlOperations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

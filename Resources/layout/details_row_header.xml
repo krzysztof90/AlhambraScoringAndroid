@@ -3,6 +3,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/headerSum"
+                            android:text="Razem"
+                        android:textStyle="bold"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="150dp"
+        android:layout_marginStart="10dp"/>
     <LinearLayout
         android:id="@+id/headerImmediatelyPoints"
         android:layout_width="@dimen/game_details_cell_width"

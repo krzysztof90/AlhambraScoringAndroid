@@ -15,6 +15,8 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
+            Application.LoadResults();
+
             //TODO usunąć
             Button button1 = FindViewById<Button>(Resource.Id.button1);
             button1.Click += Button1_Click;

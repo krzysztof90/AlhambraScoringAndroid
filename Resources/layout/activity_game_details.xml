@@ -15,10 +15,23 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+                    <TextView
+        android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:id="@+id/titleDate"
+                        />
+
         <LinearLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/titleDate"
             android:orientation="horizontal">
 
             <TableLayout
@@ -341,6 +354,7 @@
                 </TableLayout>
             </HorizontalScrollView>
 
+        </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

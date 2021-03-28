@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AlhambraScoringAndroid.Tools;
+using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
@@ -20,8 +21,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
         protected override string DisplayName()
         {
-            //TODO ScoreRound to string
-            return $"Punktowanie rundy {ScoreRound}";
+            return $"Punktowanie rundy {ScoreRound.GetEnumDescription()}";
         }
     }
 }
