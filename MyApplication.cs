@@ -58,8 +58,8 @@ namespace AlhambraScoringAndroid
             if ( Game?.GameInProgress  ??false)
             {
                 new AlertDialog.Builder(context)
-                    .SetTitle("Closing Activity")
-                    .SetMessage("Are you sure you want to close this activity?")
+                    .SetTitle("Obecna gra zostanie zakończona")
+                    .SetMessage("Czy kontynuować?")
                     .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => NewGame()))
                     .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
                     .Show();

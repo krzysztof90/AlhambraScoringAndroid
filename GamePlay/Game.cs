@@ -144,8 +144,21 @@ namespace AlhambraScoringAndroid.GamePlay
             else
                 Players.Add(Player.CreateDirk(this));
 
+            Reset(false);
+        }
+
+        public void Reset(bool resetPlayers)
+        {
             ScoreRound = ScoringRound.First;
             ScoreStack = new Stack<ScoreHistory>();
+            ResetFinish();
+            if (resetPlayers)
+                Players = null;
+        }
+
+        public void ResetFinish()
+        {
+            SetEndDateTime(null);
             Saved = false;
         }
 
@@ -600,8 +613,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public void RevertScoring()
         {
             ScoreStack.Pop().Revert();
-            SetEndDateTime(null);
-            Saved = false;
+            ResetFinish();
         }
 
         public void SetNextRound()

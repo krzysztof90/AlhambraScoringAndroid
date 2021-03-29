@@ -87,14 +87,21 @@ namespace AlhambraScoringAndroid.UI.Activities
             if (Game.GameInProgress)
             {
                 new AlertDialog.Builder(this)
-                    .SetTitle("Closing Activity")
-                    .SetMessage("Are you sure you want to close this activity?")
-                    .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => base.OnBackPressed()))
+                    .SetTitle("Obecna gra zostanie zakończona")
+                    .SetMessage("Czy kontynuować?")
+                    .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) =>
+                    {
+                        base.OnBackPressed();
+                        Game.Reset(true);
+                    }))
                     .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
                     .Show();
             }
             else
+            {
                 base.OnBackPressed();
+                        Game.Reset(true);
+            }
         }
 
         public void AddPoints(int player, int score)
