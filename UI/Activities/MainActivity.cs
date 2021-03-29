@@ -52,8 +52,8 @@ namespace AlhambraScoringAndroid.UI.Activities
             players.Add("3");
             players.Add("4");
             Application.GameStart(players);
-            while (Application.Game.ScoreRound != ScoringRound.Second)
-                Application.Game.SetNextRound();
+            while (Game.ScoreRound != ScoringRound.Second)
+                Game.SetNextRound();
         }
     }
 }

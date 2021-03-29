@@ -63,7 +63,7 @@ namespace AlhambraScoringAndroid.UI
             {
                 textView.SetTextColor(color);
                 if (color.DefaultColor == -658699)
-                textView.SetShadowLayer(1, 1, 1, Android.Graphics.Color.Black);
+                    textView.SetShadowLayer(1, 1, 1, Android.Graphics.Color.Black);
             }
         }
 
@@ -72,7 +72,7 @@ namespace AlhambraScoringAndroid.UI
             if (value == null)
                 editText.Text = System.String.Empty;
             else
-            editText.Text = value.ToString();
+                editText.Text = value.ToString();
         }
 
         protected override int? GetValue()

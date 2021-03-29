@@ -88,7 +88,9 @@
     <Compile Include="MinMaxFilter.cs" />
     <Compile Include="MyApplication.cs" />
     <Compile Include="UI\Activities\NewGameActivity.cs" />
+    <Compile Include="UI\Activities\ResultsHistoryActivity.cs" />
     <Compile Include="UI\ExpandListCheckBoxPosition.cs" />
+    <Compile Include="UI\HistoryPanel.cs" />
     <Compile Include="UI\PlayerResultPanel.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -332,6 +334,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\WishingWell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\view_game_result.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_history.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

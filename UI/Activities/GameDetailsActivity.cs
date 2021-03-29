@@ -43,7 +43,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             base.OnCreate(savedInstanceState);
 
             TextView titleDate = FindViewById<TextView>(Resource.Id.titleDate);
-            titleDate.Text = $"{Result.StartDateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES"))} - {(Result.EndDateTime!=null? ((DateTime)Result.EndDateTime).ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES")):String.Empty)}";
+            titleDate.Text = $"{Result.StartDateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES"))} - {(Result.EndDateTime != null ? ((DateTime)Result.EndDateTime).ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES")) : String.Empty)}";
 
             contentTable = FindViewById<TableLayout>(Resource.Id.contentTable);
 
@@ -160,7 +160,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 SetVisibility(headerRow.FindViewById<LinearLayout>(Resource.Id.headerImmediatelyPoints), HasModule(ExpansionModule.DesignerPalaceDesigners) || HasModule(ExpansionModule.DesignerGatesWithoutEnd));
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerImmediatelyPointsPalaceDesigners), HasModule(ExpansionModule.DesignerPalaceDesigners));
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerImmediatelyPointsGatesWithoutEnd),  HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerImmediatelyPointsGatesWithoutEnd), HasModule(ExpansionModule.DesignerGatesWithoutEnd));
                 SetVisibility(headerRow.FindViewById<LinearLayout>(Resource.Id.headerBonuses), HasModule(ExpansionModule.ExpansionBonusCards) || HasModule(ExpansionModule.DesignerExtensions) || HasModule(ExpansionModule.DesignerGatesWithoutEnd));
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBonusesBonusCards), HasModule(ExpansionModule.ExpansionBonusCards));
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBonusesExtensions), HasModule(ExpansionModule.DesignerExtensions));
@@ -223,28 +223,32 @@ namespace AlhambraScoringAndroid.UI.Activities
             contentTable.AddView(emptyrow, contentTable.ChildCount - 1);
             contentTable.RequestLayout();
 
-            AddPlayerDetailsRow(GetPlayer(1).GetScoreDetails(round));
-            AddPlayerDetailsRow(GetPlayer(2).GetScoreDetails(round));
-            AddPlayerDetailsRow(GetPlayer(3).GetScoreDetails(round));
+            bool summary = round == ScoringRound.Finish;
+
+            AddPlayerDetailsRow(GetPlayer(1).GetScoreDetails(round), summary);
+            AddPlayerDetailsRow(GetPlayer(2).GetScoreDetails(round), summary);
+            AddPlayerDetailsRow(GetPlayer(3).GetScoreDetails(round), summary);
 
             if (PlayersCount > 3)
             {
-                AddPlayerDetailsRow(GetPlayer(4).GetScoreDetails(round));
+                AddPlayerDetailsRow(GetPlayer(4).GetScoreDetails(round), summary);
             }
             if (PlayersCount > 4)
             {
-                AddPlayerDetailsRow(GetPlayer(5).GetScoreDetails(round));
+                AddPlayerDetailsRow(GetPlayer(5).GetScoreDetails(round), summary);
             }
             if (PlayersCount > 5)
             {
-                AddPlayerDetailsRow(GetPlayer(6).GetScoreDetails(round));
+                AddPlayerDetailsRow(GetPlayer(6).GetScoreDetails(round), summary);
             }
         }
 
-        private void AddPlayerDetailsRow(ScoreDetails scoreDetails)
+        private void AddPlayerDetailsRow(ScoreDetails scoreDetails, bool summary)
         {
             TableRow row = (TableRow)LayoutInflater.From(this).Inflate(Resource.Layout.details_row, null);
             row.FindViewById<TextView>(Resource.Id.resultSum).Text = scoreDetails.Sum.ToString();
+            if (summary)
+                row.FindViewById<TextView>(Resource.Id.resultSum).Typeface = Android.Graphics.Typeface.DefaultBold;
             row.FindViewById<TextView>(Resource.Id.resultImmediatelyPoints).Text = scoreDetails.ImmediatelyPoints.ToString();
             row.FindViewById<TextView>(Resource.Id.resultWalls).Text = scoreDetails.WallLength.ToString();
             row.FindViewById<TextView>(Resource.Id.resultPavilion).Text = scoreDetails.PavilionNumber.ToString();

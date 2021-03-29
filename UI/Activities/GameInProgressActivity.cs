@@ -1,5 +1,4 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
-using AlhambraScoringAndroid.UI;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -36,25 +35,25 @@ namespace AlhambraScoringAndroid.UI.Activities
             PlayerResultPanel resultPanel4 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel4);
             PlayerResultPanel resultPanel5 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel5);
             PlayerResultPanel resultPanel6 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel6);
-            resultPanel1.Initialize(this, 1);
+            resultPanel1.Initialize( 1);
             resultPanels.Add(resultPanel1);
-            resultPanel2.Initialize(this, 2);
+            resultPanel2.Initialize( 2);
             resultPanels.Add(resultPanel2);
-            resultPanel3.Initialize(this, 3);
+            resultPanel3.Initialize( 3);
             resultPanels.Add(resultPanel3);
-            if (Application.Game.PlayersCount > 3)
+            if (Game.PlayersCount > 3)
             {
-                resultPanel4.Initialize(this, 4);
+                resultPanel4.Initialize( 4);
                 resultPanels.Add(resultPanel4);
             }
-            if (Application.Game.PlayersCount > 4)
+            if (Game.PlayersCount > 4)
             {
-                resultPanel5.Initialize(this, 5);
+                resultPanel5.Initialize( 5);
                 resultPanels.Add(resultPanel5);
             }
-            if (Application.Game.PlayersCount > 5)
+            if (Game.PlayersCount > 5)
             {
-                resultPanel6.Initialize(this, 6);
+                resultPanel6.Initialize( 6);
                 resultPanels.Add(resultPanel6);
             }
 
@@ -64,7 +63,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             roundScoreButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                if (Application.Game.ScoreRound != ScoringRound.Finish)
+                if (Game.ScoreRound != ScoringRound.Finish)
                     Application.GameRoundScore(this);
             });
 
@@ -75,7 +74,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             scoreRevertButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.Game.RevertScoring();
+                Game.RevertScoring();
                 PrepareRound();
             });
 
@@ -106,7 +105,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         public void AddPoints(int player, int score)
         {
-            Application.Game.PlayerAddScore(player, score);
+            Game.PlayerAddScore(player, score);
             ShowScore();
         }
 
@@ -114,7 +113,7 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             ShowScore();
 
-            switch (Application.Game.ScoreRound)
+            switch (Game.ScoreRound)
             {
                 case ScoringRound.First:
                     roundScoreButton.Text = "1st round";
@@ -131,15 +130,15 @@ namespace AlhambraScoringAndroid.UI.Activities
                 case ScoringRound.Finish:
                     break;
             }
-            scoreDetailsButton.Visibility = Application.Game.ScoreRound == ScoringRound.First ? ViewStates.Invisible : ViewStates.Visible;
-            if (!Application.Game.Saved && Application.Game.ScoreRound == ScoringRound.Finish)
+            scoreDetailsButton.Visibility = Game.ScoreRound == ScoringRound.First ? ViewStates.Invisible : ViewStates.Visible;
+            if (!Game.Saved && Game.ScoreRound == ScoringRound.Finish)
                 scoreDetailsButton.Text = "Zapisz i pokaż szczegóły";
             else
                 scoreDetailsButton.Text = "Pokaż szczegóły";
-            roundScoreButton.Visibility = Application.Game.ScoreRound == ScoringRound.Finish ? ViewStates.Invisible : ViewStates.Visible;
+            roundScoreButton.Visibility = Game.ScoreRound == ScoringRound.Finish ? ViewStates.Invisible : ViewStates.Visible;
             foreach (PlayerResultPanel resultPanel in resultPanels)
             {
-                if (Application.Game.ScoreRound == ScoringRound.Finish)
+                if (Game.ScoreRound == ScoringRound.Finish)
                     resultPanel.ShowPointButtons(false);
                 else
                     resultPanel.ShowPointButtons(true);
@@ -149,20 +148,20 @@ namespace AlhambraScoringAndroid.UI.Activities
         private void ShowScore()
         {
             //TODO sort
-            resultPanels[0].SetScore(Application.Game.GetPlayer(1).Score);
-            resultPanels[1].SetScore(Application.Game.GetPlayer(2).Score);
-            resultPanels[2].SetScore(Application.Game.GetPlayer(3).Score);
-            if (Application.Game.PlayersCount > 3)
-                resultPanels[3].SetScore(Application.Game.GetPlayer(4).Score);
-            if (Application.Game.PlayersCount > 4)
-                resultPanels[4].SetScore(Application.Game.GetPlayer(5).Score);
-            if (Application.Game.PlayersCount > 5)
-                resultPanels[5].SetScore(Application.Game.GetPlayer(6).Score);
+            resultPanels[0].SetScore(Game.GetPlayer(1).Score);
+            resultPanels[1].SetScore(Game.GetPlayer(2).Score);
+            resultPanels[2].SetScore(Game.GetPlayer(3).Score);
+            if (Game.PlayersCount > 3)
+                resultPanels[3].SetScore(Game.GetPlayer(4).Score);
+            if (Game.PlayersCount > 4)
+                resultPanels[4].SetScore(Game.GetPlayer(5).Score);
+            if (Game.PlayersCount > 5)
+                resultPanels[5].SetScore(Game.GetPlayer(6).Score);
 
-            if (Application.Game.ScoreStack.Count != 0)
+            if (Game.ScoreStack.Count != 0)
             {
                 scoreRevertButton.Visibility = ViewStates.Visible;
-                scoreRevertButton.Text = $"Cofnij {Application.Game.ScoreStack.Peek().FullDisplayName()}";
+                scoreRevertButton.Text = $"Cofnij {Game.ScoreStack.Peek().FullDisplayName()}";
             }
             else
                 scoreRevertButton.Visibility = ViewStates.Invisible;

@@ -1,14 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-  <item
+  <!--<item
       android:id="@+id/action_settings"
       android:orderInCategory="100"
       android:title="@string/action_settings"
-      app:showAsAction="never" />
+      app:showAsAction="never" />-->
   <item
   android:id="@+id/action_newGame"
   android:orderInCategory="100"
   android:title="New game"
+  app:showAsAction="never" />
+  <item
+  android:id="@+id/action_showHistory"
+  android:orderInCategory="100"
+  android:title="Results history"
   app:showAsAction="never" />
 </menu>

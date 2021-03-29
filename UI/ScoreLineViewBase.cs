@@ -30,7 +30,7 @@ namespace AlhambraScoringAndroid.UI
             Inflate(context, ResourceLayout, this);
 
             //Must be alphabetically
-            TypedArray typedArray = context.ObtainStyledAttributes(attrs, new int[] { Resource.Attribute.labelColor, Resource.Attribute.labelValue}); 
+            TypedArray typedArray = context.ObtainStyledAttributes(attrs, new int[] { Resource.Attribute.labelColor, Resource.Attribute.labelValue });
             string label = typedArray.GetText(1);
             ColorStateList color = typedArray.GetColorStateList(0);
             typedArray.Recycle();
@@ -56,14 +56,14 @@ namespace AlhambraScoringAndroid.UI
         public void RestoreValue()
         {
             //Value = StoredValue;
-                SetValue(StoredValue);
+            SetValue(StoredValue);
         }
 
         public T Value
         {
             get
             {
-                return StoredValue??DefaultValue;
+                return StoredValue ?? DefaultValue;
             }
             set
             {

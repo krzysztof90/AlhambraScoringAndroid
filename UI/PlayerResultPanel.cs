@@ -25,9 +25,10 @@ namespace AlhambraScoringAndroid.UI
         {
         }
 
-        public void Initialize(GameInProgressActivity gameActivity, int playerNumber)
+        public void Initialize( int playerNumber)
         {
-            GameInProgressActivity GameActivity = gameActivity;
+            GameInProgressActivity gameActivity = (GameInProgressActivity)Context;
+
             PlayerNumber = playerNumber;
 
             LayoutInflater layoutInflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
@@ -36,21 +37,21 @@ namespace AlhambraScoringAndroid.UI
             textViewName = FindViewById<TextView>(Resource.Id.textViewName);
             textViewScore = FindViewById<TextView>(Resource.Id.textViewScore);
 
-            textViewName.Text = GameActivity.Game.GetPlayer(playerNumber).Name;
+            textViewName.Text = gameActivity.Game.GetPlayer(playerNumber).Name;
 
             addPoint1Button = FindViewById<Button>(Resource.Id.point1Button);
             addPoint1Button.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                GameActivity.AddPoints(PlayerNumber, 1);
+                gameActivity.AddPoints(PlayerNumber, 1);
             });
             addPoint2Button = FindViewById<Button>(Resource.Id.point2Button);
             addPoint2Button.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                GameActivity.AddPoints(PlayerNumber, 2);
+                gameActivity.AddPoints(PlayerNumber, 2);
             });
 
-            if (GameActivity.Game.GetPlayer(playerNumber).Dirk
-            || !(GameActivity.Game.HasModule(ExpansionModule.DesignerPalaceDesigners) || GameActivity.Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)))
+            if (gameActivity.Game.GetPlayer(playerNumber).Dirk
+            || !(gameActivity.Game.HasModule(ExpansionModule.DesignerPalaceDesigners) || gameActivity.Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)))
             {
                 addPoint1Button.Visibility = ViewStates.Gone;
                 addPoint2Button.Visibility = ViewStates.Gone;

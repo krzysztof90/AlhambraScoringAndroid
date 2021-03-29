@@ -7,6 +7,7 @@ using Android.Content;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 
 namespace AlhambraScoringAndroid
@@ -14,8 +15,6 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO podgląd wyników
-
         //TODO porządek w kolejności properties w layout
         //TODO restore state after application close
         //TODO another expansion modules
@@ -55,7 +54,7 @@ namespace AlhambraScoringAndroid
 
         public void NewGamePrompt(Context context)
         {
-            if ( Game?.GameInProgress  ??false)
+            if ((Game?.GameInProgress ?? false) || context is GameScoreActivity)
             {
                 new AlertDialog.Builder(context)
                     .SetTitle("Obecna gra zostanie zakończona")
@@ -124,14 +123,25 @@ namespace AlhambraScoringAndroid
 
             if (Game.ScoreRound == ScoringRound.Finish && !Game.Saved)
             {
-                if (Results[Results.Count - 1].StartDateTime == CurrentResult.StartDateTime)
-                    Results.RemoveAt(Results.Count - 1);
+                RemoveResult(CurrentResult.StartDateTime);
                 Results.Add(CurrentResult);
                 SaveResults();
                 Game.Saved = true;
                 gameInProgressActivity.PrepareRound();
             }
             NewActivity(typeof(GameDetailsActivity));
+        }
+
+        public void ShowResult(DateTime startDateTime)
+        {
+            CurrentResult = Results.Single(r => r.StartDateTime == startDateTime);
+            NewActivity(typeof(GameDetailsActivity));
+        }
+
+        public void ShowHistory(Context context)
+        {
+            if (!(context is ResultsHistoryActivity))
+                NewActivity(typeof(ResultsHistoryActivity));
         }
 
         public void LoadResults()
@@ -292,6 +302,11 @@ namespace AlhambraScoringAndroid
             }
 
             document.Save(fileName);
+        }
+
+        public void RemoveResult(DateTime startDateTime)
+        {
+            Results.RemoveAll(r => r.StartDateTime == startDateTime);
         }
     }
 }
