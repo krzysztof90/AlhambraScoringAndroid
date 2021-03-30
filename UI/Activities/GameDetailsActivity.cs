@@ -47,8 +47,6 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             contentTable = FindViewById<TableLayout>(Resource.Id.contentTable);
 
-            //TODO w headerRow na ikonach help text po kliknięciu
-
             TableRow headerPlayer11 = FindViewById<TableRow>(Resource.Id.headerPlayer11);
             TableRow headerPlayer12 = FindViewById<TableRow>(Resource.Id.headerPlayer12);
             TableRow headerPlayer13 = FindViewById<TableRow>(Resource.Id.headerPlayer13);
@@ -154,6 +152,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 headerTextPlayerSum6.Text = GetPlayer(6).Name;
             }
 
+            //tooltipText tylko od API 25
             TableRow headerRow1 = FindViewById<TableRow>(Resource.Id.headerRow1);
             TableRow headerRow2 = FindViewById<TableRow>(Resource.Id.headerRow2);
             foreach (TableRow headerRow in new TableRow[] { headerRow1, headerRow2 })

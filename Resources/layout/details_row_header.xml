@@ -18,53 +18,62 @@
         android:orientation="vertical">
         <ImageView
             android:id="@+id/headerImmediatelyPointsPalaceDesigners"
+        android:tooltipText="walls"
             android:src="@drawable/PalaceDesigner"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
         <ImageView
             android:id="@+id/headerImmediatelyPointsGatesWithoutEnd"
+        android:tooltipText="walls"
             android:src="@drawable/GatesPoints"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/headerWalls"
+        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:src="@drawable/Walls"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:id="@+id/headerPavilion"
+        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
         android:src="@drawable/Pavilion"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:id="@+id/headerSeraglio"
+        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
         android:src="@drawable/Seraglio"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:id="@+id/headerArcades"
+        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
         android:src="@drawable/Arcades"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:id="@+id/headerChambers"
+        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
         android:src="@drawable/Chambers"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:id="@+id/headerGarden"
+        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
         android:src="@drawable/Garden"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:id="@+id/headerTower"
+        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
         android:src="@drawable/Tower"
         android:layout_height="150dp"
@@ -77,124 +86,145 @@
         android:orientation="vertical">
         <ImageView
             android:id="@+id/headerBonusesBonusCards"
+        android:tooltipText="walls"
             android:src="@drawable/BonusCard"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
         <ImageView
             android:id="@+id/headerBonusesExtensions"
+        android:tooltipText="walls"
             android:src="@drawable/Extension"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
         <ImageView
             android:id="@+id/headerBonusesGatesWithoutEnd"
+        android:tooltipText="walls"
             android:src="@drawable/SemiBuilding"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
     </LinearLayout>
     <ImageView
         android:src="@drawable/Servant"
+        android:tooltipText="walls"
         android:id="@+id/headerBuildingsWithoutServantTile"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Fruit"
+        android:tooltipText="walls"
         android:id="@+id/headerOrchards"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Bathhouse"
+        android:tooltipText="walls"
         android:id="@+id/headerBathhouses"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/WishingWell"
+        android:tooltipText="walls"
         android:id="@+id/headerWishingWells"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/CompletedProject"
+        android:tooltipText="walls"
         android:id="@+id/headerCompletedProjects"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Animal"
+        android:tooltipText="walls"
         android:id="@+id/headerAnimals"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/BlackDice"
+        android:tooltipText="walls"
         android:id="@+id/headerBlackDices"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Handyman"
+        android:tooltipText="walls"
         android:id="@+id/headerHandymen"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Treasure"
+        android:tooltipText="walls"
         android:id="@+id/headerTreasures"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission1"
+        android:tooltipText="walls"
         android:id="@+id/headerMission1"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission2"
+        android:tooltipText="walls"
         android:id="@+id/headerMission2"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission3"
+        android:tooltipText="walls"
         android:id="@+id/headerMission3"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission4"
+        android:tooltipText="walls"
         android:id="@+id/headerMission4"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission5"
+        android:tooltipText="walls"
         android:id="@+id/headerMission5"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission6"
+        android:tooltipText="walls"
         android:id="@+id/headerMission6"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission7"
+        android:tooltipText="walls"
         android:id="@+id/headerMission7"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission8"
+        android:tooltipText="walls"
         android:id="@+id/headerMission8"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
         android:layout_marginStart="10dp"/>
     <ImageView
         android:src="@drawable/Mission9"
+        android:tooltipText="walls"
         android:id="@+id/headerMission9"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="150dp"
