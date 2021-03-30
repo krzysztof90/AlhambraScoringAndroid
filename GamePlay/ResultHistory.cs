@@ -8,6 +8,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public DateTime StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }
         public List<ExpansionModule> Modules { get; set; }
+        public List<CaliphsGuidelinesMission> CaliphsGuidelines { get; set; }
         public ScoringRound ScoreRound { get; set; }
         public List<ResultPlayerHistory> Players { get; set; }
     }

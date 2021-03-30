@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DialogInterfaceOnClickListener.cs" />
+    <Compile Include="GamePlay\CaliphsGuidelines.cs" />
     <Compile Include="GamePlay\ResultHistory.cs" />
     <Compile Include="GamePlay\ResultPlayerHistory.cs" />
     <Compile Include="GamePlay\ScoreDetails.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="UI\Activities\BaseActivity.cs" />
     <Compile Include="UI\Activities\GameDetailsActivity.cs" />
     <Compile Include="UI\Activities\GameInProgressActivity.cs" />
+    <Compile Include="UI\Activities\GameModulesDetailsChoseActivity.cs" />
     <Compile Include="UI\Activities\GamePlayersChoseActivity.cs" />
     <Compile Include="GamePlay\BuildingType.cs" />
     <Compile Include="GamePlay\ExpansionModule.cs" />
@@ -443,6 +445,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\MagicalBuildings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_modules_details.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

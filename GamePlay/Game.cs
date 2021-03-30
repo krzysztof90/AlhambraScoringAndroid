@@ -45,6 +45,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public DateTime? EndDateTime { get; private set; }
 
         private List<ExpansionModule> Modules;
+        private List<CaliphsGuidelinesMission> CaliphsGuidelines;
         private List<Player> Players;
         public ScoringRound ScoreRound { get; private set; }
         public Stack<ScoreHistory> ScoreStack { get; private set; }
@@ -112,9 +113,19 @@ namespace AlhambraScoringAndroid.GamePlay
             Modules = modules.ToList();
         }
 
+        public void SetModulesDetails(IEnumerable<CaliphsGuidelinesMission> modulesDetails)
+        {
+            CaliphsGuidelines = modulesDetails.ToList();
+        }
+
         public bool HasModule(ExpansionModule module)
         {
             return Modules.Contains(module);
+        }
+
+        public bool HasCaliphsGuideline(CaliphsGuidelinesMission module)
+        {
+            return CaliphsGuidelines.Contains(module);
         }
 
         public void SetPlayers(List<string> playersNames)
@@ -540,42 +551,51 @@ namespace AlhambraScoringAndroid.GamePlay
                     for (int i = 0; i < PlayersCount; i++)
                         if (!Players[i].Dirk)
                         {
-                            //Caliph’s Guidelines: mission 1
-                            Players[i].AddScore(scorePanels[i].Mission1Count * 3, ScoreType.Mission1);
-                            //Caliph’s Guidelines: mission 2
-                            Players[i].AddScore(scorePanels[i].Mission2Count * 3, ScoreType.Mission2);
-                            //Caliph’s Guidelines: mission 3
-                            Players[i].AddScore(scorePanels[i].Mission3Count * 3, ScoreType.Mission3);
-                            //Caliph’s Guidelines: mission 4
-                            if (scorePanels[i].Mission4Available)
-                                Players[i].AddScore(scorePanels[i].SecondLongestWallLength, ScoreType.Mission4);
-                            //Caliph’s Guidelines: mission 5
-                            Players[i].AddScore(scorePanels[i].Mission5Count * 2, ScoreType.Mission5);
-                            //Caliph’s Guidelines: mission 6
-                            Players[i].AddScore(scorePanels[i].Mission6Count * 3, ScoreType.Mission6);
-                            //Caliph’s Guidelines: mission 7
-                            switch (scorePanels[i].Mission7Count)
-                            {
-                                case 2:
-                                    Players[i].AddScore(1, ScoreType.Mission7);
-                                    break;
-                                case 3:
-                                    Players[i].AddScore(3, ScoreType.Mission7);
-                                    break;
-                                case 4:
-                                    Players[i].AddScore(6, ScoreType.Mission7);
-                                    break;
-                                case 5:
-                                    Players[i].AddScore(10, ScoreType.Mission7);
-                                    break;
-                                case 6:
-                                    Players[i].AddScore(15, ScoreType.Mission7);
-                                    break;
-                            }
-                            //Caliph’s Guidelines: mission 8
-                            Players[i].AddScore(scorePanels[i].Mission8Count, ScoreType.Mission8);
-                            //Caliph’s Guidelines: mission 9
-                            Players[i].AddScore(scorePanels[i].Mission9Count * 2, ScoreType.Mission9);
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1))
+                                //Caliph’s Guidelines: mission 1
+                                Players[i].AddScore(scorePanels[i].Mission1Count * 3, ScoreType.Mission1);
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2))
+                                //Caliph’s Guidelines: mission 2
+                                Players[i].AddScore(scorePanels[i].Mission2Count * 3, ScoreType.Mission2);
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3))
+                                //Caliph’s Guidelines: mission 3
+                                Players[i].AddScore(scorePanels[i].Mission3Count * 3, ScoreType.Mission3);
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4))
+                                //Caliph’s Guidelines: mission 4
+                                if (scorePanels[i].Mission4Available)
+                                    Players[i].AddScore(scorePanels[i].SecondLongestWallLength, ScoreType.Mission4);
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5))
+                                //Caliph’s Guidelines: mission 5
+                                Players[i].AddScore(scorePanels[i].Mission5Count * 2, ScoreType.Mission5);
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6))
+                                //Caliph’s Guidelines: mission 6
+                                Players[i].AddScore(scorePanels[i].Mission6Count * 3, ScoreType.Mission6);
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7))
+                                //Caliph’s Guidelines: mission 7
+                                switch (scorePanels[i].Mission7Count)
+                                {
+                                    case 2:
+                                        Players[i].AddScore(1, ScoreType.Mission7);
+                                        break;
+                                    case 3:
+                                        Players[i].AddScore(3, ScoreType.Mission7);
+                                        break;
+                                    case 4:
+                                        Players[i].AddScore(6, ScoreType.Mission7);
+                                        break;
+                                    case 5:
+                                        Players[i].AddScore(10, ScoreType.Mission7);
+                                        break;
+                                    case 6:
+                                        Players[i].AddScore(15, ScoreType.Mission7);
+                                        break;
+                                }
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8))
+                                //Caliph’s Guidelines: mission 8
+                                Players[i].AddScore(scorePanels[i].Mission8Count, ScoreType.Mission8);
+                            if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9))
+                                //Caliph’s Guidelines: mission 9
+                                Players[i].AddScore(scorePanels[i].Mission9Count * 2, ScoreType.Mission9);
                         }
                 }
             }
@@ -645,6 +665,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 StartDateTime = StartDateTime,
                 EndDateTime = EndDateTime,
                 Modules = Modules,
+                CaliphsGuidelines = CaliphsGuidelines,
                 ScoreRound = ScoreRound,
                 Players = Players.Select(p => new ResultPlayerHistory() { Name = p.Name, ScoreDetails1 = p.ScoreDetails1, ScoreDetails2 = p.ScoreDetails2, ScoreDetails3 = p.ScoreDetails3, ScoreMeantime = p.ScoreMeantime }).ToList()
             };

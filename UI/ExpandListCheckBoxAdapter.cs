@@ -11,13 +11,15 @@ namespace AlhambraScoringAndroid.UI
 {
     public class ExpandListCheckBoxAdapter<EnumType> : BaseExpandableListAdapter where EnumType : struct, IConvertible, IComparable, IFormattable
     {
+        private readonly bool AllowFold;
         private readonly Context Context;
         private readonly Dictionary<string, Dictionary<EnumType, bool>> listWithSelections;
 
         public IEnumerable<EnumType> SelectedList => listWithSelections.SelectMany(d => d.Value).Where(d => d.Value).Select(d => d.Key);
 
-        public ExpandListCheckBoxAdapter(Context context, Dictionary<string, List<EnumType>> expandableListDetail)
+        public ExpandListCheckBoxAdapter(Context context, Dictionary<string, List<EnumType>> expandableListDetail, bool allowFold)
         {
+            AllowFold = allowFold;
             Context = context;
 
             listWithSelections = expandableListDetail.ToDictionary(d => d.Key, d => d.Value.ToDictionary(l => l, l => false));
@@ -78,6 +80,9 @@ namespace AlhambraScoringAndroid.UI
 
             textView.Text = (string)GetGroup(groupPosition);
 
+            if (!AllowFold)
+                ((ExpandableListView)parent).ExpandGroup(groupPosition);
+
             return convertView;
         }
 
@@ -106,13 +111,13 @@ namespace AlhambraScoringAndroid.UI
             else
             {
                 Android.Util.Pair pair = (Android.Util.Pair)convertView.Tag;
-                checkBox = (CheckBox)pair.First ;
-                imageView = (ImageView)pair.Second ;
+                checkBox = (CheckBox)pair.First;
+                imageView = (ImageView)pair.Second;
             }
 
             checkBox.Text = (string)GetChild(groupPosition, childPosition);
 
-                EnumType keyLocal = listWithSelections.ElementAt(groupPosition).Value.ElementAt(childPosition).Key;
+            EnumType keyLocal = listWithSelections.ElementAt(groupPosition).Value.ElementAt(childPosition).Key;
             ImageAttribute imageAttribute = keyLocal.GetEnumAttribute<EnumType, ImageAttribute>();
             if (imageAttribute != null)
                 imageView.SetImageResource(imageAttribute.Resource);

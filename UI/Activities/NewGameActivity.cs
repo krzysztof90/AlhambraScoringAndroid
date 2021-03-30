@@ -1,5 +1,4 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
-using AlhambraScoringAndroid.UI;
 using Android.App;
 using Android.OS;
 using Android.Widget;
@@ -73,10 +72,9 @@ namespace AlhambraScoringAndroid.UI.Activities
                     ExpansionModule.FanCaliphsGuidelines},
             };
             //TODO GRANADA radio buttony: No Granada (domyślnie zaznaczone), Alhambra + Granada (dostępność dodatków), Only Granada (dostępność dodatków;  bez designers i fan (? - wielkość kaeflków w family box))
-            //TODO caliphs chose
 
             expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);
-            ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions);
+            ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions, true);
             expandableListView.SetAdapter(adapter);
 
             Button startButton = FindViewById<Button>(Resource.Id.startButton);

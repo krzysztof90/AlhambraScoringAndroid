@@ -266,15 +266,15 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(extensionsTowerCountNumericUpDown, Game.HasModule(ExpansionModule.DesignerExtensions));
             AddConditionToVisible(handymenTilesHighestNumberNumericUpDown, Game.HasModule(ExpansionModule.DesignerHandymen));
             AddConditionToVisible(treasuresValueNumericUpDown, Game.HasModule(ExpansionModule.FanTreasures));
-            AddConditionToVisible(mission1RowsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
-            AddConditionToVisible(mission2ColumnsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
-            AddConditionToVisible(mission3Adjacent2BuildingsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
-            AddConditionToVisible(mission4SecondLongestWallCheckBox, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
-            AddConditionToVisible(mission5LongestDiagonalLineNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
-            AddConditionToVisible(mission6DoubleWallCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
-            AddConditionToVisible(mission7DiffernetTypesNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
-            AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
-            AddConditionToVisible(mission9Grids22CountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
+            AddConditionToVisible(mission1RowsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1));
+            AddConditionToVisible(mission2ColumnsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2));
+            AddConditionToVisible(mission3Adjacent2BuildingsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3));
+            AddConditionToVisible(mission4SecondLongestWallCheckBox, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4));
+            AddConditionToVisible(mission5LongestDiagonalLineNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5));
+            AddConditionToVisible(mission6DoubleWallCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6));
+            AddConditionToVisible(mission7DiffernetTypesNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7));
+            AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8));
+            AddConditionToVisible(mission9Grids22CountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9));
 
             AddConditionToVisible(buildingsWithoutServantTileNumericUpDown, !IsFinalRound);
             AddConditionToVisible(completedGroupOfFruitBoard1CheckBox, IsFinalRound);

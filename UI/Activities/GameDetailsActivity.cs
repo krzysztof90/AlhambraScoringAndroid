@@ -37,6 +37,10 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             return Result.Modules.Contains(module);
         }
+        public bool HasCaliphsGuideline(CaliphsGuidelinesMission module)
+        {
+            return Result.CaliphsGuidelines.Contains(module);
+        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -173,15 +177,15 @@ namespace AlhambraScoringAndroid.UI.Activities
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerBlackDices), HasModule(ExpansionModule.DesignerBuildingsOfPower));
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerHandymen), HasModule(ExpansionModule.DesignerHandymen));
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerTreasures), HasModule(ExpansionModule.FanTreasures) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission1), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission2), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission3), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission4), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission5), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission6), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission7), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission8), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission9), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission1), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission2), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission3), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission4), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission5), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission6), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission7), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission8), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8) && ScoreRound == ScoringRound.Finish);
+                SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerMission9), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9) && ScoreRound == ScoringRound.Finish);
             }
 
             AddPlayerDetailsRoundBlock(ScoringRound.First);
@@ -287,15 +291,15 @@ namespace AlhambraScoringAndroid.UI.Activities
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultBlackDices), HasModule(ExpansionModule.DesignerBuildingsOfPower));
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultHandymen), HasModule(ExpansionModule.DesignerHandymen));
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultTreasures), HasModule(ExpansionModule.FanTreasures) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission1), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission2), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission3), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission4), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission5), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission6), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission7), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission8), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission9), HasModule(ExpansionModule.FanCaliphsGuidelines) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission1), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission2), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission3), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission4), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission5), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission6), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission7), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission8), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8) && ScoreRound == ScoringRound.Finish);
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultMission9), HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9) && ScoreRound == ScoringRound.Finish);
 
             contentTable.AddView(row, contentTable.ChildCount - 1);
             contentTable.RequestLayout();

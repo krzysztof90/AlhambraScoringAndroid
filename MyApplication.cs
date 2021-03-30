@@ -79,6 +79,15 @@ namespace AlhambraScoringAndroid
         public void GameApplyModules(IEnumerable<ExpansionModule> modules)
         {
             Game.SetModules(modules);
+            if (modules.Contains(ExpansionModule.FanCaliphsGuidelines))
+                NewActivity(typeof(GameModulesDetailsChoseActivity));
+            else
+                NewActivity(typeof(GamePlayersChoseActivity));
+        }
+
+        public void GameApplyModulesDetails(IEnumerable<CaliphsGuidelinesMission> modules)
+        {
+            Game.SetModulesDetails(modules);
             NewActivity(typeof(GamePlayersChoseActivity));
         }
 
@@ -164,14 +173,20 @@ namespace AlhambraScoringAndroid
                     resultHistory.StartDateTime = DateTime.Parse(result.SingleChildNode("startTime").InnerText);
                     resultHistory.EndDateTime = DateTime.Parse(result.SingleChildNode("endTime").InnerText);
                     resultHistory.Modules = new List<ExpansionModule>();
+                    resultHistory.CaliphsGuidelines = new List<CaliphsGuidelinesMission>();
                     resultHistory.Players = new List<ResultPlayerHistory>();
                     //resultHistory.ScoreRound = result.SingleChildNode("scoreRound").InnerText.GetEnumByDescriptionValue<ScoringRound>());
                     resultHistory.ScoreRound = Enum.Parse<ScoringRound>(result.SingleChildNode("scoreRound").InnerText);
                     XmlNode modulesElement = result.SingleChildNode("modules");
+                    XmlNode caliphsGuidelinesElement = result.SingleChildNode("caliphsGuidelines");
                     foreach (XmlNode module in modulesElement.GetChildNodes("module"))
                     {
                         //resultHistory.Modules.Add(module.SingleChildNode("value").InnerText.GetEnumByDescriptionValue<ExpansionModule>());
                         resultHistory.Modules.Add(Enum.Parse<ExpansionModule>(module.SingleChildNode("value").InnerText));
+                    }
+                    foreach (XmlNode module in caliphsGuidelinesElement.GetChildNodes("caliphsGuideline"))
+                    {
+                        resultHistory.CaliphsGuidelines.Add(Enum.Parse<CaliphsGuidelinesMission>(module.SingleChildNode("value").InnerText));
                     }
                     XmlNode playersElement = result.SingleChildNode("players");
                     foreach (XmlNode player in playersElement.GetChildNodes("player"))
@@ -245,6 +260,7 @@ namespace AlhambraScoringAndroid
                 XmlOperations.AddTextChild(document, resultElement, "startTime", resultHistory.StartDateTime.ToString());
                 XmlOperations.AddTextChild(document, resultElement, "endTime", resultHistory.EndDateTime.ToString());
                 XmlElement modulesElement = document.CreateElement(String.Empty, "modules", String.Empty);
+                XmlElement caliphsGuidelinesElement = document.CreateElement(String.Empty, "caliphsGuidelines", String.Empty);
                 resultElement.AppendChild(modulesElement);
                 foreach (ExpansionModule module in resultHistory.Modules)
                 {
@@ -252,6 +268,12 @@ namespace AlhambraScoringAndroid
                     //XmlOperations.AddTextChild(document, moduleElement, "value", module.GetEnumDescription());
                     XmlOperations.AddTextChild(document, moduleElement, "value", module.ToString());
                     modulesElement.AppendChild(moduleElement);
+                }
+                foreach (CaliphsGuidelinesMission mission in resultHistory.CaliphsGuidelines)
+                {
+                    XmlElement moduleElement = document.CreateElement(String.Empty, "caliphsGuideline", String.Empty);
+                    XmlOperations.AddTextChild(document, moduleElement, "value", mission.ToString());
+                    caliphsGuidelinesElement.AppendChild(moduleElement);
                 }
                 //XmlOperations.AddTextChild(document, resultElement, "scoreRound", resultHistory.ScoreRound.GetEnumDescription());
                 XmlOperations.AddTextChild(document, resultElement, "scoreRound", resultHistory.ScoreRound.ToString());
