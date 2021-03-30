@@ -15,6 +15,8 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
+        //TODO przezroczyste obrazki
+        //TODO xmlns:android tylko jedno
         //TODO porządek w kolejności properties w layout
         //TODO restore state after application close
         //TODO another expansion modules

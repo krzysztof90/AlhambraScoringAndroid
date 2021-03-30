@@ -19,7 +19,6 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            //TODO ikony do wszystkich dodatków
             Dictionary<string, List<ExpansionModule>> extensions = new Dictionary<string, List<ExpansionModule>>()
             {
                 ["EXPANSION MODULES"] = new List<ExpansionModule>()

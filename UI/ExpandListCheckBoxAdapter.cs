@@ -84,11 +84,13 @@ namespace AlhambraScoringAndroid.UI
         public override View GetChildView(int groupPosition, int childPosition, bool isLastChild, View convertView, ViewGroup parent)
         {
             CheckBox checkBox;
+            ImageView imageView;
             if (convertView == null)
             {
                 LayoutInflater inflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
                 convertView = inflater.Inflate(Resource.Layout.list_extensionmodule_item, null);
                 checkBox = convertView.FindViewById<CheckBox>(Resource.Id.expandedListItem);
+                imageView = convertView.FindViewById<ImageView>(Resource.Id.expandedListItemImage);
 
                 checkBox.Click += new EventHandler((object sender, EventArgs e) =>
                 {
@@ -99,14 +101,21 @@ namespace AlhambraScoringAndroid.UI
                     listWithSelections.ElementAt(groupAndChild.GroupPosition).Value[key] = !listWithSelections.ElementAt(groupAndChild.GroupPosition).Value[key];
                 });
 
-                convertView.Tag = checkBox;
+                convertView.Tag = Android.Util.Pair.Create(checkBox, imageView);
             }
             else
             {
-                checkBox = (CheckBox)convertView.Tag;
+                Android.Util.Pair pair = (Android.Util.Pair)convertView.Tag;
+                checkBox = (CheckBox)pair.First ;
+                imageView = (ImageView)pair.Second ;
             }
 
             checkBox.Text = (string)GetChild(groupPosition, childPosition);
+
+                EnumType keyLocal = listWithSelections.ElementAt(groupPosition).Value.ElementAt(childPosition).Key;
+            ImageAttribute imageAttribute = keyLocal.GetEnumAttribute<EnumType, ImageAttribute>();
+            if (imageAttribute != null)
+                imageView.SetImageResource(imageAttribute.Resource);
 
             checkBox.Tag = new ExpandListCheckBoxPosition(groupPosition, childPosition);
             /// shit android
