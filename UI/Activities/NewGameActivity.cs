@@ -144,5 +144,9 @@ namespace AlhambraScoringAndroid.UI.Activities
             listView.RequestLayout();
         }
 
+        public override void OnBackPressed()
+        {
+            //base.OnBackPressed();
+        }
     }
 }
