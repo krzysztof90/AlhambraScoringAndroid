@@ -45,7 +45,20 @@ namespace AlhambraScoringAndroid.UI.Activities
                 ExpansionModule.FanTreasures,
                 ExpansionModule.FanCaliphsGuidelines,
             };
+             List<CaliphsGuidelinesMission> modulesDetails = new  List<CaliphsGuidelinesMission>()
+            {
+                    CaliphsGuidelinesMission.Mission1,
+                    CaliphsGuidelinesMission.Mission2,
+                    CaliphsGuidelinesMission.Mission3,
+                    CaliphsGuidelinesMission.Mission4,
+                    CaliphsGuidelinesMission.Mission5,
+                    CaliphsGuidelinesMission.Mission6,
+                    CaliphsGuidelinesMission.Mission7,
+                    CaliphsGuidelinesMission.Mission8,
+                    CaliphsGuidelinesMission.Mission9,
+            };
             Application.GameApplyModules(modules, GranadaOption.Without);
+            Application.GameApplyModulesDetails(modulesDetails);
             List<string> players = new List<string>();
             players.Add("E");
             players.Add("K");
