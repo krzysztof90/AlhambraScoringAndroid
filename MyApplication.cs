@@ -15,12 +15,12 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO MeasureSpecMode.Unspecified zamiast 0dp ?
+        //TODO fill_parent	ffffffff	The view should be as big as its parent (minus padding). This constant is deprecated starting from API Level 8 and is replaced by match_parent.
         //TODO przezroczyste obrazki
         //TODO xmlns:android tylko jedno
         //TODO porządek w kolejności properties w layout
         //TODO restore state after application close
-        //TODO another expansion modules
+        //TODO another expansion modules, granada
         //TODO labelki słownik
         //TODO iOS
         //https://docs.microsoft.com/pl-pl/xamarin/

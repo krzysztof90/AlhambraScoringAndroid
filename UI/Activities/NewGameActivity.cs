@@ -82,7 +82,6 @@ namespace AlhambraScoringAndroid.UI.Activities
                     GranadaOption.Alone,
                 },
             };
-            //TODO GRANADA
 
             expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);
             ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions, true, true);
