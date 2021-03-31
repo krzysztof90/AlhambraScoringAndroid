@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="DialogInterfaceOnClickListener.cs" />
     <Compile Include="GamePlay\CaliphsGuidelines.cs" />
+    <Compile Include="GamePlay\GranadaOption.cs" />
     <Compile Include="GamePlay\ResultHistory.cs" />
     <Compile Include="GamePlay\ResultPlayerHistory.cs" />
     <Compile Include="GamePlay\ScoreDetails.cs" />
@@ -449,6 +450,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_modules_details.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\list_extensionmodule_item_radiobuttons.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

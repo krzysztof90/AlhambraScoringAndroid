@@ -45,6 +45,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public DateTime? EndDateTime { get; private set; }
 
         private List<ExpansionModule> Modules;
+        public GranadaOption GranadaOption { get; private set; }
         private List<CaliphsGuidelinesMission> CaliphsGuidelines;
         private List<Player> Players;
         public ScoringRound ScoreRound { get; private set; }
@@ -111,6 +112,10 @@ namespace AlhambraScoringAndroid.GamePlay
         public void SetModules(IEnumerable<ExpansionModule> modules)
         {
             Modules = modules.ToList();
+        }
+        public void SetGranadaOption(GranadaOption granadaOption)
+        {
+            GranadaOption =granadaOption;
         }
 
         public void SetModulesDetails(IEnumerable<CaliphsGuidelinesMission> modulesDetails)
@@ -332,8 +337,6 @@ namespace AlhambraScoringAndroid.GamePlay
                 if (!treasuresAvailableValues.Contains(scorePanels[i].TreasuresValue))
                     return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów ze skarbów");
             }
-
-            //TODO caliphs validation: 3 and the same
 
             for (int i = 0; i < PlayersCount; i++)
             {

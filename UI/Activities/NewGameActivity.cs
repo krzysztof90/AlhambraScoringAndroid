@@ -1,6 +1,7 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.App;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace AlhambraScoringAndroid.UI.Activities
     public class NewGameActivity : BaseActivity
     {
         private ExpandableListView expandableListView;
+        private ExpandableListView expandableListView2;
 
         protected override int ContentView => Resource.Layout.activity_new_game;
 
@@ -24,33 +26,33 @@ namespace AlhambraScoringAndroid.UI.Activities
                 {
                     ExpansionModule.ExpansionViziersFavour,
                     ExpansionModule.ExpansionCurrencyExchangeCards,
-                    ExpansionModule.ExpansionBonusCards, 
-                    ExpansionModule.ExpansionSquares, 
+                    ExpansionModule.ExpansionBonusCards,
+                    ExpansionModule.ExpansionSquares,
                     ExpansionModule.ExpansionCityGates,
-                    ExpansionModule.ExpansionDiamonds, 
+                    ExpansionModule.ExpansionDiamonds,
                     ExpansionModule.ExpansionCharacters,
-                    ExpansionModule.ExpansionCamps, 
+                    ExpansionModule.ExpansionCamps,
                     ExpansionModule.ExpansionCityWalls,
-                    ExpansionModule.ExpansionThieves, 
-                    ExpansionModule.ExpansionChange, 
+                    ExpansionModule.ExpansionThieves,
+                    ExpansionModule.ExpansionChange,
                     ExpansionModule.ExpansionStreetTrader,
                     ExpansionModule.ExpansionTreasureChamber,
-                    ExpansionModule.ExpansionMasterBuilders, 
-                    ExpansionModule.ExpansionInvaders, 
-                    ExpansionModule.ExpansionBazaars, 
+                    ExpansionModule.ExpansionMasterBuilders,
+                    ExpansionModule.ExpansionInvaders,
+                    ExpansionModule.ExpansionBazaars,
                     ExpansionModule.ExpansionNewScoreCards,
                     ExpansionModule.ExpansionPowerOfSultan,
-                    ExpansionModule.ExpansionCaravanserai, 
+                    ExpansionModule.ExpansionCaravanserai,
                     ExpansionModule.ExpansionArtOfTheMoors,
-                    ExpansionModule.ExpansionFalconers, 
-                    ExpansionModule.ExpansionWatchtowers, 
-                    ExpansionModule.ExpansionBuildingSites, 
+                    ExpansionModule.ExpansionFalconers,
+                    ExpansionModule.ExpansionWatchtowers,
+                    ExpansionModule.ExpansionBuildingSites,
                     ExpansionModule.ExpansionExchangeCertificates,
                 },
                 ["QUEENIE EXPANSION MODULES"] = new List<ExpansionModule>()
                 {
                     ExpansionModule.QueenieMagicalBuildings,
-                    ExpansionModule.QueenieMedina, 
+                    ExpansionModule.QueenieMedina,
                 },
                 ["DESIGNER EXPANSION MODULES"] = new List<ExpansionModule>() {
                     ExpansionModule.DesignerNewBuildingGrounds,
@@ -71,17 +73,77 @@ namespace AlhambraScoringAndroid.UI.Activities
                     ExpansionModule.FanTreasures,
                     ExpansionModule.FanCaliphsGuidelines},
             };
-            //TODO GRANADA radio buttony: No Granada (domyślnie zaznaczone), Alhambra + Granada (dostępność dodatków), Only Granada (dostępność dodatków;  bez designers i fan (? - wielkość kaeflków w family box))
+            Dictionary<string, List<GranadaOption>> granadaOptions = new Dictionary<string, List<GranadaOption>>()
+            {
+                ["GRANADA"] = new List<GranadaOption>()
+                {
+                    GranadaOption.Without,
+                    GranadaOption.With,
+                    GranadaOption.Alone,
+                },
+            };
+            //TODO GRANADA
 
             expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);
-            ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions, true);
+            ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions, true, true);
             expandableListView.SetAdapter(adapter);
+            expandableListView.GroupClick += ExpandableListView_GroupClick;
+            setExpandableListViewHeight(expandableListView, -1);
+
+            expandableListView2 = FindViewById<ExpandableListView>(Resource.Id.expandableListView2);
+            ExpandListCheckBoxAdapter<GranadaOption> adapter2 = new ExpandListCheckBoxAdapter<GranadaOption>(this, granadaOptions, false, true);
+            expandableListView2.SetAdapter(adapter2);
+            expandableListView2.GroupClick += ExpandableListView_GroupClick;
+            setExpandableListViewHeight(expandableListView2, -1);
 
             Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.GameApplyModules(adapter.SelectedList);
+                Application.GameApplyModules(adapter.SelectedListMultiple, adapter2.SelectedListSingle["GRANADA"]);
             });
         }
+
+        private void ExpandableListView_GroupClick(object sender, ExpandableListView.GroupClickEventArgs e)
+        {
+            setExpandableListViewHeight((ExpandableListView)sender, e.GroupPosition);
+            e.Handled = false;
+        }
+
+        //shit android. Problem with multiple ExpandableListView
+        private void setExpandableListViewHeight(ExpandableListView listView, int group)
+        {
+            IExpandableListAdapter listAdapter = (IExpandableListAdapter)listView.ExpandableListAdapter;
+            int totalHeight = 0;
+            int desiredWidth = View.MeasureSpec.MakeMeasureSpec(listView.Width, MeasureSpecMode.Exactly);
+            for (int i = 0; i < listAdapter.GroupCount; i++)
+            {
+                View groupItem = listAdapter.GetGroupView(i, false, null, listView);
+                groupItem.Measure(desiredWidth, (int)MeasureSpecMode.Unspecified);
+
+                totalHeight += groupItem.MeasuredHeight;
+
+                if (((listView.IsGroupExpanded(i)) && (i != group))
+                        || ((!listView.IsGroupExpanded(i)) && (i == group)))
+                {
+                    for (int j = 0; j < listAdapter.GetChildrenCount(i); j++)
+                    {
+                        View listItem = listAdapter.GetChildView(i, j, false, null, listView);
+                        listItem.Measure(desiredWidth, (int)MeasureSpecMode.Unspecified);
+
+                        totalHeight += listItem.MeasuredHeight;
+                    }
+                    totalHeight += (listView.DividerHeight * (listAdapter.GetChildrenCount(i) - 1));
+                }
+            }
+
+            ViewGroup.LayoutParams params2 = listView.LayoutParameters;
+            totalHeight += (listView.DividerHeight * (listAdapter.GroupCount - 1));
+            //if (height < 10)
+            //    height = 200;
+            params2.Height = totalHeight;
+            listView.LayoutParameters = params2;
+            listView.RequestLayout();
+        }
+
     }
 }

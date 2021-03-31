@@ -37,13 +37,13 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             listView = FindViewById<ExpandableListView>(Resource.Id.listView);
 
-            ExpandListCheckBoxAdapter<CaliphsGuidelinesMission> adapter = new ExpandListCheckBoxAdapter<CaliphsGuidelinesMission>(this, missions, false);
+            ExpandListCheckBoxAdapter<CaliphsGuidelinesMission> adapter = new ExpandListCheckBoxAdapter<CaliphsGuidelinesMission>(this, missions,true, false);
             listView.SetAdapter(adapter);
 
             Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.GameApplyModulesDetails(adapter.SelectedList);
+                Application.GameApplyModulesDetails(adapter.SelectedListMultiple);
             });
         }
     }

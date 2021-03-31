@@ -15,6 +15,7 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
+        //TODO MeasureSpecMode.Unspecified zamiast 0dp ?
         //TODO przezroczyste obrazki
         //TODO xmlns:android tylko jedno
         //TODO porządek w kolejności properties w layout
@@ -76,9 +77,10 @@ namespace AlhambraScoringAndroid
             NewActivity(typeof(NewGameActivity));
         }
 
-        public void GameApplyModules(IEnumerable<ExpansionModule> modules)
+        public void GameApplyModules(IEnumerable<ExpansionModule> modules, GranadaOption granadaOption)
         {
             Game.SetModules(modules);
+            Game.SetGranadaOption(granadaOption);
             if (modules.Contains(ExpansionModule.FanCaliphsGuidelines))
                 NewActivity(typeof(GameModulesDetailsChoseActivity));
             else
