@@ -45,7 +45,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 ExpansionModule.FanTreasures,
                 ExpansionModule.FanCaliphsGuidelines,
             };
-            Application.GameApplyModules(modules);
+            Application.GameApplyModules(modules, GranadaOption.Without);
             List<string> players = new List<string>();
             players.Add("E");
             players.Add("K");

@@ -24,7 +24,7 @@ namespace AlhambraScoringAndroid
         //TODO labelki słownik
         //TODO iOS
         //https://docs.microsoft.com/pl-pl/xamarin/
-        //TODO google play "I would appreciate any feedback", BGG
+        //TODO google play "I would appreciate any feedback", link do github; BGG
         //TODO niepotrzebne referencje, nuget, aktualizacja
         //TODO minSdkVersion
         //TODO przetestować wszędzie obracanie ekranu
@@ -167,7 +167,9 @@ namespace AlhambraScoringAndroid
             {
                 XmlDocument document = new XmlDocument();
                 document.Load(fileName);
-                XmlNode resultsElement = document.SingleChildNode("body").SingleChildNode("results");
+                XmlNode bodyElement = document.SingleChildNode("body");
+                XmlNode resultsElement = bodyElement.SingleChildNode("results");
+                string version = bodyElement.SingleChildNode("version").InnerText;
                 foreach (XmlNode result in resultsElement.GetChildNodes("result"))
                 {
                     ResultHistory resultHistory = new ResultHistory();
@@ -252,6 +254,7 @@ namespace AlhambraScoringAndroid
             document.InsertBefore(xmlDeclaration, document.DocumentElement);
             XmlElement mainElement = document.CreateElement(String.Empty, "body", String.Empty);
             document.AppendChild(mainElement);
+            XmlOperations.AddTextChild(document, mainElement, "version", Context.PackageManager.GetPackageInfo(Context.PackageName, 0).VersionName);
             XmlElement resultsElement = document.CreateElement(String.Empty, "results", String.Empty);
             mainElement.AppendChild(resultsElement);
 
