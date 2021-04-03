@@ -20,6 +20,31 @@ namespace AlhambraScoringAndroid.UI
         ScoreLineNumberView bonusCardsChambersCountNumericUpDown;
         ScoreLineNumberView bonusCardsGardenCountNumericUpDown;
         ScoreLineNumberView bonusCardsTowerCountNumericUpDown;
+        ScoreLineNumberView squaresPavilionCountNumericUpDown;
+        ScoreLineNumberView squaresSeraglioCountNumericUpDown;
+        ScoreLineNumberView squaresArcadesCountNumericUpDown;
+        ScoreLineNumberView squaresChambersCountNumericUpDown;
+        ScoreLineNumberView squaresGardenCountNumericUpDown;
+        ScoreLineNumberView squaresTowerCountNumericUpDown;
+        ScoreLineCheckBoxView ownedCharacterTheWiseManCheckBox;
+        ScoreLineCheckBoxView ownedCharacterTheCityWatchCheckBox;
+        ScoreLineNumberView campsPointsNumericUpDown;
+        ScoreLineNumberView streetTradersPavilionCountNumericUpDown;
+        ScoreLineNumberView streetTradersSeraglioCountNumericUpDown;
+        ScoreLineNumberView streetTradersArcadesCountNumericUpDown;
+        ScoreLineNumberView streetTradersChambersCountNumericUpDown;
+        ScoreLineNumberView streetTradersGardenCountNumericUpDown;
+        ScoreLineNumberView streetTradersTowerCountNumericUpDown;
+        ScoreLineNumberView treasuresCountNumericUpDown;
+        ScoreLineNumberView unprotectedSidesCountNumericUpDown;
+        ScoreLineNumberView unprotectedSidesNeighbouringCountNumericUpDown;
+        ScoreLineNumberView bazaarsPointsNumericUpDown;
+        ScoreLineNumberView artOfTheMoorsPointsNumericUpDown;
+        ScoreLineNumberView falconsBlackNumberNumericUpDown;
+        ScoreLineNumberView falconsBrownNumberNumericUpDown;
+        ScoreLineNumberView falconsWhiteNumberNumericUpDown;
+        ScoreLineNumberView watchtowersNumberNumericUpDown;
+        ScoreLineNumberView medinasNumberNumericUpDown;
         ScoreLineNumberView buildingsWithoutServantTileNumericUpDown;
         ScoreLineCheckBoxView completedGroupOfFruitBoard1CheckBox;
         ScoreLineCheckBoxView completedGroupOfFruitBoard2CheckBox;
@@ -83,6 +108,31 @@ namespace AlhambraScoringAndroid.UI
             bonusCardsChambersCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.bonusCardsChambersCountNumericUpDown);
             bonusCardsGardenCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.bonusCardsGardenCountNumericUpDown);
             bonusCardsTowerCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.bonusCardsTowerCountNumericUpDown);
+            squaresPavilionCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.squaresPavilionCountNumericUpDown);
+            squaresSeraglioCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.squaresSeraglioCountNumericUpDown);
+            squaresArcadesCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.squaresArcadesCountNumericUpDown);
+            squaresChambersCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.squaresChambersCountNumericUpDown);
+            squaresGardenCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.squaresGardenCountNumericUpDown);
+            squaresTowerCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.squaresTowerCountNumericUpDown);
+            ownedCharacterTheWiseManCheckBox = Root.FindViewById<ScoreLineCheckBoxView>(Resource.Id.ownedCharacterTheWiseManCheckBox);
+            ownedCharacterTheCityWatchCheckBox = Root.FindViewById<ScoreLineCheckBoxView>(Resource.Id.ownedCharacterTheCityWatchCheckBox);
+            campsPointsNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.campsPointsNumericUpDown);
+            streetTradersPavilionCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.streetTradersPavilionCountNumericUpDown);
+            streetTradersSeraglioCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.streetTradersSeraglioCountNumericUpDown);
+            streetTradersArcadesCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.streetTradersArcadesCountNumericUpDown);
+            streetTradersChambersCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.streetTradersChambersCountNumericUpDown);
+            streetTradersGardenCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.streetTradersGardenCountNumericUpDown);
+            streetTradersTowerCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.streetTradersTowerCountNumericUpDown);
+            treasuresCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.treasuresCountNumericUpDown);
+            unprotectedSidesCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.unprotectedSidesCountNumericUpDown);
+            unprotectedSidesNeighbouringCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.unprotectedSidesNeighbouringCountNumericUpDown);
+            bazaarsPointsNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.bazaarsPointsNumericUpDown);
+            artOfTheMoorsPointsNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.artOfTheMoorsPointsNumericUpDown);
+            falconsBlackNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.falconsBlackNumberNumericUpDown);
+            falconsBrownNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.falconsBrownNumberNumericUpDown);
+            falconsWhiteNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.falconsWhiteNumberNumericUpDown);
+            watchtowersNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.watchtowersNumberNumericUpDown);
+            medinasNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.medinasNumberNumericUpDown);
             buildingsWithoutServantTileNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.buildingsWithoutServantTileNumericUpDown);
             completedGroupOfFruitBoard1CheckBox = Root.FindViewById<ScoreLineCheckBoxView>(Resource.Id.completedGroupOfFruitBoard1CheckBox);
             completedGroupOfFruitBoard2CheckBox = Root.FindViewById<ScoreLineCheckBoxView>(Resource.Id.completedGroupOfFruitBoard2CheckBox);
@@ -142,6 +192,31 @@ namespace AlhambraScoringAndroid.UI
             Controls.Add(bonusCardsChambersCountNumericUpDown);
             Controls.Add(bonusCardsGardenCountNumericUpDown);
             Controls.Add(bonusCardsTowerCountNumericUpDown);
+            Controls.Add(squaresPavilionCountNumericUpDown);
+            Controls.Add(squaresSeraglioCountNumericUpDown);
+            Controls.Add(squaresArcadesCountNumericUpDown);
+            Controls.Add(squaresChambersCountNumericUpDown);
+            Controls.Add(squaresGardenCountNumericUpDown);
+            Controls.Add(squaresTowerCountNumericUpDown);
+            Controls.Add(ownedCharacterTheWiseManCheckBox);
+            Controls.Add(ownedCharacterTheCityWatchCheckBox);
+            Controls.Add(campsPointsNumericUpDown);
+            Controls.Add(streetTradersPavilionCountNumericUpDown);
+            Controls.Add(streetTradersSeraglioCountNumericUpDown);
+            Controls.Add(streetTradersArcadesCountNumericUpDown);
+            Controls.Add(streetTradersChambersCountNumericUpDown);
+            Controls.Add(streetTradersGardenCountNumericUpDown);
+            Controls.Add(streetTradersTowerCountNumericUpDown);
+            Controls.Add(treasuresCountNumericUpDown);
+            Controls.Add(unprotectedSidesCountNumericUpDown);
+            Controls.Add(unprotectedSidesNeighbouringCountNumericUpDown);
+            Controls.Add(bazaarsPointsNumericUpDown);
+            Controls.Add(artOfTheMoorsPointsNumericUpDown);
+            Controls.Add(falconsBlackNumberNumericUpDown);
+            Controls.Add(falconsBrownNumberNumericUpDown);
+            Controls.Add(falconsWhiteNumberNumericUpDown);
+            Controls.Add(watchtowersNumberNumericUpDown);
+            Controls.Add(medinasNumberNumericUpDown);
             Controls.Add(buildingsWithoutServantTileNumericUpDown);
             Controls.Add(completedGroupOfFruitBoard1CheckBox);
             Controls.Add(completedGroupOfFruitBoard2CheckBox);
@@ -191,8 +266,8 @@ namespace AlhambraScoringAndroid.UI
             blackDiceTotalPipsNumericUpDown.OnValueChange = () => { VisibleSecondLongestWall(); };
             mission4SecondLongestWallCheckBox.OnValueChange = () => { VisibleSecondLongestWall(); };
 
-            //TODO maximum for mission3Adjacent2BuildingsCountNumericUpDown, mission6DoubleWallCountNumericUpDown, mission9Grids22CountNumericUpDown
-            wallsCountNumericUpDown.SetNumberRange(0, Game.AllTilesCount * 2 + 2);
+            //TODO maximum for campsPointsNumericUpDown, mission3Adjacent2BuildingsCountNumericUpDown, mission6DoubleWallCountNumericUpDown, mission9Grids22CountNumericUpDown
+            wallsCountNumericUpDown.SetNumberRange(0, Game.WallsMaxLength);
             pavilionCountNumericUpDown.SetNumberRange(0, Game.BuildingsMaxCount[BuildingType.Pavilion]);
             seraglioCountNumericUpDown.SetNumberRange(0, Game.BuildingsMaxCount[BuildingType.Seraglio]);
             arcadesCountNumericUpDown.SetNumberRange(0, Game.BuildingsMaxCount[BuildingType.Arcades]);
@@ -205,6 +280,28 @@ namespace AlhambraScoringAndroid.UI
             bonusCardsChambersCountNumericUpDown.SetNumberRange(0, Game.BonusCardsMaxCount[BuildingType.Chambers]);
             bonusCardsGardenCountNumericUpDown.SetNumberRange(0, Game.BonusCardsMaxCount[BuildingType.Garden]);
             bonusCardsTowerCountNumericUpDown.SetNumberRange(0, Game.BonusCardsMaxCount[BuildingType.Tower]);
+            squaresPavilionCountNumericUpDown.SetNumberRange(0, 9);
+            squaresSeraglioCountNumericUpDown.SetNumberRange(0, 9);
+            squaresArcadesCountNumericUpDown.SetNumberRange(0, 9);
+            squaresChambersCountNumericUpDown.SetNumberRange(0, 9);
+            squaresGardenCountNumericUpDown.SetNumberRange(0, 9);
+            squaresTowerCountNumericUpDown.SetNumberRange(0, 9);
+            streetTradersPavilionCountNumericUpDown.SetNumberRange(0, 7);
+            streetTradersSeraglioCountNumericUpDown.SetNumberRange(0, 7);
+            streetTradersArcadesCountNumericUpDown.SetNumberRange(0, 7);
+            streetTradersChambersCountNumericUpDown.SetNumberRange(0, 7);
+            streetTradersGardenCountNumericUpDown.SetNumberRange(0, 7);
+            streetTradersTowerCountNumericUpDown.SetNumberRange(0, 7);
+            treasuresCountNumericUpDown.SetNumberRange(0, 42);
+            unprotectedSidesCountNumericUpDown.SetNumberRange(0, Game.AllTilesCount);
+            unprotectedSidesNeighbouringCountNumericUpDown.SetNumberRange(0, Game.AllTilesCount);
+            bazaarsPointsNumericUpDown.SetNumberRange(0, 192);
+            artOfTheMoorsPointsNumericUpDown.SetNumberRange(0, 147);
+            falconsBlackNumberNumericUpDown.SetNumberRange(0, 5);
+            falconsBrownNumberNumericUpDown.SetNumberRange(0, 5);
+            falconsWhiteNumberNumericUpDown.SetNumberRange(0, 5);
+            watchtowersNumberNumericUpDown.SetNumberRange(0, 18);
+            medinasNumberNumericUpDown.SetNumberRange(0, 9);
             buildingsWithoutServantTileNumericUpDown.SetNumberRange(0, Game.AllBuildingsCount);
             faceDownFruitsCountNumericUpDown.SetNumberRange(0, 35);
             bathhousesPointsNumericUpDown.SetNumberRange(0, (Game.AllTilesCount - 1) * 4 * 6);
@@ -224,7 +321,7 @@ namespace AlhambraScoringAndroid.UI
             mission5LongestDiagonalLineNumericUpDown.SetNumberRange(0, (Game.AllTilesCount + 1) / 2);
             mission7DiffernetTypesNumberNumericUpDown.SetNumberRange(0, 6);
             mission8PathBuildingsNumberNumericUpDown.SetNumberRange(0, (Game.AllTilesCount + 1) / 2);
-            secondLongestWallNumericUpDown.SetNumberRange(0, (Game.AllTilesCount * 2 + 2) / 2 - 2);
+            secondLongestWallNumericUpDown.SetNumberRange(0, Game.WallsMaxLength / 2 - 2);
 
             VisibleSecondLongestWall();
 
@@ -234,6 +331,31 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(bonusCardsChambersCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionBonusCards));
             AddConditionToVisible(bonusCardsGardenCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionBonusCards));
             AddConditionToVisible(bonusCardsTowerCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionBonusCards));
+            AddConditionToVisible(squaresPavilionCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionSquares));
+            AddConditionToVisible(squaresSeraglioCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionSquares));
+            AddConditionToVisible(squaresArcadesCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionSquares));
+            AddConditionToVisible(squaresChambersCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionSquares));
+            AddConditionToVisible(squaresGardenCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionSquares));
+            AddConditionToVisible(squaresTowerCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionSquares));
+            AddConditionToVisible(ownedCharacterTheWiseManCheckBox, Game.HasModule(ExpansionModule.ExpansionCharacters));
+            AddConditionToVisible(ownedCharacterTheCityWatchCheckBox, Game.HasModule(ExpansionModule.ExpansionCharacters));
+            AddConditionToVisible(campsPointsNumericUpDown, Game.HasModule(ExpansionModule.ExpansionCamps));
+            AddConditionToVisible(streetTradersPavilionCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+            AddConditionToVisible(streetTradersSeraglioCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+            AddConditionToVisible(streetTradersArcadesCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+            AddConditionToVisible(streetTradersChambersCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+            AddConditionToVisible(streetTradersGardenCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+            AddConditionToVisible(streetTradersTowerCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+            AddConditionToVisible(treasuresCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionTreasureChamber));
+            AddConditionToVisible(unprotectedSidesCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionInvaders));
+            AddConditionToVisible(unprotectedSidesNeighbouringCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionInvaders));
+            AddConditionToVisible(bazaarsPointsNumericUpDown, Game.HasModule(ExpansionModule.ExpansionBazaars));
+            AddConditionToVisible(artOfTheMoorsPointsNumericUpDown, Game.HasModule(ExpansionModule.ExpansionArtOfTheMoors));
+            AddConditionToVisible(falconsBlackNumberNumericUpDown, Game.HasModule(ExpansionModule.ExpansionFalconers));
+            AddConditionToVisible(falconsBrownNumberNumericUpDown, Game.HasModule(ExpansionModule.ExpansionFalconers));
+            AddConditionToVisible(falconsWhiteNumberNumericUpDown, Game.HasModule(ExpansionModule.ExpansionFalconers));
+            AddConditionToVisible(watchtowersNumberNumericUpDown, Game.HasModule(ExpansionModule.ExpansionWatchtowers));
+            AddConditionToVisible(medinasNumberNumericUpDown, Game.HasModule(ExpansionModule.QueenieMedina));
             AddConditionToVisible(buildingsWithoutServantTileNumericUpDown, Game.HasModule(ExpansionModule.DesignerPalaceStaff));
             AddConditionToVisible(completedGroupOfFruitBoard1CheckBox, Game.HasModule(ExpansionModule.DesignerOrchards));
             AddConditionToVisible(completedGroupOfFruitBoard2CheckBox, Game.HasModule(ExpansionModule.DesignerOrchards));
@@ -276,6 +398,8 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8));
             AddConditionToVisible(mission9Grids22CountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9));
 
+            AddConditionToVisible(unprotectedSidesNeighbouringCountNumericUpDown, IsFinalRound);
+            AddConditionToVisible(bazaarsPointsNumericUpDown, IsFinalRound);
             AddConditionToVisible(buildingsWithoutServantTileNumericUpDown, !IsFinalRound);
             AddConditionToVisible(completedGroupOfFruitBoard1CheckBox, IsFinalRound);
             AddConditionToVisible(completedGroupOfFruitBoard2CheckBox, IsFinalRound);
@@ -302,6 +426,29 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(bonusCardsChambersCountNumericUpDown, !IsDirk);
             AddConditionToVisible(bonusCardsGardenCountNumericUpDown, !IsDirk);
             AddConditionToVisible(bonusCardsTowerCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(squaresPavilionCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(squaresSeraglioCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(squaresArcadesCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(squaresChambersCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(squaresGardenCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(squaresTowerCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(ownedCharacterTheWiseManCheckBox, !IsDirk);
+            AddConditionToVisible(ownedCharacterTheCityWatchCheckBox, !IsDirk);
+            AddConditionToVisible(campsPointsNumericUpDown, !IsDirk);
+            AddConditionToVisible(streetTradersPavilionCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(streetTradersSeraglioCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(streetTradersArcadesCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(streetTradersChambersCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(streetTradersGardenCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(streetTradersTowerCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(unprotectedSidesCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(unprotectedSidesNeighbouringCountNumericUpDown, !IsDirk);
+            AddConditionToVisible(bazaarsPointsNumericUpDown, !IsDirk);
+            AddConditionToVisible(artOfTheMoorsPointsNumericUpDown, !IsDirk);
+            AddConditionToVisible(falconsBlackNumberNumericUpDown, !IsDirk);
+            AddConditionToVisible(falconsBrownNumberNumericUpDown, !IsDirk);
+            AddConditionToVisible(falconsWhiteNumberNumericUpDown, !IsDirk);
+            AddConditionToVisible(watchtowersNumberNumericUpDown, !IsDirk);
             AddConditionToVisible(buildingsWithoutServantTileNumericUpDown, !IsDirk);
             AddConditionToVisible(completedGroupOfFruitBoard1CheckBox, !IsDirk);
             AddConditionToVisible(completedGroupOfFruitBoard2CheckBox, !IsDirk);
@@ -369,6 +516,39 @@ namespace AlhambraScoringAndroid.UI
                 [BuildingType.Garden] = GetNumberValue(bonusCardsGardenCountNumericUpDown),
                 [BuildingType.Tower] = GetNumberValue(bonusCardsTowerCountNumericUpDown),
             };
+        public Dictionary<BuildingType, int> SquaresBuildingsCount =>
+            new Dictionary<BuildingType, int>()
+            {
+                [BuildingType.Pavilion] = GetNumberValue(squaresPavilionCountNumericUpDown),
+                [BuildingType.Seraglio] = GetNumberValue(squaresSeraglioCountNumericUpDown),
+                [BuildingType.Arcades] = GetNumberValue(squaresArcadesCountNumericUpDown),
+                [BuildingType.Chambers] = GetNumberValue(squaresChambersCountNumericUpDown),
+                [BuildingType.Garden] = GetNumberValue(squaresGardenCountNumericUpDown),
+                [BuildingType.Tower] = GetNumberValue(squaresTowerCountNumericUpDown),
+            };
+        public bool OwnedCharacterTheWiseMan => GetCheckBoxValue(ownedCharacterTheWiseManCheckBox);
+        public bool OwnedCharacterTheCityWatch => GetCheckBoxValue(ownedCharacterTheCityWatchCheckBox);
+        public int CampsPoints => GetNumberValue(campsPointsNumericUpDown);
+        public Dictionary<BuildingType, int> StreetTradersNumber =>
+            new Dictionary<BuildingType, int>()
+            {
+                [BuildingType.Pavilion] = GetNumberValue(streetTradersPavilionCountNumericUpDown),
+                [BuildingType.Seraglio] = GetNumberValue(streetTradersSeraglioCountNumericUpDown),
+                [BuildingType.Arcades] = GetNumberValue(streetTradersArcadesCountNumericUpDown),
+                [BuildingType.Chambers] = GetNumberValue(streetTradersChambersCountNumericUpDown),
+                [BuildingType.Garden] = GetNumberValue(streetTradersGardenCountNumericUpDown),
+                [BuildingType.Tower] = GetNumberValue(streetTradersTowerCountNumericUpDown),
+            };
+        public int TreasuresCount => GetNumberValue(treasuresCountNumericUpDown);
+        public int UnprotectedSidesCount => GetNumberValue(unprotectedSidesCountNumericUpDown);
+        public int UnprotectedSidesNeighbouringCount => GetNumberValue(unprotectedSidesNeighbouringCountNumericUpDown);
+        public int BazaarsTotalPoints => GetNumberValue(bazaarsPointsNumericUpDown);
+        public int ArtOfTheMoorsPoints => GetNumberValue(artOfTheMoorsPointsNumericUpDown);
+        public int FalconsBlackNumber => GetNumberValue(falconsBlackNumberNumericUpDown);
+        public int FalconsBrownNumber => GetNumberValue(falconsBrownNumberNumericUpDown);
+        public int FalconsWhiteNumber => GetNumberValue(falconsWhiteNumberNumericUpDown);
+        public int WatchtowersNumber => GetNumberValue(watchtowersNumberNumericUpDown);
+        public int MedinasNumber => GetNumberValue(medinasNumberNumericUpDown);
         public int BuildingsWithoutServantTile => GetNumberValue(buildingsWithoutServantTileNumericUpDown);
         public bool CompletedGroupOfFruitBoard1 => GetCheckBoxValue(completedGroupOfFruitBoard1CheckBox);
         public bool CompletedGroupOfFruitBoard2 => GetCheckBoxValue(completedGroupOfFruitBoard2CheckBox);

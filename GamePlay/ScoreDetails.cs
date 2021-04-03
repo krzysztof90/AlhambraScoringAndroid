@@ -11,6 +11,16 @@
         public int GardenNumber { get; set; }
         public int TowerNumber { get; set; }
         public int BuildingsBonuses { get; set; }
+        public int TheCityWatch { get; set; }
+        public int Camps { get; set; }
+        public int StreetTraders { get; set; }
+        public int TreasureChamber { get; set; }
+        public int Invaders { get; set; }
+        public int Bazaars { get; set; }
+        public int ArtOfTheMoors { get; set; }
+        public int Falconers { get; set; }
+        public int Watchtowers { get; set; }
+        public int Medina { get; set; }
         public int BuildingsWithoutServantTile { get; set; }
         public int Orchards { get; set; }
         public int Bathhouses { get; set; }
@@ -30,7 +40,7 @@
         public int Mission8 { get; set; }
         public int Mission9 { get; set; }
 
-        public int Sum => ImmediatelyPoints + WallLength + PavilionNumber + SeraglioNumber + ArcadesNumber + ChambersNumber + GardenNumber + TowerNumber - BuildingsWithoutServantTile + Orchards + Bathhouses + WishingWells + CompletedProjects + Animals + BlackDices + Handymen + Treasures + Mission1 + Mission2 + Mission3 + Mission4 + Mission5 + Mission6 + Mission7 + Mission8 + Mission9;
+        public int Sum => ImmediatelyPoints + WallLength + PavilionNumber + SeraglioNumber + ArcadesNumber + ChambersNumber + GardenNumber + TowerNumber+ TheCityWatch + Camps+ StreetTraders+ TreasureChamber - Invaders + Bazaars + ArtOfTheMoors+ Falconers+ Watchtowers - Medina - BuildingsWithoutServantTile + Orchards + Bathhouses + WishingWells + CompletedProjects + Animals + BlackDices + Handymen + Treasures + Mission1 + Mission2 + Mission3 + Mission4 + Mission5 + Mission6 + Mission7 + Mission8 + Mission9;
 
         public ScoreDetails Copy()
         {
@@ -49,6 +59,16 @@
             scoreDetails.GardenNumber = scoreDetails1.GardenNumber + scoreDetails2.GardenNumber;
             scoreDetails.TowerNumber = scoreDetails1.TowerNumber + scoreDetails2.TowerNumber;
             scoreDetails.BuildingsBonuses = scoreDetails1.BuildingsBonuses + scoreDetails2.BuildingsBonuses;
+            scoreDetails.TheCityWatch = scoreDetails1.TheCityWatch + scoreDetails2.TheCityWatch;
+            scoreDetails.Camps = scoreDetails1.Camps + scoreDetails2.Camps;
+            scoreDetails.StreetTraders = scoreDetails1.StreetTraders + scoreDetails2.StreetTraders;
+            scoreDetails.TreasureChamber = scoreDetails1.TreasureChamber + scoreDetails2.TreasureChamber;
+            scoreDetails.Invaders = scoreDetails1.Invaders + scoreDetails2.Invaders;
+            scoreDetails.Bazaars = scoreDetails1.Bazaars + scoreDetails2.Bazaars;
+            scoreDetails.ArtOfTheMoors = scoreDetails1.ArtOfTheMoors + scoreDetails2.ArtOfTheMoors;
+            scoreDetails.Falconers = scoreDetails1.Falconers + scoreDetails2.Falconers;
+            scoreDetails.Watchtowers = scoreDetails1.Watchtowers + scoreDetails2.Watchtowers;
+            scoreDetails.Medina = scoreDetails1.Medina + scoreDetails2.Medina;
             scoreDetails.BuildingsWithoutServantTile = scoreDetails1.BuildingsWithoutServantTile + scoreDetails2.BuildingsWithoutServantTile;
             scoreDetails.Orchards = scoreDetails1.Orchards + scoreDetails2.Orchards;
             scoreDetails.Bathhouses = scoreDetails1.Bathhouses + scoreDetails2.Bathhouses;

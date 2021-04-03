@@ -1,6 +1,9 @@
-﻿using Android.Content;
+﻿using AlhambraScoringAndroid.UI;
+using Android.Content;
+using Android.Views;
 using Android.Widget;
 using System;
+using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.Tools
 {
@@ -10,6 +13,15 @@ namespace AlhambraScoringAndroid.Tools
         {
             Toast.MakeText(context, text, ToastLength.Long).Show();
             return false;
+        }
+
+        public static bool ValidatePlayerPanels(this IEnumerable<ScoreLineNumberView> playerPanels)
+        {
+            foreach (ScoreLineNumberView playerPanel in playerPanels)
+                if (playerPanel.Visibility == ViewStates.Visible)
+                    if (!playerPanel.ValidateNumberRange())
+                        return false;
+            return true;
         }
     }
 

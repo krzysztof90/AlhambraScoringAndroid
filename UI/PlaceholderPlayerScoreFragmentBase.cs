@@ -17,7 +17,7 @@ namespace AlhambraScoringAndroid.UI
 
         protected View Root { get; private set; }
 
-        protected List<IScoreLineView> Controls;
+        public List<IScoreLineView> Controls { get; private set; }
 
         protected abstract int GetContentLayout();
         protected abstract void CreateControls();

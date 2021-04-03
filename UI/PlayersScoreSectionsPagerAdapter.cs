@@ -1,5 +1,7 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
+using AlhambraScoringAndroid.Tools;
 using AlhambraScoringAndroid.UI.Activities;
+using Android.Views;
 using AndroidX.Fragment.App;
 using Java.Lang;
 using System.Collections.Generic;
@@ -81,6 +83,34 @@ namespace AlhambraScoringAndroid.UI
                 PlayerScoreFragments[position].RestoreValues();
             else
                 PlayerScoreBeforeAssignLeftoverFragments[position].RestoreValues();
+        }
+
+        public bool ValidateAllPlayerScoreFragments()
+        {
+            for (int i = 0; i < activity.Game.PlayersCount; i++)
+            {
+                if (PlayerScoreFragments[i] != null)
+                {
+                    IEnumerable<ScoreLineNumberView> playerPanels = PlayerScoreFragments[i].Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
+                    if (!playerPanels.ValidatePlayerPanels())
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        public bool ValidateAllPlayerScoreBeforeAssignLeftoverFragments()
+        {
+            for (int i = 0; i < activity.Game.PlayersCount; i++)
+            {
+                if (PlayerScoreBeforeAssignLeftoverFragments[i] != null)
+                {
+                    IEnumerable<ScoreLineNumberView> playerPanels = PlayerScoreBeforeAssignLeftoverFragments[i].Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
+                    if (!playerPanels.ValidatePlayerPanels())
+                        return false;
+                }
+            }
+            return true;
         }
 
         public void Submit()

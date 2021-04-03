@@ -56,9 +56,13 @@ namespace AlhambraScoringAndroid.UI
             });
         }
 
-        protected override void SetLabelAndColor(string label, ColorStateList color)
+        public override void SetLabel(string label)
         {
             textView.Text = label;
+        }
+
+        public override void SetColor(ColorStateList color)
+        {
             if (color != null)
             {
                 textView.SetTextColor(color);
@@ -86,7 +90,16 @@ namespace AlhambraScoringAndroid.UI
 
         public void SetNumberRange(int min, int max)
         {
-            editText.SetFilters(new IInputFilter[] { new MinMaxFilter(Context, min, max) });
+            editText.SetFilters(new IInputFilter[] { new MinMaxFilter(Context, min, max, true) });
+        }
+
+        public bool ValidateNumberRange()
+        {
+            if (editText != null)
+                foreach (IInputFilter inputFilter in editText.GetFilters())
+                    if (inputFilter is MinMaxFilter minMaxFilter && !minMaxFilter.ValidateNumberRange(editText.Text, true, DefaultValue, textView.Text))
+                        return false;
+            return true;
         }
     }
 }

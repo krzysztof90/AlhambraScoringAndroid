@@ -31,9 +31,13 @@ namespace AlhambraScoringAndroid.UI
             });
         }
 
-        protected override void SetLabelAndColor(string label, ColorStateList color)
+        public override void SetLabel(string label)
         {
             scoreLineCheckBox.Text = label;
+        }
+
+        public override void SetColor(ColorStateList color)
+        {
             if (color != null)
             {
                 scoreLineCheckBox.SetTextColor(color);
@@ -44,7 +48,7 @@ namespace AlhambraScoringAndroid.UI
 
         protected override void SetValue(bool? value)
         {
-            scoreLineCheckBox.Checked = (value!=false);
+            scoreLineCheckBox.Checked = (value == true);
         }
 
         protected override bool? GetValue()

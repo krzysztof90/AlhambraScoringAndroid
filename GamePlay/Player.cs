@@ -90,6 +90,30 @@ namespace AlhambraScoringAndroid.GamePlay
                 case ScoreType.BuildingsBonuses:
                     CurrentScoreDetails.BuildingsBonuses += score;
                     break;
+                case ScoreType.TheCityWatch:
+                    CurrentScoreDetails.TheCityWatch += score;
+                    break;
+                case ScoreType.Camps:
+                    CurrentScoreDetails.Camps += score;
+                    break;
+                case ScoreType.StreetTraders:
+                    CurrentScoreDetails.StreetTraders += score;
+                    break;
+                case ScoreType.TreasureChamber:
+                    CurrentScoreDetails.TreasureChamber += score;
+                    break;
+                case ScoreType.Bazaars:
+                    CurrentScoreDetails.Bazaars += score;
+                    break;
+                case ScoreType.ArtOfTheMoors:
+                    CurrentScoreDetails.ArtOfTheMoors += score;
+                    break;
+                case ScoreType.Falconers:
+                    CurrentScoreDetails.Falconers += score;
+                    break;
+                case ScoreType.Watchtowers:
+                    CurrentScoreDetails.Watchtowers += score;
+                    break;
                 case ScoreType.Orchards:
                     CurrentScoreDetails.Orchards += score;
                     break;
@@ -145,19 +169,29 @@ namespace AlhambraScoringAndroid.GamePlay
                     throw new ArgumentException();
             }
         }
-        public void RemoveScore(int score, ScoreType scoreType)
+        public void RemoveScore(int score, bool allowNegative, ScoreType scoreType)
         {
-            int removedScore = score;
-            if (Score < removedScore)
-                removedScore = Score;
-
-            switch (scoreType)
+            //in case you may not have less than 0 points, but there is already
+            if (!(!allowNegative && Score < 0))
             {
-                case ScoreType.BuildingsWithoutServantTile:
-                    CurrentScoreDetails.BuildingsWithoutServantTile += removedScore;
-                    break;
-                default:
-                    throw new ArgumentException();
+                int removedScore = score;
+                if (Score < removedScore && !allowNegative)
+                    removedScore = Score;
+
+                switch (scoreType)
+                {
+                    case ScoreType.Invaders:
+                        CurrentScoreDetails.Invaders += removedScore;
+                        break;
+                    case ScoreType.Medina:
+                        CurrentScoreDetails.Medina += removedScore;
+                        break;
+                    case ScoreType.BuildingsWithoutServantTile:
+                        CurrentScoreDetails.BuildingsWithoutServantTile += removedScore;
+                        break;
+                    default:
+                        throw new ArgumentException();
+                }
             }
         }
 

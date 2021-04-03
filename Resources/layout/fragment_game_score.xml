@@ -105,10 +105,172 @@
             app:labelValue="Bonus cards Towers number"
             app:labelColor="@color/colorTower" />
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/buildingsWithoutServantTileNumericUpDown"
+            android:id="@+id/squaresPavilionCountNumericUpDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/bonusCardsTowerCountNumericUpDown"
+            app:labelValue="Squares Pavilions points"
+            app:labelColor="@color/colorPavilion" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/squaresSeraglioCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/squaresPavilionCountNumericUpDown"
+            app:labelValue="Squares Seraglios points"
+            app:labelColor="@color/colorSeraglio" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/squaresArcadesCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/squaresSeraglioCountNumericUpDown"
+            app:labelValue="Squares Arcades points"
+            app:labelColor="@color/colorArcades" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/squaresChambersCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/squaresArcadesCountNumericUpDown"
+            app:labelValue="Squares Chambers points"
+            app:labelColor="@color/colorChambers" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/squaresGardenCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/squaresChambersCountNumericUpDown"
+            app:labelValue="Squares Gardens points"
+            app:labelColor="@color/colorGarden" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/squaresTowerCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/squaresGardenCountNumericUpDown"
+            app:labelValue="Squares Towers points"
+            app:labelColor="@color/colorTower" />
+        <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
+            android:id="@+id/ownedCharacterTheWiseManCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/squaresTowerCountNumericUpDown"
+            app:labelValue="Owned The Wise Man" />
+        <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
+            android:id="@+id/ownedCharacterTheCityWatchCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ownedCharacterTheWiseManCheckBox"
+            app:labelValue="Owned The City Watch" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/campsPointsNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/ownedCharacterTheCityWatchCheckBox"
+            app:labelValue="Points from camps"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/streetTradersPavilionCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/campsPointsNumericUpDown"
+            app:labelValue="Citizens Blue number"
+            app:labelColor="@color/colorPavilion" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/streetTradersSeraglioCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/streetTradersPavilionCountNumericUpDown"
+            app:labelValue="Citizens Red number"
+            app:labelColor="@color/colorSeraglio" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/streetTradersArcadesCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/streetTradersSeraglioCountNumericUpDown"
+            app:labelValue="Citizens Brown number"
+            app:labelColor="@color/colorArcades" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/streetTradersChambersCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/streetTradersArcadesCountNumericUpDown"
+            app:labelValue="Citizens White number"
+            app:labelColor="@color/colorChambers" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/streetTradersGardenCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/streetTradersChambersCountNumericUpDown"
+            app:labelValue="Citizens Green number"
+            app:labelColor="@color/colorGarden" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/streetTradersTowerCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/streetTradersGardenCountNumericUpDown"
+            app:labelValue="Citizens Purple number"
+            app:labelColor="@color/colorTower" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/treasuresCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/streetTradersTowerCountNumericUpDown"
+            app:labelValue="Treasures number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/unprotectedSidesCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/treasuresCountNumericUpDown"
+            app:labelValue="Number of unprotected sides"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/unprotectedSidesNeighbouringCountNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/unprotectedSidesCountNumericUpDown"
+            app:labelValue="Number of unprotected sides from neighbouring directions"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/bazaarsPointsNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/unprotectedSidesNeighbouringCountNumericUpDown"
+            app:labelValue="Points from Bazaars"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/artOfTheMoorsPointsNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bazaarsPointsNumericUpDown"
+            app:labelValue="Points from Art of the Moors"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/falconsBlackNumberNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/artOfTheMoorsPointsNumericUpDown"
+            app:labelValue="Number of black falcons"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/falconsBrownNumberNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/falconsBlackNumberNumericUpDown"
+            app:labelValue="Number of brown falcons"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/falconsWhiteNumberNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/falconsBrownNumberNumericUpDown"
+            app:labelValue="Number of white falcons"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/watchtowersNumberNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/falconsWhiteNumberNumericUpDown"
+            app:labelValue="Number of watchtowers in longest contiguous wall"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/medinasNumberNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/watchtowersNumberNumericUpDown"
+            app:labelValue="Number of Medinas"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/buildingsWithoutServantTileNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/medinasNumberNumericUpDown"
             app:labelValue="Number of buildings without a servant tile"/>
         <AlhambraScoringAndroid.UI.ScoreLineCheckBoxView
             android:id="@+id/completedGroupOfFruitBoard1CheckBox"

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using AlhambraScoringAndroid.Attributes;
+using System.ComponentModel;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
@@ -23,7 +24,7 @@ namespace AlhambraScoringAndroid.GamePlay
         [ImageAttribute(Resource.Drawable.Diamonds)]
         ExpansionDiamonds,
         [Description("Characters")]
-        [ImageAttribute(Resource.Drawable.Character)]
+        [ImageAttribute(Resource.Drawable.CharacterTheWiseMan)]
         ExpansionCharacters,
         [Description("Camps")]
         [ImageAttribute(Resource.Drawable.Camp)]
@@ -50,7 +51,7 @@ namespace AlhambraScoringAndroid.GamePlay
         [ImageAttribute(Resource.Drawable.Invaders)]
         ExpansionInvaders,
         [Description("Bazaars")]
-        [ImageAttribute(Resource.Drawable.Bazaars)]
+        [ImageAttribute(Resource.Drawable.Bazaar)]
         ExpansionBazaars,
         [Description("New Score Cards")]
         [ImageAttribute(Resource.Drawable.NewScoreCards)]
@@ -68,7 +69,7 @@ namespace AlhambraScoringAndroid.GamePlay
         [ImageAttribute(Resource.Drawable.Falconers)]
         ExpansionFalconers,
         [Description("Watchtowers")]
-        [ImageAttribute(Resource.Drawable.Watchtowers)]
+        [ImageAttribute(Resource.Drawable.Watchtower)]
         ExpansionWatchtowers,
         [Description("Building Sites")]
         [ImageAttribute(Resource.Drawable.BuildingSites)]

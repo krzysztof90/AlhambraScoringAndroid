@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/content_main"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_marginTop="60dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:text="W przypadku remisu w ilości Medyn należy wziąć pod uwagę największą cenę zakupu"
+                android:layout_height="wrap_content"/>
+            
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player1HighestMedinaPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:labelValue="Pavilions number" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player2HighestMedinaPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player1HighestMedinaPurchasePriceNumericUpDown"
+            app:labelValue="Pavilions number" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player3HighestMedinaPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player2HighestMedinaPurchasePriceNumericUpDown"
+            app:labelValue="Pavilions number" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player4HighestMedinaPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player3HighestMedinaPurchasePriceNumericUpDown"
+            app:labelValue="Pavilions number" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player5HighestMedinaPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player4HighestMedinaPurchasePriceNumericUpDown"
+            app:labelValue="Pavilions number" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player6HighestMedinaPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player5HighestMedinaPurchasePriceNumericUpDown"
+            app:labelValue="Pavilions number" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="Potwierdź"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="75dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

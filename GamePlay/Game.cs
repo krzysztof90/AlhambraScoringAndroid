@@ -1,4 +1,6 @@
-﻿using AlhambraScoringAndroid.Tools;
+﻿using AlhambraScoringAndroid.Atributes;
+using AlhambraScoringAndroid.Tools;
+using AlhambraScoringAndroid.Tools.Enums;
 using AlhambraScoringAndroid.UI;
 using Android.Content;
 using System;
@@ -11,15 +13,13 @@ namespace AlhambraScoringAndroid.GamePlay
 {
     public class Game
     {
-        public static Dictionary<BuildingType, List<int>[]> Scoring = new Dictionary<BuildingType, List<int>[]>()
+        public static List<BuildingType> BuildingsOrder = new List<BuildingType>()
         {
-            [BuildingType.Pavilion] = new List<int>[] { new List<int> { 1 }, new List<int> { 8, 1 }, new List<int> { 16, 8, 1 } },
-            [BuildingType.Seraglio] = new List<int>[] { new List<int> { 2 }, new List<int> { 9, 2 }, new List<int> { 17, 9, 2 } },
-            [BuildingType.Arcades] = new List<int>[] { new List<int> { 3 }, new List<int> { 10, 3 }, new List<int> { 18, 10, 3 } },
-            [BuildingType.Chambers] = new List<int>[] { new List<int> { 4 }, new List<int> { 11, 4 }, new List<int> { 19, 11, 4 } },
-            [BuildingType.Garden] = new List<int>[] { new List<int> { 5 }, new List<int> { 12, 5 }, new List<int> { 20, 12, 5 } },
-            [BuildingType.Tower] = new List<int>[] { new List<int> { 6 }, new List<int> { 13, 6 }, new List<int> { 21, 13, 6 } },
+            BuildingType.Pavilion, BuildingType.Seraglio, BuildingType.Arcades, BuildingType.Chambers, BuildingType.Garden, BuildingType.Tower
         };
+        public static List<int>[] TreasureChamberScoring = new List<int>[] { new List<int> { 7 }, new List<int> { 14, 7 }, new List<int> { 22, 14, 7 } };
+        public static List<int>[] MedinaScoring = new List<int>[] { new List<int> { 3 }, new List<int> { 6, 3 }, new List<int> { 9, 6, 3 } };
+        public static int[] MedinaZeroPenaltiesScoring = new int[] { 1, 2, 3 };
         public static Dictionary<BuildingType, ScoreType> BuildingBaseScoreType = new Dictionary<BuildingType, ScoreType>()
         {
             [BuildingType.Pavilion] = ScoreType.PavilionNumber,
@@ -38,6 +38,15 @@ namespace AlhambraScoringAndroid.GamePlay
             [BuildingType.Garden] = 3,
             [BuildingType.Tower] = 3
         };
+        public static Dictionary<BuildingType, int> SquaresMaxCount = new Dictionary<BuildingType, int>()
+        {
+            [BuildingType.Pavilion] = 3,
+            [BuildingType.Seraglio] = 3,
+            [BuildingType.Arcades] = 4,
+            [BuildingType.Chambers] = 4,
+            [BuildingType.Garden] = 5,
+            [BuildingType.Tower] = 5
+        };
 
         private readonly Context Context;
 
@@ -46,21 +55,47 @@ namespace AlhambraScoringAndroid.GamePlay
 
         private List<ExpansionModule> Modules;
         public GranadaOption GranadaOption { get; private set; }
+        private List<NewScoreCard> NewScoreCards;
         private List<CaliphsGuidelinesMission> CaliphsGuidelines;
         private List<Player> Players;
         public ScoringRound ScoreRound { get; private set; }
+        public BuildingType? TheWiseManBuildingType { get; private set; }
+        public Dictionary<int, int> PlayersMedinaHighestPrices { get; private set; }
         public Stack<ScoreHistory> ScoreStack { get; private set; }
         public bool Saved { get; set; }
+
+        private static List<List<int>[]> ScoringByPosition = new List<List<int>[]>()
+        {
+            new List<int>[] { new List<int> { 1 }, new List<int> { 8, 1 }, new List<int> { 16, 8, 1 } },
+            new List<int>[] { new List<int> { 2 }, new List<int> { 9, 2 }, new List<int> { 17, 9, 2 } },
+            new List<int>[] { new List<int> { 3 }, new List<int> { 10, 3 }, new List<int> { 18, 10, 3 } },
+            new List<int>[] { new List<int> { 4 }, new List<int> { 11, 4 }, new List<int> { 19, 11, 4 } },
+            new List<int>[] { new List<int> { 5 }, new List<int> { 12, 5 }, new List<int> { 20, 12, 5 } },
+            new List<int>[] { new List<int> { 6 }, new List<int> { 13, 6 }, new List<int> { 21, 13, 6 } },
+        };
+        public Dictionary<BuildingType, List<int>[]> Scoring
+        {
+            get
+            {
+                return BuildingsOrder.ToDictionary(b => b, b => new List<int>[] { GetBuildingRoundScoring(b, 1), GetBuildingRoundScoring(b, 2), GetBuildingRoundScoring(b, 3) });
+            }
+        }
+
+        private List<int> GetBuildingRoundScoring(BuildingType buildingType, int roundNumber)
+        {
+            List<BuildingType> buildingsOrder = NewScoreCards != null ? NewScoreCards[roundNumber - 1].GetEnumAttribute<NewScoreCard, NewScoreCardAttribute>().BuildingTypes : BuildingsOrder;
+            return ScoringByPosition[buildingsOrder.IndexOf(buildingType)][roundNumber - 1];
+        }
 
         public Dictionary<BuildingType, int> BuildingsMaxCount =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = 7 + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
-                [BuildingType.Seraglio] = 7 + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
-                [BuildingType.Arcades] = 9 + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
-                [BuildingType.Chambers] = 9 + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
-                [BuildingType.Garden] = 11 + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
-                [BuildingType.Tower] = 11 + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
+                [BuildingType.Pavilion] = 7 + (HasModule(ExpansionModule.QueenieMagicalBuildings) ? 1 : 0) + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
+                [BuildingType.Seraglio] = 7 + (HasModule(ExpansionModule.QueenieMagicalBuildings) ? 1 : 0) + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
+                [BuildingType.Arcades] = 9 + (HasModule(ExpansionModule.QueenieMagicalBuildings) ? 1 : 0) + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
+                [BuildingType.Chambers] = 9 + (HasModule(ExpansionModule.QueenieMagicalBuildings) ? 1 : 0) + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
+                [BuildingType.Garden] = 11 + (HasModule(ExpansionModule.QueenieMagicalBuildings) ? 1 : 0) + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
+                [BuildingType.Tower] = 11 + (HasModule(ExpansionModule.QueenieMagicalBuildings) ? 1 : 0) + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0),
             };
 
         public int AllBuildingsCount => BuildingsMaxCount.Sum(b => b.Value);
@@ -78,6 +113,17 @@ namespace AlhambraScoringAndroid.GamePlay
                 if (HasModule(ExpansionModule.DesignerGatesWithoutEnd))
                     allTilesCount += 6;
                 return allTilesCount;
+            }
+        }
+
+        public int WallsMaxLength
+        {
+            get
+            {
+                int allTilesCount = AllTilesCount;
+                if (HasModule(ExpansionModule.ExpansionWatchtowers))
+                    allTilesCount += 18;
+                return allTilesCount * 2 + 2;
             }
         }
 
@@ -115,12 +161,27 @@ namespace AlhambraScoringAndroid.GamePlay
         }
         public void SetGranadaOption(GranadaOption granadaOption)
         {
-            GranadaOption =granadaOption;
+            GranadaOption = granadaOption;
         }
 
-        public void SetModulesDetails(IEnumerable<CaliphsGuidelinesMission> modulesDetails)
+        public void SetModulesDetails(IEnumerable<CaliphsGuidelinesMission> caliphsGuidelines, List<NewScoreCard> newScoreCards)
         {
-            CaliphsGuidelines = modulesDetails.ToList();
+            CaliphsGuidelines = caliphsGuidelines?.ToList();
+            NewScoreCards = newScoreCards;
+        }
+
+        public bool ValidateNewScoreCards(List<NewScoreCard> newScoreCards)
+        {
+            if (newScoreCards != null)
+            {
+                if (newScoreCards.Count != 3)
+                    throw new NotSupportedException();
+
+                if (newScoreCards.Distinct().Count() != newScoreCards.Count())
+                    return ValidateUtils.CheckFailed(Context, $"Wybrano te same karty nowych punktów");
+            }
+
+            return true;
         }
 
         public bool HasModule(ExpansionModule module)
@@ -139,25 +200,10 @@ namespace AlhambraScoringAndroid.GamePlay
 
             bool twoPlayers = playersNames.Count == 2;
 
-            AddPlayer(playersNames[0], twoPlayers);
-            AddPlayer(playersNames[1], twoPlayers);
-            if (playersNames.Count > 2)
-            {
-                AddPlayer(playersNames[2], twoPlayers);
-                if (playersNames.Count > 3)
-                {
-                    AddPlayer(playersNames[3], twoPlayers);
-                    if (playersNames.Count > 4)
-                    {
-                        AddPlayer(playersNames[4], twoPlayers);
-                        if (playersNames.Count > 5)
-                        {
-                            AddPlayer(playersNames[5], twoPlayers);
-                        }
-                    }
-                }
-            }
-            else
+            foreach (string playerName in playersNames)
+                AddPlayer(playerName, twoPlayers);
+
+            if (twoPlayers)
                 Players.Add(Player.CreateDirk(this));
 
             Reset(false);
@@ -215,6 +261,24 @@ namespace AlhambraScoringAndroid.GamePlay
             GetPlayer(playerNumber).RevertAddScore(score, ScoreType.Immediately);
         }
 
+        public void SetTheWiseManBuildingType(BuildingType? buildingType)
+        {
+            TheWiseManBuildingType = buildingType;
+        }
+
+        public bool ValidateMedinasNumber(Dictionary<int, int> playersHighestPrices)
+        {
+            if (playersHighestPrices.Select(d => d.Value).Distinct().Count() != playersHighestPrices.Count())
+                return ValidateUtils.CheckFailed(Context, $"Wybrano tą samą cenę zakupu Medyn");
+
+            return true;
+        }
+
+        public void SetMedinasNumbers(Dictionary<int, int> playersHighestPrices)
+        {
+            PlayersMedinaHighestPrices = playersHighestPrices;
+        }
+
         public bool ValidateScore(List<PlaceholderPlayerScoreFragment> scorePanels)
         {
             //TODO walidacja danych na podstawie wcześniejszych submitów
@@ -237,12 +301,149 @@ namespace AlhambraScoringAndroid.GamePlay
             {
                 if (scorePanels[i].BonusCardsBuildingsCount.Sum(c => c.Value) > playerBonusCardsMax)
                     return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość kart bonusowych");
+
+                foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
+                {
+                    if (scorePanels[i].ExtensionsBuildingsCount[mapEntry.Key] > scorePanels[i].BuildingsCount[mapEntry.Key])
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba kart bonusowych przekracza liczbę wszystkich budynków {mapEntry.Key}");
+                }
             }
             foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
             {
                 if (scorePanels.Sum(p => p.BonusCardsBuildingsCount[mapEntry.Key]) > mapEntry.Value)
                     return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość kart bonusowych {mapEntry.Key}");
             }
+
+            Dictionary<BuildingType, int> squaresTotalMinimumNumber = new Dictionary<BuildingType, int>();
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                int playerSquaresTotalMinimumNumber = 0;
+                foreach (BuildingType building in BuildingsOrder)
+                {
+                    int squaresPoints = scorePanels[i].SquaresBuildingsCount[building];
+                    int squaresMinimumNumber = 0;
+                    if (squaresPoints > 0)
+                        squaresMinimumNumber++;
+                    if (squaresPoints > 3)
+                        squaresMinimumNumber++;
+                    if (squaresPoints > 6)
+                        squaresMinimumNumber++;
+
+                    playerSquaresTotalMinimumNumber += squaresMinimumNumber;
+
+                    int squareTotalMinimumNumber = 0;
+                    if (squaresTotalMinimumNumber.ContainsKey(building))
+                        squareTotalMinimumNumber = squaresTotalMinimumNumber[building];
+                    squareTotalMinimumNumber += squaresMinimumNumber;
+                    squaresTotalMinimumNumber[building] = squareTotalMinimumNumber;
+
+                    if (squaresPoints > 9)
+                    {
+                        //TODO .EnumDescription
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość budynków ze skwerów {building}");
+                    }
+                }
+
+                if (playerSquaresTotalMinimumNumber > 3)
+                {
+                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Przekroczona maksymalna ilość skwerów");
+                }
+            }
+            foreach (KeyValuePair<BuildingType, int> mapEntry in SquaresMaxCount)
+            {
+                if (squaresTotalMinimumNumber[mapEntry.Key] > mapEntry.Value)
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość skwerów {mapEntry.Key}");
+            }
+
+            if (scorePanels.Count(p => p.OwnedCharacterTheWiseMan) > 1)
+                return ValidateUtils.CheckFailed(Context, $"Kilku graczy z posiadanym The Wise Man");
+            if (scorePanels.Count(p => p.OwnedCharacterTheCityWatch) > 1)
+                return ValidateUtils.CheckFailed(Context, $"Kilku graczy z posiadanym The City Watch");
+
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
+                {
+                    if (scorePanels[i].StreetTradersNumber[mapEntry.Key] > scorePanels[i].BuildingsCount[mapEntry.Key])
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba obywateli przekracza liczbę wszystkich budynków {mapEntry.Key}");
+                }
+            }
+            foreach (BuildingType building in BuildingsOrder)
+            {
+                if (scorePanels.Sum(p => p.StreetTradersNumber[building]) > 7)
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość obywateli {building}");
+            }
+
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                if (scorePanels[i].TreasuresCount > scorePanels[i].AllBuildingsCount)
+                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba skrzyń przekracza liczbę wszystkich budynków");
+            }
+            if (scorePanels.Sum(p => p.TreasuresCount) > 42)
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość skrzyń");
+
+            //TODO get miminum bazaars number from points combination
+            //TODO to method
+            //IEnumerable<int> bazaarsAvailablePoints = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 16, 18, 21, 24 }.GetMatrixSums(8).Distinct();
+
+            int bazaarsTotalPointsSum = 0;
+            int bazaarsMinimumNumber = 0;
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                int bazaarsTotalPoints = scorePanels[i].BazaarsTotalPoints;
+
+                //if (!bazaarsAvailablePoints.Contains(bazaarsTotalPoints))
+                //    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów z bazarów");
+
+                if (bazaarsTotalPoints > 0)
+                    bazaarsMinimumNumber++;
+                if (bazaarsTotalPoints > 24)
+                    bazaarsMinimumNumber++;
+                if (bazaarsTotalPoints > 48)
+                    bazaarsMinimumNumber++;
+                if (bazaarsTotalPoints > 72)
+                    bazaarsMinimumNumber++;
+                if (bazaarsTotalPoints > 96)
+                    bazaarsMinimumNumber++;
+                if (bazaarsTotalPoints > 120)
+                    bazaarsMinimumNumber++;
+                if (bazaarsTotalPoints > 144)
+                    bazaarsMinimumNumber++;
+                if (bazaarsTotalPoints > 168)
+                    bazaarsMinimumNumber++;
+                bazaarsTotalPointsSum += bazaarsTotalPoints;
+            }
+            if (bazaarsTotalPointsSum > 192)
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość punktów z bazarów");
+            if (bazaarsMinimumNumber > 8)
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna ilość bazarów");
+
+            //TODO get miminum counters number from points combination, compare all to max 20
+            IEnumerable<int> artOfTheMoorsPlayerAvailablePoints = new List<int>() { 0, 3, 6, 10, 15, 21 }.GetMatrixSums(7).Distinct();
+
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                if (!artOfTheMoorsPlayerAvailablePoints.Contains(scorePanels[i].ArtOfTheMoorsPoints))
+                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów z liczników kultury");
+            }
+
+            if (scorePanels.Sum(p => p.FalconsBlackNumber) > 5)
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość czarnych sokołów");
+            if (scorePanels.Sum(p => p.FalconsBrownNumber) > 5)
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość brązowych sokołów");
+            if (scorePanels.Sum(p => p.FalconsWhiteNumber) > 5)
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość białych sokołów");
+
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                if (scorePanels[i].WatchtowersNumber > scorePanels[i].WallLength)
+                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba wież obserwacyjnych przekracza długość najdłuższego muru");
+            }
+            if (scorePanels.Sum(p => p.WatchtowersNumber) > 18)
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość wież obserwacyjnych");
+
+            if (scorePanels.Sum(p => p.MedinasNumber) > 9)
+                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość Medyn");
 
             for (int i = 0; i < PlayersCount; i++)
                 if (scorePanels[i].BuildingsWithoutServantTile > scorePanels[i].AllBuildingsCount)
@@ -291,10 +492,10 @@ namespace AlhambraScoringAndroid.GamePlay
             if (animalsPointsSum > 24)
                 return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość zwierząt");
 
-            foreach (KeyValuePair<BuildingType, int> mapEntry in BuildingsMaxCount)
+            foreach (BuildingType building in BuildingsOrder)
             {
-                if (scorePanels.Count(p => p.OwnedSemiBuildings[mapEntry.Key]) > 1)
-                    return ValidateUtils.CheckFailed(Context, $"Dwóch graczy z tą samą połową budynku {mapEntry.Key}");
+                if (scorePanels.Count(p => p.OwnedSemiBuildings[building]) > 1)
+                    return ValidateUtils.CheckFailed(Context, $"Kilku graczy z tą samą połową budynku {building}");
             }
 
             int blackDiceTotalPipsSum = 0;
@@ -315,15 +516,15 @@ namespace AlhambraScoringAndroid.GamePlay
             if (blackDicesMinimumNumber > 3)
                 return ValidateUtils.CheckFailed(Context, $"Przekroczona ilość użytych czarnych kostek");
 
-            foreach (KeyValuePair<BuildingType, int> mapEntry in BuildingsMaxCount)
+            foreach (BuildingType building in BuildingsOrder)
             {
                 for (int i = 0; i < PlayersCount; i++)
                 {
-                    if (scorePanels[i].ExtensionsBuildingsCount[mapEntry.Key] > scorePanels[i].BuildingsCount[mapEntry.Key])
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba rozszerzeń przekracza liczbę wszystkich budynków {mapEntry.Key}");
+                    if (scorePanels[i].ExtensionsBuildingsCount[building] > scorePanels[i].BuildingsCount[building])
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba rozszerzeń przekracza liczbę wszystkich budynków {building}");
                 }
-                if (scorePanels.Sum(p => p.ExtensionsBuildingsCount[mapEntry.Key]) > 2)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość rozszerzeń {mapEntry.Key}");
+                if (scorePanels.Sum(p => p.ExtensionsBuildingsCount[building]) > 2)
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość rozszerzeń {building}");
             }
 
             int handymenTilesHighestNumberSum = scorePanels.Sum(p => p.HandymenTilesHighestNumber);
@@ -354,53 +555,77 @@ namespace AlhambraScoringAndroid.GamePlay
             return true;
         }
 
+        private int CountRelativeScore(List<PlaceholderPlayerScoreFragment> scorePanels, int playerNumber, Func<int, double> getCountValue, List<int>[] scoringTable, HighestLowest highestLowest, UpDown roundMethod, int[] zeroPenaltiesTable = null)
+        {
+            int result = 0;
+            double countValue = getCountValue(playerNumber - 1);
+            if (countValue != 0 || highestLowest == HighestLowest.Lowest)
+            {
+                int currentPlace = 1;
+                int sharePlaceCount = 0;
+                for (int j = 0; j < PlayersCount; j++)
+                    if (j != playerNumber - 1)
+                    {
+                        double otherPlayerCountValue = getCountValue(j);
+
+                        if ((highestLowest == HighestLowest.Highest && otherPlayerCountValue > countValue)
+                            || (highestLowest == HighestLowest.Lowest && otherPlayerCountValue < countValue))
+                            currentPlace++;
+                        else if (otherPlayerCountValue == countValue)
+                            sharePlaceCount++;
+                    }
+
+                int splitPoints =(currentPlace <= RoundNumber ? scoringTable[RoundNumber - 1][currentPlace - 1] : 0)
+                    + (RoundNumber > 1 && sharePlaceCount >= 1 && currentPlace <= RoundNumber - 1 ? scoringTable[RoundNumber - 1][currentPlace] : 0)
+                    + (RoundNumber > 2 && sharePlaceCount >= 2 && currentPlace <= RoundNumber - 2 ? scoringTable[RoundNumber - 1][currentPlace + 1] : 0);
+                result = splitPoints / (sharePlaceCount + 1);
+                if (roundMethod == UpDown.Up && splitPoints % (sharePlaceCount + 1) != 0)
+                    result += 1;
+
+                if (highestLowest == HighestLowest.Lowest && countValue == 0 && zeroPenaltiesTable != null)
+                    result += zeroPenaltiesTable[RoundNumber - 1];
+            }
+
+            return result;
+        }
+
         private double GetBuildingCount(PlaceholderPlayerScoreFragment scorePanel, BuildingType buildingType, bool withBonuses = true)
         {
             double alhambraCount = scorePanel.BuildingsCount[buildingType];
             if (withBonuses)
             {
-                //Extensions: extended buildings
-                if (HasModule(ExpansionModule.DesignerExtensions))
-                    alhambraCount += scorePanel.ExtensionsBuildingsCount[buildingType];
                 //Bonus Cards: extra buildings
                 if (HasModule(ExpansionModule.ExpansionBonusCards))
                     alhambraCount += scorePanel.BonusCardsBuildingsCount[buildingType];
-                if (alhambraCount != 0 && HasModule(ExpansionModule.DesignerGatesWithoutEnd)
-                        && scorePanel.OwnedSemiBuildings[buildingType])
+                //Squares: square count value
+                if (HasModule(ExpansionModule.ExpansionSquares))
+                    alhambraCount += scorePanel.SquaresBuildingsCount[buildingType];
+                if (HasModule(ExpansionModule.ExpansionCharacters)
+                    && scorePanel.OwnedCharacterTheWiseMan && TheWiseManBuildingType == buildingType)
+                    alhambraCount += 0.5;
+                //Extensions: extended buildings
+                if (HasModule(ExpansionModule.DesignerExtensions))
+                    alhambraCount += scorePanel.ExtensionsBuildingsCount[buildingType];
+                //Gates without End: semi-buildings
+                if (alhambraCount >= 1 && HasModule(ExpansionModule.DesignerGatesWithoutEnd)
+                    && scorePanel.OwnedSemiBuildings[buildingType])
                     alhambraCount += 0.5;
             }
 
             return alhambraCount;
         }
 
-        private int GetBuildingScore(List<PlaceholderPlayerScoreFragment> scorePanels, BuildingType buildingType, int i, bool withBonuses = true)
+        private double GetMedinaCount(PlaceholderPlayerScoreFragment scorePanel, int playerNumber)
         {
-            double alhambraCount = GetBuildingCount(scorePanels[i], buildingType, withBonuses);
-            if (alhambraCount != 0)
-            {
-                int currentPlace = 1;
-                int sharePlaceCount = 0;
-                for (int j = 0; j < PlayersCount; j++)
-                    if (j != i)
-                    {
-                        double otherPlayerAlhambraBuildingsCount = GetBuildingCount(scorePanels[j], buildingType, withBonuses);
+            double medinaCount = scorePanel.MedinasNumber;
+            if (PlayersMedinaHighestPrices != null && PlayersMedinaHighestPrices.ContainsKey(playerNumber))
+                medinaCount += ((double)PlayersMedinaHighestPrices[playerNumber]) / 20;
+            return medinaCount;
+        }
 
-                        if (otherPlayerAlhambraBuildingsCount > alhambraCount)
-                            currentPlace++;
-                        else if (otherPlayerAlhambraBuildingsCount == alhambraCount)
-                            sharePlaceCount++;
-                    }
-
-                if (currentPlace <= RoundNumber)
-                {
-                    return (Scoring[buildingType][RoundNumber - 1][currentPlace - 1]
-                        + (RoundNumber > 1 && sharePlaceCount >= 1 && currentPlace <= RoundNumber - 1 ? Scoring[buildingType][RoundNumber - 1][currentPlace] : 0)
-                        + (RoundNumber > 2 && sharePlaceCount >= 2 && currentPlace <= RoundNumber - 2 ? Scoring[buildingType][RoundNumber - 1][currentPlace + 1] : 0)
-                        ) / (sharePlaceCount + 1);
-                }
-            }
-
-            return 0;
+        public int GetBuildingScore(List<PlaceholderPlayerScoreFragment> scorePanels, BuildingType buildingType, int playerNumber, bool withBonuses = true)
+        {
+            return CountRelativeScore(scorePanels, playerNumber, (int i) => GetBuildingCount(scorePanels[i], buildingType, withBonuses), Scoring[buildingType], HighestLowest.Highest, UpDown.Down);
         }
 
         public void Score(List<PlaceholderPlayerScoreFragment> scorePanels)
@@ -413,17 +638,173 @@ namespace AlhambraScoringAndroid.GamePlay
                     Players[i].AddScore(scorePanels[i].WallLength, ScoreType.WallLength);
 
             //each kind of building
-            foreach (KeyValuePair<BuildingType, List<int>[]> scoring in Game.Scoring)
+            foreach (KeyValuePair<BuildingType, List<int>[]> scoring in Scoring)
             {
                 for (int i = 0; i < PlayersCount; i++)
                 {
-                    int buildingScore = GetBuildingScore(scorePanels, scoring.Key, i);
-                    int buildingScoreBonus = buildingScore - GetBuildingScore(scorePanels, scoring.Key, i, false);
+                    int buildingScore = GetBuildingScore(scorePanels, scoring.Key, i + 1);
+                    int buildingScoreBonus = buildingScore - GetBuildingScore(scorePanels, scoring.Key, i + 1, false);
                     if (buildingScoreBonus < 0)
                         buildingScoreBonus = 0;
 
                     Players[i].AddScore(buildingScore, BuildingBaseScoreType[scoring.Key]);
                     Players[i].AddScore(buildingScoreBonus, ScoreType.BuildingsBonuses);
+                }
+            }
+
+            if (HasModule(ExpansionModule.ExpansionCharacters))
+            {
+                //Characters: owned The City Watch
+                for (int i = 0; i < PlayersCount; i++)
+                    if (!Players[i].Dirk)
+                        Players[i].AddScore(scorePanels[i].OwnedCharacterTheCityWatch ? scorePanels[i].WallLength / 3 : 0, ScoreType.TheCityWatch);
+            }
+
+            if (HasModule(ExpansionModule.ExpansionCamps))
+            {
+                //Camps: buildings joined together in a straight, uninterrupted line
+                for (int i = 0; i < PlayersCount; i++)
+                    if (!Players[i].Dirk)
+                        Players[i].AddScore(scorePanels[i].CampsPoints, ScoreType.Camps);
+            }
+
+            if (HasModule(ExpansionModule.ExpansionStreetTrader))
+            {
+                //Street Trader: sets based on the number of different colored citizens
+                for (int i = 0; i < PlayersCount; i++)
+                {
+                    int pointsSum = 0;
+                    for (int j = 0; j < 7; j++)
+                    {
+                        int setDifferentCitizens = scorePanels[i].StreetTradersNumber.Where(t => t.Value > j).Count();
+                        int points;
+                        switch (setDifferentCitizens)
+                        {
+                            case 0:
+                                points = 0;
+                                break;
+                            case 1:
+                                points = 1;
+                                break;
+                            case 2:
+                                points = 3;
+                                break;
+                            case 3:
+                                points = 6;
+                                break;
+                            case 4:
+                                points = 10;
+                                break;
+                            case 5:
+                                points = 15;
+                                break;
+                            case 6:
+                                points = 21;
+                                break;
+                            default:
+                                throw new NotSupportedException();
+                        }
+                        pointsSum += points;
+                    }
+                    Players[i].AddScore(pointsSum, ScoreType.StreetTraders);
+                }
+            }
+
+            if (HasModule(ExpansionModule.ExpansionTreasureChamber))
+            {
+                //Treasure Chamber: chests
+                for (int i = 0; i < PlayersCount; i++)
+                {
+                    int chestsScore = CountRelativeScore(scorePanels, i + 1, (int j) => scorePanels[j].TreasuresCount, TreasureChamberScoring, HighestLowest.Highest, UpDown.Down);
+
+                    Players[i].AddScore(chestsScore, ScoreType.TreasureChamber);
+                }
+            }
+
+            if (HasModule(ExpansionModule.ExpansionInvaders))
+            {
+                //Invaders: each side unprotected from the main direction of the attack
+                for (int i = 0; i < PlayersCount; i++)
+                    if (!Players[i].Dirk)
+                    {
+                        Players[i].RemoveScore(scorePanels[i].UnprotectedSidesCount * RoundNumber, false, ScoreType.Invaders);
+                        if (RoundNumber == 3)
+                            Players[i].RemoveScore(scorePanels[i].UnprotectedSidesNeighbouringCount, false, ScoreType.Invaders);
+                    }
+            }
+
+            if (HasModule(ExpansionModule.ExpansionBazaars))
+            {
+                if (RoundNumber == 3)
+                {
+                    //Bazaars: points for bazaars
+                    for (int i = 0; i < PlayersCount; i++)
+                        if (!Players[i].Dirk)
+                            Players[i].AddScore(scorePanels[i].BazaarsTotalPoints, ScoreType.Bazaars);
+                }
+            }
+
+            if (HasModule(ExpansionModule.ExpansionArtOfTheMoors))
+            {
+                //Art of the Moors: points for the culture counters
+                for (int i = 0; i < PlayersCount; i++)
+                    if (!Players[i].Dirk)
+                        Players[i].AddScore(scorePanels[i].ArtOfTheMoorsPoints, ScoreType.ArtOfTheMoors);
+            }
+
+            if (HasModule(ExpansionModule.ExpansionFalconers))
+            {
+                //Falconers: points for each type of falcons
+                for (int i = 0; i < PlayersCount; i++)
+                    if (!Players[i].Dirk)
+                    {
+                        foreach (int falconsNumber in new int[] { scorePanels[i].FalconsBlackNumber, scorePanels[i].FalconsBrownNumber, scorePanels[i].FalconsWhiteNumber })
+                        {
+                            int points;
+                            switch (falconsNumber)
+                            {
+                                case 0:
+                                    points = 0;
+                                    break;
+                                case 1:
+                                    points = 2;
+                                    break;
+                                case 2:
+                                    points = 6;
+                                    break;
+                                case 3:
+                                    points = 12;
+                                    break;
+                                case 4:
+                                    points = 20;
+                                    break;
+                                case 5:
+                                    points = 30;
+                                    break;
+                                default:
+                                    throw new NotSupportedException();
+                            }
+                            Players[i].AddScore(points, ScoreType.Falconers);
+                        }
+                    }
+            }
+
+            if (HasModule(ExpansionModule.ExpansionWatchtowers))
+            {
+                //Watchtowers: Each watchtower that is part of a player’s longest contiguous wall
+                for (int i = 0; i < PlayersCount; i++)
+                    if (!Players[i].Dirk)
+                        Players[i].AddScore(scorePanels[i].WatchtowersNumber * 2, ScoreType.Watchtowers);
+            }
+
+            if (HasModule(ExpansionModule.QueenieMedina))
+            {
+                //Medina
+                for (int i = 0; i < PlayersCount; i++)
+                {
+                    int medinaScore = CountRelativeScore(scorePanels, i + 1, (int j) => GetMedinaCount(scorePanels[j], j + 1), MedinaScoring, HighestLowest.Lowest, UpDown.Up, MedinaZeroPenaltiesScoring);
+
+                    Players[i].RemoveScore(medinaScore, true, ScoreType.Medina);
                 }
             }
 
@@ -434,7 +815,7 @@ namespace AlhambraScoringAndroid.GamePlay
                     //Palace Staff: each building without a servant tile
                     for (int i = 0; i < PlayersCount; i++)
                         if (!Players[i].Dirk)
-                            Players[i].RemoveScore(scorePanels[i].BuildingsWithoutServantTile, ScoreType.BuildingsWithoutServantTile);
+                            Players[i].RemoveScore(scorePanels[i].BuildingsWithoutServantTile, false, ScoreType.BuildingsWithoutServantTile);
                 }
             }
 
@@ -468,9 +849,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 //Bathhouses: distances of the first building
                 for (int i = 0; i < PlayersCount; i++)
                     if (!Players[i].Dirk)
-                    {
                         Players[i].AddScore(scorePanels[i].BathhousesPoints, ScoreType.Bathhouses);
-                    }
             }
 
             if (HasModule(ExpansionModule.DesignerWishingWell))
@@ -478,9 +857,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 //Wishing Well: tiles in a straight line from the waterspout
                 for (int i = 0; i < PlayersCount; i++)
                     if (!Players[i].Dirk)
-                    {
                         Players[i].AddScore(scorePanels[i].WishingWellsPoints, ScoreType.WishingWells);
-                    }
             }
 
             if (HasModule(ExpansionModule.DesignerFreshColors))
@@ -629,7 +1006,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 //Palace Staff: each building without a servant tile
                 for (int i = 0; i < PlayersCount; i++)
                     if (!Players[i].Dirk)
-                        Players[i].RemoveScore(scorePanels[i].BuildingsWithoutServantTile, ScoreType.BuildingsWithoutServantTile);
+                        Players[i].RemoveScore(scorePanels[i].BuildingsWithoutServantTile, false, ScoreType.BuildingsWithoutServantTile);
             }
         }
 
@@ -668,6 +1045,8 @@ namespace AlhambraScoringAndroid.GamePlay
                 StartDateTime = StartDateTime,
                 EndDateTime = EndDateTime,
                 Modules = Modules,
+                GranadaOption = GranadaOption,
+                NewScoreCards = NewScoreCards,
                 CaliphsGuidelines = CaliphsGuidelines,
                 ScoreRound = ScoreRound,
                 Players = Players.Select(p => new ResultPlayerHistory() { Name = p.Name, ScoreDetails1 = p.ScoreDetails1, ScoreDetails2 = p.ScoreDetails2, ScoreDetails3 = p.ScoreDetails3, ScoreMeantime = p.ScoreMeantime }).ToList()

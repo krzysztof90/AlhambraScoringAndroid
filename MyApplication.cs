@@ -4,6 +4,7 @@ using AlhambraScoringAndroid.UI;
 using AlhambraScoringAndroid.UI.Activities;
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,12 +16,15 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
+        //TODO nieużywany, zakomentowany kod
+        //TODO log unmanaged exceptions, send
+        //TODO zamiast layout_constraintTop_toBottomOf włożyć w linearlayout
+        //TODO instrukcja przygotowania gry + rund w zależności od wybranych modułów + dirk (z checkboxami do odznaczenia kroków), podział na przygotowanie kart i budynków
         //TODO fill_parent	ffffffff	The view should be as big as its parent (minus padding). This constant is deprecated starting from API Level 8 and is replaced by match_parent.
         //TODO przezroczyste obrazki
         //TODO xmlns:android tylko jedno
         //TODO porządek w kolejności properties w layout
         //TODO restore state after application close
-        //TODO another expansion modules, granada
         //TODO labelki słownik
         //TODO iOS
         //https://docs.microsoft.com/pl-pl/xamarin/
@@ -35,18 +39,35 @@ namespace AlhambraScoringAndroid
         //https://dzone.com/articles/how-to-optimize-and-reduce-android-apps-size-in-xa
         //https://docs.microsoft.com/en-us/xamarin/android/deploy-test/linker
 
+        public List<ResultHistory> Results { get; private set; }
+        public Game Game { get; private set; }
+        private GameInProgressActivity gameInProgressActivity;
+        private GameScoreActivity gameScoreActivity;
+        public ResultHistory CurrentResult { get; private set; }
+        public List<PlaceholderPlayerScoreFragment> GameScoreSubmitScorePanels { get; private set; }
+
+        private readonly List<(Func< bool> condition, Type activityType)> neededScoreAdditionalActions;
+        private List<BaseActivity> scoreActivities;
+
         public MyApplication(IntPtr javaReference, Android.Runtime.JniHandleOwnership transfer) : base(javaReference, transfer)
         {
+            neededScoreAdditionalActions = new List<(Func< bool> condition, Type activityType)>()
+            {
+                (
+                ()=> Game.HasModule(ExpansionModule.ExpansionCharacters) && GameScoreSubmitScorePanels.Any(p => p.OwnedCharacterTheWiseMan),
+                typeof(CharacterTheWiseManActivity)
+                ),
+                (
+                ()=> Game.HasModule(ExpansionModule.QueenieMedina) && /*GameScoreSubmitScorePanels.GroupBy(p => p.MedinasNumber).Any(g =>g.Key!=0 && g.Count() > 1) &&*/ MedinaNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScorePanels, Game.RoundNumber).Count!=0,
+                typeof(MedinaNumberActivity)
+                ),
+            };
+            scoreActivities = new List<BaseActivity>();
         }
         public override void OnCreate()
         {
             base.OnCreate();
         }
-
-        public List<ResultHistory> Results { get; private set; }
-        public Game Game { get; private set; }
-        private GameInProgressActivity gameInProgressActivity;
-        public ResultHistory CurrentResult { get; private set; }
 
         private void NewActivity(Type activityType)
         {
@@ -75,22 +96,26 @@ namespace AlhambraScoringAndroid
         {
             Game = new Game(ApplicationContext);
             NewActivity(typeof(NewGameActivity));
+            //NewActivity(typeof(GameModulesDetailsChoseActivity));
         }
 
         public void GameApplyModules(IEnumerable<ExpansionModule> modules, GranadaOption granadaOption)
         {
             Game.SetModules(modules);
             Game.SetGranadaOption(granadaOption);
-            if (modules.Contains(ExpansionModule.FanCaliphsGuidelines))
+            if (modules.Contains(ExpansionModule.FanCaliphsGuidelines) || modules.Contains(ExpansionModule.ExpansionNewScoreCards))
                 NewActivity(typeof(GameModulesDetailsChoseActivity));
             else
                 NewActivity(typeof(GamePlayersChoseActivity));
         }
 
-        public void GameApplyModulesDetails(IEnumerable<CaliphsGuidelinesMission> modules)
+        public void GameApplyModulesDetails(IEnumerable<CaliphsGuidelinesMission> caliphsGuidelines, List<NewScoreCard> newScoreCards)
         {
-            Game.SetModulesDetails(modules);
-            NewActivity(typeof(GamePlayersChoseActivity));
+            if (Game.ValidateNewScoreCards(newScoreCards))
+            {
+                Game.SetModulesDetails(caliphsGuidelines, newScoreCards);
+                NewActivity(typeof(GamePlayersChoseActivity));
+            }
         }
 
         public void GameStart(List<string> players)
@@ -110,12 +135,84 @@ namespace AlhambraScoringAndroid
         {
             if (Game.ValidateScore(scorePanels))
             {
-                Game.Score(scorePanels);
+                //scoreActivities = new List<BaseActivity>();
+
+                    GameScoreSubmitScorePanels = scorePanels;
+                TryScore(activity);
+
+                //if (Game.HasModule(ExpansionModule.ExpansionCharacters) && scorePanels.Any(p => p.OwnedCharacterTheWiseMan))
+                //{
+                //    gameScoreActivity = activity;
+                //    TheWiseManChoseData = new TheWiseManChoseData(Game, scorePanels);
+                //    NewActivity(typeof(CharacterTheWiseManActivity));
+                //}
+                //else
+                //{
+                //    Game.Score(scorePanels);
+                //    Game.SetNextRound();
+                //    activity.Finish();
+                //    gameInProgressActivity.PrepareRound();
+                //    if (Game.ScoreRound == ScoringRound.Finish)
+                //        Game.SetEndDateTime(DateTime.Now);
+                //}
+            }
+        }
+
+        private void TryScore(BaseActivity activity)
+        {
+            int activityPosition = scoreActivities.FindIndex(a => a?.GetType() == activity.GetType());
+            if (activityPosition != -1)
+                scoreActivities.RemoveRange(activityPosition, scoreActivities.Count - activityPosition);
+            scoreActivities.Add(activity);
+
+            bool runAdditionalActivity = false;
+            for (int i = scoreActivities.Count - 1; i < neededScoreAdditionalActions.Count; i++)
+            {
+                if (neededScoreAdditionalActions[i].condition())
+                {
+                    NewActivity(neededScoreAdditionalActions[i].activityType);
+
+                    runAdditionalActivity = true;
+                    break;
+                }
+                else
+            scoreActivities.Add(null);
+            }
+            if (!runAdditionalActivity)
+            {
+                foreach (BaseActivity scoreActivity in scoreActivities)
+                    scoreActivity?.Finish();
+
+                scoreActivities = new List<BaseActivity>();
+
+                Game.Score(GameScoreSubmitScorePanels);
                 Game.SetNextRound();
-                activity.Finish();
                 gameInProgressActivity.PrepareRound();
                 if (Game.ScoreRound == ScoringRound.Finish)
                     Game.SetEndDateTime(DateTime.Now);
+            }
+        }
+
+        public void ConfirmTheWiseManChose(BaseActivity activity, BuildingType buildingType)
+        {
+            Game.SetTheWiseManBuildingType(buildingType);
+            TryScore(activity);
+
+            //Game.Score(TheWiseManChoseData.ScorePanels);
+            //Game.SetNextRound();
+            //activity.Finish();
+            //gameScoreActivity.Finish();
+            //gameInProgressActivity.PrepareRound();
+            //if (Game.ScoreRound == ScoringRound.Finish)
+            //    Game.SetEndDateTime(DateTime.Now);
+        }
+
+        public void ConfirmMedinasNumber(BaseActivity activity, Dictionary<int, int> playersHighestPrices)
+        {
+            if (Game.ValidateMedinasNumber(playersHighestPrices))
+            {
+                Game.SetMedinasNumbers(playersHighestPrices);
+                TryScore(activity);
             }
         }
 
@@ -123,9 +220,10 @@ namespace AlhambraScoringAndroid
         {
             if (Game.ValidateScoreBeforeAssignLeftoverBuildings(scorePanels))
             {
+                activity.Finish();
+
                 Game.ScoreBeforeAssignLeftoverBuildings(scorePanels);
                 Game.SetNextRound();
-                activity.Finish();
                 gameInProgressActivity.PrepareRound();
             }
         }
@@ -177,16 +275,23 @@ namespace AlhambraScoringAndroid
                     resultHistory.StartDateTime = DateTime.Parse(result.SingleChildNode("startTime").InnerText);
                     resultHistory.EndDateTime = DateTime.Parse(result.SingleChildNode("endTime").InnerText);
                     resultHistory.Modules = new List<ExpansionModule>();
+                    resultHistory.NewScoreCards = new List<NewScoreCard>();
                     resultHistory.CaliphsGuidelines = new List<CaliphsGuidelinesMission>();
                     resultHistory.Players = new List<ResultPlayerHistory>();
                     //resultHistory.ScoreRound = result.SingleChildNode("scoreRound").InnerText.GetEnumByDescriptionValue<ScoringRound>());
                     resultHistory.ScoreRound = Enum.Parse<ScoringRound>(result.SingleChildNode("scoreRound").InnerText);
                     XmlNode modulesElement = result.SingleChildNode("modules");
+                    XmlNode newScoreCardsElement = result.SingleChildNode("newScoreCards");
                     XmlNode caliphsGuidelinesElement = result.SingleChildNode("caliphsGuidelines");
                     foreach (XmlNode module in modulesElement.GetChildNodes("module"))
                     {
                         //resultHistory.Modules.Add(module.SingleChildNode("value").InnerText.GetEnumByDescriptionValue<ExpansionModule>());
                         resultHistory.Modules.Add(Enum.Parse<ExpansionModule>(module.SingleChildNode("value").InnerText));
+                    }
+                    resultHistory.GranadaOption = Enum.Parse<GranadaOption>(result.SingleChildNode("granadaOption").InnerText);
+                    foreach (XmlNode module in newScoreCardsElement.GetChildNodes("newScoreCard"))
+                    {
+                        resultHistory.NewScoreCards.Add(Enum.Parse<NewScoreCard>(module.SingleChildNode("value").InnerText));
                     }
                     foreach (XmlNode module in caliphsGuidelinesElement.GetChildNodes("caliphsGuideline"))
                     {
@@ -211,6 +316,16 @@ namespace AlhambraScoringAndroid
                             result.GardenNumber = Int32.Parse(scoreDetailsNode.SingleChildNode("GardenNumber").InnerText);
                             result.TowerNumber = Int32.Parse(scoreDetailsNode.SingleChildNode("TowerNumber").InnerText);
                             result.BuildingsBonuses = Int32.Parse(scoreDetailsNode.SingleChildNode("BuildingsBonuses").InnerText);
+                            result.TheCityWatch = Int32.Parse(scoreDetailsNode.SingleChildNode("TheCityWatch").InnerText);
+                            result.Camps = Int32.Parse(scoreDetailsNode.SingleChildNode("Camps").InnerText);
+                            result.StreetTraders = Int32.Parse(scoreDetailsNode.SingleChildNode("StreetTraders").InnerText);
+                            result.TreasureChamber = Int32.Parse(scoreDetailsNode.SingleChildNode("TreasureChamber").InnerText);
+                            result.Invaders = Int32.Parse(scoreDetailsNode.SingleChildNode("Invaders").InnerText);
+                            result.Bazaars = Int32.Parse(scoreDetailsNode.SingleChildNode("Bazaars").InnerText);
+                            result.ArtOfTheMoors = Int32.Parse(scoreDetailsNode.SingleChildNode("ArtOfTheMoors").InnerText);
+                            result.Falconers = Int32.Parse(scoreDetailsNode.SingleChildNode("Falconers").InnerText);
+                            result.Watchtowers = Int32.Parse(scoreDetailsNode.SingleChildNode("Watchtowers").InnerText);
+                            result.Medina = Int32.Parse(scoreDetailsNode.SingleChildNode("Medina").InnerText);
                             result.BuildingsWithoutServantTile = Int32.Parse(scoreDetailsNode.SingleChildNode("BuildingsWithoutServantTile").InnerText);
                             result.Orchards = Int32.Parse(scoreDetailsNode.SingleChildNode("Orchards").InnerText);
                             result.Bathhouses = Int32.Parse(scoreDetailsNode.SingleChildNode("Bathhouses").InnerText);
@@ -266,7 +381,11 @@ namespace AlhambraScoringAndroid
                 XmlOperations.AddTextChild(document, resultElement, "endTime", resultHistory.EndDateTime.ToString());
                 XmlElement modulesElement = document.CreateElement(String.Empty, "modules", String.Empty);
                 XmlElement caliphsGuidelinesElement = document.CreateElement(String.Empty, "caliphsGuidelines", String.Empty);
+                XmlElement newScoreCardsElement = document.CreateElement(String.Empty, "newScoreCards", String.Empty);
                 resultElement.AppendChild(modulesElement);
+                XmlOperations.AddTextChild(document, resultElement, "granadaOption", resultHistory.GranadaOption.ToString());
+                resultElement.AppendChild(caliphsGuidelinesElement);
+                resultElement.AppendChild(newScoreCardsElement);
                 foreach (ExpansionModule module in resultHistory.Modules)
                 {
                     XmlElement moduleElement = document.CreateElement(String.Empty, "module", String.Empty);
@@ -274,11 +393,19 @@ namespace AlhambraScoringAndroid
                     XmlOperations.AddTextChild(document, moduleElement, "value", module.ToString());
                     modulesElement.AppendChild(moduleElement);
                 }
+                if (resultHistory.CaliphsGuidelines!=null)
                 foreach (CaliphsGuidelinesMission mission in resultHistory.CaliphsGuidelines)
                 {
                     XmlElement moduleElement = document.CreateElement(String.Empty, "caliphsGuideline", String.Empty);
                     XmlOperations.AddTextChild(document, moduleElement, "value", mission.ToString());
                     caliphsGuidelinesElement.AppendChild(moduleElement);
+                }
+                if (resultHistory.NewScoreCards != null)
+                foreach (NewScoreCard newScoreCard in resultHistory.NewScoreCards)
+                {
+                    XmlElement moduleElement = document.CreateElement(String.Empty, "newScoreCard", String.Empty);
+                    XmlOperations.AddTextChild(document, moduleElement, "value", newScoreCard.ToString());
+                    newScoreCardsElement.AppendChild(moduleElement);
                 }
                 //XmlOperations.AddTextChild(document, resultElement, "scoreRound", resultHistory.ScoreRound.GetEnumDescription());
                 XmlOperations.AddTextChild(document, resultElement, "scoreRound", resultHistory.ScoreRound.ToString());
@@ -302,6 +429,16 @@ namespace AlhambraScoringAndroid
                         XmlOperations.AddTextChild(document, playerScoreDetails1Element, "GardenNumber", scoreDetails.GardenNumber.ToString());
                         XmlOperations.AddTextChild(document, playerScoreDetails1Element, "TowerNumber", scoreDetails.TowerNumber.ToString());
                         XmlOperations.AddTextChild(document, playerScoreDetails1Element, "BuildingsBonuses", scoreDetails.BuildingsBonuses.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "TheCityWatch", scoreDetails.TheCityWatch.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "Camps", scoreDetails.Camps.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "StreetTraders", scoreDetails.StreetTraders.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "TreasureChamber", scoreDetails.TreasureChamber.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "Invaders", scoreDetails.Invaders.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "Bazaars", scoreDetails.Bazaars.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "ArtOfTheMoors", scoreDetails.ArtOfTheMoors.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "Falconers", scoreDetails.Falconers.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "Watchtowers", scoreDetails.Watchtowers.ToString());
+                        XmlOperations.AddTextChild(document, playerScoreDetails1Element, "Medina", scoreDetails.Medina.ToString());
                         XmlOperations.AddTextChild(document, playerScoreDetails1Element, "BuildingsWithoutServantTile", scoreDetails.BuildingsWithoutServantTile.ToString());
                         XmlOperations.AddTextChild(document, playerScoreDetails1Element, "Orchards", scoreDetails.Orchards.ToString());
                         XmlOperations.AddTextChild(document, playerScoreDetails1Element, "Bathhouses", scoreDetails.Bathhouses.ToString());

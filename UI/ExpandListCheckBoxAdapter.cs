@@ -1,4 +1,5 @@
-﻿using AlhambraScoringAndroid.Tools;
+﻿using AlhambraScoringAndroid.Attributes;
+using AlhambraScoringAndroid.Tools;
 using Android.Content;
 using Android.Graphics;
 using Android.Views;
@@ -18,7 +19,7 @@ namespace AlhambraScoringAndroid.UI
         private readonly Dictionary<string, (List<EnumType>, EnumType?)> ListSingleWithSelection;
         private readonly List<View[]> childViews;
 
-        public IEnumerable<EnumType> SelectedListMultiple =>  ListMultipleWithSelections.SelectMany(d => d.Value).Where(d => d.Value).Select(d => d.Key);
+        public IEnumerable<EnumType> SelectedListMultiple => ListMultipleWithSelections.SelectMany(d => d.Value).Where(d => d.Value).Select(d => d.Key);
         public Dictionary<string, EnumType> SelectedListSingle => ListSingleWithSelection.ToDictionary(d => d.Key, d => (EnumType)d.Value.Item2);
 
         public ExpandListCheckBoxAdapter(Context context, Dictionary<string, List<EnumType>> expandableListDetail, bool multipleChoice, bool allowFold)
@@ -29,7 +30,8 @@ namespace AlhambraScoringAndroid.UI
 
             ListMultipleWithSelections = expandableListDetail.ToDictionary(d => d.Key, d => d.Value.ToDictionary(l => l, l => false));
             ListSingleWithSelection = expandableListDetail.ToDictionary(d => d.Key, d => (d.Value, default(EnumType?)));
-            ListSingleWithSelection[(string)GetGroup(0)] = (ListSingleWithSelection.ElementAt(0).Value.Item1, ListSingleWithSelection.ElementAt(0).Value.Item1.First());
+            for (int i = 0; i < ListSingleWithSelection.Count; i++)
+                ListSingleWithSelection[(string)GetGroup(i)] = (ListSingleWithSelection.ElementAt(0).Value.Item1, ListSingleWithSelection.ElementAt(0).Value.Item1.First());
 
             if (MultipleChoice && expandableListDetail.SelectMany(d => d.Value).Distinct().Count() != expandableListDetail.SelectMany(d => d.Value).Count())
                 throw new ArgumentException();
@@ -113,6 +115,8 @@ namespace AlhambraScoringAndroid.UI
 
         public override View GetChildView(int groupPosition, int childPosition, bool isLastChild, View convertView, ViewGroup parent)
         {
+            //TODO szerokość imageView z argumentów
+
             if (MultipleChoice)
             {
                 CheckBox checkBox;
@@ -152,7 +156,8 @@ namespace AlhambraScoringAndroid.UI
 
                 ImageAttribute imageAttribute = keyLocal.GetEnumAttribute<EnumType, ImageAttribute>();
                 if (imageAttribute != null)
-                    imageView.SetImageResource(imageAttribute.Resource);
+                    //imageView.SetImageResource(imageAttribute.Resource);
+                    imageView.SetImageBitmap(imageAttribute.Image(Context.Resources));
             }
             else
             {
@@ -205,10 +210,63 @@ namespace AlhambraScoringAndroid.UI
 
                 ImageAttribute imageAttribute = keyLocal.GetEnumAttribute<EnumType, ImageAttribute>();
                 if (imageAttribute != null)
-                    imageView.SetImageResource(imageAttribute.Resource);
+                    //imageView.SetImageResource(imageAttribute.Resource);
+                    imageView.SetImageBitmap(imageAttribute.Image(Context.Resources));
             }
             childViews[groupPosition][childPosition] = convertView;
             return convertView;
+        }
+    }
+
+    public static class ExpandableListViewOperations
+    {
+        public static void HoldSize(this ExpandableListView listView)
+        {
+            //TODO za duży rozmiar w GameModulesDetailsChoseActivity
+
+            listView.GroupClick += new EventHandler<ExpandableListView.GroupClickEventArgs>((object sender, ExpandableListView.GroupClickEventArgs e) => SetExpandableListViewHeight((ExpandableListView)sender, e));
+            SetExpandableListViewHeight(listView, null);
+        }
+
+        //shit android. Problem with multiple ExpandableListView
+        public static void SetExpandableListViewHeight(ExpandableListView listView, ExpandableListView.GroupClickEventArgs e)
+        {
+            int group = e != null ? e.GroupPosition : -1;
+            IExpandableListAdapter listAdapter = (IExpandableListAdapter)listView.ExpandableListAdapter;
+
+            int totalHeight = 0;
+            int desiredWidth = View.MeasureSpec.MakeMeasureSpec(listView.Width, MeasureSpecMode.Exactly);
+            for (int i = 0; i < listAdapter.GroupCount; i++)
+            {
+                View groupItem = listAdapter.GetGroupView(i, false, null, listView);
+                groupItem.Measure(desiredWidth, (int)MeasureSpecMode.Unspecified);
+
+                totalHeight += groupItem.MeasuredHeight;
+
+                if (((listView.IsGroupExpanded(i)) && (i != group))
+                        || ((!listView.IsGroupExpanded(i)) && (i == group)))
+                {
+                    for (int j = 0; j < listAdapter.GetChildrenCount(i); j++)
+                    {
+                        View listItem = listAdapter.GetChildView(i, j, false, null, listView);
+                        listItem.Measure(desiredWidth, (int)MeasureSpecMode.Unspecified);
+
+                        totalHeight += listItem.MeasuredHeight;
+                    }
+                    totalHeight += (listView.DividerHeight * (listAdapter.GetChildrenCount(i) - 1));
+                }
+            }
+
+            ViewGroup.LayoutParams params2 = listView.LayoutParameters;
+            totalHeight += (listView.DividerHeight * (listAdapter.GroupCount - 1));
+            //if (height < 10)
+            //    height = 200;
+            params2.Height = totalHeight;
+            listView.LayoutParameters = params2;
+            listView.RequestLayout();
+
+            if (e != null)
+                e.Handled = false;
         }
     }
 }

@@ -62,9 +62,9 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         public void Submit()
         {
-            if (Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
+            if (Game.ScoreRound != ScoringRound.ThirdBeforeLeftover && sectionsPagerAdapter.ValidateAllPlayerScoreFragments())
                 Application.SubmitScore(this, sectionsPagerAdapter.AllPlayerScoreFragments);
-            else
+            else if (Game.ScoreRound == ScoringRound.ThirdBeforeLeftover && sectionsPagerAdapter.ValidateAllPlayerScoreBeforeAssignLeftoverFragments())
                 Application.SubmitScoreBeforeAssignLeftoverBuildings(this, sectionsPagerAdapter.AllPlayerScoreBeforeAssignLeftoverFragments);
         }
     }

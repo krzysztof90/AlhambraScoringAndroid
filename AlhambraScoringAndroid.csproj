@@ -63,9 +63,12 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Atributes\MultipleImageAttribute.cs" />
+    <Compile Include="Atributes\NewScoreCardAttribute.cs" />
     <Compile Include="DialogInterfaceOnClickListener.cs" />
     <Compile Include="GamePlay\CaliphsGuidelines.cs" />
     <Compile Include="GamePlay\GranadaOption.cs" />
+    <Compile Include="GamePlay\NewScoreCard.cs" />
     <Compile Include="GamePlay\ResultHistory.cs" />
     <Compile Include="GamePlay\ResultPlayerHistory.cs" />
     <Compile Include="GamePlay\ScoreDetails.cs" />
@@ -73,9 +76,13 @@
     <Compile Include="GamePlay\ScoreHistoryImmediately.cs" />
     <Compile Include="GamePlay\ScoreHistoryRound.cs" />
     <Compile Include="GamePlay\ScoreType.cs" />
-    <Compile Include="ImageAttribute.cs" />
+    <Compile Include="Atributes\ImageAttribute.cs" />
     <Compile Include="Tools\EnumOperations.cs" />
+    <Compile Include="Tools\Enums\HighestLowest.cs" />
+    <Compile Include="Tools\Enums\HorizontalVertical.cs" />
+    <Compile Include="Tools\Enums\UpDown.cs" />
     <Compile Include="UI\Activities\BaseActivity.cs" />
+    <Compile Include="UI\Activities\CharacterTheWiseManActivity.cs" />
     <Compile Include="UI\Activities\GameDetailsActivity.cs" />
     <Compile Include="UI\Activities\GameInProgressActivity.cs" />
     <Compile Include="UI\Activities\GameModulesDetailsChoseActivity.cs" />
@@ -89,6 +96,7 @@
     <Compile Include="UI\Activities\MainActivity.cs" />
     <Compile Include="MinMaxFilter.cs" />
     <Compile Include="MyApplication.cs" />
+    <Compile Include="UI\Activities\MedinaNumberActivity.cs" />
     <Compile Include="UI\Activities\NewGameActivity.cs" />
     <Compile Include="UI\Activities\ResultsHistoryActivity.cs" />
     <Compile Include="UI\ExpandListCheckBoxPosition.cs" />
@@ -380,9 +388,6 @@
     <AndroidResource Include="Resources\drawable\Diamonds.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Character.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\Camp.png" />
   </ItemGroup>
   <ItemGroup>
@@ -407,7 +412,7 @@
     <AndroidResource Include="Resources\drawable\Invaders.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Bazaars.png" />
+    <AndroidResource Include="Resources\drawable\Bazaar.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\NewScoreCards.png" />
@@ -425,7 +430,7 @@
     <AndroidResource Include="Resources\drawable\Falconers.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Watchtowers.png" />
+    <AndroidResource Include="Resources\drawable\Watchtower.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\BuildingSites.png" />
@@ -446,6 +451,24 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\list_extensionmodule_item_radiobuttons.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\CharacterTheCityWatch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\CharacterTheWiseMan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_building_type_chose.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_players_buildings_chose.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

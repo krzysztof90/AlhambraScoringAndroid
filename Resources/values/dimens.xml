@@ -2,4 +2,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="game_details_cell_width">50dp</dimen>
     <dimen name="game_details_cell_height">25dp</dimen>
+    <dimen name="game_details_header_height">250dp</dimen>
 </resources>

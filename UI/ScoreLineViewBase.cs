@@ -21,7 +21,8 @@ namespace AlhambraScoringAndroid.UI
         protected abstract int ResourceLayout { get; }
         protected abstract void CreateControls();
         protected abstract void SetControlsProperties();
-        protected abstract void SetLabelAndColor(string label, ColorStateList color);
+        public abstract void SetLabel(string label);
+        public abstract void SetColor( ColorStateList color);
         protected abstract void SetValue(T? value);
         protected abstract T? GetValue();
 
@@ -39,7 +40,8 @@ namespace AlhambraScoringAndroid.UI
 
             CreateControls();
             SetControlsProperties();
-            SetLabelAndColor(label, color);
+            SetLabel(label);
+            SetColor( color);
         }
 
         public void Initialize()

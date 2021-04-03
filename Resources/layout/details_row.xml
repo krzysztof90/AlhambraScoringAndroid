@@ -54,6 +54,56 @@
         android:layout_height="@dimen/game_details_cell_height"
         android:layout_marginStart="10dp"/>
     <TextView
+        android:id="@+id/resultTheCityWatch"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultCamps"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultStreetTraders"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultTreasureChamber"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultInvaders"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultBazaars"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultArtOfTheMoors"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultFalconers"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultWatchtowers"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
+        android:id="@+id/resultMedina"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_cell_height"
+        android:layout_marginStart="10dp"/>
+    <TextView
         android:id="@+id/resultBuildingsWithoutServantTile"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_cell_height"

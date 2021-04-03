@@ -17,6 +17,8 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             Application.LoadResults();
 
+            //TODO buttons for new game and history
+
             //TODO usunąć
             Button button1 = FindViewById<Button>(Resource.Id.button1);
             button1.Click += Button1_Click;
@@ -27,6 +29,32 @@ namespace AlhambraScoringAndroid.UI.Activities
             Application.NewGame();
             List<ExpansionModule> modules = new List<ExpansionModule>()
             {
+                    ExpansionModule.ExpansionViziersFavour,
+                    ExpansionModule.ExpansionCurrencyExchangeCards,
+                    ExpansionModule.ExpansionBonusCards,
+                    ExpansionModule.ExpansionSquares,
+                    ExpansionModule.ExpansionCityGates,
+                    ExpansionModule.ExpansionDiamonds,
+                    ExpansionModule.ExpansionCharacters,
+                    ExpansionModule.ExpansionCamps,
+                    ExpansionModule.ExpansionCityWalls,
+                    ExpansionModule.ExpansionThieves,
+                    ExpansionModule.ExpansionChange,
+                    ExpansionModule.ExpansionStreetTrader,
+                    ExpansionModule.ExpansionTreasureChamber,
+                    ExpansionModule.ExpansionMasterBuilders,
+                    ExpansionModule.ExpansionInvaders,
+                    ExpansionModule.ExpansionBazaars,
+                    ExpansionModule.ExpansionNewScoreCards,
+                    ExpansionModule.ExpansionPowerOfSultan,
+                    ExpansionModule.ExpansionCaravanserai,
+                    ExpansionModule.ExpansionArtOfTheMoors,
+                    ExpansionModule.ExpansionFalconers,
+                    ExpansionModule.ExpansionWatchtowers,
+                    ExpansionModule.ExpansionBuildingSites,
+                    ExpansionModule.ExpansionExchangeCertificates,
+                    ExpansionModule.QueenieMagicalBuildings,
+                    ExpansionModule.QueenieMedina,
                 ExpansionModule.DesignerNewBuildingGrounds,
                 ExpansionModule.DesignerMajorConstructionProjects,
                 ExpansionModule.DesignerPalaceStaff,
@@ -45,7 +73,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 ExpansionModule.FanTreasures,
                 ExpansionModule.FanCaliphsGuidelines,
             };
-             List<CaliphsGuidelinesMission> modulesDetails = new  List<CaliphsGuidelinesMission>()
+            List<CaliphsGuidelinesMission> modulesDetails = new List<CaliphsGuidelinesMission>()
             {
                     CaliphsGuidelinesMission.Mission1,
                     CaliphsGuidelinesMission.Mission2,
@@ -58,7 +86,8 @@ namespace AlhambraScoringAndroid.UI.Activities
                     CaliphsGuidelinesMission.Mission9,
             };
             Application.GameApplyModules(modules, GranadaOption.Without);
-            Application.GameApplyModulesDetails(modulesDetails);
+            //Application.GameApplyModulesDetails(modulesDetails, new List<NewScoreCard>() { NewScoreCard.Card1, NewScoreCard.Card2, NewScoreCard.Card3 });
+            Application.GameApplyModulesDetails(modulesDetails, null);
             List<string> players = new List<string>();
             players.Add("E");
             players.Add("K");
