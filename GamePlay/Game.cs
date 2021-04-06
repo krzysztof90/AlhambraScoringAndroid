@@ -3,6 +3,7 @@ using AlhambraScoringAndroid.Tools;
 using AlhambraScoringAndroid.Tools.Enums;
 using AlhambraScoringAndroid.UI;
 using Android.Content;
+using Android.Widget;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,7 +20,7 @@ namespace AlhambraScoringAndroid.GamePlay
         };
         public static List<GranadaBuildingType> GranadaBuildingsOrder = new List<GranadaBuildingType>()
         {
-            GranadaBuildingType.Arena,            GranadaBuildingType.BathHouse,            GranadaBuildingType.Library,            GranadaBuildingType.Hostel,            GranadaBuildingType.Hospital,            GranadaBuildingType.Market,            GranadaBuildingType.Park,            GranadaBuildingType.School,            GranadaBuildingType.ResidentialArea
+            GranadaBuildingType.Arena, GranadaBuildingType.BathHouse, GranadaBuildingType.Library, GranadaBuildingType.Hostel, GranadaBuildingType.Hospital, GranadaBuildingType.Market, GranadaBuildingType.Park, GranadaBuildingType.School, GranadaBuildingType.ResidentialArea
         };
         public static List<int>[] TreasureChamberScoring = new List<int>[] { new List<int> { 7 }, new List<int> { 14, 7 }, new List<int> { 22, 14, 7 } };
         public static List<int>[] MedinaScoring = new List<int>[] { new List<int> { 3 }, new List<int> { 6, 3 }, new List<int> { 9, 6, 3 } };
@@ -224,7 +225,14 @@ namespace AlhambraScoringAndroid.GamePlay
         {
             if (module == ExpansionModule.Granada)
                 return GranadaOption != GranadaOption.Without;
-            return Modules.Contains(module) && GranadaOption != GranadaOption.Alone;
+            return Modules.Contains(module) && (GranadaOption != GranadaOption.Alone
+                || (module == ExpansionModule.ExpansionDiamonds
+                || module == ExpansionModule.ExpansionCurrencyExchangeCards
+                || module == ExpansionModule.ExpansionMasterBuilders
+                || module == ExpansionModule.ExpansionCharacters
+                || module == ExpansionModule.ExpansionThieves
+                || module == ExpansionModule.ExpansionInvaders
+                || module == ExpansionModule.ExpansionCaravanserai));
         }
 
         public bool HasCaliphsGuideline(CaliphsGuidelinesMission module)
@@ -232,16 +240,25 @@ namespace AlhambraScoringAndroid.GamePlay
             return CaliphsGuidelines.Contains(module);
         }
 
+        public bool ValidatePlayers(List<string> playersNames)
+        {
+            if (playersNames.Any(n => String.IsNullOrEmpty(n)))
+                return ValidateUtils.CheckFailed(Context, "Empty name");
+            if (playersNames.Any(n => n.Equals(Player.DirkName, StringComparison.OrdinalIgnoreCase)) && playersNames.Count == 2)
+                return ValidateUtils.CheckFailed(Context, "Dirk is reserved name");
+            if (playersNames.Select(n => n.ToUpper()).Distinct().Count() != playersNames.Count)
+                return ValidateUtils.CheckFailed(Context, "Duplicated names");
+            return true;
+        }
+
         public void SetPlayers(List<string> playersNames)
         {
             Players = new List<Player>();
 
-            bool twoPlayers = playersNames.Count == 2;
-
             foreach (string playerName in playersNames)
-                AddPlayer(playerName, twoPlayers);
+                Players.Add(new Player(this, playerName));
 
-            if (twoPlayers)
+            if (playersNames.Count == 2)
                 Players.Add(Player.CreateDirk(this));
 
             Reset(false);
@@ -270,17 +287,6 @@ namespace AlhambraScoringAndroid.GamePlay
         public void SetEndDateTime(DateTime? dateTime)
         {
             EndDateTime = dateTime;
-        }
-
-        private void AddPlayer(string name, bool twoPlayers)
-        {
-            if (String.IsNullOrEmpty(name))
-                throw new NameValidationException("Empty name");
-            if (name.Equals(Player.DirkName, StringComparison.OrdinalIgnoreCase) && twoPlayers)
-                throw new NameValidationException("Dirk is reserved name");
-            if (Players.Any(p => name.Equals(p.Name, StringComparison.OrdinalIgnoreCase)))
-                throw new NameValidationException("Duplicates names");
-            Players.Add(new Player(this, name));
         }
 
         public Player GetPlayer(int playerNumber)

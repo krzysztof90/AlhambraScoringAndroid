@@ -1,5 +1,4 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
-using AlhambraScoringAndroid.Tools;
 using Android.App;
 using Android.OS;
 using Android.Views;
@@ -43,14 +42,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 if (playersCount > 5)
                     players.Add((FindViewById<EditText>(Resource.Id.text_player6)).Text);
 
-                try
-                {
-                    Application.GameStart(players);
-                }
-                catch (NameValidationException exception)
-                {
-                    Toast.MakeText(ApplicationContext, exception.Message, ToastLength.Long).Show();
-                }
+                Application.GameSetupInstruction(players);
             });
         }
 
@@ -67,9 +59,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 editText3.Enabled = true;
                 if (editText3.Text == Player.DirkName)
-                {
                     editText3.Text = String.Empty;
-                }
             }
             else
             {

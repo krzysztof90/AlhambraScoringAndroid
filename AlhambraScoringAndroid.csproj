@@ -78,6 +78,7 @@
     <Compile Include="GamePlay\ScoreHistoryRound.cs" />
     <Compile Include="GamePlay\ScoreType.cs" />
     <Compile Include="Atributes\ImageAttribute.cs" />
+    <Compile Include="GamePlay\SetupInstructions.cs" />
     <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="Tools\Enums\HighestLowest.cs" />
     <Compile Include="Tools\Enums\HorizontalVertical.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="GamePlay\Player.cs" />
     <Compile Include="GamePlay\ScoringRound.cs" />
     <Compile Include="UI\Activities\GameScoreActivity.cs" />
+    <Compile Include="UI\Activities\GameSetupInstructionActivity.cs" />
     <Compile Include="UI\Activities\GranadaBuildingsNumberActivity.cs" />
     <Compile Include="UI\Activities\MainActivity.cs" />
     <Compile Include="MinMaxFilter.cs" />
@@ -512,6 +514,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\view_players_buildings_chose.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_game_setup.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

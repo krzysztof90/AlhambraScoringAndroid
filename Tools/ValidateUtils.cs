@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.Views;
 using Android.Widget;
-using System;
 using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.Tools
@@ -22,13 +21,6 @@ namespace AlhambraScoringAndroid.Tools
                     if (!playerPanel.ValidateNumberRange())
                         return false;
             return true;
-        }
-    }
-
-    public class NameValidationException : Exception
-    {
-        public NameValidationException(string message) : base(message)
-        {
         }
     }
 }
