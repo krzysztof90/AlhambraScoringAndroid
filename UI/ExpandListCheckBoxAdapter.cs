@@ -13,7 +13,6 @@ namespace AlhambraScoringAndroid.UI
     public class ExpandListCheckBoxAdapter<EnumType> : BaseExpandableListAdapter where EnumType : struct, IConvertible, IComparable, IFormattable
     {
         private readonly bool MultipleChoice;
-        private readonly bool AllowCollapse;
         private readonly Context Context;
         private readonly Dictionary<string, Dictionary<EnumType, bool>> ListMultipleWithSelections;
         private readonly Dictionary<string, (List<EnumType>, EnumType?)> ListSingleWithSelection;
@@ -22,10 +21,9 @@ namespace AlhambraScoringAndroid.UI
         public IEnumerable<EnumType> SelectedListMultiple => ListMultipleWithSelections.SelectMany(d => d.Value).Where(d => d.Value).Select(d => d.Key);
         public Dictionary<string, EnumType> SelectedListSingle => ListSingleWithSelection.ToDictionary(d => d.Key, d => (EnumType)d.Value.Item2);
 
-        public ExpandListCheckBoxAdapter(Context context, Dictionary<string, List<EnumType>> expandableListDetail, bool multipleChoice, bool allowFold)
+        public ExpandListCheckBoxAdapter(Context context, Dictionary<string, List<EnumType>> expandableListDetail, bool multipleChoice)
         {
             MultipleChoice = multipleChoice;
-            AllowCollapse = allowFold;
             Context = context;
 
             ListMultipleWithSelections = expandableListDetail.ToDictionary(d => d.Key, d => d.Value.ToDictionary(l => l, l => false));
@@ -107,9 +105,6 @@ namespace AlhambraScoringAndroid.UI
 
             textView.Text = (string)GetGroup(groupPosition);
 
-            if (!AllowCollapse)
-                ((ExpandableListView)parent).ExpandGroup(groupPosition);
-
             return convertView;
         }
 
@@ -156,7 +151,6 @@ namespace AlhambraScoringAndroid.UI
 
                 ImageAttribute imageAttribute = keyLocal.GetEnumAttribute<EnumType, ImageAttribute>();
                 if (imageAttribute != null)
-                    //imageView.SetImageResource(imageAttribute.Resource);
                     imageView.SetImageBitmap(imageAttribute.Image(Context.Resources));
             }
             else
@@ -182,7 +176,6 @@ namespace AlhambraScoringAndroid.UI
                         {
                             if (j != groupAndChild.ChildPosition)
                             {
-                                //View listItem = this.GetChildView(groupAndChild.GroupPosition, j, false, null, parent);
                                 View listItem = childViews[groupAndChild.GroupPosition][j];
                                 Android.Util.Pair pair2 = (Android.Util.Pair)listItem.Tag;
                                 RadioButton radioButton3 = (RadioButton)pair2.First;
@@ -210,63 +203,10 @@ namespace AlhambraScoringAndroid.UI
 
                 ImageAttribute imageAttribute = keyLocal.GetEnumAttribute<EnumType, ImageAttribute>();
                 if (imageAttribute != null)
-                    //imageView.SetImageResource(imageAttribute.Resource);
                     imageView.SetImageBitmap(imageAttribute.Image(Context.Resources));
             }
             childViews[groupPosition][childPosition] = convertView;
             return convertView;
-        }
-    }
-
-    public static class ExpandableListViewOperations
-    {
-        public static void HoldSize(this ExpandableListView listView)
-        {
-            //TODO za duży rozmiar w GameModulesDetailsChoseActivity
-
-            listView.GroupClick += new EventHandler<ExpandableListView.GroupClickEventArgs>((object sender, ExpandableListView.GroupClickEventArgs e) => SetExpandableListViewHeight((ExpandableListView)sender, e));
-            SetExpandableListViewHeight(listView, null);
-        }
-
-        //shit android. Problem with multiple ExpandableListView
-        public static void SetExpandableListViewHeight(ExpandableListView listView, ExpandableListView.GroupClickEventArgs e)
-        {
-            int group = e != null ? e.GroupPosition : -1;
-            IExpandableListAdapter listAdapter = (IExpandableListAdapter)listView.ExpandableListAdapter;
-
-            int totalHeight = 0;
-            int desiredWidth = View.MeasureSpec.MakeMeasureSpec(listView.Width, MeasureSpecMode.Exactly);
-            for (int i = 0; i < listAdapter.GroupCount; i++)
-            {
-                View groupItem = listAdapter.GetGroupView(i, false, null, listView);
-                groupItem.Measure(desiredWidth, (int)MeasureSpecMode.Unspecified);
-
-                totalHeight += groupItem.MeasuredHeight;
-
-                if (((listView.IsGroupExpanded(i)) && (i != group))
-                        || ((!listView.IsGroupExpanded(i)) && (i == group)))
-                {
-                    for (int j = 0; j < listAdapter.GetChildrenCount(i); j++)
-                    {
-                        View listItem = listAdapter.GetChildView(i, j, false, null, listView);
-                        listItem.Measure(desiredWidth, (int)MeasureSpecMode.Unspecified);
-
-                        totalHeight += listItem.MeasuredHeight;
-                    }
-                    totalHeight += (listView.DividerHeight * (listAdapter.GetChildrenCount(i) - 1));
-                }
-            }
-
-            ViewGroup.LayoutParams params2 = listView.LayoutParameters;
-            totalHeight += (listView.DividerHeight * (listAdapter.GroupCount - 1));
-            //if (height < 10)
-            //    height = 200;
-            params2.Height = totalHeight;
-            listView.LayoutParameters = params2;
-            listView.RequestLayout();
-
-            if (e != null)
-                e.Handled = false;
         }
     }
 }

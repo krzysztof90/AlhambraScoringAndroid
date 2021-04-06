@@ -89,16 +89,16 @@ namespace AlhambraScoringAndroid.UI.Activities
             //Application.GameApplyModules(modules, GranadaOption.Alone);
             Application.GameApplyModules(modules, GranadaOption.With);
             //Application.GameApplyModulesDetails(modulesDetails, new List<NewScoreCard>() { NewScoreCard.Card1, NewScoreCard.Card2, NewScoreCard.Card3 });
-            Application.GameApplyModulesDetails(modulesDetails, null);
-            List<string> players = new List<string>();
-            players.Add("E");
-            players.Add("K");
-            players.Add("3");
-            players.Add("4");
-            Application.GameSetupInstruction(players);
-            //Application.GameStart();
-            //while (Game.ScoreRound != ScoringRound.Second)
-            //    Game.SetNextRound();
+            //Application.GameApplyModulesDetails(modulesDetails, null);
+            //List<string> players = new List<string>();
+            //players.Add("E");
+            //players.Add("K");
+            //players.Add("3");
+            //players.Add("4");
+            //Application.GameSetupInstruction(players);
+            ////Application.GameStart();
+            ////while (Game.ScoreRound != ScoringRound.Second)
+            ////    Game.SetNextRound();
         }
     }
 }

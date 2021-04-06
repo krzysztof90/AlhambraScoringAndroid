@@ -10,7 +10,7 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "Setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameSetupInstructionActivity : BaseActivity
     {
-        private ExpandableListView expandableListView;
+        private ExpandableListViewExtension expandableListView;
 
         protected override int ContentView => Resource.Layout.activity_game_setup;
 
@@ -20,6 +20,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             List<SetupInstructions> setupTiles = new List<SetupInstructions>();
             List<SetupInstructions> setupCards = new List<SetupInstructions>();
+            //TODO pozostałe
 
             AddSetupInstruction(setupTiles, SetupInstructions.PutBuildingsOfPowerTiles, Game.HasModule(ExpansionModule.DesignerBuildingsOfPower));
             AddSetupInstruction(setupTiles, SetupInstructions.PutCampTiles, Game.HasModule(ExpansionModule.ExpansionCamps));
@@ -71,9 +72,10 @@ namespace AlhambraScoringAndroid.UI.Activities
                 ["Cards"] = setupCards,
             };
 
-            expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);
-            ExpandListCheckBoxAdapter<SetupInstructions> adapter = new ExpandListCheckBoxAdapter<SetupInstructions>(this, setup, true, false);
+            expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
+            ExpandListCheckBoxAdapter<SetupInstructions> adapter = new ExpandListCheckBoxAdapter<SetupInstructions>(this, setup, true);
             expandableListView.SetAdapter(adapter);
+            expandableListView.Expand();
 
             Button playButton = FindViewById<Button>(Resource.Id.playButton);
             playButton.Click += new EventHandler((object sender, EventArgs e) =>

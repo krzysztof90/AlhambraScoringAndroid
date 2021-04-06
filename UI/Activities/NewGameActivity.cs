@@ -11,8 +11,8 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "Nowa gra", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class NewGameActivity : BaseActivity
     {
-        private ExpandableListView expandableListView;
-        private ExpandableListView expandableListView2;
+        private ExpandableListViewExtension expandableListView;
+        private ExpandableListViewExtension expandableListView2;
 
         protected override int ContentView => Resource.Layout.activity_new_game;
 
@@ -83,15 +83,15 @@ namespace AlhambraScoringAndroid.UI.Activities
                 },
             };
 
-            expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);
-            ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions, true, true);
+            expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
+            ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions, true);
             expandableListView.SetAdapter(adapter);
-            expandableListView.HoldSize();
+            expandableListView.HoldSize = true;
 
-            expandableListView2 = FindViewById<ExpandableListView>(Resource.Id.expandableListView2);
-            ExpandListCheckBoxAdapter<GranadaOption> adapter2 = new ExpandListCheckBoxAdapter<GranadaOption>(this, granadaOptions, false, true);
+            expandableListView2 = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView2);
+            ExpandListCheckBoxAdapter<GranadaOption> adapter2 = new ExpandListCheckBoxAdapter<GranadaOption>(this, granadaOptions, false);
             expandableListView2.SetAdapter(adapter2);
-            expandableListView2.HoldSize();
+            expandableListView2.HoldSize = true;
 
             Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>

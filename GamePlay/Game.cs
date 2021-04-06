@@ -64,6 +64,16 @@ namespace AlhambraScoringAndroid.GamePlay
             [BuildingType.Garden] = 5,
             [BuildingType.Tower] = 5
         };
+        public static List<ExpansionModule> GranadaCompatibleModules = new List<ExpansionModule>()
+        {
+                 ExpansionModule.ExpansionDiamonds,
+                ExpansionModule.ExpansionCurrencyExchangeCards,
+                ExpansionModule.ExpansionMasterBuilders,
+                ExpansionModule.ExpansionCharacters,
+                ExpansionModule.ExpansionThieves,
+                ExpansionModule.ExpansionInvaders,
+                ExpansionModule.ExpansionCaravanserai
+        };
 
         private readonly Context Context;
 
@@ -226,13 +236,7 @@ namespace AlhambraScoringAndroid.GamePlay
             if (module == ExpansionModule.Granada)
                 return GranadaOption != GranadaOption.Without;
             return Modules.Contains(module) && (GranadaOption != GranadaOption.Alone
-                || (module == ExpansionModule.ExpansionDiamonds
-                || module == ExpansionModule.ExpansionCurrencyExchangeCards
-                || module == ExpansionModule.ExpansionMasterBuilders
-                || module == ExpansionModule.ExpansionCharacters
-                || module == ExpansionModule.ExpansionThieves
-                || module == ExpansionModule.ExpansionInvaders
-                || module == ExpansionModule.ExpansionCaravanserai));
+                || GranadaCompatibleModules.Contains(module));
         }
 
         public bool HasCaliphsGuideline(CaliphsGuidelinesMission module)

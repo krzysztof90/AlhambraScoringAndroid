@@ -1,6 +1,9 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.App;
+using Android.Content;
 using Android.OS;
+using Android.Util;
+using Android.Views;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
@@ -11,8 +14,8 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "Szczegóły dodatków", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameModulesDetailsChoseActivity : BaseActivity
     {
-        private ExpandableListView newScoreCardsExpandableListView;
-        private ExpandableListView caliphsGuidelinesExpandableListView;
+        private ExpandableListViewExtension newScoreCardsExpandableListView;
+        private ExpandableListViewExtension caliphsGuidelinesExpandableListView;
 
         protected override int ContentView => Resource.Layout.activity_modules_details;
 
@@ -55,18 +58,20 @@ namespace AlhambraScoringAndroid.UI.Activities
             ExpandListCheckBoxAdapter<CaliphsGuidelinesMission> adapterCaliphsGuidelines = null;
             if (Game.HasModule(ExpansionModule.ExpansionNewScoreCards))
             {
-                newScoreCardsExpandableListView = FindViewById<ExpandableListView>(Resource.Id.listView1);
-                adapterNewScoreCards = new ExpandListCheckBoxAdapter<NewScoreCard>(this, newScoreCards, false, false);
+                newScoreCardsExpandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.listView1);
+                adapterNewScoreCards = new ExpandListCheckBoxAdapter<NewScoreCard>(this, newScoreCards, false);
                 newScoreCardsExpandableListView.SetAdapter(adapterNewScoreCards);
-                newScoreCardsExpandableListView.HoldSize();
+                newScoreCardsExpandableListView.HoldSize = true;
+                newScoreCardsExpandableListView.Expand();
             }
 
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines))
             {
-                caliphsGuidelinesExpandableListView = FindViewById<ExpandableListView>(Resource.Id.listView2);
-                adapterCaliphsGuidelines = new ExpandListCheckBoxAdapter<CaliphsGuidelinesMission>(this, missions, true, false);
+                caliphsGuidelinesExpandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.listView2);
+                adapterCaliphsGuidelines = new ExpandListCheckBoxAdapter<CaliphsGuidelinesMission>(this, missions, true);
                 caliphsGuidelinesExpandableListView.SetAdapter(adapterCaliphsGuidelines);
-                caliphsGuidelinesExpandableListView.HoldSize();
+                caliphsGuidelinesExpandableListView.HoldSize = true;
+                caliphsGuidelinesExpandableListView.Expand();
             }
 
             Button startButton = FindViewById<Button>(Resource.Id.startButton);

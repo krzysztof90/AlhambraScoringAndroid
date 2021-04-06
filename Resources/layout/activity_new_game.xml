@@ -24,11 +24,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <ExpandableListView
+        <AlhambraScoringAndroid.UI.ExpandableListViewExtension
             android:id="@+id/expandableListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <ExpandableListView
+        <AlhambraScoringAndroid.UI.ExpandableListViewExtension
             android:id="@+id/expandableListView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" 

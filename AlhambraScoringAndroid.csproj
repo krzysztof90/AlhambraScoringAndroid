@@ -103,6 +103,7 @@
     <Compile Include="UI\Activities\MedinaNumberActivity.cs" />
     <Compile Include="UI\Activities\NewGameActivity.cs" />
     <Compile Include="UI\Activities\ResultsHistoryActivity.cs" />
+    <Compile Include="UI\ExpandableListViewExtension.cs" />
     <Compile Include="UI\ExpandListCheckBoxPosition.cs" />
     <Compile Include="UI\HistoryPanel.cs" />
     <Compile Include="UI\PlayerResultPanel.cs" />

@@ -35,13 +35,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             if (module == ExpansionModule.Granada)
                 return GranadaOption != GranadaOption.Without;
             return Result.Modules.Contains(module) && (GranadaOption != GranadaOption.Alone
-                || (module == ExpansionModule.ExpansionDiamonds
-                || module == ExpansionModule.ExpansionCurrencyExchangeCards
-                || module == ExpansionModule.ExpansionMasterBuilders
-                || module == ExpansionModule.ExpansionCharacters
-                || module == ExpansionModule.ExpansionThieves
-                || module == ExpansionModule.ExpansionInvaders
-                || module == ExpansionModule.ExpansionCaravanserai));
+                || Game.GranadaCompatibleModules.Contains(module));
         }
 
         public bool HasCaliphsGuideline(CaliphsGuidelinesMission module)
