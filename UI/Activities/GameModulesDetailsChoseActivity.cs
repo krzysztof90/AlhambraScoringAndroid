@@ -1,7 +1,6 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.App;
 using Android.OS;
-using Android.Views;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
@@ -13,8 +12,6 @@ namespace AlhambraScoringAndroid.UI.Activities
     public class GameModulesDetailsChoseActivity : BaseActivity
     {
         private ExpandableListView newScoreCardsExpandableListView;
-        //private ExpandableListView newScoreCards2ExpandableListView;
-        //private ExpandableListView newScoreCards3ExpandableListView;
         private ExpandableListView caliphsGuidelinesExpandableListView;
 
         protected override int ContentView => Resource.Layout.activity_modules_details;
@@ -62,14 +59,6 @@ namespace AlhambraScoringAndroid.UI.Activities
                 adapterNewScoreCards = new ExpandListCheckBoxAdapter<NewScoreCard>(this, newScoreCards, false, false);
                 newScoreCardsExpandableListView.SetAdapter(adapterNewScoreCards);
                 newScoreCardsExpandableListView.HoldSize();
-                //newScoreCards2ExpandableListView = FindViewById<ExpandableListView>(Resource.Id.listView2);
-                //ExpandListCheckBoxAdapter<NewScoreCard> adapterNewScoreCards2 = new ExpandListCheckBoxAdapter<NewScoreCard>(this, newScoreCards, false, false);
-                //newScoreCards2ExpandableListView.SetAdapter(adapterNewScoreCards2);
-                //newScoreCards2ExpandableListView.HoldSize();
-                //newScoreCards3ExpandableListView = FindViewById<ExpandableListView>(Resource.Id.listView3);
-                //ExpandListCheckBoxAdapter<NewScoreCard> adapterNewScoreCards3 = new ExpandListCheckBoxAdapter<NewScoreCard>(this, newScoreCards, false, false);
-                //newScoreCards3ExpandableListView.SetAdapter(adapterNewScoreCards3);
-                //newScoreCards3ExpandableListView.HoldSize();
             }
 
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines))

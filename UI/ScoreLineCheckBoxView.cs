@@ -41,7 +41,7 @@ namespace AlhambraScoringAndroid.UI
             if (color != null)
             {
                 scoreLineCheckBox.SetTextColor(color);
-                if (color.DefaultColor == -658699)
+                if (color.DefaultColor == -658699 || color.DefaultColor == -1)
                     scoreLineCheckBox.SetShadowLayer(1, 1, 1, Android.Graphics.Color.Black);
             }
         }

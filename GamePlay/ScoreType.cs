@@ -39,5 +39,16 @@
         Mission7,
         Mission8,
         Mission9,
+        MoatLength,
+        Arena,
+        BathHouse,
+        Library,
+        Hostel,
+        Hospital,
+        Market,
+        Park,
+        School,
+        ResidentialArea,
+        WallMoatCombination
     }
 }

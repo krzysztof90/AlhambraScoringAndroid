@@ -536,6 +536,81 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/mission9Grids22CountNumericUpDown"
             app:labelValue="Second longest wall"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/moatLengthNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/secondLongestWallNumericUpDown"
+            app:labelValue="Longest continuous moat"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/arenaNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/moatLengthNumericUpDown"
+            app:labelColor="@color/colorArena" 
+            app:labelValue="Arena number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/bathHouseNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/arenaNumericUpDown"
+            app:labelColor="@color/colorBathHouse" 
+            app:labelValue="Bath house number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/libraryNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bathHouseNumericUpDown"
+            app:labelColor="@color/colorLibrary" 
+            app:labelValue="Library number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/hostelNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/libraryNumericUpDown"
+            app:labelColor="@color/colorHostel" 
+            app:labelValue="Hostel number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/hospitalNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/hostelNumericUpDown"
+            app:labelColor="@color/colorHospital" 
+            app:labelValue="Hospital number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/marketNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/hospitalNumericUpDown"
+            app:labelColor="@color/colorMarket" 
+            app:labelValue="Market number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/parkNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/marketNumericUpDown"
+            app:labelColor="@color/colorPark" 
+            app:labelValue="Park number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/schoolNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/parkNumericUpDown"
+            app:labelColor="@color/colorSchool" 
+            app:labelValue="School number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/residentialAreaNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/schoolNumericUpDown"
+            app:labelColor="@color/colorResidentialArea" 
+            app:labelValue="Residential area number"/>
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/wallMoatCombinationNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/residentialAreaNumericUpDown"
+            app:labelValue="Longest stretch of parallel city walls and moats"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -70,22 +70,22 @@ namespace AlhambraScoringAndroid.GamePlay
                     CurrentScoreDetails.WallLength += score;
                     break;
                 case ScoreType.PavilionNumber:
-                    CurrentScoreDetails.PavilionNumber += score;
+                    CurrentScoreDetails.Pavilion += score;
                     break;
                 case ScoreType.SeraglioNumber:
-                    CurrentScoreDetails.SeraglioNumber += score;
+                    CurrentScoreDetails.Seraglio += score;
                     break;
                 case ScoreType.ArcadesNumber:
-                    CurrentScoreDetails.ArcadesNumber += score;
+                    CurrentScoreDetails.Arcades += score;
                     break;
                 case ScoreType.ChambersNumber:
-                    CurrentScoreDetails.ChambersNumber += score;
+                    CurrentScoreDetails.Chambers += score;
                     break;
                 case ScoreType.GardenNumber:
-                    CurrentScoreDetails.GardenNumber += score;
+                    CurrentScoreDetails.Garden += score;
                     break;
                 case ScoreType.TowerNumber:
-                    CurrentScoreDetails.TowerNumber += score;
+                    CurrentScoreDetails.Tower += score;
                     break;
                 case ScoreType.BuildingsBonuses:
                     CurrentScoreDetails.BuildingsBonuses += score;
@@ -164,6 +164,39 @@ namespace AlhambraScoringAndroid.GamePlay
                     break;
                 case ScoreType.Mission9:
                     CurrentScoreDetails.Mission9 += score;
+                    break;
+                case ScoreType.MoatLength:
+                    CurrentScoreDetails.MoatLength += score;
+                    break;
+                case ScoreType.Arena:
+                    CurrentScoreDetails.Arena += score;
+                    break;
+                case ScoreType.BathHouse:
+                    CurrentScoreDetails.BathHouse += score;
+                    break;
+                case ScoreType.Library:
+                    CurrentScoreDetails.Library += score;
+                    break;
+                case ScoreType.Hostel:
+                    CurrentScoreDetails.Hostel += score;
+                    break;
+                case ScoreType.Hospital:
+                    CurrentScoreDetails.Hospital += score;
+                    break;
+                case ScoreType.Market:
+                    CurrentScoreDetails.Market += score;
+                    break;
+                case ScoreType.Park:
+                    CurrentScoreDetails.Park += score;
+                    break;
+                case ScoreType.School:
+                    CurrentScoreDetails.School += score;
+                    break;
+                case ScoreType.ResidentialArea:
+                    CurrentScoreDetails.ResidentialArea += score;
+                    break;
+                case ScoreType.WallMoatCombination:
+                    CurrentScoreDetails.WallMoatCombination += score;
                     break;
                 default:
                     throw new ArgumentException();

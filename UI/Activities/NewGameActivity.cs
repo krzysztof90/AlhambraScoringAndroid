@@ -82,14 +82,6 @@ namespace AlhambraScoringAndroid.UI.Activities
                     GranadaOption.Alone,
                 },
             };
-            //TODO granada
-            //Additional points  for longest stretch of parallel city walls and moats. Each section of this wall - moat - combination is worth 2 points
-            //Niektóre dodatki są kompatybilne z tylko Granadą
-            //During scoring points for majorities of buildings (Victory points for majorities of buildings) and moats (the same as walls)
-            //doszczegółowienie (jak the wise man) jeżeli remis to kto owning the tile with the highest price of this type
-            //kolory z granada_score.pdf
-            //obsłużyć remis z trzema graczami (kolejność)
-            //remis na 0 ?
 
             expandableListView = FindViewById<ExpandableListView>(Resource.Id.expandableListView);
             ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions, true, true);

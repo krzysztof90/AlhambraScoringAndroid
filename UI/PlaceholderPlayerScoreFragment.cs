@@ -1,5 +1,6 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -87,6 +88,17 @@ namespace AlhambraScoringAndroid.UI
         ScoreLineNumberView mission8PathBuildingsNumberNumericUpDown;
         ScoreLineNumberView mission9Grids22CountNumericUpDown;
         ScoreLineNumberView secondLongestWallNumericUpDown;
+        ScoreLineNumberView moatLengthNumericUpDown;
+        ScoreLineNumberView arenaNumericUpDown;
+        ScoreLineNumberView bathHouseNumericUpDown;
+        ScoreLineNumberView libraryNumericUpDown;
+        ScoreLineNumberView hostelNumericUpDown;
+        ScoreLineNumberView hospitalNumericUpDown;
+        ScoreLineNumberView marketNumericUpDown;
+        ScoreLineNumberView parkNumericUpDown;
+        ScoreLineNumberView schoolNumericUpDown;
+        ScoreLineNumberView residentialAreaNumericUpDown;
+        ScoreLineNumberView wallMoatCombinationNumericUpDown;
 
         protected override int GetContentLayout()
         {
@@ -175,6 +187,17 @@ namespace AlhambraScoringAndroid.UI
             mission8PathBuildingsNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission8PathBuildingsNumberNumericUpDown);
             mission9Grids22CountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission9Grids22CountNumericUpDown);
             secondLongestWallNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.secondLongestWallNumericUpDown);
+            moatLengthNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.moatLengthNumericUpDown);
+            arenaNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.arenaNumericUpDown);
+            bathHouseNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.bathHouseNumericUpDown);
+            libraryNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.libraryNumericUpDown);
+            hostelNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.hostelNumericUpDown);
+            hospitalNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.hospitalNumericUpDown);
+            marketNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.marketNumericUpDown);
+            parkNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.parkNumericUpDown);
+            schoolNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.schoolNumericUpDown);
+            residentialAreaNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.residentialAreaNumericUpDown);
+            wallMoatCombinationNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.wallMoatCombinationNumericUpDown);
         }
 
         protected override void AddControls()
@@ -259,6 +282,17 @@ namespace AlhambraScoringAndroid.UI
             Controls.Add(mission8PathBuildingsNumberNumericUpDown);
             Controls.Add(mission9Grids22CountNumericUpDown);
             Controls.Add(secondLongestWallNumericUpDown);
+            Controls.Add(moatLengthNumericUpDown);
+            Controls.Add(arenaNumericUpDown);
+            Controls.Add(bathHouseNumericUpDown);
+            Controls.Add(libraryNumericUpDown);
+            Controls.Add(hostelNumericUpDown);
+            Controls.Add(hospitalNumericUpDown);
+            Controls.Add(marketNumericUpDown);
+            Controls.Add(parkNumericUpDown);
+            Controls.Add(schoolNumericUpDown);
+            Controls.Add(residentialAreaNumericUpDown);
+            Controls.Add(wallMoatCombinationNumericUpDown);
         }
 
         protected override void SetControlsProperties()
@@ -322,9 +356,27 @@ namespace AlhambraScoringAndroid.UI
             mission7DiffernetTypesNumberNumericUpDown.SetNumberRange(0, 6);
             mission8PathBuildingsNumberNumericUpDown.SetNumberRange(0, (Game.AllTilesCount + 1) / 2);
             secondLongestWallNumericUpDown.SetNumberRange(0, Game.WallsMaxLength / 2 - 2);
+            moatLengthNumericUpDown.SetNumberRange(0, Game.MoatMaxLength);
+            arenaNumericUpDown.SetNumberRange(0, 6);
+            bathHouseNumericUpDown.SetNumberRange(0, 6);
+            libraryNumericUpDown.SetNumberRange(0, 6);
+            hostelNumericUpDown.SetNumberRange(0, 6);
+            hospitalNumericUpDown.SetNumberRange(0, 6);
+            marketNumericUpDown.SetNumberRange(0, 6);
+            parkNumericUpDown.SetNumberRange(0, 6);
+            schoolNumericUpDown.SetNumberRange(0, 6);
+            residentialAreaNumericUpDown.SetNumberRange(0, 6);
+            wallMoatCombinationNumericUpDown.SetNumberRange(0, Math.Min(Game.WallsMaxLength, Game.MoatMaxLength));
 
             VisibleSecondLongestWall();
 
+            AddConditionToVisible(wallsCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
+           AddConditionToVisible(pavilionCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
+            AddConditionToVisible(seraglioCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
+            AddConditionToVisible(arcadesCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
+            AddConditionToVisible(chambersCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
+            AddConditionToVisible(gardenCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
+            AddConditionToVisible(towerCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
             AddConditionToVisible(bonusCardsPavilionCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionBonusCards));
             AddConditionToVisible(bonusCardsSeraglioCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionBonusCards));
             AddConditionToVisible(bonusCardsArcadesCountNumericUpDown, Game.HasModule(ExpansionModule.ExpansionBonusCards));
@@ -397,6 +449,17 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission7DiffernetTypesNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7));
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8));
             AddConditionToVisible(mission9Grids22CountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9));
+            AddConditionToVisible(moatLengthNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(arenaNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(bathHouseNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(libraryNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(hostelNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(hospitalNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(marketNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(parkNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(schoolNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(residentialAreaNumericUpDown, Game.HasModule(ExpansionModule.Granada));
+            AddConditionToVisible(wallMoatCombinationNumericUpDown, Game.GranadaOption == GranadaOption.With);
 
             AddConditionToVisible(unprotectedSidesNeighbouringCountNumericUpDown, IsFinalRound);
             AddConditionToVisible(bazaarsPointsNumericUpDown, IsFinalRound);
@@ -484,6 +547,8 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission7DiffernetTypesNumberNumericUpDown, !IsDirk);
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, !IsDirk);
             AddConditionToVisible(mission9Grids22CountNumericUpDown, !IsDirk);
+            AddConditionToVisible(moatLengthNumericUpDown, !IsDirk);
+            AddConditionToVisible(wallMoatCombinationNumericUpDown, !IsDirk);
         }
 
         public PlaceholderPlayerScoreFragment(int _index, Game game) : base(_index, game)
@@ -603,6 +668,21 @@ namespace AlhambraScoringAndroid.UI
         public int Mission8Count => GetNumberValue(mission8PathBuildingsNumberNumericUpDown);
         public int Mission9Count => GetNumberValue(mission9Grids22CountNumericUpDown);
         public int SecondLongestWallLength => GetNumberValue(secondLongestWallNumericUpDown);
+        public int MoatLength => GetNumberValue(moatLengthNumericUpDown);
+        public Dictionary<GranadaBuildingType, int> GranadaBuildingsCount =>
+            new Dictionary<GranadaBuildingType, int>()
+            {
+                [GranadaBuildingType.Arena] = GetNumberValue(arenaNumericUpDown),
+                [GranadaBuildingType.BathHouse] = GetNumberValue(bathHouseNumericUpDown),
+                [GranadaBuildingType.Library] = GetNumberValue(libraryNumericUpDown),
+                [GranadaBuildingType.Hostel] = GetNumberValue(hostelNumericUpDown),
+                [GranadaBuildingType.Hospital] = GetNumberValue(hospitalNumericUpDown),
+                [GranadaBuildingType.Market] = GetNumberValue(marketNumericUpDown),
+                [GranadaBuildingType.Park] = GetNumberValue(parkNumericUpDown),
+                [GranadaBuildingType.School] = GetNumberValue(schoolNumericUpDown),
+                [GranadaBuildingType.ResidentialArea] = GetNumberValue(residentialAreaNumericUpDown)
+            };
+        public int wallMoatCombinationLength => GetNumberValue(wallMoatCombinationNumericUpDown);
 
         public int AllBuildingsCount => BuildingsCount.Sum(b => b.Value);
     }

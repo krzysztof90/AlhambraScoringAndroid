@@ -9,4 +9,13 @@
     <color name="colorChambers">#f5f2f5</color>
     <color name="colorGarden">#86ac34</color>
     <color name="colorTower">#bf8cbd</color>
+    <color name="colorArena">#6c676c</color>
+    <color name="colorBathHouse">#3ba5d7</color>
+    <color name="colorLibrary">#865690</color>
+    <color name="colorHostel">#9d644d</color>
+    <color name="colorHospital">#ffffff</color>
+    <color name="colorMarket">#ec6062</color>
+    <color name="colorPark">#77b240</color>
+    <color name="colorSchool">#e6a33b</color>
+    <color name="colorResidentialArea">#f3e853</color>
 </resources>

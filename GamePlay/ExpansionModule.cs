@@ -134,5 +134,7 @@ namespace AlhambraScoringAndroid.GamePlay
         [Description("Caliph’s Guidelines")]
         [ImageAttribute(Resource.Drawable.Mission1)]
         FanCaliphsGuidelines,
+        
+        Granada,
     }
 }

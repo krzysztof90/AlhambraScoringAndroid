@@ -16,6 +16,7 @@ namespace AlhambraScoringAndroid.UI
         private TextView textViewScore;
         private Button addPoint1Button;
         private Button addPoint2Button;
+        private bool allowAddPoints;
 
         public PlayerResultPanel(Context context) : base(context)
         {
@@ -25,7 +26,7 @@ namespace AlhambraScoringAndroid.UI
         {
         }
 
-        public void Initialize( int playerNumber)
+        public void Initialize(int playerNumber)
         {
             GameInProgressActivity gameActivity = (GameInProgressActivity)Context;
 
@@ -50,12 +51,9 @@ namespace AlhambraScoringAndroid.UI
                 gameActivity.AddPoints(PlayerNumber, 2);
             });
 
-            if (gameActivity.Game.GetPlayer(playerNumber).Dirk
-            || !(gameActivity.Game.HasModule(ExpansionModule.DesignerPalaceDesigners) || gameActivity.Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)))
-            {
-                addPoint1Button.Visibility = ViewStates.Gone;
-                addPoint2Button.Visibility = ViewStates.Gone;
-            }
+            //ShowPointButtons(true);
+            allowAddPoints = !(gameActivity.Game.GetPlayer(playerNumber).Dirk
+            || !(gameActivity.Game.HasModule(ExpansionModule.DesignerPalaceDesigners) || gameActivity.Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)));
         }
 
         public void SetScore(int score)
@@ -65,8 +63,10 @@ namespace AlhambraScoringAndroid.UI
 
         public void ShowPointButtons(bool show)
         {
-            addPoint1Button.Visibility = show? ViewStates.Visible : ViewStates.Gone;
-            addPoint2Button.Visibility = show? ViewStates.Visible : ViewStates.Gone;
+            bool showMain = show;
+            showMain = showMain && allowAddPoints;
+            addPoint1Button.Visibility = showMain ? ViewStates.Visible : ViewStates.Gone;
+            addPoint2Button.Visibility = showMain ? ViewStates.Visible : ViewStates.Gone;
         }
     }
 }

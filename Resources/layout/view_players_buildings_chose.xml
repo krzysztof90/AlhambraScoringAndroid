@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+            <TextView
+                android:id="@+id/title"
+                        android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player1HighestPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player2HighestPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player1HighestPurchasePriceNumericUpDown" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player3HighestPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player2HighestPurchasePriceNumericUpDown" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player4HighestPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player3HighestPurchasePriceNumericUpDown" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player5HighestPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player4HighestPurchasePriceNumericUpDown" />
+        <AlhambraScoringAndroid.UI.ScoreLineNumberView
+            android:id="@+id/player6HighestPurchasePriceNumericUpDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player5HighestPurchasePriceNumericUpDown" />
+
+
+</LinearLayout>

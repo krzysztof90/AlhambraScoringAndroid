@@ -66,7 +66,7 @@ namespace AlhambraScoringAndroid.UI
             if (color != null)
             {
                 textView.SetTextColor(color);
-                if (color.DefaultColor == -658699)
+                if (color.DefaultColor == -658699 || color.DefaultColor ==-1)
                     textView.SetShadowLayer(1, 1, 1, Android.Graphics.Color.Black);
             }
         }
@@ -83,7 +83,6 @@ namespace AlhambraScoringAndroid.UI
         {
             string text = editText.Text;
             if (text.Length == 0 || this.Visibility == ViewStates.Gone)
-                //return DefaultValue;
                 return null;
             return Int32.Parse(text);
         }
@@ -97,6 +96,7 @@ namespace AlhambraScoringAndroid.UI
         {
             if (editText != null)
                 foreach (IInputFilter inputFilter in editText.GetFilters())
+                    //TODO do textView.Text dołączone nowe property ValidationMessage z przypisaną nazwą gracza
                     if (inputFilter is MinMaxFilter minMaxFilter && !minMaxFilter.ValidateNumberRange(editText.Text, true, DefaultValue, textView.Text))
                         return false;
             return true;

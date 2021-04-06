@@ -22,19 +22,12 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         public GameInProgressActivity()
         {
-            //resultPanels = new List<PlayerResultPanel>();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            //PlayerResultPanel resultPanel1 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel1);
-            //PlayerResultPanel resultPanel2 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel2);
-            //PlayerResultPanel resultPanel3 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel3);
-            //PlayerResultPanel resultPanel4 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel4);
-            //PlayerResultPanel resultPanel5 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel5);
-            //PlayerResultPanel resultPanel6 = FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel6);
             resultPanels = new List<PlayerResultPanel>()
             {
           FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel1),
@@ -48,27 +41,6 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 resultPanels[i].Initialize(i + 1);
             }
-            //resultPanel1.Initialize( 1);
-            //resultPanels.Add(resultPanel1);
-            //resultPanel2.Initialize( 2);
-            //resultPanels.Add(resultPanel2);
-            //resultPanel3.Initialize( 3);
-            //resultPanels.Add(resultPanel3);
-            //if (Game.PlayersCount > 3)
-            //{
-            //    resultPanel4.Initialize( 4);
-            //    resultPanels.Add(resultPanel4);
-            //}
-            //if (Game.PlayersCount > 4)
-            //{
-            //    resultPanel5.Initialize( 5);
-            //    resultPanels.Add(resultPanel5);
-            //}
-            //if (Game.PlayersCount > 5)
-            //{
-            //    resultPanel6.Initialize( 6);
-            //    resultPanels.Add(resultPanel6);
-            //}
 
             roundScoreButton = FindViewById<Button>(Resource.Id.roundScoreButton);
             scoreDetailsButton = FindViewById<Button>(Resource.Id.scoreDetailsButton);
@@ -153,9 +125,9 @@ namespace AlhambraScoringAndroid.UI.Activities
             for (int i = 0; i < Game.PlayersCount; i++)
             {
                 if (Game.ScoreRound == ScoringRound.Finish)
-                resultPanels[i].ShowPointButtons(false);
+                    resultPanels[i].ShowPointButtons(false);
                 else
-                resultPanels[i].ShowPointButtons(true);
+                    resultPanels[i].ShowPointButtons(true);
             }
         }
 
@@ -164,18 +136,8 @@ namespace AlhambraScoringAndroid.UI.Activities
             //TODO sort
             for (int i = 0; i < Game.PlayersCount; i++)
             {
-            resultPanels[i].SetScore(Game.GetPlayer(i+1).Score);
+                resultPanels[i].SetScore(Game.GetPlayer(i + 1).Score);
             }
-
-            //resultPanels[0].SetScore(Game.GetPlayer(1).Score);
-            //resultPanels[1].SetScore(Game.GetPlayer(2).Score);
-            //resultPanels[2].SetScore(Game.GetPlayer(3).Score);
-            //if (Game.PlayersCount > 3)
-            //    resultPanels[3].SetScore(Game.GetPlayer(4).Score);
-            //if (Game.PlayersCount > 4)
-            //    resultPanels[4].SetScore(Game.GetPlayer(5).Score);
-            //if (Game.PlayersCount > 5)
-            //    resultPanels[5].SetScore(Game.GetPlayer(6).Score);
 
             if (Game.ScoreStack.Count != 0)
             {

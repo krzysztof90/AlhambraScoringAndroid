@@ -67,6 +67,7 @@
     <Compile Include="Atributes\NewScoreCardAttribute.cs" />
     <Compile Include="DialogInterfaceOnClickListener.cs" />
     <Compile Include="GamePlay\CaliphsGuidelines.cs" />
+    <Compile Include="GamePlay\GranadaBuildingType.cs" />
     <Compile Include="GamePlay\GranadaOption.cs" />
     <Compile Include="GamePlay\NewScoreCard.cs" />
     <Compile Include="GamePlay\ResultHistory.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="GamePlay\Player.cs" />
     <Compile Include="GamePlay\ScoringRound.cs" />
     <Compile Include="UI\Activities\GameScoreActivity.cs" />
+    <Compile Include="UI\Activities\GranadaBuildingsNumberActivity.cs" />
     <Compile Include="UI\Activities\MainActivity.cs" />
     <Compile Include="MinMaxFilter.cs" />
     <Compile Include="MyApplication.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="UI\PlaceholderPlayerScoreFragment.cs" />
     <Compile Include="UI\PlaceholderPlayerScoreFragmentBase.cs" />
     <Compile Include="UI\PlaceholderScoreSubmitFragment.cs" />
+    <Compile Include="UI\PlayersBuildingChose.cs" />
     <Compile Include="UI\PlayersScoreSectionsPagerAdapter.cs" />
     <Compile Include="UI\ScoreLineCheckBoxView.cs" />
     <Compile Include="UI\ScoreLineNumberView.cs" />
@@ -469,6 +472,46 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_players_buildings_chose.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\School.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Arena.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\GranadaBathHouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ResidentialArea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Hospital.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Hostel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Library.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Market.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Park.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Moat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_players_granada_buildings_chose.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\view_players_buildings_chose.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -85,7 +85,9 @@ namespace AlhambraScoringAndroid.UI.Activities
                     CaliphsGuidelinesMission.Mission8,
                     CaliphsGuidelinesMission.Mission9,
             };
-            Application.GameApplyModules(modules, GranadaOption.Without);
+            //Application.GameApplyModules(modules, GranadaOption.Without);
+            //Application.GameApplyModules(modules, GranadaOption.Alone);
+            Application.GameApplyModules(modules, GranadaOption.With);
             //Application.GameApplyModulesDetails(modulesDetails, new List<NewScoreCard>() { NewScoreCard.Card1, NewScoreCard.Card2, NewScoreCard.Card3 });
             Application.GameApplyModulesDetails(modulesDetails, null);
             List<string> players = new List<string>();

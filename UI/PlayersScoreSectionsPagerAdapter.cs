@@ -21,6 +21,7 @@ namespace AlhambraScoringAndroid.UI
             {
                 for (int i = 0; i < activity.Game.PlayersCount; i++)
                     if (PlayerScoreFragments[i] == null)
+                        //TODO + inicjalizacja kontrolek, wtedy niepotrzebne sprawdzanie null w 'TODO default value'
                         PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, activity.Game);
                 return PlayerScoreFragments.ToList();
             }
@@ -89,6 +90,7 @@ namespace AlhambraScoringAndroid.UI
         {
             for (int i = 0; i < activity.Game.PlayersCount; i++)
             {
+                //TODO użyć najpierw AllPlayerScoreFragments (tam wypełnianie jeżeli null)
                 if (PlayerScoreFragments[i] != null)
                 {
                     IEnumerable<ScoreLineNumberView> playerPanels = PlayerScoreFragments[i].Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();

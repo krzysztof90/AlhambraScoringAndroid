@@ -14,8 +14,6 @@ namespace AlhambraScoringAndroid.UI
         public readonly DateTime EndDateTime;
 
         private TextView textViewDateTime;
-        private Button showResultButton;
-        private Button removeResultButton;
 
         public HistoryPanel(Context context) : base(context)
         {
@@ -26,12 +24,12 @@ namespace AlhambraScoringAndroid.UI
 
             textViewDateTime = FindViewById<TextView>(Resource.Id.textViewDateTime);
 
-            showResultButton = FindViewById<Button>(Resource.Id.showResultButton);
+            Button showResultButton = FindViewById<Button>(Resource.Id.showResultButton);
             showResultButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
                 activity.ShowResult(this);
             });
-            removeResultButton = FindViewById<Button>(Resource.Id.removeResultButton);
+            Button removeResultButton = FindViewById<Button>(Resource.Id.removeResultButton);
             removeResultButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
                 activity.RemoveResult(this);
