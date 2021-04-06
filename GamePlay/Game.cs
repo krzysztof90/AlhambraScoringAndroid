@@ -316,7 +316,7 @@ namespace AlhambraScoringAndroid.GamePlay
             foreach (GranadaBuildingType building in GranadaBuildingsOrder)
             {
                 if (playersHighestPrices[building].Select(d => d.Value).Distinct().Count() != playersHighestPrices[building].Count())
-                    return ValidateUtils.CheckFailed(Context, $"Wybrano tą samą cenę zakupu dla {building}");
+                    return ValidateUtils.CheckFailed(Context, $"Wybrano tą samą cenę zakupu dla {building.GetEnumDescription()}");
             }
             return true;
         }
@@ -339,7 +339,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 int playersBuildings = scorePanels.Sum(p => p.BuildingsCount[mapEntry.Key]);
 
                 if (playersBuildings > mapEntry.Value)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość budynków {mapEntry.Key}");
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość budynków {mapEntry.Key.GetEnumDescription()}");
             }
 
             int playerBonusCardsMax = 1;
@@ -356,13 +356,13 @@ namespace AlhambraScoringAndroid.GamePlay
                 foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
                 {
                     if (scorePanels[i].ExtensionsBuildingsCount[mapEntry.Key] > scorePanels[i].BuildingsCount[mapEntry.Key])
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba kart bonusowych przekracza liczbę wszystkich budynków {mapEntry.Key}");
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba kart bonusowych przekracza liczbę wszystkich budynków {mapEntry.Key.GetEnumDescription()}");
                 }
             }
             foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
             {
                 if (scorePanels.Sum(p => p.BonusCardsBuildingsCount[mapEntry.Key]) > mapEntry.Value)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość kart bonusowych {mapEntry.Key}");
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość kart bonusowych {mapEntry.Key.GetEnumDescription()}");
             }
 
             Dictionary<BuildingType, int> squaresTotalMinimumNumber = new Dictionary<BuildingType, int>();
@@ -390,8 +390,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
                     if (squaresPoints > 9)
                     {
-                        //TODO .EnumDescription
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość budynków ze skwerów {building}");
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość budynków ze skwerów {building.GetEnumDescription()}");
                     }
                 }
 
@@ -403,7 +402,7 @@ namespace AlhambraScoringAndroid.GamePlay
             foreach (KeyValuePair<BuildingType, int> mapEntry in SquaresMaxCount)
             {
                 if (squaresTotalMinimumNumber[mapEntry.Key] > mapEntry.Value)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość skwerów {mapEntry.Key}");
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość skwerów {mapEntry.Key.GetEnumDescription()}");
             }
 
             if (scorePanels.Count(p => p.OwnedCharacterTheWiseMan) > 1)
@@ -416,7 +415,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
                 {
                     if (scorePanels[i].StreetTradersNumber[mapEntry.Key] > scorePanels[i].BuildingsCount[mapEntry.Key])
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba obywateli przekracza liczbę wszystkich budynków {mapEntry.Key}");
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba obywateli przekracza liczbę wszystkich budynków {mapEntry.Key.GetEnumDescription()}");
                 }
             }
             foreach (BuildingType building in BuildingsOrder)
@@ -546,7 +545,7 @@ namespace AlhambraScoringAndroid.GamePlay
             foreach (BuildingType building in BuildingsOrder)
             {
                 if (scorePanels.Count(p => p.OwnedSemiBuildings[building]) > 1)
-                    return ValidateUtils.CheckFailed(Context, $"Kilku graczy z tą samą połową budynku {building}");
+                    return ValidateUtils.CheckFailed(Context, $"Kilku graczy z tą samą połową budynku {building.GetEnumDescription()}");
             }
 
             int blackDiceTotalPipsSum = 0;
@@ -572,10 +571,10 @@ namespace AlhambraScoringAndroid.GamePlay
                 for (int i = 0; i < PlayersCount; i++)
                 {
                     if (scorePanels[i].ExtensionsBuildingsCount[building] > scorePanels[i].BuildingsCount[building])
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba rozszerzeń przekracza liczbę wszystkich budynków {building}");
+                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba rozszerzeń przekracza liczbę wszystkich budynków {building.GetEnumDescription()}");
                 }
                 if (scorePanels.Sum(p => p.ExtensionsBuildingsCount[building]) > 2)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość rozszerzeń {building}");
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość rozszerzeń {building.GetEnumDescription()}");
             }
 
             int handymenTilesHighestNumberSum = scorePanels.Sum(p => p.HandymenTilesHighestNumber);
@@ -603,8 +602,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 int playersBuildings = scorePanels.Sum(p => p.GranadaBuildingsCount[building]);
 
                 if (playersBuildings > 6)
-                    //TODO description
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość budynków {building}");
+                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość budynków {building.GetEnumDescription()}");
             }
 
             for (int i = 0; i < PlayersCount; i++)

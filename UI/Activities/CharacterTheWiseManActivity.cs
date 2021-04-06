@@ -1,4 +1,5 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
+using AlhambraScoringAndroid.Tools;
 using Android.App;
 using Android.OS;
 using Android.Widget;
@@ -65,8 +66,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 }
                 Game.SetTheWiseManBuildingType(null);
 
-                //TODO description
-                radioButtonText.Append($"{radioButtonPair.Key} (+{pointsUsingBonus - pointsNotUsingBonus})");
+                radioButtonText.Append($"{radioButtonPair.Key.GetEnumDescription()} (+{pointsUsingBonus - pointsNotUsingBonus})");
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
                     if (i != chosePlayerNumber - 1)

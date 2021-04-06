@@ -30,8 +30,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 if (tiePlayerNumbers[building].Count != 0)
                 {
                     //TODO tylko parzyste
-                    //TODO description
-                    playersPanel = new PlayersBuildingChose(this, building.ToString(),  2, 12, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name));
+                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(),  2, 12, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name));
                     container.AddView(playersPanel);
                     container.RequestLayout();
                 }
