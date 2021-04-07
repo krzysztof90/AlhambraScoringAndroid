@@ -15,6 +15,7 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
+        //TODO nazwy id
         //TODO nieużywany, zakomentowany kod
         //TODO log unmanaged exceptions, send
         //TODO fill_parent	ffffffff	The view should be as big as its parent (minus padding). This constant is deprecated starting from API Level 8 and is replaced by match_parent.
@@ -29,7 +30,6 @@ namespace AlhambraScoringAndroid
         //TODO info o darmowym projekcie, link do paypal
         //TODO niepotrzebne referencje, nuget, aktualizacja
         //TODO minSdkVersion
-        //TODO przetestować wszędzie obracanie ekranu
         //TODO wysokości i szerokości do zmiennych; 60dp = menu height
         //TODO BP
         //TODO duży rozmiar aplikacji:

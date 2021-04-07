@@ -14,7 +14,6 @@
         android:layout_width="fill_parent"
         android:layout_marginTop="60dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -23,12 +22,5 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"/>
     </ScrollView>
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="75dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
