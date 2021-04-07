@@ -15,21 +15,18 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO wysokości i szerokości do zmiennych; 60dp = menu height
-
-        //TODO log unmanaged exceptions, send
         //TODO nieużywany, zakomentowany kod
         //TODO BP
 
-        //TODO labelki słownik
-        //TODO google play "I would appreciate any feedback", link do github; BGG
-        //TODO info o darmowym projekcie, link do paypal
         //TODO minSdkVersion
-
         //TODO duży rozmiar aplikacji:
         //https://heartbeat.fritz.ai/reducing-the-app-size-in-xamarin-deep-dive-7ddc9cb12688
         //https://dzone.com/articles/how-to-optimize-and-reduce-android-apps-size-in-xa
         //https://docs.microsoft.com/en-us/xamarin/android/deploy-test/linker
+
+        //TODO labelki słownik
+        //TODO google play "I would appreciate any feedback", link do github; BGG
+        //TODO info o darmowym projekcie, link do paypal
 
         //TODO iOS
         //https://docs.microsoft.com/pl-pl/xamarin/
@@ -340,6 +337,7 @@ namespace AlhambraScoringAndroid
                             return result;
                         }
 
+                        resultPlayerHistory.Name = playerName;
                         resultPlayerHistory.ScoreDetails1 = GetScoreDetails("scoreDetails1");
                         resultPlayerHistory.ScoreDetails2 = GetScoreDetails("scoreDetails2");
                         resultPlayerHistory.ScoreDetails3 = GetScoreDetails("scoreDetails3");

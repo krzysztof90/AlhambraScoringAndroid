@@ -2,6 +2,7 @@
 using Android.App;
 using Android.OS;
 using Android.Widget;
+using System;
 using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI.Activities
@@ -13,6 +14,13 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler((object sender, UnhandledExceptionEventArgs args) =>
+            {
+                Exception exception = (Exception)args.ExceptionObject;
+                //TODO
+            });
+
             base.OnCreate(savedInstanceState);
 
             Application.LoadResults();
