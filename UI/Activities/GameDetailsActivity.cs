@@ -53,8 +53,6 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             contentTable = FindViewById<TableLayout>(Resource.Id.contentTable);
 
-            //TODO wyrównanie górnego header do dołu, dolnego do góry
-
             List<List<TableRow>> tableRows = new List<List<TableRow>>()
             {
                 new List<TableRow>()

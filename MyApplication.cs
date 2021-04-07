@@ -86,12 +86,10 @@ namespace AlhambraScoringAndroid
                 NewGame();
         }
 
-        //TODO private
-        public void NewGame()
+        private void NewGame()
         {
             Game = new Game(ApplicationContext);
             NewActivity(typeof(NewGameActivity));
-            //NewActivity(typeof(GameModulesDetailsChoseActivity));
         }
 
         public void GameApplyModules(IEnumerable<ExpansionModule> modules, GranadaOption granadaOption)
