@@ -66,7 +66,7 @@ namespace AlhambraScoringAndroid.UI
             if (color != null)
             {
                 textView.SetTextColor(color);
-                if (color.DefaultColor == -658699 || color.DefaultColor ==-1)
+                if (color.DefaultColor == -658699 || color.DefaultColor == -1)
                     textView.SetShadowLayer(1, 1, 1, Android.Graphics.Color.Black);
             }
         }

@@ -22,7 +22,7 @@ namespace AlhambraScoringAndroid.UI
         protected abstract void CreateControls();
         protected abstract void SetControlsProperties();
         public abstract void SetLabel(string label);
-        public abstract void SetColor( ColorStateList color);
+        public abstract void SetColor(ColorStateList color);
         protected abstract void SetValue(T? value);
         protected abstract T? GetValue();
 
@@ -36,17 +36,16 @@ namespace AlhambraScoringAndroid.UI
             ColorStateList color = typedArray.GetColorStateList(0);
             typedArray.Recycle();
 
-            DefaultValue = default(T);
+            DefaultValue = default;
 
             CreateControls();
             SetControlsProperties();
             SetLabel(label);
-            SetColor( color);
+            SetColor(color);
         }
 
         public void Initialize()
         {
-            //StoredValue = DefaultValue;
             StoredValue = null;
         }
 
@@ -57,7 +56,6 @@ namespace AlhambraScoringAndroid.UI
 
         public void RestoreValue()
         {
-            //Value = StoredValue;
             SetValue(StoredValue);
         }
 

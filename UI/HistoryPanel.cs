@@ -13,7 +13,7 @@ namespace AlhambraScoringAndroid.UI
         public readonly DateTime StartDateTime;
         public readonly DateTime EndDateTime;
 
-        private TextView textViewDateTime;
+        private readonly TextView textViewDateTime;
 
         public HistoryPanel(Context context) : base(context)
         {

@@ -20,18 +20,18 @@
             android:id="@+id/textViewScore"
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="@dimen/panel_elements_gap"/>
         <Button
             android:id="@+id/point1Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/panel_elements_gap"
             android:text="Add 1 point"/>
         <Button
             android:id="@+id/point2Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/panel_elements_gap"
             android:text="Add 2 points"/>
 
     </LinearLayout>

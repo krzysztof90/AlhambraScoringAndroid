@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AlhambraScoringAndroid.GamePlay
+﻿namespace AlhambraScoringAndroid.GamePlay
 {
     public class ScoreHistoryImmediately : ScoreHistory
     {

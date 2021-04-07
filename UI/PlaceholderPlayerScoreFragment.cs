@@ -371,7 +371,7 @@ namespace AlhambraScoringAndroid.UI
             VisibleSecondLongestWall();
 
             AddConditionToVisible(wallsCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
-           AddConditionToVisible(pavilionCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
+            AddConditionToVisible(pavilionCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
             AddConditionToVisible(seraglioCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
             AddConditionToVisible(arcadesCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
             AddConditionToVisible(chambersCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
@@ -682,7 +682,7 @@ namespace AlhambraScoringAndroid.UI
                 [GranadaBuildingType.School] = schoolNumericUpDown.Value,
                 [GranadaBuildingType.ResidentialArea] = residentialAreaNumericUpDown.Value
             };
-        public int wallMoatCombinationLength => wallMoatCombinationNumericUpDown.Value;
+        public int WallMoatCombinationLength => wallMoatCombinationNumericUpDown.Value;
 
         public int AllBuildingsCount => BuildingsCount.Sum(b => b.Value);
     }

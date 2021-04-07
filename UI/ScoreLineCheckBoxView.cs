@@ -54,7 +54,6 @@ namespace AlhambraScoringAndroid.UI
         protected override bool? GetValue()
         {
             if (this.Visibility == ViewStates.Gone)
-                //return DefaultValue;
                 return null;
             return scoreLineCheckBox.Checked;
         }

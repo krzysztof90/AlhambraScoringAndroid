@@ -23,18 +23,18 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
 
-            PlayersBuildingChose playersPanel = new PlayersBuildingChose(this,"Medina", 2, 10, tiePlayerNumbers.ToDictionary(p => p, p => Game.GetPlayer(p ).Name));
+            PlayersBuildingChose playersPanel = new PlayersBuildingChose(this, "Medina", 2, 10, tiePlayerNumbers.ToDictionary(p => p, p => Game.GetPlayer(p).Name));
             container.AddView(playersPanel);
             container.RequestLayout();
 
             Button confirmButton = FindViewById<Button>(Resource.Id.confirmButton);
             confirmButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                if (playersPanel.playersPanels.ValidatePlayerPanels())
+                if (playersPanel.PlayersPanels.ValidatePlayerPanels())
                 {
                     Dictionary<int, int> playersHighestPrices = new Dictionary<int, int>();
                     foreach (int playerNumber in tiePlayerNumbers)
-                        playersHighestPrices[playerNumber] = playersPanel.playersPanels[playerNumber - 1].Value;
+                        playersHighestPrices[playerNumber] = playersPanel.PlayersPanels[playerNumber - 1].Value;
 
                     Application.ConfirmMedinasNumber(this, playersHighestPrices);
                 }

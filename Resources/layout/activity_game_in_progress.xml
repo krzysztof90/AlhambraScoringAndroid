@@ -26,32 +26,32 @@
                 android:id="@+id/playerResultPanel1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel3"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel5"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel6"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap"/>
 
         </LinearLayout>
     </ScrollView>

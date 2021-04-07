@@ -3,12 +3,9 @@ using AlhambraScoringAndroid.Tools;
 using AlhambraScoringAndroid.Tools.Enums;
 using AlhambraScoringAndroid.UI;
 using Android.Content;
-using Android.Widget;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Xml;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
@@ -66,13 +63,13 @@ namespace AlhambraScoringAndroid.GamePlay
         };
         public static List<ExpansionModule> GranadaCompatibleModules = new List<ExpansionModule>()
         {
-                 ExpansionModule.ExpansionDiamonds,
-                ExpansionModule.ExpansionCurrencyExchangeCards,
-                ExpansionModule.ExpansionMasterBuilders,
-                ExpansionModule.ExpansionCharacters,
-                ExpansionModule.ExpansionThieves,
-                ExpansionModule.ExpansionInvaders,
-                ExpansionModule.ExpansionCaravanserai
+            ExpansionModule.ExpansionDiamonds,
+            ExpansionModule.ExpansionCurrencyExchangeCards,
+            ExpansionModule.ExpansionMasterBuilders,
+            ExpansionModule.ExpansionCharacters,
+            ExpansionModule.ExpansionThieves,
+            ExpansionModule.ExpansionInvaders,
+            ExpansionModule.ExpansionCaravanserai
         };
 
         private readonly Context Context;
@@ -92,7 +89,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public Stack<ScoreHistory> ScoreStack { get; private set; }
         public bool Saved { get; set; }
 
-        private static List<List<int>[]> ScoringByPosition = new List<List<int>[]>()
+        public static List<List<int>[]> ScoringByPosition = new List<List<int>[]>()
         {
             new List<int>[] { new List<int> { 1 }, new List<int> { 8, 1 }, new List<int> { 16, 8, 1 } },
             new List<int>[] { new List<int> { 2 }, new List<int> { 9, 2 }, new List<int> { 17, 9, 2 } },
@@ -617,16 +614,16 @@ namespace AlhambraScoringAndroid.GamePlay
 
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (scorePanels[i].wallMoatCombinationLength > scorePanels[i].WallLength)
+                if (scorePanels[i].WallMoatCombinationLength > scorePanels[i].WallLength)
                     return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Długość kombinacji muru i fosy nie może być dłuższa niż najdłuższy mur");
-                if (scorePanels[i].wallMoatCombinationLength > scorePanels[i].MoatLength)
+                if (scorePanels[i].WallMoatCombinationLength > scorePanels[i].MoatLength)
                     return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Długość kombinacji muru i fosy nie może być dłuższa niż najdłuższa fosa");
             }
 
             return true;
         }
 
-        private int CountRelativeScore(List<PlaceholderPlayerScoreFragment> scorePanels, int playerNumber, Func<int, double> getCountValue, List<int>[] scoringTable, HighestLowest highestLowest, UpDown roundMethod, int[] zeroPenaltiesTable = null)
+        private int CountRelativeScore(int playerNumber, Func<int, double> getCountValue, List<int>[] scoringTable, HighestLowest highestLowest, UpDown roundMethod, int[] zeroPenaltiesTable = null)
         {
             int result = 0;
             double countValue = getCountValue(playerNumber - 1);
@@ -703,7 +700,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public int GetBuildingScore(List<PlaceholderPlayerScoreFragment> scorePanels, BuildingType buildingType, int playerNumber, bool withBonuses = true)
         {
-            return CountRelativeScore(scorePanels, playerNumber, (int i) => GetBuildingCount(scorePanels[i], buildingType, withBonuses), Scoring[buildingType], HighestLowest.Highest, UpDown.Down);
+            return CountRelativeScore(playerNumber, (int i) => GetBuildingCount(scorePanels[i], buildingType, withBonuses), Scoring[buildingType], HighestLowest.Highest, UpDown.Down);
         }
 
         public void Score(List<PlaceholderPlayerScoreFragment> scorePanels)
@@ -796,7 +793,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 //Treasure Chamber: chests
                 for (int i = 0; i < PlayersCount; i++)
                 {
-                    int chestsScore = CountRelativeScore(scorePanels, i + 1, (int j) => scorePanels[j].TreasuresCount, TreasureChamberScoring, HighestLowest.Highest, UpDown.Down);
+                    int chestsScore = CountRelativeScore(i + 1, (int j) => scorePanels[j].TreasuresCount, TreasureChamberScoring, HighestLowest.Highest, UpDown.Down);
 
                     Players[i].AddScore(chestsScore, ScoreType.TreasureChamber);
                 }
@@ -883,7 +880,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 //Medina
                 for (int i = 0; i < PlayersCount; i++)
                 {
-                    int medinaScore = CountRelativeScore(scorePanels, i + 1, (int j) => GetMedinaCount(scorePanels[j], j + 1), MedinaScoring, HighestLowest.Lowest, UpDown.Up, MedinaZeroPenaltiesScoring);
+                    int medinaScore = CountRelativeScore(i + 1, (int j) => GetMedinaCount(scorePanels[j], j + 1), MedinaScoring, HighestLowest.Lowest, UpDown.Up, MedinaZeroPenaltiesScoring);
 
                     Players[i].RemoveScore(medinaScore, true, ScoreType.Medina);
                 }
@@ -974,13 +971,6 @@ namespace AlhambraScoringAndroid.GamePlay
                         Players[i].AddScore(Math.Min(scorePanels[i].SecondLongestWallLength, scorePanels[i].BlackDiceTotalPips), ScoreType.BlackDices);
                     }
             }
-
-            //            if (hasModule(ExpansionModule.DesignerExtensions))
-            //        {
-            //            //Extensions: extended buildings
-            //            for (int i = 0; i < getPlayersCount(); i++)
-            ////                Players[i].AddScore(scorePanels[i].ExtensionsCount());
-            //        }
 
             if (HasModule(ExpansionModule.DesignerHandymen))
             {
@@ -1073,7 +1063,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 {
                     for (int i = 0; i < PlayersCount; i++)
                     {
-                        int buildingScore = CountRelativeScore(scorePanels, i + 1, (int j) => GetGranadaBuildingCount(scorePanels[j], j + 1, building), GetGranadaScoring(scorePanels, building), HighestLowest.Highest, UpDown.Down);
+                        int buildingScore = CountRelativeScore(i + 1, (int j) => GetGranadaBuildingCount(scorePanels[j], j + 1, building), GetGranadaScoring(scorePanels, building), HighestLowest.Highest, UpDown.Down);
 
                         Players[i].AddScore(buildingScore, GranadaBuildingBaseScoreType[building]);
                     }
@@ -1084,7 +1074,7 @@ namespace AlhambraScoringAndroid.GamePlay
             {
                 for (int i = 0; i < PlayersCount; i++)
                     if (!Players[i].Dirk)
-                        Players[i].AddScore(scorePanels[i].wallMoatCombinationLength * 2, ScoreType.WallMoatCombination);
+                        Players[i].AddScore(scorePanels[i].WallMoatCombinationLength * 2, ScoreType.WallMoatCombination);
             }
 
             ScoreStack.Push(new ScoreHistoryRound(this, ScoreRound, initialScoring));

@@ -27,7 +27,6 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.view_pager);
             sectionsPagerAdapter = new PlayersScoreSectionsPagerAdapter(this, SupportFragmentManager, viewPager);
-            //viewPager.Adapter = sectionsPagerAdapter;
             TabLayout tabs = FindViewById<TabLayout>(Resource.Id.tabs);
             tabs.SetupWithViewPager(viewPager);
 

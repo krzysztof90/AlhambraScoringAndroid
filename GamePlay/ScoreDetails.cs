@@ -51,7 +51,7 @@
         public int ResidentialArea { get; set; }
         public int WallMoatCombination { get; set; }
 
-        public int Sum => ImmediatelyPoints + WallLength + Pavilion + Seraglio + Arcades + Chambers + Garden + Tower + TheCityWatch + Camps + StreetTraders + TreasureChamber - Invaders + Bazaars + ArtOfTheMoors + Falconers + Watchtowers - Medina - BuildingsWithoutServantTile + Orchards + Bathhouses + WishingWells + CompletedProjects + Animals + BlackDices + Handymen + Treasures + Mission1 + Mission2 + Mission3 + Mission4 + Mission5 + Mission6 + Mission7 + Mission8 + Mission9 + MoatLength + Arena + BathHouse + Library + Hostel + Hospital + Market + Park + School + ResidentialArea+ WallMoatCombination;
+        public int Sum => ImmediatelyPoints + WallLength + Pavilion + Seraglio + Arcades + Chambers + Garden + Tower + TheCityWatch + Camps + StreetTraders + TreasureChamber - Invaders + Bazaars + ArtOfTheMoors + Falconers + Watchtowers - Medina - BuildingsWithoutServantTile + Orchards + Bathhouses + WishingWells + CompletedProjects + Animals + BlackDices + Handymen + Treasures + Mission1 + Mission2 + Mission3 + Mission4 + Mission5 + Mission6 + Mission7 + Mission8 + Mission9 + MoatLength + Arena + BathHouse + Library + Hostel + Hospital + Market + Park + School + ResidentialArea + WallMoatCombination;
 
         public ScoreDetails Copy()
         {

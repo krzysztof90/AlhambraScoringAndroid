@@ -28,7 +28,7 @@ namespace AlhambraScoringAndroid.GamePlay
         GranadaShuffleBuildingTiles,
         [Description("Place 4 Granada building tiles on the building market")]
         GranadaPlaceBuildings,
-        
+
         [Description("Shuffle each of the squares piles")]
         ShuffleSquares,
         [Description("Place each of the watchtower piles")]
@@ -85,7 +85,7 @@ namespace AlhambraScoringAndroid.GamePlay
         ThievesDeal2,
         [Description("Deal 2 master-builder cards to each player")]
         MasterBuildersDeal,
-        
+
         [Description("Shuffle invasion cards")]
         ShuffleInvasion,
         [Description("Shuffle scout cards")]

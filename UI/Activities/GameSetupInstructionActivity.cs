@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-        //TODO instrukcja przygotowania gry + rund w zależności od wybranych modułów + dirk
+    //TODO instrukcja przygotowania gry + rund w zależności od wybranych modułów + dirk
     [Activity(Label = "Setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameSetupInstructionActivity : BaseActivity
     {

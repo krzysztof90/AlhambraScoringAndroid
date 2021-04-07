@@ -84,8 +84,6 @@ namespace AlhambraScoringAndroid.UI
 
             ViewGroup.LayoutParams params2 = listView.LayoutParameters;
             totalHeight += (listView.DividerHeight * (listAdapter.GroupCount - 1));
-            //if (height < 10)
-            //    height = 200;
 
             params2.Height = totalHeight;
             listView.LayoutParameters = params2;

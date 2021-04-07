@@ -1,9 +1,8 @@
 ﻿using Android.Content;
-using System;
 
 namespace AlhambraScoringAndroid
 {
-    public class DialogInterfaceOnClickListener: Java.Lang.Object, IDialogInterfaceOnClickListener
+    public class DialogInterfaceOnClickListener : Java.Lang.Object, IDialogInterfaceOnClickListener
     {
         public delegate void OnClickEventHandler(IDialogInterface dialog, int which);
 

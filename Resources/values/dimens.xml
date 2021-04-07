@@ -1,13 +1,16 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="image_size">50dp</dimen>
-    <dimen name="menu_height">60dp</dimen>
-    <dimen name="button_height">75dp</dimen>
-    <dimen name="game_details_cell_width">50dp</dimen>
-    <dimen name="game_details_cell_height">25dp</dimen>
-    <dimen name="game_details_cell_gap">10dp</dimen>
-    <dimen name="game_details_header_height">250dp</dimen>
-    <dimen name="game_details_header_rows_gap">10dp</dimen>
-    <dimen name="game_details_players_header_width">100dp</dimen>
-    <dimen name="player_result_panel_height">40dp</dimen>
+  <dimen name="fab_margin">16dp</dimen>
+  <dimen name="image_size">50dp</dimen>
+  <dimen name="menu_height">60dp</dimen>
+  <dimen name="button_height">75dp</dimen>
+  <dimen name="game_details_cell_width">50dp</dimen>
+  <dimen name="game_details_cell_height">25dp</dimen>
+  <dimen name="game_details_cell_gap">10dp</dimen>
+  <dimen name="game_details_header_height">250dp</dimen>
+  <dimen name="game_details_header_rows_gap">10dp</dimen>
+  <dimen name="game_details_players_header_width">100dp</dimen>
+  <dimen name="player_result_panel_height">40dp</dimen>
+  <dimen name="player_result_panel_gap">10dp</dimen>
+  <dimen name="chose_player_panel_gap">10dp</dimen>
+  <dimen name="panel_elements_gap">10dp</dimen>
 </resources>

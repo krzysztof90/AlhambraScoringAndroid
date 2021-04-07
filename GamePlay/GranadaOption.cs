@@ -2,7 +2,7 @@
 
 namespace AlhambraScoringAndroid.GamePlay
 {
-    public enum  GranadaOption
+    public enum GranadaOption
     {
         [Description("No Granada")]
         Without,

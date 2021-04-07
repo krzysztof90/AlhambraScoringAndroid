@@ -30,7 +30,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 if (tiePlayerNumbers[building].Count != 0)
                 {
                     //TODO tylko parzyste
-                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(),  2, 12, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name));
+                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(), 2, 12, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name));
                     container.AddView(playersPanel);
                     container.RequestLayout();
                 }
@@ -48,13 +48,13 @@ namespace AlhambraScoringAndroid.UI.Activities
                     Dictionary<int, int> playersHighestPrices = new Dictionary<int, int>();
                     if (playersPanel.Value != null)
                     {
-                        if (!playersPanel.Value.playersPanels.ValidatePlayerPanels())
+                        if (!playersPanel.Value.PlayersPanels.ValidatePlayerPanels())
                         {
                             correct = false;
                             break;
                         }
                         foreach (int playerNumber in tiePlayerNumbers[playersPanel.Key])
-                            playersHighestPrices[playerNumber] = playersPanel.Value.playersPanels[playerNumber - 1].Value;
+                            playersHighestPrices[playerNumber] = playersPanel.Value.PlayersPanels[playerNumber - 1].Value;
                     }
                     result[playersPanel.Key] = playersHighestPrices;
                 }

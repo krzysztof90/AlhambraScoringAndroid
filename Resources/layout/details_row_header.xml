@@ -21,12 +21,14 @@
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:src="@drawable/PalaceDesigner"
+            android:contentDescription="description"
             android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerImmediatelyPointsGatesWithoutEnd"
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:src="@drawable/GatesPoints"
+            android:contentDescription="description"
             android:tooltipText="walls"/>
     </LinearLayout>
     <ImageView
@@ -35,6 +37,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Walls"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerPavilion"
@@ -42,6 +45,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Pavilion"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerSeraglio"
@@ -49,6 +53,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Seraglio"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerArcades"
@@ -56,6 +61,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Arcades"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerChambers"
@@ -63,6 +69,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Chambers"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerGarden"
@@ -70,6 +77,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Garden"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerTower"
@@ -77,6 +85,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Tower"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <LinearLayout
         android:id="@+id/headerBonuses"
@@ -89,28 +98,35 @@
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:src="@drawable/BonusCard"
+            android:contentDescription="description"
             android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerBonusesTheWiseMan"
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:src="@drawable/CharacterTheWiseMan"
+            android:contentDescription="description"
             android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerBonusesSquares"
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:src="@drawable/Square"
+            android:contentDescription="description"
             android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerBonusesExtensions"
             android:layout_width="@dimen/image_size"
-            android:layout_height="@dimen/image_size"/>
+            android:layout_height="@dimen/image_size"
+            android:src="@drawable/Extension"
+            android:contentDescription="description"
+            android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerBonusesGatesWithoutEnd"
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:src="@drawable/SemiBuilding"
+            android:contentDescription="description"
             android:tooltipText="walls"/>
     </LinearLayout>
     <ImageView
@@ -119,6 +135,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/CharacterTheCityWatch"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerCamps"
@@ -126,6 +143,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Camp"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerStreetTraders"
@@ -133,6 +151,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/StreetTrader"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerTreasureChamber"
@@ -140,6 +159,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/TreasureChamber"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerInvaders"
@@ -147,6 +167,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Invaders"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerBazaars"
@@ -154,6 +175,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Bazaar"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerArtOfTheMoors"
@@ -161,6 +183,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/ArtOfTheMoors"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerFalconers"
@@ -168,6 +191,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Falconers"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerWatchtowers"
@@ -175,6 +199,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Watchtower"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMedina"
@@ -182,6 +207,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Medina"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerBuildingsWithoutServantTile"
@@ -189,6 +215,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Servant"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerOrchards"
@@ -196,6 +223,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Fruit"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerBathhouses"
@@ -203,6 +231,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Bathhouse"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerWishingWells"
@@ -210,6 +239,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/WishingWell"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerCompletedProjects"
@@ -217,6 +247,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/CompletedProject"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerAnimals"
@@ -224,6 +255,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Animal"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerBlackDices"
@@ -231,6 +263,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/BlackDice"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerHandymen"
@@ -238,6 +271,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Handyman"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerTreasures"
@@ -245,6 +279,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Treasure"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission1"
@@ -252,6 +287,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission1"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission2"
@@ -259,6 +295,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission2"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission3"
@@ -266,6 +303,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission3"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission4"
@@ -273,6 +311,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission4"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission5"
@@ -280,6 +319,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission5"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission6"
@@ -287,6 +327,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission6"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission7"
@@ -294,6 +335,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission7"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission8"
@@ -301,6 +343,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission8"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMission9"
@@ -308,6 +351,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Mission9"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMoatLength"
@@ -315,6 +359,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Moat"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerArena"
@@ -322,6 +367,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Arena"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerBathHouse"
@@ -329,6 +375,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/GranadaBathHouse"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerLibrary"
@@ -336,6 +383,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Library"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerHostel"
@@ -343,6 +391,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Hostel"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerHospital"
@@ -350,6 +399,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Hospital"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerMarket"
@@ -357,6 +407,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Market"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerPark"
@@ -364,6 +415,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/Park"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerSchool"
@@ -371,6 +423,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/School"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerResidentialArea"
@@ -378,6 +431,7 @@
         android:layout_height="@dimen/game_details_header_height"
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:src="@drawable/ResidentialArea"
+        android:contentDescription="description"
         android:tooltipText="walls"/>
     <LinearLayout
         android:id="@+id/headerWallMoat"
@@ -389,11 +443,13 @@
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:src="@drawable/Walls"
+            android:contentDescription="description"
             android:tooltipText="walls"/>
         <ImageView
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:src="@drawable/Moat"
+            android:contentDescription="description"
             android:tooltipText="walls"/>
     </LinearLayout>
 </TableRow>

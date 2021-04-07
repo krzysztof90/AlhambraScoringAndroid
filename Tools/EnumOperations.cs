@@ -13,14 +13,14 @@ namespace AlhambraScoringAndroid.Tools
             return value.GetEnumAttribute<EnumType, DescriptionAttribute>().Description;
         }
 
-        public static T GetEnumAttribute<EnumType, T>(this EnumType value, T defaultValue = default(T)) where EnumType : struct, IConvertible, IComparable, IFormattable
+        public static T GetEnumAttribute<EnumType, T>(this EnumType value, T defaultValue = default) where EnumType : struct, IConvertible, IComparable, IFormattable
         {
             FieldInfo fieldInfo = value.GetType().GetField(value.ToString());
 
             return GetFieldAttribute(fieldInfo, defaultValue);
         }
 
-        private static T GetFieldAttribute<T>(MemberInfo memberInfo, T defaultValue = default(T))
+        private static T GetFieldAttribute<T>(MemberInfo memberInfo, T defaultValue = default)
         {
             IEnumerable<T> attributes = (T[])memberInfo.GetCustomAttributes(typeof(T), false).Cast<T>();
 

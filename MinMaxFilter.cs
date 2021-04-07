@@ -31,7 +31,7 @@ namespace AlhambraScoringAndroid
 
         }
 
-        public bool ValidateNumberRange(string text,bool validateMinimum, int? defaultValue = null, string fieldName = null)
+        public bool ValidateNumberRange(string text, bool validateMinimum, int? defaultValue = null, string fieldName = null)
         {
             if (Int32.TryParse(text, out int input))
             {
@@ -48,7 +48,7 @@ namespace AlhambraScoringAndroid
                     return ValidateUtils.CheckFailed(Context, message.ToString());
                 }
             }
-            return System.String.IsNullOrEmpty(text) &&  defaultValue != null && ValidateNumberRange(((int)defaultValue).ToString(), validateMinimum);
+            return System.String.IsNullOrEmpty(text) && defaultValue != null && ValidateNumberRange(((int)defaultValue).ToString(), validateMinimum);
         }
     }
 

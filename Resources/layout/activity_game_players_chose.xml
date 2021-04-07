@@ -35,31 +35,31 @@
                 android:id="@+id/text_player2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/chose_player_panel_gap"
                 android:inputType="text"/>
             <EditText
                 android:id="@+id/text_player3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/chose_player_panel_gap"
                 android:inputType="text"/>
             <EditText
                 android:id="@+id/text_player4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/chose_player_panel_gap"
                 android:inputType="text"/>
             <EditText
                 android:id="@+id/text_player5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/chose_player_panel_gap"
                 android:inputType="text"/>
             <EditText
                 android:id="@+id/text_player6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/chose_player_panel_gap"
                 android:inputType="text"/>
 
         </LinearLayout>

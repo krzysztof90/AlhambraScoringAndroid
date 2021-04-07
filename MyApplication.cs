@@ -15,9 +15,6 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO nieużywany, zakomentowany kod
-        //TODO BP
-
         //TODO minSdkVersion
         //TODO duży rozmiar aplikacji:
         //https://heartbeat.fritz.ai/reducing-the-app-size-in-xamarin-deep-dive-7ddc9cb12688
@@ -257,14 +254,12 @@ namespace AlhambraScoringAndroid
                     resultHistory.NewScoreCards = new List<NewScoreCard>();
                     resultHistory.CaliphsGuidelines = new List<CaliphsGuidelinesMission>();
                     resultHistory.Players = new List<ResultPlayerHistory>();
-                    //resultHistory.ScoreRound = result.SingleChildNode("scoreRound").InnerText.GetEnumByDescriptionValue<ScoringRound>());
                     resultHistory.ScoreRound = Enum.Parse<ScoringRound>(result.SingleChildNode("scoreRound").InnerText);
                     XmlNode modulesElement = result.SingleChildNode("modules");
                     XmlNode newScoreCardsElement = result.SingleChildNode("newScoreCards");
                     XmlNode caliphsGuidelinesElement = result.SingleChildNode("caliphsGuidelines");
                     foreach (XmlNode module in modulesElement.GetChildNodes("module"))
                     {
-                        //resultHistory.Modules.Add(module.SingleChildNode("value").InnerText.GetEnumByDescriptionValue<ExpansionModule>());
                         resultHistory.Modules.Add(Enum.Parse<ExpansionModule>(module.SingleChildNode("value").InnerText));
                     }
                     resultHistory.GranadaOption = Enum.Parse<GranadaOption>(result.SingleChildNode("granadaOption").InnerText);
@@ -380,7 +375,6 @@ namespace AlhambraScoringAndroid
                 foreach (ExpansionModule module in resultHistory.Modules)
                 {
                     XmlElement moduleElement = document.CreateElement(String.Empty, "module", String.Empty);
-                    //XmlOperations.AddTextChild(document, moduleElement, "value", module.GetEnumDescription());
                     XmlOperations.AddTextChild(document, moduleElement, "value", module.ToString());
                     modulesElement.AppendChild(moduleElement);
                 }
@@ -398,7 +392,6 @@ namespace AlhambraScoringAndroid
                         XmlOperations.AddTextChild(document, moduleElement, "value", newScoreCard.ToString());
                         newScoreCardsElement.AppendChild(moduleElement);
                     }
-                //XmlOperations.AddTextChild(document, resultElement, "scoreRound", resultHistory.ScoreRound.GetEnumDescription());
                 XmlOperations.AddTextChild(document, resultElement, "scoreRound", resultHistory.ScoreRound.ToString());
                 XmlElement playersElement = document.CreateElement(String.Empty, "players", String.Empty);
                 resultElement.AppendChild(playersElement);

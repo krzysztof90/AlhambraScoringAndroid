@@ -2,7 +2,6 @@
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using AndroidX.ViewPager.Widget;
 using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI
@@ -38,7 +37,7 @@ namespace AlhambraScoringAndroid.UI
         {
             if (Root == null)
             {
-                Create( inflater,  container);
+                Create(inflater, container);
             }
 
             return Root;

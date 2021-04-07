@@ -30,13 +30,13 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             resultPanels = new List<PlayerResultPanel>()
             {
-          FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel1),
-          FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel2),
-          FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel3),
-          FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel4),
-          FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel5),
-          FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel6),
-        };
+                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel1),
+                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel2),
+                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel3),
+                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel4),
+                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel5),
+                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel6),
+            };
             for (int i = 0; i < Game.PlayersCount; i++)
             {
                 resultPanels[i].Initialize(i + 1);
