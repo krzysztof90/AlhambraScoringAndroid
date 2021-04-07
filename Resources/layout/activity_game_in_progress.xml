@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    
     <include
-        layout="@layout/content_main"/>
+        android:id="@+id/menu" 
+        layout="@layout/content_menu" />
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -26,38 +27,32 @@
                 android:id="@+id/playerResultPanel1"
                 android:layout_height="40dp"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel2"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel1"/>
+                android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel3"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel2"/>
+                android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel4"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel3"/>
+                android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel5"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel4"/>
+                android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel6"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintTop_toBottomOf="@+id/playerResultPanel5"/>
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
     </ScrollView>

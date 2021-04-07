@@ -5,9 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    
     <include
-        layout="@layout/content_main" />
+        android:id="@+id/menu" 
+        layout="@layout/content_menu" />
     
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"

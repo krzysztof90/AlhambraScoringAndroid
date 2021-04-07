@@ -21,15 +21,13 @@
             android:tooltipText="walls"
             android:src="@drawable/PalaceDesigner"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="description" />
+            android:layout_height="50dp"/>
         <ImageView
             android:id="@+id/headerImmediatelyPointsGatesWithoutEnd"
             android:tooltipText="walls"
             android:src="@drawable/GatesPoints"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:contentDescription="description" />
+            android:layout_height="50dp"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/headerWalls"
@@ -37,8 +35,7 @@
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
         android:src="@drawable/Walls"
-        android:layout_marginStart="10dp"
-        android:contentDescription="description" />
+        android:layout_marginStart="10dp"/>
     <ImageView
         android:id="@+id/headerPavilion"
         android:tooltipText="walls"

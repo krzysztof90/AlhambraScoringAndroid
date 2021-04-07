@@ -6,12 +6,12 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:fillViewport="true">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <AlhambraScoringAndroid.UI.ScoreLineNumberView
         android:id="@+id/buildingsWithoutServantTileNumericUpDown"
@@ -19,6 +19,6 @@ android:fillViewport="true">
         android:layout_height="wrap_content"
         app:labelValue="Number of buildings without a servant tile"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 
 </ScrollView>

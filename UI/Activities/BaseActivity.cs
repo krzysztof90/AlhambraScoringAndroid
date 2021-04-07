@@ -32,10 +32,6 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             int id = item.ItemId;
 
-            //if (id == Resource.Id.action_settings)
-            //{
-            //    return true;
-            //}
             if (id == Resource.Id.action_newGame)
             {
                 Application.NewGamePrompt(this);

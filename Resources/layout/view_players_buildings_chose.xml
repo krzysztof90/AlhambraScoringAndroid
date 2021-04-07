@@ -15,33 +15,27 @@
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/player1HighestPurchasePriceNumericUpDown"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            android:layout_height="wrap_content"/>
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/player2HighestPurchasePriceNumericUpDown"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/player1HighestPurchasePriceNumericUpDown" />
+            android:layout_height="wrap_content"/>
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/player3HighestPurchasePriceNumericUpDown"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/player2HighestPurchasePriceNumericUpDown" />
+            android:layout_height="wrap_content"/>
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/player4HighestPurchasePriceNumericUpDown"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/player3HighestPurchasePriceNumericUpDown" />
+            android:layout_height="wrap_content"/>
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/player5HighestPurchasePriceNumericUpDown"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/player4HighestPurchasePriceNumericUpDown" />
+            android:layout_height="wrap_content"/>
         <AlhambraScoringAndroid.UI.ScoreLineNumberView
             android:id="@+id/player6HighestPurchasePriceNumericUpDown"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/player5HighestPurchasePriceNumericUpDown" />
+            android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

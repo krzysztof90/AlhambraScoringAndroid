@@ -42,7 +42,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 if (playersCount > 5)
                     players.Add((FindViewById<EditText>(Resource.Id.text_player6)).Text);
 
-                Application.GameSetupInstruction(players);
+                Application.GameSetPlayers(players);
             });
         }
 
