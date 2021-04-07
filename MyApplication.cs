@@ -15,27 +15,26 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO nazwy id
-        //TODO nieużywany, zakomentowany kod
+        //TODO wysokości i szerokości do zmiennych; 60dp = menu height
+
         //TODO log unmanaged exceptions, send
-        //TODO fill_parent	ffffffff	The view should be as big as its parent (minus padding). This constant is deprecated starting from API Level 8 and is replaced by match_parent.
-        //TODO przezroczyste obrazki
-        //TODO xmlns:android tylko jedno
-        //TODO porządek w kolejności properties w layout
-        //TODO restore state after application close
+        //TODO nieużywany, zakomentowany kod
+        //TODO BP
+
         //TODO labelki słownik
-        //TODO iOS
-        //https://docs.microsoft.com/pl-pl/xamarin/
         //TODO google play "I would appreciate any feedback", link do github; BGG
         //TODO info o darmowym projekcie, link do paypal
-        //TODO niepotrzebne referencje, nuget, aktualizacja
         //TODO minSdkVersion
-        //TODO wysokości i szerokości do zmiennych; 60dp = menu height
-        //TODO BP
+
         //TODO duży rozmiar aplikacji:
         //https://heartbeat.fritz.ai/reducing-the-app-size-in-xamarin-deep-dive-7ddc9cb12688
         //https://dzone.com/articles/how-to-optimize-and-reduce-android-apps-size-in-xa
         //https://docs.microsoft.com/en-us/xamarin/android/deploy-test/linker
+
+        //TODO iOS
+        //https://docs.microsoft.com/pl-pl/xamarin/
+        //TODO przezroczyste obrazki
+        //TODO restore state after application close
 
         public List<ResultHistory> Results { get; private set; }
         public Game Game { get; private set; }

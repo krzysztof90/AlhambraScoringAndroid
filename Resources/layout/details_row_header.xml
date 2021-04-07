@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableRow
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <TextView
         android:id="@+id/headerSum"
-        android:text="Razem"
-        android:textStyle="bold"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:text="Razem"
+        android:textStyle="bold"/>
     <LinearLayout
         android:id="@+id/headerImmediatelyPoints"
         android:layout_width="@dimen/game_details_cell_width"
@@ -18,66 +18,66 @@
         android:orientation="vertical">
         <ImageView
             android:id="@+id/headerImmediatelyPointsPalaceDesigners"
-            android:tooltipText="walls"
-            android:src="@drawable/PalaceDesigner"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:src="@drawable/PalaceDesigner"
+            android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerImmediatelyPointsGatesWithoutEnd"
-            android:tooltipText="walls"
-            android:src="@drawable/GatesPoints"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:src="@drawable/GatesPoints"
+            android:tooltipText="walls"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/headerWalls"
-        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
         android:src="@drawable/Walls"
-        android:layout_marginStart="10dp"/>
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerPavilion"
-        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
-        android:src="@drawable/Pavilion"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Pavilion"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerSeraglio"
-        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
-        android:src="@drawable/Seraglio"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Seraglio"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerArcades"
-        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
-        android:src="@drawable/Arcades"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Arcades"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerChambers"
-        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
-        android:src="@drawable/Chambers"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Chambers"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerGarden"
-        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
-        android:src="@drawable/Garden"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Garden"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerTower"
-        android:tooltipText="walls"
         android:layout_width="@dimen/game_details_cell_width"
-        android:src="@drawable/Tower"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Tower"
+        android:tooltipText="walls"/>
     <LinearLayout
         android:id="@+id/headerBonuses"
         android:layout_width="@dimen/game_details_cell_width"
@@ -86,292 +86,299 @@
         android:orientation="vertical">
         <ImageView
             android:id="@+id/headerBonusesBonusCards"
-            android:tooltipText="walls"
-            android:src="@drawable/BonusCard"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:src="@drawable/BonusCard"
+            android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerBonusesTheWiseMan"
-            android:tooltipText="walls"
-            android:src="@drawable/CharacterTheWiseMan"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:src="@drawable/CharacterTheWiseMan"
+            android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerBonusesSquares"
-            android:tooltipText="walls"
-            android:src="@drawable/Square"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:src="@drawable/Square"
+            android:tooltipText="walls"/>
         <ImageView
             android:id="@+id/headerBonusesExtensions"
-            android:tooltipText="walls"
-            android:src="@drawable/Extension"
             android:layout_width="50dp"
             android:layout_height="50dp"/>
         <ImageView
             android:id="@+id/headerBonusesGatesWithoutEnd"
-            android:tooltipText="walls"
-            android:src="@drawable/SemiBuilding"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:src="@drawable/SemiBuilding"
+            android:tooltipText="walls"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/headerTheCityWatch"
-        android:tooltipText="walls"
-        android:src="@drawable/CharacterTheCityWatch"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/CharacterTheCityWatch"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerCamps"
-        android:tooltipText="walls"
-        android:src="@drawable/Camp"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Camp"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerStreetTraders"
-        android:tooltipText="walls"
-        android:src="@drawable/StreetTrader"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/StreetTrader"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerTreasureChamber"
-        android:tooltipText="walls"
-        android:src="@drawable/TreasureChamber"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/TreasureChamber"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerInvaders"
-        android:tooltipText="walls"
-        android:src="@drawable/Invaders"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Invaders"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerBazaars"
-        android:tooltipText="walls"
-        android:src="@drawable/Bazaar"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Bazaar"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerArtOfTheMoors"
-        android:tooltipText="walls"
-        android:src="@drawable/ArtOfTheMoors"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ArtOfTheMoors"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerFalconers"
-        android:tooltipText="walls"
-        android:src="@drawable/Falconers"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Falconers"
+        android:tooltipText="walls"/>
     <ImageView
         android:id="@+id/headerWatchtowers"
-        android:tooltipText="walls"
-        android:src="@drawable/Watchtower"
         android:layout_width="50dp"
-        android:layout_height="@dimen/game_details_header_height"/>
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Watchtower"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Medina"
-        android:tooltipText="walls"
         android:id="@+id/headerMedina"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Medina"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Servant"
-        android:tooltipText="walls"
         android:id="@+id/headerBuildingsWithoutServantTile"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Servant"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Fruit"
-        android:tooltipText="walls"
         android:id="@+id/headerOrchards"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Fruit"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Bathhouse"
-        android:tooltipText="walls"
         android:id="@+id/headerBathhouses"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Bathhouse"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/WishingWell"
-        android:tooltipText="walls"
         android:id="@+id/headerWishingWells"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/WishingWell"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/CompletedProject"
-        android:tooltipText="walls"
         android:id="@+id/headerCompletedProjects"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/CompletedProject"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Animal"
-        android:tooltipText="walls"
         android:id="@+id/headerAnimals"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Animal"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/BlackDice"
-        android:tooltipText="walls"
         android:id="@+id/headerBlackDices"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/BlackDice"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Handyman"
-        android:tooltipText="walls"
         android:id="@+id/headerHandymen"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Handyman"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Treasure"
-        android:tooltipText="walls"
         android:id="@+id/headerTreasures"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Treasure"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission1"
-        android:tooltipText="walls"
         android:id="@+id/headerMission1"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission1"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission2"
-        android:tooltipText="walls"
         android:id="@+id/headerMission2"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission2"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission3"
-        android:tooltipText="walls"
         android:id="@+id/headerMission3"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission3"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission4"
-        android:tooltipText="walls"
         android:id="@+id/headerMission4"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission4"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission5"
-        android:tooltipText="walls"
         android:id="@+id/headerMission5"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission5"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission6"
-        android:tooltipText="walls"
         android:id="@+id/headerMission6"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission6"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission7"
-        android:tooltipText="walls"
         android:id="@+id/headerMission7"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission7"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission8"
-        android:tooltipText="walls"
         android:id="@+id/headerMission8"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission8"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Mission9"
-        android:tooltipText="walls"
         android:id="@+id/headerMission9"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Mission9"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Moat"
-        android:tooltipText="walls"
         android:id="@+id/headerMoatLength"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Moat"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Arena"
-        android:tooltipText="walls"
         android:id="@+id/headerArena"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Arena"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/GranadaBathHouse"
-        android:tooltipText="walls"
         android:id="@+id/headerBathHouse"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/GranadaBathHouse"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Library"
-        android:tooltipText="walls"
         android:id="@+id/headerLibrary"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Library"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Hostel"
-        android:tooltipText="walls"
         android:id="@+id/headerHostel"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Hostel"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Hospital"
-        android:tooltipText="walls"
         android:id="@+id/headerHospital"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Hospital"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Market"
-        android:tooltipText="walls"
         android:id="@+id/headerMarket"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Market"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/Park"
-        android:tooltipText="walls"
         android:id="@+id/headerPark"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/Park"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/School"
-        android:tooltipText="walls"
         android:id="@+id/headerSchool"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/School"
+        android:tooltipText="walls"/>
     <ImageView
-        android:src="@drawable/ResidentialArea"
-        android:tooltipText="walls"
         android:id="@+id/headerResidentialArea"
         android:layout_width="@dimen/game_details_cell_width"
         android:layout_height="@dimen/game_details_header_height"
-        android:layout_marginStart="10dp"/>
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ResidentialArea"
+        android:tooltipText="walls"/>
     <LinearLayout
         android:id="@+id/headerWallMoat"
         android:layout_width="@dimen/game_details_cell_width"
@@ -379,14 +386,14 @@
         android:layout_marginStart="10dp"
         android:orientation="vertical">
         <ImageView
-            android:tooltipText="walls"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/Walls"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:tooltipText="walls"/>
         <ImageView
-            android:tooltipText="walls"
-            android:src="@drawable/Moat"
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_height="50dp"
+            android:src="@drawable/Moat"
+            android:tooltipText="walls"/>
     </LinearLayout>
 </TableRow>

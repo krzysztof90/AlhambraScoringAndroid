@@ -24,7 +24,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             spinner.Adapter = adapter;
             spinner.ItemSelected += Spinner_ItemSelected;
 
-            Button startButton = FindViewById<Button>(Resource.Id.startButton2);
+            Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
                 List<string> players = new List<string>();

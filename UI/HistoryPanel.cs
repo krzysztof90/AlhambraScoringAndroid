@@ -22,7 +22,7 @@ namespace AlhambraScoringAndroid.UI
             LayoutInflater layoutInflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
             View view = layoutInflater.Inflate(Resource.Layout.view_game_result, this);
 
-            textViewDateTime = FindViewById<TextView>(Resource.Id.textViewDateTime);
+            textViewDateTime = FindViewById<TextView>(Resource.Id.dateTimeTextView);
 
             Button showResultButton = FindViewById<Button>(Resource.Id.showResultButton);
             showResultButton.Click += new EventHandler((object sender, EventArgs e) =>

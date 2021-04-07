@@ -78,7 +78,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             expandableListView.SetAdapter(adapter);
             expandableListView.Expand();
 
-            Button playButton = FindViewById<Button>(Resource.Id.playButton);
+            Button playButton = FindViewById<Button>(Resource.Id.startButton);
             playButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
                 Application.GameStart();

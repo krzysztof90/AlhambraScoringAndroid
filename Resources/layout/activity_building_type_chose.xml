@@ -2,91 +2,87 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
-    <include
-        android:id="@+id/menu" 
-        layout="@layout/content_menu" />
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_marginTop="60dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent">
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/container"
+  <include layout="@layout/content_menu"
+        android:id="@+id/menu"/>
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_marginTop="60dp"
+      android:layout_height="0dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline"
+      app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/playerName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+
+      <TextView
+          android:id="@+id/title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Posiadając character The Wise Man należy wybrać jedną dodatkową połowę budynku"/>
+
+      <RadioGroup
+          android:id="@+id/buttonGroup"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="30dp">
+        <RadioButton
+            android:id="@+id/buttonPavilion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:textColor="@color/colorPavilion"/>
+        <RadioButton
+            android:id="@+id/buttonSeraglio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorSeraglio"/>
+        <RadioButton
+            android:id="@+id/buttonArcades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorArcades"/>
+        <RadioButton
+            android:id="@+id/buttonChambers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorChambers"/>
+        <RadioButton
+            android:id="@+id/buttonGarden"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGarden"/>
+        <RadioButton
+            android:id="@+id/buttonTower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTower"/>
 
-            <TextView
-                android:id="@+id/playerName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+      </RadioGroup>
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:text="Posiadając character The Wise Man należy wybrać jedną dodatkową połowę budynku"
-                android:layout_height="wrap_content"/>
+    </LinearLayout>
+  </ScrollView>
 
-            <RadioGroup
-                android:id="@+id/buttonGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
-                <RadioButton
-                    android:id="@+id/buttonPavilion"
-                    android:textColor="@color/colorPavilion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <RadioButton
-                    android:id="@+id/buttonSeraglio"
-                    android:textColor="@color/colorSeraglio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <RadioButton
-                    android:id="@+id/buttonArcades"
-                    android:textColor="@color/colorArcades"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <RadioButton
-                    android:id="@+id/buttonChambers"
-                    android:textColor="@color/colorChambers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <RadioButton
-                    android:id="@+id/buttonGarden"
-                    android:textColor="@color/colorGarden"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <RadioButton
-                    android:id="@+id/buttonTower"
-                    android:textColor="@color/colorTower"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+  <Button
+      android:id="@+id/confirmButton"
+      android:layout_width="match_parent"
+      android:layout_height="75dp"
+      android:text="Potwierdź"
+      app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-            </RadioGroup>
-
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/confirmButton"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:text="Potwierdź"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="75dp" />
+  <android.support.constraint.Guideline
+      android:id="@+id/guideline"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_end="75dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

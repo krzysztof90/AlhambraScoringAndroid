@@ -1,41 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
-            <TextView
-                android:id="@+id/title"
-                        android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
-        <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/player1HighestPurchasePriceNumericUpDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/player2HighestPurchasePriceNumericUpDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/player3HighestPurchasePriceNumericUpDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/player4HighestPurchasePriceNumericUpDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/player5HighestPurchasePriceNumericUpDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <AlhambraScoringAndroid.UI.ScoreLineNumberView
-            android:id="@+id/player6HighestPurchasePriceNumericUpDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"/>
 
+    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+        android:id="@+id/player1HighestPurchasePriceNumericUpDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+        android:id="@+id/player2HighestPurchasePriceNumericUpDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+        android:id="@+id/player3HighestPurchasePriceNumericUpDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+        android:id="@+id/player4HighestPurchasePriceNumericUpDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+        android:id="@+id/player5HighestPurchasePriceNumericUpDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+        android:id="@+id/player6HighestPurchasePriceNumericUpDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
