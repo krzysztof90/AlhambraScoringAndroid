@@ -45,8 +45,6 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            //TODO przy ukrytych elementach nie zmniejszana szerokość TableRow
-
             base.OnCreate(savedInstanceState);
 
             TextView titleDate = FindViewById<TextView>(Resource.Id.titleDate);
@@ -250,6 +248,7 @@ namespace AlhambraScoringAndroid.UI.Activities
         private void AddPlayerDetailsRoundBlock(ScoringRound round)
         {
             TableRow emptyrow = (TableRow)LayoutInflater.From(this).Inflate(Resource.Layout.details_row, null);
+            LimitDetailsRow(emptyrow);
             contentTable.AddView(emptyrow, contentTable.ChildCount - 1);
             contentTable.RequestLayout();
 
@@ -314,6 +313,14 @@ namespace AlhambraScoringAndroid.UI.Activities
             row.FindViewById<TextView>(Resource.Id.resultResidentialArea).Text = scoreDetails.ResidentialArea.ToString();
             row.FindViewById<TextView>(Resource.Id.resultWallMoat).Text = scoreDetails.WallMoatCombination.ToString();
 
+            LimitDetailsRow(row);
+
+            contentTable.AddView(row, contentTable.ChildCount - 1);
+            contentTable.RequestLayout();
+        }
+
+        private void LimitDetailsRow(TableRow row)
+        {
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultWalls), GranadaOption != GranadaOption.Alone);
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultPavilion), GranadaOption != GranadaOption.Alone);
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultSeraglio), GranadaOption != GranadaOption.Alone);
@@ -328,7 +335,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultStreetTraders), HasModule(ExpansionModule.ExpansionStreetTrader));
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultTreasureChamber), HasModule(ExpansionModule.ExpansionTreasureChamber));
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultInvaders), HasModule(ExpansionModule.ExpansionInvaders));
-            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultBazaars), HasModule(ExpansionModule.ExpansionBazaars));
+            SetVisibility(row.FindViewById<TextView>(Resource.Id.resultBazaars), HasModule(ExpansionModule.ExpansionBazaars) && ScoreRound == ScoringRound.Finish);
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultArtOfTheMoors), HasModule(ExpansionModule.ExpansionArtOfTheMoors));
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultFalconers), HasModule(ExpansionModule.ExpansionFalconers));
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultWatchtowers), HasModule(ExpansionModule.ExpansionWatchtowers));
@@ -362,9 +369,6 @@ namespace AlhambraScoringAndroid.UI.Activities
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultSchool), HasModule(ExpansionModule.Granada));
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultResidentialArea), HasModule(ExpansionModule.Granada));
             SetVisibility(row.FindViewById<TextView>(Resource.Id.resultWallMoat), GranadaOption == GranadaOption.With);
-
-            contentTable.AddView(row, contentTable.ChildCount - 1);
-            contentTable.RequestLayout();
         }
 
         protected void SetVisibility(View view, bool condition)
