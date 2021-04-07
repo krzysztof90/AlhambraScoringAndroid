@@ -11,7 +11,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/menu_height"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,12 +21,12 @@
             <Button
                 android:id="@+id/newGameButton"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="@dimen/button_height"
                 android:text="New game"/>
             <Button
                 android:id="@+id/showHistoryButton"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="@dimen/button_height"
                 android:text="Results history"/>
 
         </LinearLayout>

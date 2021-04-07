@@ -13,7 +13,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="@dimen/menu_height"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
@@ -25,32 +25,32 @@
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel1"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/player_result_panel_height"
                 android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel2"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/player_result_panel_height"
                 android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel3"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/player_result_panel_height"
                 android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel4"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/player_result_panel_height"
                 android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel5"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/player_result_panel_height"
                 android:layout_marginTop="10dp"/>
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel6"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/player_result_panel_height"
                 android:layout_marginTop="10dp"/>
 
         </LinearLayout>
@@ -59,19 +59,19 @@
     <Button
         android:id="@+id/scoreRevertButton"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="@dimen/button_height"
         android:text="Cofnij"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
     <Button
         android:id="@+id/scoreDetailsButton"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="@dimen/button_height"
         android:text="Pokaż szczegóły"
         app:layout_constraintTop_toBottomOf="@+id/scoreRevertButton" />
     <Button
         android:id="@+id/roundScoreButton"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="@dimen/button_height"
         android:text="Button"
         app:layout_constraintTop_toBottomOf="@+id/scoreDetailsButton" />
 
