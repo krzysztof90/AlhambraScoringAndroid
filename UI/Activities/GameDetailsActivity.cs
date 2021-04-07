@@ -1,4 +1,5 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
+using AlhambraScoringAndroid.Tools.Enums;
 using Android.App;
 using Android.OS;
 using Android.Views;
@@ -162,8 +163,11 @@ namespace AlhambraScoringAndroid.UI.Activities
             //tooltipText tylko od API 25
             TableRow headerRow1 = FindViewById<TableRow>(Resource.Id.headerRow1);
             TableRow headerRow2 = FindViewById<TableRow>(Resource.Id.headerRow2);
-            foreach (TableRow headerRow in new TableRow[] { headerRow1, headerRow2 })
+            foreach ((TableRow headerRow, UpDown center) in new (TableRow, UpDown)[] { (headerRow1, UpDown.Down), (headerRow2, UpDown.Up) })
             {
+                for (int i = 0; i < headerRow.ChildCount; i++)
+                    Center(headerRow.GetChildAt(i), center);
+
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerWalls), GranadaOption != GranadaOption.Alone);
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerPavilion), GranadaOption != GranadaOption.Alone);
                 SetVisibility(headerRow.FindViewById<ImageView>(Resource.Id.headerSeraglio), GranadaOption != GranadaOption.Alone);
@@ -374,6 +378,16 @@ namespace AlhambraScoringAndroid.UI.Activities
         protected void SetVisibility(View view, bool condition)
         {
             view.Visibility = condition ? ViewStates.Visible : ViewStates.Gone;
+        }
+
+        protected void Center(View view, UpDown upDown)
+        {
+            if (view is TextView textView)
+                textView.Gravity = upDown == UpDown.Up ? GravityFlags.Top : GravityFlags.Bottom;
+            else if (view is LinearLayout linearLayout)
+                linearLayout.SetGravity(upDown == UpDown.Up ? GravityFlags.Top : GravityFlags.Bottom);
+            else if (view is ImageView imageView)
+                imageView.SetScaleType(upDown == UpDown.Up ? ImageView.ScaleType.FitStart : ImageView.ScaleType.FitEnd);
         }
     }
 }

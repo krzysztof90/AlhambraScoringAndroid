@@ -344,6 +344,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
 
+                        <!--<AlhambraScoringAndroid.UI.DetailsRowHeader
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/headerRow1"
+                            />
+                        <AlhambraScoringAndroid.UI.DetailsRowHeader
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/headerRow2"
+                            />-->
                     <include
                     android:id="@+id/headerRow1"
                         layout="@layout/details_row_header"/>

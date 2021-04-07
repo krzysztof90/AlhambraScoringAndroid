@@ -15,7 +15,6 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO podkreślenie zakładek
         //TODO nieużywany, zakomentowany kod
         //TODO log unmanaged exceptions, send
         //TODO zamiast layout_constraintTop_toBottomOf włożyć w linearlayout
