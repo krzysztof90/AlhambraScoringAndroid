@@ -1,8 +1,10 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.Tools;
 using AlhambraScoringAndroid.UI.Activities;
+using Android.Content;
 using Android.Views;
 using AndroidX.Fragment.App;
+using AndroidX.ViewPager.Widget;
 using Java.Lang;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +13,8 @@ namespace AlhambraScoringAndroid.UI
 {
     public class PlayersScoreSectionsPagerAdapter : FragmentPagerAdapter
     {
-        public readonly GameScoreActivity activity;
+        public readonly GameScoreActivity Activity;
+        public ViewPager ViewPager { get; private set; }
         private readonly PlaceholderPlayerScoreFragment[] PlayerScoreFragments;
         private readonly PlaceholderPlayerScoreBeforeAssignLeftoverFragment[] PlayerScoreBeforeAssignLeftoverFragments;
 
@@ -19,10 +22,12 @@ namespace AlhambraScoringAndroid.UI
         {
             get
             {
-                for (int i = 0; i < activity.Game.PlayersCount; i++)
+                for (int i = 0; i < Activity.Game.PlayersCount; i++)
                     if (PlayerScoreFragments[i] == null)
-                        //TODO + inicjalizacja kontrolek, wtedy niepotrzebne sprawdzanie null w 'TODO default value'
-                        PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, activity.Game);
+                    {
+                        PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, Activity.Game);
+                        PlayerScoreFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
+                    }
                 return PlayerScoreFragments.ToList();
             }
         }
@@ -30,33 +35,39 @@ namespace AlhambraScoringAndroid.UI
         {
             get
             {
-                for (int i = 0; i < activity.Game.PlayersCount; i++)
+                for (int i = 0; i < Activity.Game.PlayersCount; i++)
                     if (PlayerScoreBeforeAssignLeftoverFragments[i] == null)
-                        PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, activity.Game);
+                    {
+                        PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, Activity.Game);
+                        PlayerScoreBeforeAssignLeftoverFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
+                    }
                 return PlayerScoreBeforeAssignLeftoverFragments.ToList();
             }
         }
 
-        public PlayersScoreSectionsPagerAdapter(GameScoreActivity context, AndroidX.Fragment.App.FragmentManager fm) : base(fm)
+        public PlayersScoreSectionsPagerAdapter(GameScoreActivity context, AndroidX.Fragment.App.FragmentManager fm, ViewPager viewPager) : base(fm)
         {
-            activity = context;
-            PlayerScoreFragments = new PlaceholderPlayerScoreFragment[activity.Game.PlayersCount];
-            PlayerScoreBeforeAssignLeftoverFragments = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment[activity.Game.PlayersCount];
+            Activity = context;
+            PlayerScoreFragments = new PlaceholderPlayerScoreFragment[Activity.Game.PlayersCount];
+            PlayerScoreBeforeAssignLeftoverFragments = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment[Activity.Game.PlayersCount];
+
+            ViewPager = viewPager;
+            ViewPager.Adapter = this;
         }
 
         public override AndroidX.Fragment.App.Fragment GetItem(int position)
         {
-            if (position < activity.Game.PlayersCount)
+            if (position < Activity.Game.PlayersCount)
             {
-                if (activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
+                if (Activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
                 {
-                    PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, activity.Game);
+                    PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, Activity.Game);
                     PlayerScoreFragments[position] = playerScoreFragment;
                     return playerScoreFragment;
                 }
                 else
                 {
-                    PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, activity.Game);
+                    PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, Activity.Game);
                     PlayerScoreBeforeAssignLeftoverFragments[position] = playerScoreFragment;
                     return playerScoreFragment;
                 }
@@ -67,20 +78,18 @@ namespace AlhambraScoringAndroid.UI
 
         public override ICharSequence GetPageTitleFormatted(int position)
         {
-            if (position < activity.Game.PlayersCount)
-                return new Java.Lang.String(activity.Game.GetPlayer(position + 1).Name);
+            if (position < Activity.Game.PlayersCount)
+                return new Java.Lang.String(Activity.Game.GetPlayer(position + 1).Name);
             else
                 return new Java.Lang.String("Submit");
         }
 
-        public override int Count => activity.Game.PlayersCount + 1;
+        public override int Count => Activity.Game.PlayersCount + 1;
 
-        /// <summary>
         /// shit android
-        /// </summary>
         public void RestoreValues(int position)
         {
-            if (activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
+            if (Activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
                 PlayerScoreFragments[position].RestoreValues();
             else
                 PlayerScoreBeforeAssignLeftoverFragments[position].RestoreValues();
@@ -88,36 +97,30 @@ namespace AlhambraScoringAndroid.UI
 
         public bool ValidateAllPlayerScoreFragments()
         {
-            for (int i = 0; i < activity.Game.PlayersCount; i++)
+            foreach (PlaceholderPlayerScoreFragment playerScoreFragment in AllPlayerScoreFragments)
             {
-                //TODO użyć najpierw AllPlayerScoreFragments (tam wypełnianie jeżeli null)
-                if (PlayerScoreFragments[i] != null)
-                {
-                    IEnumerable<ScoreLineNumberView> playerPanels = PlayerScoreFragments[i].Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
-                    if (!playerPanels.ValidatePlayerPanels())
-                        return false;
-                }
+                IEnumerable<ScoreLineNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
+                if (!playerPanels.ValidatePlayerPanels())
+                    return false;
             }
+
             return true;
         }
 
         public bool ValidateAllPlayerScoreBeforeAssignLeftoverFragments()
         {
-            for (int i = 0; i < activity.Game.PlayersCount; i++)
+            foreach (PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment in AllPlayerScoreBeforeAssignLeftoverFragments)
             {
-                if (PlayerScoreBeforeAssignLeftoverFragments[i] != null)
-                {
-                    IEnumerable<ScoreLineNumberView> playerPanels = PlayerScoreBeforeAssignLeftoverFragments[i].Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
-                    if (!playerPanels.ValidatePlayerPanels())
-                        return false;
-                }
+                IEnumerable<ScoreLineNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
+                if (!playerPanels.ValidatePlayerPanels())
+                    return false;
             }
             return true;
         }
 
         public void Submit()
         {
-            activity.Submit();
+            Activity.Submit();
         }
     }
 }

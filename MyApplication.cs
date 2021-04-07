@@ -17,7 +17,6 @@ namespace AlhambraScoringAndroid
     {
         //TODO nieużywany, zakomentowany kod
         //TODO log unmanaged exceptions, send
-        //TODO instrukcja przygotowania gry + rund w zależności od wybranych modułów + dirk
         //TODO fill_parent	ffffffff	The view should be as big as its parent (minus padding). This constant is deprecated starting from API Level 8 and is replaced by match_parent.
         //TODO przezroczyste obrazki
         //TODO xmlns:android tylko jedno

@@ -560,129 +560,129 @@ namespace AlhambraScoringAndroid.UI
             secondLongestWallNumericUpDown.Visibility = BlackDiceTotalPips != 0 || Mission4Available ? ViewStates.Visible : ViewStates.Gone;
         }
 
-        public int WallLength => GetNumberValue(wallsCountNumericUpDown);
+        public int WallLength => wallsCountNumericUpDown.Value;
         public Dictionary<BuildingType, int> BuildingsCount =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = GetNumberValue(pavilionCountNumericUpDown),
-                [BuildingType.Seraglio] = GetNumberValue(seraglioCountNumericUpDown),
-                [BuildingType.Arcades] = GetNumberValue(arcadesCountNumericUpDown),
-                [BuildingType.Chambers] = GetNumberValue(chambersCountNumericUpDown),
-                [BuildingType.Garden] = GetNumberValue(gardenCountNumericUpDown),
-                [BuildingType.Tower] = GetNumberValue(towerCountNumericUpDown),
+                [BuildingType.Pavilion] = pavilionCountNumericUpDown.Value,
+                [BuildingType.Seraglio] = seraglioCountNumericUpDown.Value,
+                [BuildingType.Arcades] = arcadesCountNumericUpDown.Value,
+                [BuildingType.Chambers] = chambersCountNumericUpDown.Value,
+                [BuildingType.Garden] = gardenCountNumericUpDown.Value,
+                [BuildingType.Tower] = towerCountNumericUpDown.Value,
             };
         public Dictionary<BuildingType, int> BonusCardsBuildingsCount =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = GetNumberValue(bonusCardsPavilionCountNumericUpDown),
-                [BuildingType.Seraglio] = GetNumberValue(bonusCardsSeraglioCountNumericUpDown),
-                [BuildingType.Arcades] = GetNumberValue(bonusCardsArcadesCountNumericUpDown),
-                [BuildingType.Chambers] = GetNumberValue(bonusCardsChambersCountNumericUpDown),
-                [BuildingType.Garden] = GetNumberValue(bonusCardsGardenCountNumericUpDown),
-                [BuildingType.Tower] = GetNumberValue(bonusCardsTowerCountNumericUpDown),
+                [BuildingType.Pavilion] = bonusCardsPavilionCountNumericUpDown.Value,
+                [BuildingType.Seraglio] = bonusCardsSeraglioCountNumericUpDown.Value,
+                [BuildingType.Arcades] = bonusCardsArcadesCountNumericUpDown.Value,
+                [BuildingType.Chambers] = bonusCardsChambersCountNumericUpDown.Value,
+                [BuildingType.Garden] = bonusCardsGardenCountNumericUpDown.Value,
+                [BuildingType.Tower] = bonusCardsTowerCountNumericUpDown.Value,
             };
         public Dictionary<BuildingType, int> SquaresBuildingsCount =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = GetNumberValue(squaresPavilionCountNumericUpDown),
-                [BuildingType.Seraglio] = GetNumberValue(squaresSeraglioCountNumericUpDown),
-                [BuildingType.Arcades] = GetNumberValue(squaresArcadesCountNumericUpDown),
-                [BuildingType.Chambers] = GetNumberValue(squaresChambersCountNumericUpDown),
-                [BuildingType.Garden] = GetNumberValue(squaresGardenCountNumericUpDown),
-                [BuildingType.Tower] = GetNumberValue(squaresTowerCountNumericUpDown),
+                [BuildingType.Pavilion] = squaresPavilionCountNumericUpDown.Value,
+                [BuildingType.Seraglio] = squaresSeraglioCountNumericUpDown.Value,
+                [BuildingType.Arcades] = squaresArcadesCountNumericUpDown.Value,
+                [BuildingType.Chambers] = squaresChambersCountNumericUpDown.Value,
+                [BuildingType.Garden] = squaresGardenCountNumericUpDown.Value,
+                [BuildingType.Tower] = squaresTowerCountNumericUpDown.Value,
             };
-        public bool OwnedCharacterTheWiseMan => GetCheckBoxValue(ownedCharacterTheWiseManCheckBox);
-        public bool OwnedCharacterTheCityWatch => GetCheckBoxValue(ownedCharacterTheCityWatchCheckBox);
-        public int CampsPoints => GetNumberValue(campsPointsNumericUpDown);
+        public bool OwnedCharacterTheWiseMan => ownedCharacterTheWiseManCheckBox.Value;
+        public bool OwnedCharacterTheCityWatch => ownedCharacterTheCityWatchCheckBox.Value;
+        public int CampsPoints => campsPointsNumericUpDown.Value;
         public Dictionary<BuildingType, int> StreetTradersNumber =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = GetNumberValue(streetTradersPavilionCountNumericUpDown),
-                [BuildingType.Seraglio] = GetNumberValue(streetTradersSeraglioCountNumericUpDown),
-                [BuildingType.Arcades] = GetNumberValue(streetTradersArcadesCountNumericUpDown),
-                [BuildingType.Chambers] = GetNumberValue(streetTradersChambersCountNumericUpDown),
-                [BuildingType.Garden] = GetNumberValue(streetTradersGardenCountNumericUpDown),
-                [BuildingType.Tower] = GetNumberValue(streetTradersTowerCountNumericUpDown),
+                [BuildingType.Pavilion] = streetTradersPavilionCountNumericUpDown.Value,
+                [BuildingType.Seraglio] = streetTradersSeraglioCountNumericUpDown.Value,
+                [BuildingType.Arcades] = streetTradersArcadesCountNumericUpDown.Value,
+                [BuildingType.Chambers] = streetTradersChambersCountNumericUpDown.Value,
+                [BuildingType.Garden] = streetTradersGardenCountNumericUpDown.Value,
+                [BuildingType.Tower] = streetTradersTowerCountNumericUpDown.Value,
             };
-        public int TreasuresCount => GetNumberValue(treasuresCountNumericUpDown);
-        public int UnprotectedSidesCount => GetNumberValue(unprotectedSidesCountNumericUpDown);
-        public int UnprotectedSidesNeighbouringCount => GetNumberValue(unprotectedSidesNeighbouringCountNumericUpDown);
-        public int BazaarsTotalPoints => GetNumberValue(bazaarsPointsNumericUpDown);
-        public int ArtOfTheMoorsPoints => GetNumberValue(artOfTheMoorsPointsNumericUpDown);
-        public int FalconsBlackNumber => GetNumberValue(falconsBlackNumberNumericUpDown);
-        public int FalconsBrownNumber => GetNumberValue(falconsBrownNumberNumericUpDown);
-        public int FalconsWhiteNumber => GetNumberValue(falconsWhiteNumberNumericUpDown);
-        public int WatchtowersNumber => GetNumberValue(watchtowersNumberNumericUpDown);
-        public int MedinasNumber => GetNumberValue(medinasNumberNumericUpDown);
-        public int BuildingsWithoutServantTile => GetNumberValue(buildingsWithoutServantTileNumericUpDown);
-        public bool CompletedGroupOfFruitBoard1 => GetCheckBoxValue(completedGroupOfFruitBoard1CheckBox);
-        public bool CompletedGroupOfFruitBoard2 => GetCheckBoxValue(completedGroupOfFruitBoard2CheckBox);
-        public bool CompletedGroupOfFruitBoard3 => GetCheckBoxValue(completedGroupOfFruitBoard3CheckBox);
-        public bool CompletedGroupOfFruitBoard4 => GetCheckBoxValue(completedGroupOfFruitBoard4CheckBox);
-        public bool CompletedGroupOfFruitBoard5 => GetCheckBoxValue(completedGroupOfFruitBoard5CheckBox);
-        public bool CompletedGroupOfFruitBoard6 => GetCheckBoxValue(completedGroupOfFruitBoard6CheckBox);
-        public int FaceDownFruitsCount => GetNumberValue(faceDownFruitsCountNumericUpDown);
-        public int BathhousesPoints => GetNumberValue(bathhousesPointsNumericUpDown);
-        public int WishingWellsPoints => GetNumberValue(wishingWellsPointsNumericUpDown);
+        public int TreasuresCount => treasuresCountNumericUpDown.Value;
+        public int UnprotectedSidesCount => unprotectedSidesCountNumericUpDown.Value;
+        public int UnprotectedSidesNeighbouringCount => unprotectedSidesNeighbouringCountNumericUpDown.Value;
+        public int BazaarsTotalPoints => bazaarsPointsNumericUpDown.Value;
+        public int ArtOfTheMoorsPoints => artOfTheMoorsPointsNumericUpDown.Value;
+        public int FalconsBlackNumber => falconsBlackNumberNumericUpDown.Value;
+        public int FalconsBrownNumber => falconsBrownNumberNumericUpDown.Value;
+        public int FalconsWhiteNumber => falconsWhiteNumberNumericUpDown.Value;
+        public int WatchtowersNumber => watchtowersNumberNumericUpDown.Value;
+        public int MedinasNumber => medinasNumberNumericUpDown.Value;
+        public int BuildingsWithoutServantTile => buildingsWithoutServantTileNumericUpDown.Value;
+        public bool CompletedGroupOfFruitBoard1 => completedGroupOfFruitBoard1CheckBox.Value;
+        public bool CompletedGroupOfFruitBoard2 => completedGroupOfFruitBoard2CheckBox.Value;
+        public bool CompletedGroupOfFruitBoard3 => completedGroupOfFruitBoard3CheckBox.Value;
+        public bool CompletedGroupOfFruitBoard4 => completedGroupOfFruitBoard4CheckBox.Value;
+        public bool CompletedGroupOfFruitBoard5 => completedGroupOfFruitBoard5CheckBox.Value;
+        public bool CompletedGroupOfFruitBoard6 => completedGroupOfFruitBoard6CheckBox.Value;
+        public int FaceDownFruitsCount => faceDownFruitsCountNumericUpDown.Value;
+        public int BathhousesPoints => bathhousesPointsNumericUpDown.Value;
+        public int WishingWellsPoints => wishingWellsPointsNumericUpDown.Value;
         public Dictionary<BuildingType, bool> CompletedProjects =>
             new Dictionary<BuildingType, bool>()
             {
-                [BuildingType.Pavilion] = GetCheckBoxValue(completedProjectPavilionCheckBox),
-                [BuildingType.Seraglio] = GetCheckBoxValue(completedProjectSeraglioCheckBox),
-                [BuildingType.Arcades] = GetCheckBoxValue(completedProjectArcadesCheckBox),
-                [BuildingType.Chambers] = GetCheckBoxValue(completedProjectChambersCheckBox),
-                [BuildingType.Garden] = GetCheckBoxValue(completedProjectGardenCheckBox),
-                [BuildingType.Tower] = GetCheckBoxValue(completedProjectTowerCheckBox),
+                [BuildingType.Pavilion] = completedProjectPavilionCheckBox.Value,
+                [BuildingType.Seraglio] = completedProjectSeraglioCheckBox.Value,
+                [BuildingType.Arcades] = completedProjectArcadesCheckBox.Value,
+                [BuildingType.Chambers] = completedProjectChambersCheckBox.Value,
+                [BuildingType.Garden] = completedProjectGardenCheckBox.Value,
+                [BuildingType.Tower] = completedProjectTowerCheckBox.Value,
             };
-        public int AnimalsPoints => GetNumberValue(animalsPointsNumericUpDown);
+        public int AnimalsPoints => animalsPointsNumericUpDown.Value;
         public Dictionary<BuildingType, bool> OwnedSemiBuildings =>
             new Dictionary<BuildingType, bool>()
             {
-                [BuildingType.Pavilion] = GetCheckBoxValue(ownedSemiBuildingPavilionCheckBox),
-                [BuildingType.Seraglio] = GetCheckBoxValue(ownedSemiBuildingSeraglioCheckBox),
-                [BuildingType.Arcades] = GetCheckBoxValue(ownedSemiBuildingArcadesCheckBox),
-                [BuildingType.Chambers] = GetCheckBoxValue(ownedSemiBuildingChambersCheckBox),
-                [BuildingType.Garden] = GetCheckBoxValue(ownedSemiBuildingGardenCheckBox),
-                [BuildingType.Tower] = GetCheckBoxValue(ownedSemiBuildingTowerCheckBox),
+                [BuildingType.Pavilion] = ownedSemiBuildingPavilionCheckBox.Value,
+                [BuildingType.Seraglio] = ownedSemiBuildingSeraglioCheckBox.Value,
+                [BuildingType.Arcades] = ownedSemiBuildingArcadesCheckBox.Value,
+                [BuildingType.Chambers] = ownedSemiBuildingChambersCheckBox.Value,
+                [BuildingType.Garden] = ownedSemiBuildingGardenCheckBox.Value,
+                [BuildingType.Tower] = ownedSemiBuildingTowerCheckBox.Value,
             };
-        public int BlackDiceTotalPips => GetNumberValue(blackDiceTotalPipsNumericUpDown);
+        public int BlackDiceTotalPips => blackDiceTotalPipsNumericUpDown.Value;
         public Dictionary<BuildingType, int> ExtensionsBuildingsCount =>
             new Dictionary<BuildingType, int>()
             {
-                [BuildingType.Pavilion] = GetNumberValue(extensionsPavilionCountNumericUpDown),
-                [BuildingType.Seraglio] = GetNumberValue(extensionsSeraglioCountNumericUpDown),
-                [BuildingType.Arcades] = GetNumberValue(extensionsArcadesCountNumericUpDown),
-                [BuildingType.Chambers] = GetNumberValue(extensionsChambersCountNumericUpDown),
-                [BuildingType.Garden] = GetNumberValue(extensionsGardenCountNumericUpDown),
-                [BuildingType.Tower] = GetNumberValue(extensionsTowerCountNumericUpDown),
+                [BuildingType.Pavilion] = extensionsPavilionCountNumericUpDown.Value,
+                [BuildingType.Seraglio] = extensionsSeraglioCountNumericUpDown.Value,
+                [BuildingType.Arcades] = extensionsArcadesCountNumericUpDown.Value,
+                [BuildingType.Chambers] = extensionsChambersCountNumericUpDown.Value,
+                [BuildingType.Garden] = extensionsGardenCountNumericUpDown.Value,
+                [BuildingType.Tower] = extensionsTowerCountNumericUpDown.Value,
             };
-        public int HandymenTilesHighestNumber => GetNumberValue(handymenTilesHighestNumberNumericUpDown);
-        public int TreasuresValue => GetNumberValue(treasuresValueNumericUpDown);
-        public int Mission1Count => GetNumberValue(mission1RowsCountNumericUpDown);
-        public int Mission2Count => GetNumberValue(mission2ColumnsCountNumericUpDown);
-        public int Mission3Count => GetNumberValue(mission3Adjacent2BuildingsCountNumericUpDown);
-        public bool Mission4Available => GetCheckBoxValue(mission4SecondLongestWallCheckBox);
-        public int Mission5Count => GetNumberValue(mission5LongestDiagonalLineNumericUpDown);
-        public int Mission6Count => GetNumberValue(mission6DoubleWallCountNumericUpDown);
-        public int Mission7Count => GetNumberValue(mission7DiffernetTypesNumberNumericUpDown);
-        public int Mission8Count => GetNumberValue(mission8PathBuildingsNumberNumericUpDown);
-        public int Mission9Count => GetNumberValue(mission9Grids22CountNumericUpDown);
-        public int SecondLongestWallLength => GetNumberValue(secondLongestWallNumericUpDown);
-        public int MoatLength => GetNumberValue(moatLengthNumericUpDown);
+        public int HandymenTilesHighestNumber => handymenTilesHighestNumberNumericUpDown.Value;
+        public int TreasuresValue => treasuresValueNumericUpDown.Value;
+        public int Mission1Count => mission1RowsCountNumericUpDown.Value;
+        public int Mission2Count => mission2ColumnsCountNumericUpDown.Value;
+        public int Mission3Count => mission3Adjacent2BuildingsCountNumericUpDown.Value;
+        public bool Mission4Available => mission4SecondLongestWallCheckBox.Value;
+        public int Mission5Count => mission5LongestDiagonalLineNumericUpDown.Value;
+        public int Mission6Count => mission6DoubleWallCountNumericUpDown.Value;
+        public int Mission7Count => mission7DiffernetTypesNumberNumericUpDown.Value;
+        public int Mission8Count => mission8PathBuildingsNumberNumericUpDown.Value;
+        public int Mission9Count => mission9Grids22CountNumericUpDown.Value;
+        public int SecondLongestWallLength => secondLongestWallNumericUpDown.Value;
+        public int MoatLength => moatLengthNumericUpDown.Value;
         public Dictionary<GranadaBuildingType, int> GranadaBuildingsCount =>
             new Dictionary<GranadaBuildingType, int>()
             {
-                [GranadaBuildingType.Arena] = GetNumberValue(arenaNumericUpDown),
-                [GranadaBuildingType.BathHouse] = GetNumberValue(bathHouseNumericUpDown),
-                [GranadaBuildingType.Library] = GetNumberValue(libraryNumericUpDown),
-                [GranadaBuildingType.Hostel] = GetNumberValue(hostelNumericUpDown),
-                [GranadaBuildingType.Hospital] = GetNumberValue(hospitalNumericUpDown),
-                [GranadaBuildingType.Market] = GetNumberValue(marketNumericUpDown),
-                [GranadaBuildingType.Park] = GetNumberValue(parkNumericUpDown),
-                [GranadaBuildingType.School] = GetNumberValue(schoolNumericUpDown),
-                [GranadaBuildingType.ResidentialArea] = GetNumberValue(residentialAreaNumericUpDown)
+                [GranadaBuildingType.Arena] = arenaNumericUpDown.Value,
+                [GranadaBuildingType.BathHouse] = bathHouseNumericUpDown.Value,
+                [GranadaBuildingType.Library] = libraryNumericUpDown.Value,
+                [GranadaBuildingType.Hostel] = hostelNumericUpDown.Value,
+                [GranadaBuildingType.Hospital] = hospitalNumericUpDown.Value,
+                [GranadaBuildingType.Market] = marketNumericUpDown.Value,
+                [GranadaBuildingType.Park] = parkNumericUpDown.Value,
+                [GranadaBuildingType.School] = schoolNumericUpDown.Value,
+                [GranadaBuildingType.ResidentialArea] = residentialAreaNumericUpDown.Value
             };
-        public int wallMoatCombinationLength => GetNumberValue(wallMoatCombinationNumericUpDown);
+        public int wallMoatCombinationLength => wallMoatCombinationNumericUpDown.Value;
 
         public int AllBuildingsCount => BuildingsCount.Sum(b => b.Value);
     }

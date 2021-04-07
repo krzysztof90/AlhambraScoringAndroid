@@ -1,8 +1,8 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
-using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidX.ViewPager.Widget;
 using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI
@@ -38,15 +38,20 @@ namespace AlhambraScoringAndroid.UI
         {
             if (Root == null)
             {
-                Root = inflater.Inflate(GetContentLayout(), container, false);
-
-                CreateControls();
-                AddControls();
-                SetControlsProperties();
-                InitializeControls();
+                Create( inflater,  container);
             }
 
             return Root;
+        }
+
+        public void Create(LayoutInflater inflater, ViewGroup container)
+        {
+            Root = inflater.Inflate(GetContentLayout(), container, false);
+
+            CreateControls();
+            AddControls();
+            SetControlsProperties();
+            InitializeControls();
         }
 
         private void InitializeControls()
@@ -64,22 +69,6 @@ namespace AlhambraScoringAndroid.UI
         protected void AddConditionToVisible(LinearLayout layout, bool condition)
         {
             layout.Visibility = (layout.Visibility == ViewStates.Visible && condition) ? ViewStates.Visible : ViewStates.Gone;
-        }
-
-        protected int GetNumberValue(ScoreLineNumberView control)
-        {
-            if (control == null)
-                //TODO default value
-                return 0;
-            return control.Value;
-        }
-
-        protected bool GetCheckBoxValue(ScoreLineCheckBoxView control)
-        {
-            if (control == null)
-                //TODO default value
-                return false;
-            return control.Value;
         }
     }
 

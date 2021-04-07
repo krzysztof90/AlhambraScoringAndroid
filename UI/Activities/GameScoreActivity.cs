@@ -1,5 +1,4 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
-using AlhambraScoringAndroid.UI;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -26,9 +25,9 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             base.OnCreate(savedInstanceState);
 
-            sectionsPagerAdapter = new PlayersScoreSectionsPagerAdapter(this, SupportFragmentManager);
             ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.view_pager);
-            viewPager.Adapter = sectionsPagerAdapter;
+            sectionsPagerAdapter = new PlayersScoreSectionsPagerAdapter(this, SupportFragmentManager, viewPager);
+            //viewPager.Adapter = sectionsPagerAdapter;
             TabLayout tabs = FindViewById<TabLayout>(Resource.Id.tabs);
             tabs.SetupWithViewPager(viewPager);
 
