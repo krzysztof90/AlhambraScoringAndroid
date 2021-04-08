@@ -1,18 +1,18 @@
-﻿using System.ComponentModel;
+﻿using AlhambraScoringAndroid.Attributes;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
     public enum ScoringRound
     {
-        [Description("Pierwsza")]
+        [DescriptionResourceAttribute(Resource.String.round_1)]
         First,
-        [Description("Druga")]
+        [DescriptionResourceAttribute(Resource.String.round_2)]
         Second,
-        [Description("Trzecia przed czymś tam")]
+        [DescriptionResourceAttribute(Resource.String.round_3_before)]
         ThirdBeforeLeftover,
-        [Description("Trzecia")]
+        [DescriptionResourceAttribute(Resource.String.round_3)]
         Third,
-        [Description("Koniec")]
+        [DescriptionResourceAttribute(Resource.String.finish)]
         Finish
     }
 }

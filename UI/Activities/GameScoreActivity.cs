@@ -12,7 +12,7 @@ using static Google.Android.Material.Tabs.TabLayout;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "Punktacja", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/scoring", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameScoreActivity : BaseActivity
     {
         private PlayersScoreSectionsPagerAdapter sectionsPagerAdapter;
@@ -51,10 +51,10 @@ namespace AlhambraScoringAndroid.UI.Activities
         public override void OnBackPressed()
         {
             new AlertDialog.Builder(this)
-                .SetTitle("Closing Activity")
-                .SetMessage("Are you sure you want to close this activity?")
-                .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => base.OnBackPressed()))
-                .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
+                .SetTitle(Resources.GetString(Resource.String.activity_ending))
+                .SetMessage(Resources.GetString(Resource.String.activity_ending_continue_question))
+                .SetPositiveButton(Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => base.OnBackPressed()))
+                .SetNegativeButton(Resources.GetString(Resource.String.no), new DialogInterfaceOnClickListener(null))
                 .Show();
         }
 

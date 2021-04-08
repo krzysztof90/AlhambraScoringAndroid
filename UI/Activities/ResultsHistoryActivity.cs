@@ -7,7 +7,7 @@ using System;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "Historia", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/history", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class ResultsHistoryActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_history;
@@ -40,16 +40,16 @@ namespace AlhambraScoringAndroid.UI.Activities
         public void RemoveResult(HistoryPanel historyPanel)
         {
             new AlertDialog.Builder(this)
-                .SetTitle("Usuwanie wyniku")
-                .SetMessage("Czy kontynuować?")
-                .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) =>
+                .SetTitle(Resources.GetString(Resource.String.result_removing))
+                .SetMessage(Resources.GetString(Resource.String.continue_question))
+                .SetPositiveButton(Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) =>
                 {
                     container.RemoveView(historyPanel);
                     container.RequestLayout();
                     Application.RemoveResult(historyPanel.StartDateTime);
                     Application.SaveResults();
                 }))
-                .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
+                .SetNegativeButton(Resources.GetString(Resource.String.no), new DialogInterfaceOnClickListener(null))
                 .Show();
         }
     }

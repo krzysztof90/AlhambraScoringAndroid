@@ -9,7 +9,7 @@ using static Android.Widget.AdapterView;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "Wybór graczy", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/players_chose", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GamePlayersChoseActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_game_players_chose;

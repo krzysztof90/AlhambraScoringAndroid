@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace AlhambraScoringAndroid.UI.Activities
 {
     //TODO instrukcja przygotowania gry + rund w zależności od wybranych modułów + dirk
-    [Activity(Label = "Setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameSetupInstructionActivity : BaseActivity
     {
         private ExpandableListViewExtension expandableListView;
@@ -69,8 +69,8 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             Dictionary<string, List<SetupInstructions>> setup = new Dictionary<string, List<SetupInstructions>>()
             {
-                ["Tiles"] = setupTiles,
-                ["Cards"] = setupCards,
+                [Resources.GetString(Resource.String.tiles)] = setupTiles,
+                [Resources.GetString(Resource.String.cards)] = setupCards,
             };
 
             expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);

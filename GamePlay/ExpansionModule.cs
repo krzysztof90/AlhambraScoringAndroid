@@ -1,137 +1,136 @@
 ﻿using AlhambraScoringAndroid.Attributes;
-using System.ComponentModel;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
     public enum ExpansionModule
     {
-        [Description("Vizier’s Favour")]
+        [DescriptionResourceAttribute(Resource.String.viziers_favour)]
         [ImageAttribute(Resource.Drawable.ViziersFavour)]
         ExpansionViziersFavour,
-        [Description("Currency Exchange Cards")]
+        [DescriptionResourceAttribute(Resource.String.currency_exchange_cards)]
         [ImageAttribute(Resource.Drawable.CurrencyExchangeCard)]
         ExpansionCurrencyExchangeCards,
-        [Description("Bonus Cards")]
+        [DescriptionResourceAttribute(Resource.String.bonus_cards)]
         [ImageAttribute(Resource.Drawable.BonusCard)]
         ExpansionBonusCards,
-        [Description("Squares")]
+        [DescriptionResourceAttribute(Resource.String.squares)]
         [ImageAttribute(Resource.Drawable.Square)]
         ExpansionSquares,
-        [Description("City Gates")]
+        [DescriptionResourceAttribute(Resource.String.city_gates)]
         [ImageAttribute(Resource.Drawable.CityGates)]
         ExpansionCityGates,
-        [Description("Diamonds")]
+        [DescriptionResourceAttribute(Resource.String.diamonds)]
         [ImageAttribute(Resource.Drawable.Diamonds)]
         ExpansionDiamonds,
-        [Description("Characters")]
+        [DescriptionResourceAttribute(Resource.String.characters)]
         [ImageAttribute(Resource.Drawable.CharacterTheWiseMan)]
         ExpansionCharacters,
-        [Description("Camps")]
+        [DescriptionResourceAttribute(Resource.String.camps)]
         [ImageAttribute(Resource.Drawable.Camp)]
         ExpansionCamps,
-        [Description("City Walls")]
+        [DescriptionResourceAttribute(Resource.String.city_alls)]
         [ImageAttribute(Resource.Drawable.CityWalls)]
         ExpansionCityWalls,
-        [Description("Thieves")]
+        [DescriptionResourceAttribute(Resource.String.thieves)]
         [ImageAttribute(Resource.Drawable.Thieve)]
         ExpansionThieves,
-        [Description("Change")]
+        [DescriptionResourceAttribute(Resource.String.change)]
         [ImageAttribute(Resource.Drawable.Change)]
         ExpansionChange,
-        [Description("Street Trader")]
+        [DescriptionResourceAttribute(Resource.String.street_trader)]
         [ImageAttribute(Resource.Drawable.StreetTrader)]
         ExpansionStreetTrader,
-        [Description("Treasure Chamber")]
+        [DescriptionResourceAttribute(Resource.String.treasure_chamber)]
         [ImageAttribute(Resource.Drawable.TreasureChamber)]
         ExpansionTreasureChamber,
-        [Description("Master Builders")]
+        [DescriptionResourceAttribute(Resource.String.master_builders)]
         [ImageAttribute(Resource.Drawable.MasterBuilder)]
         ExpansionMasterBuilders,
-        [Description("Invaders")]
+        [DescriptionResourceAttribute(Resource.String.invaders)]
         [ImageAttribute(Resource.Drawable.Invaders)]
         ExpansionInvaders,
-        [Description("Bazaars")]
+        [DescriptionResourceAttribute(Resource.String.bazaars)]
         [ImageAttribute(Resource.Drawable.Bazaar)]
         ExpansionBazaars,
-        [Description("New Score Cards")]
+        [DescriptionResourceAttribute(Resource.String.new_score_cards)]
         [ImageAttribute(Resource.Drawable.NewScoreCards)]
         ExpansionNewScoreCards,
-        [Description("Power of Sultan")]
+        [DescriptionResourceAttribute(Resource.String.power_of_sultan)]
         [ImageAttribute(Resource.Drawable.PowerOfSultan)]
         ExpansionPowerOfSultan,
-        [Description("Caravanserai")]
+        [DescriptionResourceAttribute(Resource.String.caravanserai)]
         [ImageAttribute(Resource.Drawable.Caravanserai)]
         ExpansionCaravanserai,
-        [Description("Art of the Moors")]
+        [DescriptionResourceAttribute(Resource.String.art_of_the_moors)]
         [ImageAttribute(Resource.Drawable.ArtOfTheMoors)]
         ExpansionArtOfTheMoors,
-        [Description("Falconers")]
+        [DescriptionResourceAttribute(Resource.String.falconers)]
         [ImageAttribute(Resource.Drawable.Falconers)]
         ExpansionFalconers,
-        [Description("Watchtowers")]
+        [DescriptionResourceAttribute(Resource.String.watchtowers)]
         [ImageAttribute(Resource.Drawable.Watchtower)]
         ExpansionWatchtowers,
-        [Description("Building Sites")]
+        [DescriptionResourceAttribute(Resource.String.building_sites)]
         [ImageAttribute(Resource.Drawable.BuildingSites)]
         ExpansionBuildingSites,
-        [Description("Exchange Certificates")]
+        [DescriptionResourceAttribute(Resource.String.exchange_certificates)]
         [ImageAttribute(Resource.Drawable.ExchangeCertificates)]
         ExpansionExchangeCertificates,
-        [Description("Magical Buildings")]
+        [DescriptionResourceAttribute(Resource.String.magical_buildings)]
         [ImageAttribute(Resource.Drawable.MagicalBuildings)]
         QueenieMagicalBuildings,
-        [Description("Medina")]
+        [DescriptionResourceAttribute(Resource.String.medina)]
         [ImageAttribute(Resource.Drawable.Medina)]
         QueenieMedina,
-        [Description("New Building Grounds")]
+        [DescriptionResourceAttribute(Resource.String.new_building_grounds)]
         [ImageAttribute(Resource.Drawable.NewBuildingGrounds)]
         DesignerNewBuildingGrounds,
-        [Description("Major Construction Projects")]
+        [DescriptionResourceAttribute(Resource.String.major_construction_projects)]
         [ImageAttribute(Resource.Drawable.MajorConstructionProjects)]
         DesignerMajorConstructionProjects,
-        [Description("Palace Staff")]
+        [DescriptionResourceAttribute(Resource.String.palace_staff)]
         [ImageAttribute(Resource.Drawable.Servant)]
         DesignerPalaceStaff,
-        [Description("Orchards")]
+        [DescriptionResourceAttribute(Resource.String.orchards)]
         [ImageAttribute(Resource.Drawable.Fruit)]
         DesignerOrchards,
-        [Description("Travelling Craftsmen")]
+        [DescriptionResourceAttribute(Resource.String.travelling_craftsmen)]
         [ImageAttribute(Resource.Drawable.TravellingCraftsman)]
         DesignerTravellingCraftsmen,
-        [Description("Bathhouses")]
+        [DescriptionResourceAttribute(Resource.String.bathhouses)]
         [ImageAttribute(Resource.Drawable.Bathhouse)]
         DesignerBathhouses,
-        [Description("Wishing Well")]
+        [DescriptionResourceAttribute(Resource.String.wishing_well)]
         [ImageAttribute(Resource.Drawable.WishingWell)]
         DesignerWishingWell,
-        [Description("Fresh Colors")]
+        [DescriptionResourceAttribute(Resource.String.fresh_colors)]
         [ImageAttribute(Resource.Drawable.FreshColors)]
         DesignerFreshColors,
-        [Description("Palace Designers")]
+        [DescriptionResourceAttribute(Resource.String.palace_designers)]
         [ImageAttribute(Resource.Drawable.PalaceDesigner)]
         DesignerPalaceDesigners,
-        [Description("Alhambra Zoo")]
+        [DescriptionResourceAttribute(Resource.String.alhambra_zoo)]
         [ImageAttribute(Resource.Drawable.Animal)]
         DesignerAlhambraZoo,
-        [Description("Gates without End")]
+        [DescriptionResourceAttribute(Resource.String.gates_without_end)]
         [ImageAttribute(Resource.Drawable.GatesWithoutEnd)]
         DesignerGatesWithoutEnd,
-        [Description("Buildings of Power")]
+        [DescriptionResourceAttribute(Resource.String.buildings_of_power)]
         [ImageAttribute(Resource.Drawable.BuildingOfPower)]
         DesignerBuildingsOfPower,
-        [Description("Extensions")]
+        [DescriptionResourceAttribute(Resource.String.extensions)]
         [ImageAttribute(Resource.Drawable.Extension)]
         DesignerExtensions,
-        [Description("Handymen")]
+        [DescriptionResourceAttribute(Resource.String.handymen)]
         [ImageAttribute(Resource.Drawable.Handyman)]
         DesignerHandymen,
-        [Description("Personal Building Market")]
+        [DescriptionResourceAttribute(Resource.String.personal_building_market)]
         [ImageAttribute(Resource.Drawable.PersonalBuildingMarket)]
         FanPersonalBuildingMarket,
-        [Description("Treasures")]
+        [DescriptionResourceAttribute(Resource.String.treasures)]
         [ImageAttribute(Resource.Drawable.Treasure)]
         FanTreasures,
-        [Description("Caliph’s Guidelines")]
+        [DescriptionResourceAttribute(Resource.String.caliphs_guidelines)]
         [ImageAttribute(Resource.Drawable.Mission1)]
         FanCaliphsGuidelines,
 

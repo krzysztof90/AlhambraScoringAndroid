@@ -1,26 +1,25 @@
 ﻿using AlhambraScoringAndroid.Attributes;
-using System.ComponentModel;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
     public enum BuildingType
     {
-        [Description("Pavilion")]
+        [DescriptionResourceAttribute(Resource.String.pavilion)]
         [ImageAttribute(Resource.Drawable.Pavilion)]
         Pavilion, //Blue
-        [Description("Seraglio")]
+        [DescriptionResourceAttribute(Resource.String.seraglio)]
         [ImageAttribute(Resource.Drawable.Seraglio)]
         Seraglio, //Red
-        [Description("Arcades")]
+        [DescriptionResourceAttribute(Resource.String.arcades)]
         [ImageAttribute(Resource.Drawable.Arcades)]
         Arcades, //Brown
-        [Description("Chambers")]
+        [DescriptionResourceAttribute(Resource.String.chambers)]
         [ImageAttribute(Resource.Drawable.Chambers)]
         Chambers, //White
-        [Description("Garden")]
+        [DescriptionResourceAttribute(Resource.String.garden)]
         [ImageAttribute(Resource.Drawable.Garden)]
         Garden, //Green
-        [Description("Tower")]
+        [DescriptionResourceAttribute(Resource.String.tower)]
         [ImageAttribute(Resource.Drawable.Tower)]
         Tower, //Purple
     }

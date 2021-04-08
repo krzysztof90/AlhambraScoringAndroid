@@ -1,6 +1,7 @@
-﻿using System;
+﻿using AlhambraScoringAndroid.Attributes;
+using Android.Content.Res;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
@@ -8,9 +9,10 @@ namespace AlhambraScoringAndroid.Tools
 {
     public static class EnumOperations
     {
-        public static string GetEnumDescription<EnumType>(this EnumType value) where EnumType : struct, IConvertible, IComparable, IFormattable
+        public static string GetEnumDescription<EnumType>(this EnumType value, Resources resources) where EnumType : struct, IConvertible, IComparable, IFormattable
         {
-            return value.GetEnumAttribute<EnumType, DescriptionAttribute>().Description;
+            //return value.GetEnumAttribute<EnumType, DescriptionAttribute>().Description;
+            return resources.GetString(value.GetEnumAttribute<EnumType, DescriptionResourceAttribute>().Resource);
         }
 
         public static T GetEnumAttribute<EnumType, T>(this EnumType value, T defaultValue = default) where EnumType : struct, IConvertible, IComparable, IFormattable
@@ -29,14 +31,6 @@ namespace AlhambraScoringAndroid.Tools
                 return attributes.Cast<T>().Single();
             }
             return defaultValue;
-        }
-
-        public static EnumType GetEnumByDescriptionValue<EnumType>(this string value) where EnumType : struct, IConvertible, IComparable, IFormattable
-        {
-            if (String.IsNullOrEmpty(value))
-                throw new ArgumentException();
-
-            return Enum.GetValues(typeof(EnumType)).Cast<EnumType>().Single(e => e.GetEnumDescription() == value);
         }
     }
 }

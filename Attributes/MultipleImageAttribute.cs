@@ -1,10 +1,9 @@
-﻿using AlhambraScoringAndroid.Attributes;
-using AlhambraScoringAndroid.Tools.Enums;
+﻿using AlhambraScoringAndroid.Tools.Enums;
 using Android.Content.Res;
 using Android.Graphics;
 using static Android.Graphics.Bitmap;
 
-namespace AlhambraScoringAndroid.Atributes
+namespace AlhambraScoringAndroid.Attributes
 {
     public class MultipleImageAttribute : ImageAttribute
     {

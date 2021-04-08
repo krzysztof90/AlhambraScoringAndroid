@@ -7,9 +7,14 @@ using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "Nowa gra", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/new_game", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class NewGameActivity : BaseActivity
     {
+        const string expansionModulesName = "EXPANSION MODULES";
+        const string queenieExpansionModulesName = "QUEENIE EXPANSION MODULES";
+        const string designerExpansionModulesName = "DESIGNER EXPANSION MODULES";
+        const string GranadaName = "GRANADA";
+
         private ExpandableListViewExtension expandableListView;
         private ExpandableListViewExtension expandableListView2;
 
@@ -21,7 +26,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             Dictionary<string, List<ExpansionModule>> extensions = new Dictionary<string, List<ExpansionModule>>()
             {
-                ["EXPANSION MODULES"] = new List<ExpansionModule>()
+                [expansionModulesName] = new List<ExpansionModule>()
                 {
                     ExpansionModule.ExpansionViziersFavour,
                     ExpansionModule.ExpansionCurrencyExchangeCards,
@@ -48,12 +53,12 @@ namespace AlhambraScoringAndroid.UI.Activities
                     ExpansionModule.ExpansionBuildingSites,
                     ExpansionModule.ExpansionExchangeCertificates,
                 },
-                ["QUEENIE EXPANSION MODULES"] = new List<ExpansionModule>()
+                [queenieExpansionModulesName] = new List<ExpansionModule>()
                 {
                     ExpansionModule.QueenieMagicalBuildings,
                     ExpansionModule.QueenieMedina,
                 },
-                ["DESIGNER EXPANSION MODULES"] = new List<ExpansionModule>() {
+                [designerExpansionModulesName] = new List<ExpansionModule>() {
                     ExpansionModule.DesignerNewBuildingGrounds,
                     ExpansionModule.DesignerMajorConstructionProjects,
                     ExpansionModule.DesignerPalaceStaff,
@@ -74,7 +79,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             };
             Dictionary<string, List<GranadaOption>> granadaOptions = new Dictionary<string, List<GranadaOption>>()
             {
-                ["GRANADA"] = new List<GranadaOption>()
+                [GranadaName] = new List<GranadaOption>()
                 {
                     GranadaOption.Without,
                     GranadaOption.With,
@@ -95,7 +100,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.GameApplyModules(adapter.SelectedListMultiple, adapter2.SelectedListSingle["GRANADA"]);
+                Application.GameApplyModules(adapter.SelectedListMultiple, adapter2.SelectedListSingle[GranadaName]);
             });
         }
 

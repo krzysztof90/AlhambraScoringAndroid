@@ -81,7 +81,7 @@ namespace AlhambraScoringAndroid.UI
             if (position < Activity.Game.PlayersCount)
                 return new Java.Lang.String(Activity.Game.GetPlayer(position + 1).Name);
             else
-                return new Java.Lang.String("Submit");
+                return new Java.Lang.String(Activity.Resources.GetString(Resource.String.submit));
         }
 
         public override int Count => Activity.Game.PlayersCount + 1;

@@ -10,7 +10,7 @@ using System.Globalization;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "Szczegóły", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/details", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameDetailsActivity : BaseActivity
     {
         public ResultHistory Result => Application.CurrentResult;

@@ -1,26 +1,26 @@
-﻿using System.ComponentModel;
+﻿using AlhambraScoringAndroid.Attributes;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
     public enum GranadaBuildingType
     {
-        [Description("Arena")]
+        [DescriptionResourceAttribute(Resource.String.arena)]
         Arena,
-        [Description("Bath House")]
+        [DescriptionResourceAttribute(Resource.String.bath_house)]
         BathHouse,
-        [Description("Library")]
+        [DescriptionResourceAttribute(Resource.String.library)]
         Library,
-        [Description("Hostel")]
+        [DescriptionResourceAttribute(Resource.String.hostel)]
         Hostel,
-        [Description("Hospital")]
+        [DescriptionResourceAttribute(Resource.String.hospital)]
         Hospital,
-        [Description("Market")]
+        [DescriptionResourceAttribute(Resource.String.market)]
         Market,
-        [Description("Park")]
+        [DescriptionResourceAttribute(Resource.String.park)]
         Park,
-        [Description("Tower")]
+        [DescriptionResourceAttribute(Resource.String.school)]
         School,
-        [Description("Residential area")]
+        [DescriptionResourceAttribute(Resource.String.residential_area)]
         ResidentialArea
     }
 }

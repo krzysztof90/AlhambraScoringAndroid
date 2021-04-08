@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "Ilość budynków", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/buildings_number", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GranadaBuildingsNumberActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_players_granada_buildings_chose;
@@ -30,7 +30,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 if (tiePlayerNumbers[building].Count != 0)
                 {
                     //TODO tylko parzyste
-                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(), 2, 12, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name));
+                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(Resources), 2, 12, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name));
                     container.AddView(playersPanel);
                     container.RequestLayout();
                 }

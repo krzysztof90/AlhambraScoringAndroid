@@ -1,4 +1,6 @@
-﻿namespace AlhambraScoringAndroid.GamePlay
+﻿using System;
+
+namespace AlhambraScoringAndroid.GamePlay
 {
     public class ScoreHistoryImmediately : ScoreHistory
     {
@@ -18,7 +20,7 @@
 
         protected override string DisplayName()
         {
-            return $"Natychmiastowe punkty dla {Game.GetPlayer(PlayerNumber).Name}: {Score}";
+            return String.Format(Game.Context.Resources.GetString(Resource.String.immediately_points), Game.GetPlayer(PlayerNumber).Name, Score);
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Text;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "Wybór typu budynku", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/building_type_chose", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class CharacterTheWiseManActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_building_type_chose;
@@ -66,7 +66,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 }
                 Game.SetTheWiseManBuildingType(null);
 
-                radioButtonText.Append($"{radioButtonPair.Key.GetEnumDescription()} (+{pointsUsingBonus - pointsNotUsingBonus})");
+                radioButtonText.Append($"{radioButtonPair.Key.GetEnumDescription(Resources)} (+{pointsUsingBonus - pointsNotUsingBonus})");
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
                     if (i != chosePlayerNumber - 1)

@@ -1,10 +1,9 @@
-﻿using AlhambraScoringAndroid.Attributes;
-using AlhambraScoringAndroid.GamePlay;
+﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.Tools;
 using AlhambraScoringAndroid.Tools.Enums;
 using System.Collections.Generic;
 
-namespace AlhambraScoringAndroid.Atributes
+namespace AlhambraScoringAndroid.Attributes
 {
     public class NewScoreCardAttribute : MultipleImageAttribute
     {

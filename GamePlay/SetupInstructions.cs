@@ -1,96 +1,97 @@
-﻿using System.ComponentModel;
+﻿
+using AlhambraScoringAndroid.Attributes;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
     public enum SetupInstructions
     {
-        [Description("Replace the base tiles with buildings of power")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_buildings_of_power_tiles)]
         PutBuildingsOfPowerTiles,
-        [Description("Put camps to all of the building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_camp_tiles)]
         PutCampTiles,
-        [Description("Put bazaars to all of the building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_bazaars_tiles)]
         PutBazaarsTiles,
-        [Description("Put Magical buildings to all of the building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_magical_buildings_tiles)]
         PutMagicalBuildingsTiles,
-        [Description("Put medina tiles to all of the building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_medina_tiles)]
         PutMedinaTiles,
-        [Description("Put building site tiles to all of the building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_new_building_grounds_tiles)]
         PutNewBuildingGroundsTiles,
-        [Description("Put Bathhouse tiles to all of the building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_bathhouse_tiles)]
         PutBathhouseTiles,
-        [Description("Put wishing well tiles to all of the building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_wishing_well_tiles)]
         PutWishingWellTiles,
-        [Description("Shuffle building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_building_tiles)]
         ShuffleBuildingTiles,
-        [Description("Place 4 building tiles on the building market")]
+        [DescriptionResourceAttribute(Resource.String.instruction_place_buildings)]
         PlaceBuildings,
-        [Description("Shuffle double-sided building tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_granada_shuffle_building_tiles)]
         GranadaShuffleBuildingTiles,
-        [Description("Place 4 Granada building tiles on the building market")]
+        [DescriptionResourceAttribute(Resource.String.instruction_granada_place_buildings)]
         GranadaPlaceBuildings,
 
-        [Description("Shuffle each of the squares piles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_squares)]
         ShuffleSquares,
-        [Description("Place each of the watchtower piles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_watchtowers)]
         ShuffleWatchtowers,
-        [Description("Shuffle the major project tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_major_construction_projects)]
         ShuffleMajorConstructionProjects,
-        [Description("The wall pieces, semi-buildings and plaza tiles are kept next to the gate board")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_gate_board)]
         ShuffleGateBoard,
-        [Description("Shuffle extension tiles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_extensions)]
         ShuffleExtensions,
 
-        [Description("Put diamond cards to the other money cards")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_diamond_cards)]
         PutDiamondCards,
-        [Description("Shuffle cards")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_cards)]
         ShuffleCards,
-        [Description("Deal starting money to each player")]
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_money)]
         DealMoney,
-        [Description("Place 4 cards on the card display")]
+        [DescriptionResourceAttribute(Resource.String.instruction_place_cards)]
         PlaceCards,
-        [Description("Divide cards into 5 piles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_divide_cards)]
         DivideCards,
-        [Description("Shuffle 1st scoring card into the 2nd pile and 2nd scoring card into the 4th pile")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_2_scoring_cards)]
         Put2ScoringCards,
-        [Description("Shuffle 1st scoring card into the 3rd pile")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_1_scoring_card_middle)]
         Put1ScoringCardMiddle,
-        [Description("Shuffle 2 currency exchange cards into the 2nd, 3rd, 4th piles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_currency_exchange_cards)]
         PutCurrencyExchangeCards,
-        [Description("Shuffle city-gate cards into the 3rd, 4th, 5th piles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_city_gates_cards)]
         PutCityGatesCards,
-        [Description("Shuffle 2 character cards into the 2nd, 3rd, 4th piles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_characters)]
         PutCharacters,
-        [Description("Shuffle 2 city-wall cards into the 2nd, 3rd, 4th, 5th piles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_city_walls)]
         PutCityWalls,
-        [Description("Shuffle 3 master-builder cards into the 3rd, 5th piles")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_master_builders)]
         PutMasterBuilders,
-        [Description("Shuffle 3 master-builder cards into the 3rd pile and 1 card into the 5th pile")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_master_builders_6)]
         PutMasterBuilders6,
-        [Description("Shuffle 3 sultan cards into the 1st pile, 2 cards into the 2nd pile and 3 cards into the 3rd pile")]
+        [DescriptionResourceAttribute(Resource.String.instruction_put_power_of_sultan)]
         PutPowerOfSultan,
-        [Description("Put the piles on top of one another")]
+        [DescriptionResourceAttribute(Resource.String.instruction_join_piles)]
         JoinPiles,
 
-        [Description("Shuffle and deal 3 bonus cards to each player")]
+        [DescriptionResourceAttribute(Resource.String.instruction_bonus_cards_deal_3)]
         BonusCardsDeal3,
-        [Description("Shuffle and deal 2 bonus cards to each player")]
+        [DescriptionResourceAttribute(Resource.String.instruction_bonus_cards_deal_2)]
         BonusCardsDeal2,
-        [Description("Shuffle and deal 1 bonus card to each player")]
+        [DescriptionResourceAttribute(Resource.String.instruction_bonus_cards_deal_1)]
         BonusCardsDeal1,
-        [Description("Shuffle and deal 4 thieves to each player")]
+        [DescriptionResourceAttribute(Resource.String.instruction_thieves_deal_4)]
         ThievesDeal4,
-        [Description("Shuffle and deal 3 thieves to each player")]
+        [DescriptionResourceAttribute(Resource.String.instruction_thieves_deal_3)]
         ThievesDeal3,
-        [Description("Shuffle and deal 2 thieves to each player")]
+        [DescriptionResourceAttribute(Resource.String.instruction_thieves_deal_2)]
         ThievesDeal2,
-        [Description("Deal 2 master-builder cards to each player")]
+        [DescriptionResourceAttribute(Resource.String.instruction_master_builders_deal)]
         MasterBuildersDeal,
 
-        [Description("Shuffle invasion cards")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_invasion)]
         ShuffleInvasion,
-        [Description("Shuffle scout cards")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_scout)]
         ShuffleScout,
-        [Description("Shuffle caravanserai cards")]
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_caravanserai)]
         ShuffleCaravanserai,
     }
 }

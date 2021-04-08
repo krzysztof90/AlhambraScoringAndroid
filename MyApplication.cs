@@ -4,6 +4,7 @@ using AlhambraScoringAndroid.UI;
 using AlhambraScoringAndroid.UI.Activities;
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,7 +22,7 @@ namespace AlhambraScoringAndroid
         //https://docs.microsoft.com/en-us/xamarin/android/deploy-test/linker
 
         //TODO labelki słownik
-        //TODO google play "I would appreciate any feedback", link do github; BGG
+        //TODO google play "I would appreciate any feedback; if you are interested in translating", link do github; BGG
         //TODO info o darmowym projekcie, link do paypal
 
         //TODO iOS
@@ -33,6 +34,7 @@ namespace AlhambraScoringAndroid
         //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
         //LoadApplication(new App());
 
+        //public static Resources ResourcesObject { get; set; }
         public List<ResultHistory> Results { get; private set; }
         public Game Game { get; private set; }
         private GameInProgressActivity gameInProgressActivity;
@@ -72,10 +74,10 @@ namespace AlhambraScoringAndroid
             if ((Game?.GameInProgress ?? false) || context is GameScoreActivity)
             {
                 new AlertDialog.Builder(context)
-                    .SetTitle("Obecna gra zostanie zakończona")
-                    .SetMessage("Czy kontynuować?")
-                    .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => NewGame()))
-                    .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
+                    .SetTitle(Resources.GetString(Resource.String.game_ending))
+                    .SetMessage(Resources.GetString(Resource.String.continue_question))
+                    .SetPositiveButton(Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => NewGame()))
+                    .SetNegativeButton(Resources.GetString(Resource.String.no), new DialogInterfaceOnClickListener(null))
                     .Show();
             }
             else

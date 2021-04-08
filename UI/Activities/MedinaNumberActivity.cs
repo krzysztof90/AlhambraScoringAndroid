@@ -10,7 +10,7 @@ using System.Linq;
 namespace AlhambraScoringAndroid.UI.Activities
 {
     //"provide"
-    [Activity(Label = "Ilość Medyn", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/medins_number", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class MedinaNumberActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_players_buildings_chose;
@@ -23,7 +23,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
 
-            PlayersBuildingChose playersPanel = new PlayersBuildingChose(this, "Medina", 2, 10, tiePlayerNumbers.ToDictionary(p => p, p => Game.GetPlayer(p).Name));
+            PlayersBuildingChose playersPanel = new PlayersBuildingChose(this, Resources.GetString(Resource.String.medina), 2, 10, tiePlayerNumbers.ToDictionary(p => p, p => Game.GetPlayer(p).Name));
             container.AddView(playersPanel);
             container.RequestLayout();
 

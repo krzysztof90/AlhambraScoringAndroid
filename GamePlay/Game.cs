@@ -1,4 +1,4 @@
-﻿using AlhambraScoringAndroid.Atributes;
+﻿using AlhambraScoringAndroid.Attributes;
 using AlhambraScoringAndroid.Tools;
 using AlhambraScoringAndroid.Tools.Enums;
 using AlhambraScoringAndroid.UI;
@@ -72,7 +72,7 @@ namespace AlhambraScoringAndroid.GamePlay
             ExpansionModule.ExpansionCaravanserai
         };
 
-        private readonly Context Context;
+        public readonly Context Context;
 
         public DateTime StartDateTime { get; private set; }
         public DateTime? EndDateTime { get; private set; }
@@ -222,7 +222,7 @@ namespace AlhambraScoringAndroid.GamePlay
                     throw new NotSupportedException();
 
                 if (newScoreCards.Distinct().Count() != newScoreCards.Count())
-                    return ValidateUtils.CheckFailed(Context, $"Wybrano te same karty nowych punktów");
+                    return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.new_score_cards));
             }
 
             return true;
@@ -244,11 +244,11 @@ namespace AlhambraScoringAndroid.GamePlay
         public bool ValidatePlayers(List<string> playersNames)
         {
             if (playersNames.Any(n => String.IsNullOrEmpty(n)))
-                return ValidateUtils.CheckFailed(Context, "Empty name");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_empty_name));
             if (playersNames.Any(n => n.Equals(Player.DirkName, StringComparison.OrdinalIgnoreCase)) && playersNames.Count == 2)
-                return ValidateUtils.CheckFailed(Context, "Dirk is reserved name");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_dirk_name));
             if (playersNames.Select(n => n.ToUpper()).Distinct().Count() != playersNames.Count)
-                return ValidateUtils.CheckFailed(Context, "Duplicated names");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_duplicated_name));
             return true;
         }
 
@@ -314,7 +314,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public bool ValidateMedinasNumbers(Dictionary<int, int> playersHighestPrices)
         {
             if (playersHighestPrices.Select(d => d.Value).Distinct().Count() != playersHighestPrices.Count())
-                return ValidateUtils.CheckFailed(Context, $"Wybrano tą samą cenę zakupu Medyn");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_medin_same_price));
 
             return true;
         }
@@ -323,7 +323,7 @@ namespace AlhambraScoringAndroid.GamePlay
             foreach (GranadaBuildingType building in GranadaBuildingsOrder)
             {
                 if (playersHighestPrices[building].Select(d => d.Value).Distinct().Count() != playersHighestPrices[building].Count())
-                    return ValidateUtils.CheckFailed(Context, $"Wybrano tą samą cenę zakupu dla {building.GetEnumDescription()}");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_building_same_price), building.GetEnumDescription(Context.Resources)));
             }
             return true;
         }
@@ -346,7 +346,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 int playersBuildings = scorePanels.Sum(p => p.BuildingsCount[mapEntry.Key]);
 
                 if (playersBuildings > mapEntry.Value)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość budynków {mapEntry.Key.GetEnumDescription()}");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_building_number_exceed), mapEntry.Key.GetEnumDescription(Context.Resources)));
             }
 
             int playerBonusCardsMax = 1;
@@ -358,18 +358,18 @@ namespace AlhambraScoringAndroid.GamePlay
             for (int i = 0; i < PlayersCount; i++)
             {
                 if (scorePanels[i].BonusCardsBuildingsCount.Sum(c => c.Value) > playerBonusCardsMax)
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość kart bonusowych");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_bonus_cards_player_exceed), GetPlayer(i + 1).Name));
 
                 foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
                 {
                     if (scorePanels[i].ExtensionsBuildingsCount[mapEntry.Key] > scorePanels[i].BuildingsCount[mapEntry.Key])
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba kart bonusowych przekracza liczbę wszystkich budynków {mapEntry.Key.GetEnumDescription()}");
+                        return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_bonus_cards_buildings_player_exceed), GetPlayer(i + 1).Name, mapEntry.Key.GetEnumDescription(Context.Resources)));
                 }
             }
             foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
             {
                 if (scorePanels.Sum(p => p.BonusCardsBuildingsCount[mapEntry.Key]) > mapEntry.Value)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość kart bonusowych {mapEntry.Key.GetEnumDescription()}");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_bonus_cards_exceed), mapEntry.Key.GetEnumDescription(Context.Resources)));
             }
 
             Dictionary<BuildingType, int> squaresTotalMinimumNumber = new Dictionary<BuildingType, int>();
@@ -397,47 +397,47 @@ namespace AlhambraScoringAndroid.GamePlay
 
                     if (squaresPoints > 9)
                     {
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość budynków ze skwerów {building.GetEnumDescription()}");
+                        return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_squares_buildings_player_exceed), GetPlayer(i + 1).Name, building.GetEnumDescription(Context.Resources)));
                     }
                 }
 
                 if (playerSquaresTotalMinimumNumber > 3)
                 {
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Przekroczona maksymalna ilość skwerów");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_squares_player_exceed), GetPlayer(i + 1).Name));
                 }
             }
             foreach (KeyValuePair<BuildingType, int> mapEntry in SquaresMaxCount)
             {
                 if (squaresTotalMinimumNumber[mapEntry.Key] > mapEntry.Value)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość skwerów {mapEntry.Key.GetEnumDescription()}");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_squares_number_exceed), mapEntry.Key.GetEnumDescription(Context.Resources)));
             }
 
             if (scorePanels.Count(p => p.OwnedCharacterTheWiseMan) > 1)
-                return ValidateUtils.CheckFailed(Context, $"Kilku graczy z posiadanym The Wise Man");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_multiple_wiseman));
             if (scorePanels.Count(p => p.OwnedCharacterTheCityWatch) > 1)
-                return ValidateUtils.CheckFailed(Context, $"Kilku graczy z posiadanym The City Watch");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_multiple_citywatch));
 
             for (int i = 0; i < PlayersCount; i++)
             {
                 foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
                 {
                     if (scorePanels[i].StreetTradersNumber[mapEntry.Key] > scorePanels[i].BuildingsCount[mapEntry.Key])
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba obywateli przekracza liczbę wszystkich budynków {mapEntry.Key.GetEnumDescription()}");
+                        return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_citizens_buildings_exceed), GetPlayer(i + 1).Name, mapEntry.Key.GetEnumDescription(Context.Resources)));
                 }
             }
             foreach (BuildingType building in BuildingsOrder)
             {
                 if (scorePanels.Sum(p => p.StreetTradersNumber[building]) > 7)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość obywateli {building}");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_citizens_exceed), building.GetEnumDescription(Context.Resources)));
             }
 
             for (int i = 0; i < PlayersCount; i++)
             {
                 if (scorePanels[i].TreasuresCount > scorePanels[i].AllBuildingsCount)
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba skrzyń przekracza liczbę wszystkich budynków");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_treasures_player_exceed), GetPlayer(i + 1).Name));
             }
             if (scorePanels.Sum(p => p.TreasuresCount) > 42)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość skrzyń");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_treasures_number_exceed));
 
             //TODO get miminum bazaars number from points combination
             //TODO to method
@@ -471,9 +471,9 @@ namespace AlhambraScoringAndroid.GamePlay
                 bazaarsTotalPointsSum += bazaarsTotalPoints;
             }
             if (bazaarsTotalPointsSum > 192)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość punktów z bazarów");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_bazaars_points_exceed));
             if (bazaarsMinimumNumber > 8)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna ilość bazarów");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_bazaars_number_exceed));
 
             //TODO get miminum counters number from points combination, compare all to max 20
             IEnumerable<int> artOfTheMoorsPlayerAvailablePoints = new List<int>() { 0, 3, 6, 10, 15, 21 }.GetMatrixSums(7).Distinct();
@@ -481,30 +481,30 @@ namespace AlhambraScoringAndroid.GamePlay
             for (int i = 0; i < PlayersCount; i++)
             {
                 if (!artOfTheMoorsPlayerAvailablePoints.Contains(scorePanels[i].ArtOfTheMoorsPoints))
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów z liczników kultury");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_culture_counters_player_mismatch), GetPlayer(i + 1).Name));
             }
 
             if (scorePanels.Sum(p => p.FalconsBlackNumber) > 5)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość czarnych sokołów");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_falcons_number_exceed));
             if (scorePanels.Sum(p => p.FalconsBrownNumber) > 5)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość brązowych sokołów");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_brown_falcons_number_exceed));
             if (scorePanels.Sum(p => p.FalconsWhiteNumber) > 5)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość białych sokołów");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_white_falcons_number_exceed));
 
             for (int i = 0; i < PlayersCount; i++)
             {
                 if (scorePanels[i].WatchtowersNumber > scorePanels[i].WallLength)
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba wież obserwacyjnych przekracza długość najdłuższego muru");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_watchtower_wall_player_exceed), GetPlayer(i + 1).Name));
             }
             if (scorePanels.Sum(p => p.WatchtowersNumber) > 18)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość wież obserwacyjnych");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_watchtower_number_exceed));
 
             if (scorePanels.Sum(p => p.MedinasNumber) > 9)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość Medyn");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_medin_number_exceed));
 
             for (int i = 0; i < PlayersCount; i++)
                 if (scorePanels[i].BuildingsWithoutServantTile > scorePanels[i].AllBuildingsCount)
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba budynków bez żetonu sługi przekracza liczbę wszystkich budynków");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_servants_buildings_player_exceed), GetPlayer(i + 1).Name));
 
             int faceDownFruitsSum = scorePanels.Sum(p => p.FaceDownFruitsCount);
             int allFruits = 0;
@@ -525,9 +525,9 @@ namespace AlhambraScoringAndroid.GamePlay
                 allFruits += scorePanels[i].FaceDownFruitsCount;
             }
             if (faceDownFruitsSum > 35)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość pojedynczych owoców");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_single_fruits_number_exceed));
             if (allFruits > 56)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość owoców");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_fruits_number_exceed));
 
             List<int> wishingWellsAvailablePoints = new List<int>() { 3, 3, 4, 4, 5, 5 }.GetCombinationsSums();
 
@@ -535,24 +535,24 @@ namespace AlhambraScoringAndroid.GamePlay
             for (int i = 0; i < PlayersCount; i++)
             {
                 if (!wishingWellsAvailablePoints.Contains(scorePanels[i].WishingWellsPoints))
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów z fontann");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_fontains_player_points_mismatch), GetPlayer(i + 1).Name));
             }
             if (wishingWellsPointsSum > 24)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość punktów z fontann");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_fontains_points_exceed));
 
             int animalsPointsSum = scorePanels.Sum(p => p.AnimalsPoints);
             for (int i = 0; i < PlayersCount; i++)
             {
                 if (scorePanels[i].AnimalsPoints > scorePanels[i].BuildingsCount[BuildingType.Garden] * 3)
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość zwierząt");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_animals_player_exceed), GetPlayer(i + 1).Name));
             }
             if (animalsPointsSum > 24)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość zwierząt");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_animals_number_exceed));
 
             foreach (BuildingType building in BuildingsOrder)
             {
                 if (scorePanels.Count(p => p.OwnedSemiBuildings[building]) > 1)
-                    return ValidateUtils.CheckFailed(Context, $"Kilku graczy z tą samą połową budynku {building.GetEnumDescription()}");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_multiple_semi_buildings), building.GetEnumDescription(Context.Resources)));
             }
 
             int blackDiceTotalPipsSum = 0;
@@ -569,31 +569,31 @@ namespace AlhambraScoringAndroid.GamePlay
                 blackDiceTotalPipsSum += blackDiceTotalPips;
             }
             if (blackDiceTotalPipsSum > 18)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna liczba oczek na czarnych kostkach");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_dice_pips_number_exceed));
             if (blackDicesMinimumNumber > 3)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona ilość użytych czarnych kostek");
-
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_dices_number_exceed));
+            
             foreach (BuildingType building in BuildingsOrder)
             {
                 for (int i = 0; i < PlayersCount; i++)
                 {
                     if (scorePanels[i].ExtensionsBuildingsCount[building] > scorePanels[i].BuildingsCount[building])
-                        return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Liczba rozszerzeń przekracza liczbę wszystkich budynków {building.GetEnumDescription()}");
+                        return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_extensions_buildings_player_exceed), GetPlayer(i + 1).Name, building.GetEnumDescription(Context.Resources)));
                 }
                 if (scorePanels.Sum(p => p.ExtensionsBuildingsCount[building]) > 2)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość rozszerzeń {building.GetEnumDescription()}");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_extensions_exceed), building.GetEnumDescription(Context.Resources)));
             }
 
             int handymenTilesHighestNumberSum = scorePanels.Sum(p => p.HandymenTilesHighestNumber);
             if (handymenTilesHighestNumberSum > 48)
-                return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość złotych rączek");
+                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_handymen_exceed));
 
             List<int> treasuresAvailableValues = new List<int>() { 1, 2, 3, 4, 5, 6 }.GetCombinationsSums();
 
             for (int i = 0; i < PlayersCount; i++)
             {
                 if (!treasuresAvailableValues.Contains(scorePanels[i].TreasuresValue))
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów ze skarbów");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_treasures_points_player_mismatch), GetPlayer(i + 1).Name));
             }
 
             for (int i = 0; i < PlayersCount; i++)
@@ -601,7 +601,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 int wallLength = scorePanels[i].WallLength;
                 int secondLongestWallLength = scorePanels[i].SecondLongestWallLength;
                 if (wallLength < secondLongestWallLength)
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Drugi co do wielkości mur nie może być dłuższy niż najdłuższy mur");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_second_longest_wall_player_exceed), GetPlayer(i + 1).Name));
             }
 
             foreach (GranadaBuildingType building in GranadaBuildingsOrder)
@@ -609,15 +609,15 @@ namespace AlhambraScoringAndroid.GamePlay
                 int playersBuildings = scorePanels.Sum(p => p.GranadaBuildingsCount[building]);
 
                 if (playersBuildings > 6)
-                    return ValidateUtils.CheckFailed(Context, $"Przekroczona łączna maksymalna ilość budynków {building.GetEnumDescription()}");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_building_number_exceed), building.GetEnumDescription(Context.Resources)));
             }
 
             for (int i = 0; i < PlayersCount; i++)
             {
                 if (scorePanels[i].WallMoatCombinationLength > scorePanels[i].WallLength)
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Długość kombinacji muru i fosy nie może być dłuższa niż najdłuższy mur");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_moatwall_wall_player), GetPlayer(i + 1).Name));
                 if (scorePanels[i].WallMoatCombinationLength > scorePanels[i].MoatLength)
-                    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Długość kombinacji muru i fosy nie może być dłuższa niż najdłuższa fosa");
+                    return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_moatwall_moat_player), GetPlayer(i + 1).Name));
             }
 
             return true;

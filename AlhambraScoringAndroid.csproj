@@ -63,8 +63,9 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Atributes\MultipleImageAttribute.cs" />
-    <Compile Include="Atributes\NewScoreCardAttribute.cs" />
+    <Compile Include="Attributes\DescriptionResourceAttribute.cs" />
+    <Compile Include="Attributes\MultipleImageAttribute.cs" />
+    <Compile Include="Attributes\NewScoreCardAttribute.cs" />
     <Compile Include="DialogInterfaceOnClickListener.cs" />
     <Compile Include="GamePlay\CaliphsGuidelines.cs" />
     <Compile Include="GamePlay\GranadaBuildingType.cs" />
@@ -77,7 +78,7 @@
     <Compile Include="GamePlay\ScoreHistoryImmediately.cs" />
     <Compile Include="GamePlay\ScoreHistoryRound.cs" />
     <Compile Include="GamePlay\ScoreType.cs" />
-    <Compile Include="Atributes\ImageAttribute.cs" />
+    <Compile Include="Attributes\ImageAttribute.cs" />
     <Compile Include="GamePlay\SetupInstructions.cs" />
     <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="Tools\Enums\HighestLowest.cs" />

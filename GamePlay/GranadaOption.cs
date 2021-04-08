@@ -1,14 +1,14 @@
-﻿using System.ComponentModel;
+﻿using AlhambraScoringAndroid.Attributes;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
     public enum GranadaOption
     {
-        [Description("No Granada")]
+        [DescriptionResourceAttribute(Resource.String.granada_without)]
         Without,
-        [Description("Alhambra + Granada")]
+        [DescriptionResourceAttribute(Resource.String.granada_with)]
         With,
-        [Description("Only Granada")]
+        [DescriptionResourceAttribute(Resource.String.granada_alone)]
         Alone,
     }
 }

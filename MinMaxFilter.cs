@@ -44,7 +44,7 @@ namespace AlhambraScoringAndroid
                     StringBuilder message = new StringBuilder();
                     if (fieldName != null)
                         message.Append($"{fieldName}: ");
-                    message.Append($"Dozwolony zakres to {min} - {max}");
+                    message.Append(System.String.Format(Context.Resources.GetString(Resource.String.allowed_range), min, max));
                     return ValidateUtils.CheckFailed(Context, message.ToString());
                 }
             }

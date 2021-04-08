@@ -49,7 +49,7 @@ namespace AlhambraScoringAndroid.UI
 
         public override Java.Lang.Object GetChild(int groupPosition, int childPosition)
         {
-            return GetChildObject(groupPosition, childPosition).GetEnumDescription();
+            return GetChildObject(groupPosition, childPosition).GetEnumDescription(Context.Resources);
         }
 
         public override long GetChildId(int groupPosition, int childPosition)

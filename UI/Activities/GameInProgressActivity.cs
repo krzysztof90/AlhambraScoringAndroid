@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "Wyniki", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/results", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameInProgressActivity : BaseActivity
     {
         private List<PlayerResultPanel> resultPanels;
@@ -71,14 +71,14 @@ namespace AlhambraScoringAndroid.UI.Activities
             if (Game.GameInProgress)
             {
                 new AlertDialog.Builder(this)
-                    .SetTitle("Obecna gra zostanie zakończona")
-                    .SetMessage("Czy kontynuować?")
-                    .SetPositiveButton("Yes", new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) =>
+                    .SetTitle(Resources.GetString(Resource.String.game_ending))
+                    .SetMessage(Resources.GetString(Resource.String.continue_question))
+                    .SetPositiveButton(Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) =>
                     {
                         base.OnBackPressed();
                         Game.Reset(true);
                     }))
-                    .SetNegativeButton("No", new DialogInterfaceOnClickListener(null))
+                    .SetNegativeButton(Resources.GetString(Resource.String.no), new DialogInterfaceOnClickListener(null))
                     .Show();
             }
             else
@@ -101,25 +101,25 @@ namespace AlhambraScoringAndroid.UI.Activities
             switch (Game.ScoreRound)
             {
                 case ScoringRound.First:
-                    roundScoreButton.Text = "1st round";
+                    roundScoreButton.Text = Resources.GetString(Resource.String.round_1);
                     break;
                 case ScoringRound.Second:
-                    roundScoreButton.Text = "2nd round";
+                    roundScoreButton.Text = Resources.GetString(Resource.String.round_2);
                     break;
                 case ScoringRound.ThirdBeforeLeftover:
-                    roundScoreButton.Text = "3rd round before leftover buildings are assigned";
+                    roundScoreButton.Text = Resources.GetString(Resource.String.round_3_before);
                     break;
                 case ScoringRound.Third:
-                    roundScoreButton.Text = "3rd round";
+                    roundScoreButton.Text = Resources.GetString(Resource.String.round_3);
                     break;
                 case ScoringRound.Finish:
                     break;
             }
             scoreDetailsButton.Visibility = Game.ScoreRound == ScoringRound.First ? ViewStates.Invisible : ViewStates.Visible;
             if (!Game.Saved && Game.ScoreRound == ScoringRound.Finish)
-                scoreDetailsButton.Text = "Zapisz i pokaż szczegóły";
+                scoreDetailsButton.Text = Resources.GetString(Resource.String.save_and_show_details);
             else
-                scoreDetailsButton.Text = "Pokaż szczegóły";
+                scoreDetailsButton.Text = Resources.GetString(Resource.String.show_details);
             roundScoreButton.Visibility = Game.ScoreRound == ScoringRound.Finish ? ViewStates.Invisible : ViewStates.Visible;
 
             for (int i = 0; i < Game.PlayersCount; i++)

@@ -18,6 +18,7 @@ namespace AlhambraScoringAndroid.Attributes
             CreatedImages = new Dictionary<int, Bitmap>();
         }
 
+        //TODO użyć MyApplication.ResourcesObject
         public virtual Android.Graphics.Bitmap Image(Resources resources)
         {
             return CreateImage(resources, Resource);
