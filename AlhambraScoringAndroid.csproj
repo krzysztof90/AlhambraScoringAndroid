@@ -124,6 +124,12 @@
     <Compile Include="Tools\XmlOperations.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="resources\Lang.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -520,6 +526,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_game_setup.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values-pl\strings.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

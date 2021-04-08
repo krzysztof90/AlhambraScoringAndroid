@@ -15,7 +15,6 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO minSdkVersion
         //TODO duży rozmiar aplikacji:
         //https://heartbeat.fritz.ai/reducing-the-app-size-in-xamarin-deep-dive-7ddc9cb12688
         //https://dzone.com/articles/how-to-optimize-and-reduce-android-apps-size-in-xa
@@ -28,7 +27,11 @@ namespace AlhambraScoringAndroid
         //TODO iOS
         //https://docs.microsoft.com/pl-pl/xamarin/
         //TODO przezroczyste obrazki
+        //TODO minSdkVersion
         //TODO restore state after application close
+        //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+        //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+        //LoadApplication(new App());
 
         public List<ResultHistory> Results { get; private set; }
         public Game Game { get; private set; }

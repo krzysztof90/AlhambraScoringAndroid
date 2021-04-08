@@ -9,11 +9,12 @@ namespace AlhambraScoringAndroid.UI.Activities
     public class MainActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_main;
-
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            AppDomain currentDomain = AppDomain.CurrentDomain;
-            currentDomain.UnhandledException += new UnhandledExceptionEventHandler((object sender, UnhandledExceptionEventArgs args) =>
+            //var d = Resources.GetString(Resource.String.action_settings);
+
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler((object sender, UnhandledExceptionEventArgs args) =>
             {
                 Exception exception = (Exception)args.ExceptionObject;
                 //TODO
