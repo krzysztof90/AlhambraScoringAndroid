@@ -15,7 +15,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler((object sender, UnhandledExceptionEventArgs args) =>
             {
                 Exception exception = (Exception)args.ExceptionObject;
-                //TODO
+                //TODO obsłużyć
             });
 
             Application.LoadResults();
