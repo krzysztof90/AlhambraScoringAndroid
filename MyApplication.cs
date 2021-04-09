@@ -16,11 +16,6 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO duży rozmiar aplikacji:
-        //https://heartbeat.fritz.ai/reducing-the-app-size-in-xamarin-deep-dive-7ddc9cb12688
-        //https://dzone.com/articles/how-to-optimize-and-reduce-android-apps-size-in-xa
-        //https://docs.microsoft.com/en-us/xamarin/android/deploy-test/linker
-
         //TODO google play "I would appreciate any feedback; if you are interested in translating", link do github; BGG
         //TODO info o darmowym projekcie, link do paypal
 
