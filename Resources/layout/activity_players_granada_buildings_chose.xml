@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="W przypadku remisu w ilości budynków należy wziąć pod uwagę największą cenę zakupu"/>
+                android:text="@string/granada_buildings_tie_desc"/>
 
         </LinearLayout>
     </ScrollView>
@@ -33,7 +33,7 @@
         android:id="@+id/confirmButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
-        android:text="Potwierdź"
+        android:text="@string/confirm"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <android.support.constraint.Guideline

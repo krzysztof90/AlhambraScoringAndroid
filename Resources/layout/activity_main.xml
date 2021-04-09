@@ -22,12 +22,12 @@
                 android:id="@+id/newGameButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
-                android:text="New game"/>
+                android:text="@string/new_game"/>
             <Button
                 android:id="@+id/showHistoryButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
-                android:text="Results history"/>
+                android:text="@string/results_history"/>
 
         </LinearLayout>
     </ScrollView>

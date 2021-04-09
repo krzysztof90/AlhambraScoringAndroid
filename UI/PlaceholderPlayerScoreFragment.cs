@@ -81,10 +81,9 @@ namespace AlhambraScoringAndroid.UI
         ScoreLineNumberView mission1RowsCountNumericUpDown;
         ScoreLineNumberView mission2ColumnsCountNumericUpDown;
         ScoreLineNumberView mission3Adjacent2BuildingsCountNumericUpDown;
-        ScoreLineCheckBoxView mission4SecondLongestWallCheckBox;
         ScoreLineNumberView mission5LongestDiagonalLineNumericUpDown;
         ScoreLineNumberView mission6DoubleWallCountNumericUpDown;
-        ScoreLineNumberView mission7DiffernetTypesNumberNumericUpDown;
+        ScoreLineNumberView mission7DifferentTypesNumberNumericUpDown;
         ScoreLineNumberView mission8PathBuildingsNumberNumericUpDown;
         ScoreLineNumberView mission9Grids22CountNumericUpDown;
         ScoreLineNumberView secondLongestWallNumericUpDown;
@@ -180,10 +179,9 @@ namespace AlhambraScoringAndroid.UI
             mission1RowsCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission1RowsCountNumericUpDown);
             mission2ColumnsCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission2ColumnsCountNumericUpDown);
             mission3Adjacent2BuildingsCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission3Adjacent2BuildingsCountNumericUpDown);
-            mission4SecondLongestWallCheckBox = Root.FindViewById<ScoreLineCheckBoxView>(Resource.Id.mission4SecondLongestWallCheckBox);
             mission5LongestDiagonalLineNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission5LongestDiagonalLineNumericUpDown);
             mission6DoubleWallCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission6DoubleWallCountNumericUpDown);
-            mission7DiffernetTypesNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission7DiffernetTypesNumberNumericUpDown);
+            mission7DifferentTypesNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission7DifferentTypesNumberNumericUpDown);
             mission8PathBuildingsNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission8PathBuildingsNumberNumericUpDown);
             mission9Grids22CountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission9Grids22CountNumericUpDown);
             secondLongestWallNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.secondLongestWallNumericUpDown);
@@ -275,10 +273,9 @@ namespace AlhambraScoringAndroid.UI
             Controls.Add(mission1RowsCountNumericUpDown);
             Controls.Add(mission2ColumnsCountNumericUpDown);
             Controls.Add(mission3Adjacent2BuildingsCountNumericUpDown);
-            Controls.Add(mission4SecondLongestWallCheckBox);
             Controls.Add(mission5LongestDiagonalLineNumericUpDown);
             Controls.Add(mission6DoubleWallCountNumericUpDown);
-            Controls.Add(mission7DiffernetTypesNumberNumericUpDown);
+            Controls.Add(mission7DifferentTypesNumberNumericUpDown);
             Controls.Add(mission8PathBuildingsNumberNumericUpDown);
             Controls.Add(mission9Grids22CountNumericUpDown);
             Controls.Add(secondLongestWallNumericUpDown);
@@ -298,7 +295,6 @@ namespace AlhambraScoringAndroid.UI
         protected override void SetControlsProperties()
         {
             blackDiceTotalPipsNumericUpDown.OnValueChange = () => { VisibleSecondLongestWall(); };
-            mission4SecondLongestWallCheckBox.OnValueChange = () => { VisibleSecondLongestWall(); };
 
             //TODO maximum for campsPointsNumericUpDown, mission3Adjacent2BuildingsCountNumericUpDown, mission6DoubleWallCountNumericUpDown, mission9Grids22CountNumericUpDown
             wallsCountNumericUpDown.SetNumberRange(0, Game.WallsMaxLength);
@@ -353,7 +349,7 @@ namespace AlhambraScoringAndroid.UI
             mission1RowsCountNumericUpDown.SetNumberRange(0, Game.AllTilesCount / 3);
             mission2ColumnsCountNumericUpDown.SetNumberRange(0, Game.AllTilesCount / 3);
             mission5LongestDiagonalLineNumericUpDown.SetNumberRange(0, (Game.AllTilesCount + 1) / 2);
-            mission7DiffernetTypesNumberNumericUpDown.SetNumberRange(0, 6);
+            mission7DifferentTypesNumberNumericUpDown.SetNumberRange(0, 6);
             mission8PathBuildingsNumberNumericUpDown.SetNumberRange(0, (Game.AllTilesCount + 1) / 2);
             secondLongestWallNumericUpDown.SetNumberRange(0, Game.WallsMaxLength / 2 - 2);
             moatLengthNumericUpDown.SetNumberRange(0, Game.MoatMaxLength);
@@ -443,10 +439,9 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission1RowsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1));
             AddConditionToVisible(mission2ColumnsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2));
             AddConditionToVisible(mission3Adjacent2BuildingsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3));
-            AddConditionToVisible(mission4SecondLongestWallCheckBox, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4));
             AddConditionToVisible(mission5LongestDiagonalLineNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5));
             AddConditionToVisible(mission6DoubleWallCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6));
-            AddConditionToVisible(mission7DiffernetTypesNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7));
+            AddConditionToVisible(mission7DifferentTypesNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7));
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8));
             AddConditionToVisible(mission9Grids22CountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9));
             AddConditionToVisible(moatLengthNumericUpDown, Game.HasModule(ExpansionModule.Granada));
@@ -475,10 +470,9 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission1RowsCountNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission2ColumnsCountNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission3Adjacent2BuildingsCountNumericUpDown, IsFinalRound);
-            AddConditionToVisible(mission4SecondLongestWallCheckBox, IsFinalRound);
             AddConditionToVisible(mission5LongestDiagonalLineNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission6DoubleWallCountNumericUpDown, IsFinalRound);
-            AddConditionToVisible(mission7DiffernetTypesNumberNumericUpDown, IsFinalRound);
+            AddConditionToVisible(mission7DifferentTypesNumberNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission9Grids22CountNumericUpDown, IsFinalRound);
 
@@ -541,10 +535,9 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission1RowsCountNumericUpDown, !IsDirk);
             AddConditionToVisible(mission2ColumnsCountNumericUpDown, !IsDirk);
             AddConditionToVisible(mission3Adjacent2BuildingsCountNumericUpDown, !IsDirk);
-            AddConditionToVisible(mission4SecondLongestWallCheckBox, !IsDirk);
             AddConditionToVisible(mission5LongestDiagonalLineNumericUpDown, !IsDirk);
             AddConditionToVisible(mission6DoubleWallCountNumericUpDown, !IsDirk);
-            AddConditionToVisible(mission7DiffernetTypesNumberNumericUpDown, !IsDirk);
+            AddConditionToVisible(mission7DifferentTypesNumberNumericUpDown, !IsDirk);
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, !IsDirk);
             AddConditionToVisible(mission9Grids22CountNumericUpDown, !IsDirk);
             AddConditionToVisible(moatLengthNumericUpDown, !IsDirk);
@@ -557,7 +550,7 @@ namespace AlhambraScoringAndroid.UI
 
         private void VisibleSecondLongestWall()
         {
-            secondLongestWallNumericUpDown.Visibility = BlackDiceTotalPips != 0 || Mission4Available ? ViewStates.Visible : ViewStates.Gone;
+            secondLongestWallNumericUpDown.Visibility = BlackDiceTotalPips != 0 || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4)) ? ViewStates.Visible : ViewStates.Gone;
         }
 
         public int WallLength => wallsCountNumericUpDown.Value;
@@ -661,10 +654,9 @@ namespace AlhambraScoringAndroid.UI
         public int Mission1Count => mission1RowsCountNumericUpDown.Value;
         public int Mission2Count => mission2ColumnsCountNumericUpDown.Value;
         public int Mission3Count => mission3Adjacent2BuildingsCountNumericUpDown.Value;
-        public bool Mission4Available => mission4SecondLongestWallCheckBox.Value;
         public int Mission5Count => mission5LongestDiagonalLineNumericUpDown.Value;
         public int Mission6Count => mission6DoubleWallCountNumericUpDown.Value;
-        public int Mission7Count => mission7DiffernetTypesNumberNumericUpDown.Value;
+        public int Mission7Count => mission7DifferentTypesNumberNumericUpDown.Value;
         public int Mission8Count => mission8PathBuildingsNumberNumericUpDown.Value;
         public int Mission9Count => mission9Grids22CountNumericUpDown.Value;
         public int SecondLongestWallLength => secondLongestWallNumericUpDown.Value;

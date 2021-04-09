@@ -51,7 +51,7 @@
                             android:layout_width="@dimen/game_details_players_header_width"
                             android:layout_height="@dimen/game_details_cell_height"
                             android:layout_marginStart="@dimen/game_details_header_rows_gap"
-                            android:text="Runda 1"
+                            android:text="@string/round_1_text"
                             android:textStyle="bold"/>
                     </TableRow>
                     <TableRow
@@ -123,7 +123,7 @@
                             android:layout_width="@dimen/game_details_players_header_width"
                             android:layout_height="@dimen/game_details_cell_height"
                             android:layout_marginStart="@dimen/game_details_header_rows_gap"
-                            android:text="Runda 2"
+                            android:text="@string/round_2_text"
                             android:textStyle="bold"/>
                     </TableRow>
                     <TableRow
@@ -195,7 +195,7 @@
                             android:layout_width="@dimen/game_details_players_header_width"
                             android:layout_height="@dimen/game_details_cell_height"
                             android:layout_marginStart="@dimen/game_details_header_rows_gap"
-                            android:text="Runda 3"
+                            android:text="@string/round_3_text"
                             android:textStyle="bold"/>
                     </TableRow>
                     <TableRow
@@ -267,7 +267,7 @@
                             android:layout_width="@dimen/game_details_players_header_width"
                             android:layout_height="@dimen/game_details_cell_height"
                             android:layout_marginStart="@dimen/game_details_header_rows_gap"
-                            android:text="Suma"
+                            android:text="@string/sum"
                             android:textStyle="bold"/>
                     </TableRow>
                     <TableRow

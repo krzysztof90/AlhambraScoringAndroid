@@ -21,7 +21,6 @@ namespace AlhambraScoringAndroid
         //https://dzone.com/articles/how-to-optimize-and-reduce-android-apps-size-in-xa
         //https://docs.microsoft.com/en-us/xamarin/android/deploy-test/linker
 
-        //TODO labelki słownik
         //TODO google play "I would appreciate any feedback; if you are interested in translating", link do github; BGG
         //TODO info o darmowym projekcie, link do paypal
 
@@ -34,7 +33,6 @@ namespace AlhambraScoringAndroid
         //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
         //LoadApplication(new App());
 
-        //public static Resources ResourcesObject { get; set; }
         public List<ResultHistory> Results { get; private set; }
         public Game Game { get; private set; }
         private GameInProgressActivity gameInProgressActivity;

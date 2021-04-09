@@ -29,7 +29,7 @@
         android:id="@+id/startButton"
         android:layout_width="match_parent"
         android:layout_height="@dimen/button_height"
-        android:text="Play"
+        android:text="@string/play"
         app:layout_constraintTop_toTopOf="@+id/guideline"/>
 
     <android.support.constraint.Guideline

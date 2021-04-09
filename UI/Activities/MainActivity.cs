@@ -1,6 +1,4 @@
-﻿using AlhambraScoringAndroid.GamePlay;
-using AlhambraScoringAndroid.Tools;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Widget;
 using System;
@@ -14,15 +12,11 @@ namespace AlhambraScoringAndroid.UI.Activities
         
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            //var c = "@string/main_title";
-
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler((object sender, UnhandledExceptionEventArgs args) =>
             {
                 Exception exception = (Exception)args.ExceptionObject;
                 //TODO
             });
-
-            //MyApplication.ResourcesObject = Resources;
 
             Application.LoadResults();
 

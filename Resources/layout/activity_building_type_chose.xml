@@ -28,7 +28,7 @@
           android:id="@+id/title"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Posiadając character The Wise Man należy wybrać jedną dodatkową połowę budynku"/>
+          android:text="@string/the_wise_man_desc"/>
 
       <RadioGroup
           android:id="@+id/buttonGroup"
@@ -75,7 +75,7 @@
       android:id="@+id/confirmButton"
       android:layout_width="match_parent"
       android:layout_height="@dimen/button_height"
-      android:text="Potwierdź"
+      android:text="@string/confirm"
       app:layout_constraintTop_toTopOf="@+id/guideline" />
 
   <android.support.constraint.Guideline

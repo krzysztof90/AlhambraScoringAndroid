@@ -4,11 +4,11 @@
   <item
     android:id="@+id/action_newGame"
     android:orderInCategory="100"
-    android:title="New game"
+    android:title="@string/new_game"
     app:showAsAction="never" />
   <item
     android:id="@+id/action_showHistory"
     android:orderInCategory="100"
-    android:title="Results history"
+    android:title="@string/results_history"
     app:showAsAction="never" />
 </menu>

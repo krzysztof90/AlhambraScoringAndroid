@@ -1013,7 +1013,6 @@ namespace AlhambraScoringAndroid.GamePlay
                                 Players[i].AddScore(scorePanels[i].Mission3Count * 3, ScoreType.Mission3);
                             if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4))
                                 //Caliph’s Guidelines: mission 4
-                                if (scorePanels[i].Mission4Available)
                                     Players[i].AddScore(scorePanels[i].SecondLongestWallLength, ScoreType.Mission4);
                             if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5))
                                 //Caliph’s Guidelines: mission 5
