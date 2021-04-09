@@ -16,9 +16,6 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO google play "I would appreciate any feedback; if you are interested in translating", link do github; BGG
-        //TODO info o darmowym projekcie, link do paypal
-
         //TODO iOS
         //https://docs.microsoft.com/pl-pl/xamarin/
         //TODO przezroczyste obrazki
