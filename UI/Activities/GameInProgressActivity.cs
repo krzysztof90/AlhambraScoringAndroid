@@ -41,6 +41,10 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 resultPanels[i].Initialize(i + 1);
             }
+            for (int i = Game.PlayersCount; i < 6; i++)
+            {
+                resultPanels[i].Visibility = ViewStates.Gone;
+            }
 
             roundScoreButton = FindViewById<Button>(Resource.Id.roundScoreButton);
             scoreDetailsButton = FindViewById<Button>(Resource.Id.scoreDetailsButton);

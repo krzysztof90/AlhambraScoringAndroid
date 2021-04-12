@@ -9,7 +9,7 @@
   <dimen name="game_details_header_height">250dp</dimen>
   <dimen name="game_details_header_rows_gap">10dp</dimen>
   <dimen name="game_details_players_header_width">100dp</dimen>
-  <dimen name="player_result_panel_height">40dp</dimen>
+  <dimen name="player_result_panel_height">60dp</dimen>
   <dimen name="player_result_panel_gap">10dp</dimen>
   <dimen name="chose_player_panel_gap">10dp</dimen>
   <dimen name="panel_elements_gap">10dp</dimen>
