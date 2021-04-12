@@ -266,7 +266,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             row.FindViewById<TextView>(Resource.Id.resultSum).Text = scoreDetails.Sum.ToString();
             if (summary)
                 row.FindViewById<TextView>(Resource.Id.resultSum).Typeface = Android.Graphics.Typeface.DefaultBold;
-            row.FindViewById<TextView>(Resource.Id.resultImmediatelyPoints).Text = scoreDetails.ImmediatelyPoints.ToString();
+            row.FindViewById<TextView>(Resource.Id.resultImmediatelyPoints).Text = !summary ? String.Empty : scoreDetails.ImmediatelyPoints.ToString();
             row.FindViewById<TextView>(Resource.Id.resultWalls).Text = scoreDetails.WallLength.ToString();
             row.FindViewById<TextView>(Resource.Id.resultPavilion).Text = scoreDetails.Pavilion.ToString();
             row.FindViewById<TextView>(Resource.Id.resultSeraglio).Text = scoreDetails.Seraglio.ToString();
