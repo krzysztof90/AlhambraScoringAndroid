@@ -4,6 +4,7 @@
   <string name="action_settings">Settings</string>
   <string name="activity_ending">Closing Activity</string>
   <string name="game_ending">Current game will be ended</string>
+  <string name="submit_all_players">Results of all players will be submitted</string>
   <string name="result_removing">Removing result</string>
   <string name="continue_question">Do you want to continue?</string>
   <string name="activity_ending_continue_question">Are you sure you want to close this activity?</string>

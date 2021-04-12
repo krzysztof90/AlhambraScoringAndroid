@@ -117,7 +117,6 @@
     <Compile Include="UI\PlaceholderPlayerScoreBeforeAssignLeftoverFragment.cs" />
     <Compile Include="UI\PlaceholderPlayerScoreFragment.cs" />
     <Compile Include="UI\PlaceholderPlayerScoreFragmentBase.cs" />
-    <Compile Include="UI\PlaceholderScoreSubmitFragment.cs" />
     <Compile Include="UI\PlayersBuildingChose.cs" />
     <Compile Include="UI\PlayersScoreSectionsPagerAdapter.cs" />
     <Compile Include="UI\ScoreLineCheckBoxView.cs" />
@@ -217,11 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\fragment_game_score_beforeassignleftover.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\fragment_game_score_submit.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

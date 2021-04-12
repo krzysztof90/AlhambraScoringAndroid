@@ -38,14 +38,6 @@ namespace AlhambraScoringAndroid.UI.Activities
                     if (tabView.GetChildAt(j) is TextView textView)
                         textView.SetTextColor(Color.White);
             }
-
-            viewPager.PageSelected += new EventHandler<ViewPager.PageSelectedEventArgs>((object sender, ViewPager.PageSelectedEventArgs e) =>
-            {
-                if (e.Position < Game.PlayersCount)
-                {
-                    sectionsPagerAdapter.RestoreValues(e.Position);
-                }
-            });
         }
 
         public override void OnBackPressed()

@@ -4,6 +4,7 @@
   <string name="action_settings">Ustawienia</string>
   <string name="activity_ending">Zamykanie okna</string>
   <string name="game_ending">Obecna gra zostanie zakończona</string>
+  <string name="submit_all_players">Wyniki wszystkich graczy zostaną potwierdzone</string>
   <string name="result_removing">Usuwanie wyniku</string>
   <string name="continue_question">Czy kontynuować?</string>
   <string name="activity_ending_continue_question">Czy napewno zamknąć to okno?</string>

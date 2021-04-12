@@ -28,7 +28,7 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(buildingsWithoutServantTileNumericUpDown, !IsDirk);
         }
 
-        public PlaceholderPlayerScoreBeforeAssignLeftoverFragment(int _index, Game game) : base(_index, game)
+        public PlaceholderPlayerScoreBeforeAssignLeftoverFragment(int _index, Game game, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, adapter)
         {
         }
 

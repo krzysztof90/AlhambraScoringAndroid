@@ -2,12 +2,15 @@
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using System;
 using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI
 {
     public abstract class PlaceholderPlayerScoreFragmentBase : AndroidX.Fragment.App.Fragment
     {
+        private readonly PlayersScoreSectionsPagerAdapter Adapter;
+        
         public int PlayerNumber { get; private set; }
         protected Game Game { get; private set; }
 
@@ -23,8 +26,10 @@ namespace AlhambraScoringAndroid.UI
         protected abstract void AddControls();
         protected abstract void SetControlsProperties();
 
-        public PlaceholderPlayerScoreFragmentBase(int index, Game game)
+        public PlaceholderPlayerScoreFragmentBase(int index, Game game, PlayersScoreSectionsPagerAdapter adapter)
         {
+            Adapter = adapter;
+            
             PlayerNumber = index;
             Game = game;
             Controls = new List<IScoreLineView>();
@@ -51,6 +56,12 @@ namespace AlhambraScoringAndroid.UI
             AddControls();
             SetControlsProperties();
             InitializeControls();
+
+            Button submitButton = Root.FindViewById<Button>(Resource.Id.submitButton);
+            submitButton.Click += new EventHandler((object sender, EventArgs e) =>
+            {
+                Adapter.Submit();
+            });
         }
 
         private void InitializeControls()

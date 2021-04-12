@@ -1,11 +1,13 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.Tools;
 using AlhambraScoringAndroid.UI.Activities;
+using Android.App;
 using Android.Content;
 using Android.Views;
 using AndroidX.Fragment.App;
 using AndroidX.ViewPager.Widget;
 using Java.Lang;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,15 +19,16 @@ namespace AlhambraScoringAndroid.UI
         public ViewPager ViewPager { get; private set; }
         private readonly PlaceholderPlayerScoreFragment[] PlayerScoreFragments;
         private readonly PlaceholderPlayerScoreBeforeAssignLeftoverFragment[] PlayerScoreBeforeAssignLeftoverFragments;
+        private readonly List<int> selectedPages;
 
         public List<PlaceholderPlayerScoreFragment> AllPlayerScoreFragments
         {
             get
             {
-                for (int i = 0; i < Activity.Game.PlayersCount; i++)
+                for (int i = 0; i < Count; i++)
                     if (PlayerScoreFragments[i] == null)
                     {
-                        PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, Activity.Game);
+                        PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, Activity.Game, this);
                         PlayerScoreFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
                     }
                 return PlayerScoreFragments.ToList();
@@ -35,10 +38,10 @@ namespace AlhambraScoringAndroid.UI
         {
             get
             {
-                for (int i = 0; i < Activity.Game.PlayersCount; i++)
+                for (int i = 0; i < Count; i++)
                     if (PlayerScoreBeforeAssignLeftoverFragments[i] == null)
                     {
-                        PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, Activity.Game);
+                        PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, Activity.Game, this);
                         PlayerScoreBeforeAssignLeftoverFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
                     }
                 return PlayerScoreBeforeAssignLeftoverFragments.ToList();
@@ -48,43 +51,48 @@ namespace AlhambraScoringAndroid.UI
         public PlayersScoreSectionsPagerAdapter(GameScoreActivity context, AndroidX.Fragment.App.FragmentManager fm, ViewPager viewPager) : base(fm)
         {
             Activity = context;
-            PlayerScoreFragments = new PlaceholderPlayerScoreFragment[Activity.Game.PlayersCount];
-            PlayerScoreBeforeAssignLeftoverFragments = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment[Activity.Game.PlayersCount];
+            PlayerScoreFragments = new PlaceholderPlayerScoreFragment[Count];
+            PlayerScoreBeforeAssignLeftoverFragments = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment[Count];
+
+            selectedPages = new List<int>();
+            selectedPages.Add(0);
 
             ViewPager = viewPager;
             ViewPager.Adapter = this;
+
+            viewPager.PageSelected += new EventHandler<ViewPager.PageSelectedEventArgs>((object sender, ViewPager.PageSelectedEventArgs e) =>
+            {
+                RestoreValues(e.Position);
+                if (!selectedPages.Contains(e.Position))
+                    selectedPages.Add(e.Position);
+            });
         }
 
         public override AndroidX.Fragment.App.Fragment GetItem(int position)
         {
-            if (position < Activity.Game.PlayersCount)
+            if (Activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
             {
-                if (Activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
-                {
-                    PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, Activity.Game);
-                    PlayerScoreFragments[position] = playerScoreFragment;
-                    return playerScoreFragment;
-                }
-                else
-                {
-                    PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, Activity.Game);
-                    PlayerScoreBeforeAssignLeftoverFragments[position] = playerScoreFragment;
-                    return playerScoreFragment;
-                }
+                PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, Activity.Game, this);
+                PlayerScoreFragments[position] = playerScoreFragment;
+                return playerScoreFragment;
             }
             else
-                return new PlaceholderScoreSubmitFragment(this);
+            {
+                PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, Activity.Game, this);
+                PlayerScoreBeforeAssignLeftoverFragments[position] = playerScoreFragment;
+                return playerScoreFragment;
+            }
         }
 
         public override ICharSequence GetPageTitleFormatted(int position)
         {
-            if (position < Activity.Game.PlayersCount)
+            if (position < Count)
                 return new Java.Lang.String(Activity.Game.GetPlayer(position + 1).Name);
             else
                 return new Java.Lang.String(Activity.Resources.GetString(Resource.String.submit));
         }
 
-        public override int Count => Activity.Game.PlayersCount + 1;
+        public override int Count => Activity.Game.PlayersCount;
 
         /// shit android
         public void RestoreValues(int position)
@@ -120,7 +128,25 @@ namespace AlhambraScoringAndroid.UI
 
         public void Submit()
         {
-            Activity.Submit();
+            bool visitedAllPages = true;
+            for (int i = 0; i < Count; i++)
+                if (!selectedPages.Contains(i))
+                {
+                    visitedAllPages = false;
+                    break;
+                }
+
+            if (!visitedAllPages)
+            {
+                new AlertDialog.Builder(Activity)
+                    .SetTitle(Activity.Resources.GetString(Resource.String.submit_all_players))
+                    .SetMessage(Activity.Resources.GetString(Resource.String.continue_question))
+                    .SetPositiveButton(Activity.Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => Activity.Submit()))
+                    .SetNegativeButton(Activity.Resources.GetString(Resource.String.no), new DialogInterfaceOnClickListener(null))
+                    .Show();
+            }
+            else
+                Activity.Submit();
         }
     }
 }

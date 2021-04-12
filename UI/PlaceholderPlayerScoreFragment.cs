@@ -544,7 +544,7 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(wallMoatCombinationNumericUpDown, !IsDirk);
         }
 
-        public PlaceholderPlayerScoreFragment(int _index, Game game) : base(_index, game)
+        public PlaceholderPlayerScoreFragment(int _index, Game game, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, adapter)
         {
         }
 
