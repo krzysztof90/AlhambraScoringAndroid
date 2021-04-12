@@ -191,6 +191,7 @@ namespace AlhambraScoringAndroid.GamePlay
         }
 
         public int PlayersCount => Players.Count;
+        public bool InvolvedDirk => Players.Any(p => p.Dirk);
 
         public bool GameInProgress => (ScoreRound != ScoringRound.First || (Players != null && Players.Sum(p => p.Score) != 0)) && !Saved;
 
@@ -572,7 +573,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_dice_pips_number_exceed));
             if (blackDicesMinimumNumber > 3)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_dices_number_exceed));
-            
+
             foreach (BuildingType building in BuildingsOrder)
             {
                 for (int i = 0; i < PlayersCount; i++)
@@ -1013,7 +1014,7 @@ namespace AlhambraScoringAndroid.GamePlay
                                 Players[i].AddScore(scorePanels[i].Mission3Count * 3, ScoreType.Mission3);
                             if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4))
                                 //Caliph’s Guidelines: mission 4
-                                    Players[i].AddScore(scorePanels[i].SecondLongestWallLength, ScoreType.Mission4);
+                                Players[i].AddScore(scorePanels[i].SecondLongestWallLength, ScoreType.Mission4);
                             if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5))
                                 //Caliph’s Guidelines: mission 5
                                 Players[i].AddScore(scorePanels[i].Mission5Count * 2, ScoreType.Mission5);

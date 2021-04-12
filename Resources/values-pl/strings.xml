@@ -188,6 +188,7 @@
   <string name="instruction_put_wishing_well_tiles">Dołóż studnie do wszystkich budynków</string>
   <string name="instruction_shuffle_building_tiles">Wymieszaj budynki</string>
   <string name="instruction_place_buildings">Połóz 4 budynki na giełdzie budynków</string>
+  <string name="instruction_give_buildings_to_dirk">Rozdaj 6 budynków Dirkowi</string>
   <string name="instruction_granada_shuffle_building_tiles">Wymieszaj budynki Granady</string>
   <string name="instruction_granada_place_buildings">Połóz 4 budynki Granady na giełdzie budynków</string>
   <string name="instruction_shuffle_squares">Wymieszaj stosy skwerów</string>
@@ -195,6 +196,7 @@
   <string name="instruction_shuffle_major_construction_projects">Wymieszaj kafelki major project</string>
   <string name="instruction_shuffle_gate_board">Wall pieces, semi-buildings i plaza tiles połóż obok gate board</string>
   <string name="instruction_shuffle_extensions">Wymieszaj kafelki extension</string>
+  <string name="instruction_remove_card_deck">Usuń jeden z trzech zestawów kart</string>
   <string name="instruction_put_diamond_cards">Dodaj karty diamentów do wszystkich kart pieniędzy</string>
   <string name="instruction_shuffle_cards">Wymieszaj karty</string>
   <string name="instruction_deal_money">Rozdaj początkowe pieniądze każdemu graczowi</string>
@@ -214,7 +216,7 @@
   <string name="instruction_bonus_cards_deal_2">Wymieszaj i rozdaj 2 karty bonusowe każdemu graczowi</string>
   <string name="instruction_bonus_cards_deal_1">Wymieszaj i rozdaj 1 kartę bonusową każdemu graczowi</string>
   <string name="instruction_thieves_deal_4">Wymieszaj i rozdaj 4 karty złodziei każdemu graczowi</string>
-  <string name="instruction_thieves_deal_3">Wymieszaj i rozdaj 3 karty złodzieikażdemu graczowi</string>
+  <string name="instruction_thieves_deal_3">Wymieszaj i rozdaj 3 karty złodziei każdemu graczowi</string>
   <string name="instruction_thieves_deal_2">Wymieszaj i rozdaj 2 karty złodziei każdemu graczowi</string>
   <string name="instruction_master_builders_deal">Wymieszaj i rozdaj 2 karty master-builder każdemu graczowi</string>
   <string name="instruction_shuffle_invasion">Wymieszaj karty inwazji</string>

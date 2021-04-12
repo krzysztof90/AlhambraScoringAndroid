@@ -25,6 +25,8 @@ namespace AlhambraScoringAndroid.GamePlay
         ShuffleBuildingTiles,
         [DescriptionResourceAttribute(Resource.String.instruction_place_buildings)]
         PlaceBuildings,
+        [DescriptionResourceAttribute(Resource.String.instruction_give_buildings_to_dirk)]
+        GiveBuildingsToDirk,
         [DescriptionResourceAttribute(Resource.String.instruction_granada_shuffle_building_tiles)]
         GranadaShuffleBuildingTiles,
         [DescriptionResourceAttribute(Resource.String.instruction_granada_place_buildings)]
@@ -41,6 +43,8 @@ namespace AlhambraScoringAndroid.GamePlay
         [DescriptionResourceAttribute(Resource.String.instruction_shuffle_extensions)]
         ShuffleExtensions,
 
+        [DescriptionResourceAttribute(Resource.String.instruction_remove_card_deck)]
+        RemoveCardDeck,
         [DescriptionResourceAttribute(Resource.String.instruction_put_diamond_cards)]
         PutDiamondCards,
         [DescriptionResourceAttribute(Resource.String.instruction_shuffle_cards)]

@@ -188,6 +188,7 @@
   <string name="instruction_put_wishing_well_tiles">Put wishing well tiles to all of the building tiles</string>
   <string name="instruction_shuffle_building_tiles">Shuffle building tiles</string>
   <string name="instruction_place_buildings">Place 4 building tiles on the building market</string>
+  <string name="instruction_give_buildings_to_dirk">Draw 6 building tiles and give them to Dirk</string>
   <string name="instruction_granada_shuffle_building_tiles">Shuffle double-sided building tiles</string>
   <string name="instruction_granada_place_buildings">Place 4 Granada building tiles on the building market</string>
   <string name="instruction_shuffle_squares">Shuffle each of the squares piles</string>
@@ -195,6 +196,7 @@
   <string name="instruction_shuffle_major_construction_projects">Shuffle the major project tiles</string>
   <string name="instruction_shuffle_gate_board">The wall pieces, semi-buildings and plaza tiles are kept next to the gate board</string>
   <string name="instruction_shuffle_extensions">Shuffle extension tiles</string>
+  <string name="instruction_remove_card_deck">Remove one of three decks of cards</string>
   <string name="instruction_put_diamond_cards">Put diamond cards to the other money cards</string>
   <string name="instruction_shuffle_cards">Shuffle cards</string>
   <string name="instruction_deal_money">Deal starting money to each player</string>
