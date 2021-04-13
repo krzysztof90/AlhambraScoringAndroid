@@ -7,7 +7,6 @@ using Android.OS;
 using Android.Widget;
 using AndroidX.ViewPager.Widget;
 using Google.Android.Material.Tabs;
-using System;
 using static Google.Android.Material.Tabs.TabLayout;
 
 namespace AlhambraScoringAndroid.UI.Activities
@@ -53,9 +52,9 @@ namespace AlhambraScoringAndroid.UI.Activities
         public void Submit()
         {
             if (Game.ScoreRound != ScoringRound.ThirdBeforeLeftover && sectionsPagerAdapter.ValidateAllPlayerScoreFragments())
-                Application.SubmitScore(this, sectionsPagerAdapter.AllPlayerScoreFragments);
+                Application.SubmitScore(this, sectionsPagerAdapter.AllPlayerScoreData);
             else if (Game.ScoreRound == ScoringRound.ThirdBeforeLeftover && sectionsPagerAdapter.ValidateAllPlayerScoreBeforeAssignLeftoverFragments())
-                Application.SubmitScoreBeforeAssignLeftoverBuildings(this, sectionsPagerAdapter.AllPlayerScoreBeforeAssignLeftoverFragments);
+                Application.SubmitScoreBeforeAssignLeftoverBuildings(this, sectionsPagerAdapter.AllPlayerScoreBeforeAssignLeftoverData);
         }
     }
 }

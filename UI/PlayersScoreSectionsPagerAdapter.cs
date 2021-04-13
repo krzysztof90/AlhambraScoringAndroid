@@ -21,30 +21,18 @@ namespace AlhambraScoringAndroid.UI
         private readonly PlaceholderPlayerScoreBeforeAssignLeftoverFragment[] PlayerScoreBeforeAssignLeftoverFragments;
         private readonly List<int> selectedPages;
 
-        public List<PlaceholderPlayerScoreFragment> AllPlayerScoreFragments
+        public List<PlayerScoreData> AllPlayerScoreData
         {
             get
             {
-                for (int i = 0; i < Count; i++)
-                    if (PlayerScoreFragments[i] == null)
-                    {
-                        PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, Activity.Game, this);
-                        PlayerScoreFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
-                    }
-                return PlayerScoreFragments.ToList();
+                return GetAllPlayerScoreFragments().Select(p => new PlayerScoreData(p)).ToList();
             }
         }
-        public List<PlaceholderPlayerScoreBeforeAssignLeftoverFragment> AllPlayerScoreBeforeAssignLeftoverFragments
+        public List<PlayerScoreData> AllPlayerScoreBeforeAssignLeftoverData
         {
             get
             {
-                for (int i = 0; i < Count; i++)
-                    if (PlayerScoreBeforeAssignLeftoverFragments[i] == null)
-                    {
-                        PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, Activity.Game, this);
-                        PlayerScoreBeforeAssignLeftoverFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
-                    }
-                return PlayerScoreBeforeAssignLeftoverFragments.ToList();
+                return GetAllPlayerScoreBeforeAssignLeftoverFragments().Select(p => new PlayerScoreData(p)).ToList();
             }
         }
 
@@ -103,9 +91,31 @@ namespace AlhambraScoringAndroid.UI
                 PlayerScoreBeforeAssignLeftoverFragments[position].RestoreValues();
         }
 
+        private List<PlaceholderPlayerScoreFragment> GetAllPlayerScoreFragments()
+        {
+            for (int i = 0; i < Count; i++)
+                if (PlayerScoreFragments[i] == null)
+                {
+                    PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, Activity.Game, this);
+                    PlayerScoreFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
+                }
+            return PlayerScoreFragments.ToList();
+        }
+
+        private List<PlaceholderPlayerScoreBeforeAssignLeftoverFragment> GetAllPlayerScoreBeforeAssignLeftoverFragments()
+        {
+            for (int i = 0; i < Count; i++)
+                if (PlayerScoreBeforeAssignLeftoverFragments[i] == null)
+                {
+                    PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, Activity.Game, this);
+                    PlayerScoreBeforeAssignLeftoverFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
+                }
+            return PlayerScoreBeforeAssignLeftoverFragments.ToList();
+        }
+
         public bool ValidateAllPlayerScoreFragments()
         {
-            foreach (PlaceholderPlayerScoreFragment playerScoreFragment in AllPlayerScoreFragments)
+            foreach (PlaceholderPlayerScoreFragment playerScoreFragment in GetAllPlayerScoreFragments())
             {
                 IEnumerable<ScoreLineNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
                 if (!playerPanels.ValidatePlayerPanels())
@@ -117,7 +127,7 @@ namespace AlhambraScoringAndroid.UI
 
         public bool ValidateAllPlayerScoreBeforeAssignLeftoverFragments()
         {
-            foreach (PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment in AllPlayerScoreBeforeAssignLeftoverFragments)
+            foreach (PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment in GetAllPlayerScoreBeforeAssignLeftoverFragments())
             {
                 IEnumerable<ScoreLineNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
                 if (!playerPanels.ValidatePlayerPanels())

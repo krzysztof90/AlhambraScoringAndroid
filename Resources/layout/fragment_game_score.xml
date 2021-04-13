@@ -434,11 +434,6 @@
                 android:layout_height="wrap_content"
                 app:labelValue="@string/mission6DoubleWallCount" />
             <AlhambraScoringAndroid.UI.ScoreLineNumberView
-                android:id="@+id/mission7DifferentTypesNumberNumericUpDown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:labelValue="@string/mission7DifferentTypesNumber" />
-            <AlhambraScoringAndroid.UI.ScoreLineNumberView
                 android:id="@+id/mission8PathBuildingsNumberNumericUpDown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -2,7 +2,6 @@
 using Android.Views;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace AlhambraScoringAndroid.UI
 {
@@ -83,7 +82,6 @@ namespace AlhambraScoringAndroid.UI
         ScoreLineNumberView mission3Adjacent2BuildingsCountNumericUpDown;
         ScoreLineNumberView mission5LongestDiagonalLineNumericUpDown;
         ScoreLineNumberView mission6DoubleWallCountNumericUpDown;
-        ScoreLineNumberView mission7DifferentTypesNumberNumericUpDown;
         ScoreLineNumberView mission8PathBuildingsNumberNumericUpDown;
         ScoreLineNumberView mission9Grids22CountNumericUpDown;
         ScoreLineNumberView secondLongestWallNumericUpDown;
@@ -181,7 +179,6 @@ namespace AlhambraScoringAndroid.UI
             mission3Adjacent2BuildingsCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission3Adjacent2BuildingsCountNumericUpDown);
             mission5LongestDiagonalLineNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission5LongestDiagonalLineNumericUpDown);
             mission6DoubleWallCountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission6DoubleWallCountNumericUpDown);
-            mission7DifferentTypesNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission7DifferentTypesNumberNumericUpDown);
             mission8PathBuildingsNumberNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission8PathBuildingsNumberNumericUpDown);
             mission9Grids22CountNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.mission9Grids22CountNumericUpDown);
             secondLongestWallNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.secondLongestWallNumericUpDown);
@@ -275,7 +272,6 @@ namespace AlhambraScoringAndroid.UI
             Controls.Add(mission3Adjacent2BuildingsCountNumericUpDown);
             Controls.Add(mission5LongestDiagonalLineNumericUpDown);
             Controls.Add(mission6DoubleWallCountNumericUpDown);
-            Controls.Add(mission7DifferentTypesNumberNumericUpDown);
             Controls.Add(mission8PathBuildingsNumberNumericUpDown);
             Controls.Add(mission9Grids22CountNumericUpDown);
             Controls.Add(secondLongestWallNumericUpDown);
@@ -349,7 +345,6 @@ namespace AlhambraScoringAndroid.UI
             mission1RowsCountNumericUpDown.SetNumberRange(0, Game.AllTilesCount / 3);
             mission2ColumnsCountNumericUpDown.SetNumberRange(0, Game.AllTilesCount / 3);
             mission5LongestDiagonalLineNumericUpDown.SetNumberRange(0, (Game.AllTilesCount + 1) / 2);
-            mission7DifferentTypesNumberNumericUpDown.SetNumberRange(0, 6);
             mission8PathBuildingsNumberNumericUpDown.SetNumberRange(0, (Game.AllTilesCount + 1) / 2);
             secondLongestWallNumericUpDown.SetNumberRange(0, Game.WallsMaxLength / 2 - 2);
             moatLengthNumericUpDown.SetNumberRange(0, Game.MoatMaxLength);
@@ -441,7 +436,6 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission3Adjacent2BuildingsCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3));
             AddConditionToVisible(mission5LongestDiagonalLineNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5));
             AddConditionToVisible(mission6DoubleWallCountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6));
-            AddConditionToVisible(mission7DifferentTypesNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7));
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8));
             AddConditionToVisible(mission9Grids22CountNumericUpDown, Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9));
             AddConditionToVisible(moatLengthNumericUpDown, Game.HasModule(ExpansionModule.Granada));
@@ -472,7 +466,6 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission3Adjacent2BuildingsCountNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission5LongestDiagonalLineNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission6DoubleWallCountNumericUpDown, IsFinalRound);
-            AddConditionToVisible(mission7DifferentTypesNumberNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission9Grids22CountNumericUpDown, IsFinalRound);
 
@@ -537,11 +530,28 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission3Adjacent2BuildingsCountNumericUpDown, !IsDirk);
             AddConditionToVisible(mission5LongestDiagonalLineNumericUpDown, !IsDirk);
             AddConditionToVisible(mission6DoubleWallCountNumericUpDown, !IsDirk);
-            AddConditionToVisible(mission7DifferentTypesNumberNumericUpDown, !IsDirk);
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, !IsDirk);
             AddConditionToVisible(mission9Grids22CountNumericUpDown, !IsDirk);
             AddConditionToVisible(moatLengthNumericUpDown, !IsDirk);
             AddConditionToVisible(wallMoatCombinationNumericUpDown, !IsDirk);
+
+            if (PreviousRoundScoring != null)
+            {
+                ownedCharacterTheWiseManCheckBox.Value = PreviousRoundScoring.OwnedCharacterTheWiseMan;
+                ownedCharacterTheCityWatchCheckBox.Value = PreviousRoundScoring.OwnedCharacterTheCityWatch;
+                completedProjectPavilionCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Pavilion];
+                completedProjectSeraglioCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Seraglio];
+                completedProjectArcadesCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Arcades];
+                completedProjectChambersCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Chambers];
+                completedProjectGardenCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Garden];
+                completedProjectTowerCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Tower];
+                ownedSemiBuildingPavilionCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Pavilion];
+                ownedSemiBuildingSeraglioCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Seraglio];
+                ownedSemiBuildingArcadesCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Arcades];
+                ownedSemiBuildingChambersCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Chambers];
+                ownedSemiBuildingGardenCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Garden];
+                ownedSemiBuildingTowerCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Tower];
+            }
         }
 
         public PlaceholderPlayerScoreFragment(int _index, Game game, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, adapter)
@@ -656,7 +666,6 @@ namespace AlhambraScoringAndroid.UI
         public int Mission3Count => mission3Adjacent2BuildingsCountNumericUpDown.Value;
         public int Mission5Count => mission5LongestDiagonalLineNumericUpDown.Value;
         public int Mission6Count => mission6DoubleWallCountNumericUpDown.Value;
-        public int Mission7Count => mission7DifferentTypesNumberNumericUpDown.Value;
         public int Mission8Count => mission8PathBuildingsNumberNumericUpDown.Value;
         public int Mission9Count => mission9Grids22CountNumericUpDown.Value;
         public int SecondLongestWallLength => secondLongestWallNumericUpDown.Value;
@@ -675,7 +684,5 @@ namespace AlhambraScoringAndroid.UI
                 [GranadaBuildingType.ResidentialArea] = residentialAreaNumericUpDown.Value
             };
         public int WallMoatCombinationLength => wallMoatCombinationNumericUpDown.Value;
-
-        public int AllBuildingsCount => BuildingsCount.Sum(b => b.Value);
     }
 }

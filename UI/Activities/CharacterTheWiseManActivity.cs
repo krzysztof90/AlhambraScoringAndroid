@@ -20,7 +20,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             int chosePlayerNumber = 0;
             for (int i = 0; i < Game.PlayersCount; i++)
-                if (Application.GameScoreSubmitScorePanels[i].OwnedCharacterTheWiseMan)
+                if (Application.GameScoreSubmitScoreData[i].OwnedCharacterTheWiseMan)
                 {
                     chosePlayerNumber = i + 1;
                     break;
@@ -45,7 +45,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 Dictionary<int, int> opponentsPoints = new Dictionary<int, int>();
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
-                    int points = Game.GetBuildingScore(Application.GameScoreSubmitScorePanels, radioButtonPair.Key, i + 1);
+                    int points = Game.GetBuildingScore(Application.GameScoreSubmitScoreData, radioButtonPair.Key, i + 1);
                     if (i == chosePlayerNumber - 1)
                         pointsNotUsingBonus = points;
                     else
@@ -55,7 +55,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 int pointsUsingBonus = 0;
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
-                    int points = Game.GetBuildingScore(Application.GameScoreSubmitScorePanels, radioButtonPair.Key, i + 1);
+                    int points = Game.GetBuildingScore(Application.GameScoreSubmitScoreData, radioButtonPair.Key, i + 1);
                     if (i == chosePlayerNumber - 1)
                         pointsUsingBonus = points;
                     else

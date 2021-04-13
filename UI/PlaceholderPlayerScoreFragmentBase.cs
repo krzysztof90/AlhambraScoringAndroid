@@ -16,6 +16,7 @@ namespace AlhambraScoringAndroid.UI
 
         protected bool IsDirk { get; private set; }
         protected bool IsFinalRound { get; private set; }
+        protected PlayerScoreData PreviousRoundScoring { get; private set; }
 
         protected View Root { get; private set; }
 
@@ -36,6 +37,7 @@ namespace AlhambraScoringAndroid.UI
 
             IsDirk = Game.GetPlayer(PlayerNumber).Dirk;
             IsFinalRound = Game.ScoreRound == ScoringRound.Third;
+            PreviousRoundScoring = Game.PreviousRoundScoring?[PlayerNumber-1];
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

@@ -18,7 +18,7 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            Dictionary<GranadaBuildingType, List<int>> tiePlayerNumbers = GetTiePlayerNumbers(Application.GameScoreSubmitScorePanels, Game.RoundNumber);
+            Dictionary<GranadaBuildingType, List<int>> tiePlayerNumbers = GetTiePlayerNumbers(Application.GameScoreSubmitScoreData, Game.RoundNumber);
 
             LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
 
@@ -63,7 +63,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             });
         }
 
-        public static Dictionary<GranadaBuildingType, List<int>> GetTiePlayerNumbers(List<PlaceholderPlayerScoreFragment> gameScoreSubmitScorePanels, int roundNumber)
+        public static Dictionary<GranadaBuildingType, List<int>> GetTiePlayerNumbers(List<PlayerScoreData> gameScoreSubmitScoreData, int roundNumber)
         {
             Dictionary<GranadaBuildingType, List<int>> result = new Dictionary<GranadaBuildingType, List<int>>();
 
@@ -71,12 +71,12 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 List<int> tiePlayerNumbers = new List<int>();
 
-                List<int> duplicatedPoints = gameScoreSubmitScorePanels.GroupBy(p => p.GranadaBuildingsCount[building]).Where(g => g.Key != 0 && g.Count() > 1).Select(g => g.Key).ToList();
+                List<int> duplicatedPoints = gameScoreSubmitScoreData.GroupBy(p => p.GranadaBuildingsCount[building]).Where(g => g.Key != 0 && g.Count() > 1).Select(g => g.Key).ToList();
 
-                for (int i = 0; i < gameScoreSubmitScorePanels.Count; i++)
+                for (int i = 0; i < gameScoreSubmitScoreData.Count; i++)
                 {
-                    int buildingsNumber = gameScoreSubmitScorePanels[i].GranadaBuildingsCount[building];
-                    int higherPlayersCount = gameScoreSubmitScorePanels.Where(p => p.PlayerNumber != i + 1).Count(p => p.GranadaBuildingsCount[building] > buildingsNumber);
+                    int buildingsNumber = gameScoreSubmitScoreData[i].GranadaBuildingsCount[building];
+                    int higherPlayersCount = gameScoreSubmitScoreData.Where(p => p.PlayerNumber != i + 1).Count(p => p.GranadaBuildingsCount[building] > buildingsNumber);
                     if (duplicatedPoints.Contains(buildingsNumber) && higherPlayersCount < roundNumber)
                         tiePlayerNumbers.Add(i + 1);
                 }

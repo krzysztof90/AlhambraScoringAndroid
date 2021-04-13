@@ -19,7 +19,7 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            List<int> tiePlayerNumbers = GetTiePlayerNumbers(Application.GameScoreSubmitScorePanels, Game.RoundNumber);
+            List<int> tiePlayerNumbers = GetTiePlayerNumbers(Application.GameScoreSubmitScoreData, Game.RoundNumber);
 
             LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
 
@@ -41,16 +41,16 @@ namespace AlhambraScoringAndroid.UI.Activities
             });
         }
 
-        public static List<int> GetTiePlayerNumbers(List<PlaceholderPlayerScoreFragment> gameScoreSubmitScorePanels, int roundNumber)
+        public static List<int> GetTiePlayerNumbers(List<PlayerScoreData> gameScoreSubmitScoreData, int roundNumber)
         {
             List<int> tiePlayerNumbers = new List<int>();
 
-            List<int> duplicatedPoints = gameScoreSubmitScorePanels.GroupBy(p => p.MedinasNumber).Where(g => g.Key != 0 && g.Count() > 1).Select(g => g.Key).ToList();
+            List<int> duplicatedPoints = gameScoreSubmitScoreData.GroupBy(p => p.MedinasNumber).Where(g => g.Key != 0 && g.Count() > 1).Select(g => g.Key).ToList();
 
-            for (int i = 0; i < gameScoreSubmitScorePanels.Count; i++)
+            for (int i = 0; i < gameScoreSubmitScoreData.Count; i++)
             {
-                int medinasNumber = gameScoreSubmitScorePanels[i].MedinasNumber;
-                int lowerPlayersCount = gameScoreSubmitScorePanels.Where(p => p.PlayerNumber != i + 1).Count(p => p.MedinasNumber < medinasNumber);
+                int medinasNumber = gameScoreSubmitScoreData[i].MedinasNumber;
+                int lowerPlayersCount = gameScoreSubmitScoreData.Where(p => p.PlayerNumber != i + 1).Count(p => p.MedinasNumber < medinasNumber);
                 if (duplicatedPoints.Contains(medinasNumber) && lowerPlayersCount < roundNumber)
                     tiePlayerNumbers.Add(i + 1);
             }

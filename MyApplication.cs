@@ -29,7 +29,7 @@ namespace AlhambraScoringAndroid
         public Game Game { get; private set; }
         private GameInProgressActivity gameInProgressActivity;
         public ResultHistory CurrentResult { get; private set; }
-        public List<PlaceholderPlayerScoreFragment> GameScoreSubmitScorePanels { get; private set; }
+        public List<PlayerScoreData> GameScoreSubmitScoreData { get; private set; }
 
         private readonly List<(Func<bool> condition, Type activityType)> neededScoreAdditionalActions;
         private List<BaseActivity> scoreActivities;
@@ -38,11 +38,11 @@ namespace AlhambraScoringAndroid
         {
             neededScoreAdditionalActions = new List<(Func<bool> condition, Type activityType)>()
             {
-                (()=> Game.HasModule(ExpansionModule.ExpansionCharacters) && GameScoreSubmitScorePanels.Any(p => p.OwnedCharacterTheWiseMan),
+                (()=> Game.HasModule(ExpansionModule.ExpansionCharacters) && GameScoreSubmitScoreData.Any(p => p.OwnedCharacterTheWiseMan),
                 typeof(CharacterTheWiseManActivity)),
-                (()=> Game.HasModule(ExpansionModule.QueenieMedina) && MedinaNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScorePanels, Game.RoundNumber).Count!=0,
+                (()=> Game.HasModule(ExpansionModule.QueenieMedina) && MedinaNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Count!=0,
                 typeof(MedinaNumberActivity)),
-                (()=> Game.HasModule(ExpansionModule.Granada) && GranadaBuildingsNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScorePanels, Game.RoundNumber).Any(d => d.Value.Count!=0),
+                (()=> Game.HasModule(ExpansionModule.Granada) && GranadaBuildingsNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Any(d => d.Value.Count!=0),
                 typeof(GranadaBuildingsNumberActivity)),
             };
             scoreActivities = new List<BaseActivity>();
@@ -120,11 +120,11 @@ namespace AlhambraScoringAndroid
             NewActivity(typeof(GameScoreActivity));
         }
 
-        public void SubmitScore(GameScoreActivity activity, List<PlaceholderPlayerScoreFragment> scorePanels)
+        public void SubmitScore(GameScoreActivity activity, List<PlayerScoreData> scoreData)
         {
-            if (Game.ValidateScore(scorePanels))
+            if (Game.ValidateScore(scoreData))
             {
-                GameScoreSubmitScorePanels = scorePanels;
+                GameScoreSubmitScoreData = scoreData;
                 TryScore(activity);
             }
         }
@@ -156,7 +156,7 @@ namespace AlhambraScoringAndroid
 
                 scoreActivities = new List<BaseActivity>();
 
-                Game.Score(GameScoreSubmitScorePanels);
+                Game.Score(GameScoreSubmitScoreData);
                 Game.SetNextRound();
                 gameInProgressActivity.PrepareRound();
                 if (Game.ScoreRound == ScoringRound.Finish)
@@ -187,13 +187,13 @@ namespace AlhambraScoringAndroid
             }
         }
 
-        public void SubmitScoreBeforeAssignLeftoverBuildings(GameScoreActivity activity, List<PlaceholderPlayerScoreBeforeAssignLeftoverFragment> scorePanels)
+        public void SubmitScoreBeforeAssignLeftoverBuildings(GameScoreActivity activity, List<PlayerScoreData> scoreData)
         {
-            if (Game.ValidateScoreBeforeAssignLeftoverBuildings(scorePanels))
+            if (Game.ValidateScoreBeforeAssignLeftoverBuildings(scoreData))
             {
                 activity.Finish();
 
-                Game.ScoreBeforeAssignLeftoverBuildings(scorePanels);
+                Game.ScoreBeforeAssignLeftoverBuildings(scoreData);
                 Game.SetNextRound();
                 gameInProgressActivity.PrepareRound();
             }
