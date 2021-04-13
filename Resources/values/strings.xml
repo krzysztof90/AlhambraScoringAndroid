@@ -11,13 +11,13 @@
   <string name="yes">Yes</string>
   <string name="no">No</string>
   <string name="allowed_range">Allowed range is {0} - {1}</string>
+  <string name="except_range">Not allowed number</string>
   <string name="submit">Submit</string>
   <string name="scoring">Scoring</string>
   <string name="setup">Setup</string>
   <string name="tiles">Tiles</string>
   <string name="cards">Cards</string>
-  <string name="buildings_number">Buildings number</string>
-  <string name="medins_number">Medinas number</string>
+  <string name="purchase_price">Purchase price</string>
   <string name="new_game">New game</string>
   <string name="history">History</string>
   <string name="results_history">Results history</string>

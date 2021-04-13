@@ -30,7 +30,7 @@ namespace AlhambraScoringAndroid.UI
         {
         }
 
-        public PlayersBuildingChose(Context context, string title, int min, int max, Dictionary<int, string> playersToShow) : this(context)
+        public PlayersBuildingChose(Context context, string title, int min, int max, List<int> exceptNumbers, Dictionary<int, string> playersToShow) : this(context)
         {
             TextView titleView = FindViewById<TextView>(Resource.Id.title);
             titleView.Text = title;
@@ -41,6 +41,7 @@ namespace AlhambraScoringAndroid.UI
                 {
                     PlayersPanels[i].SetLabel(playersToShow[i + 1]);
                     PlayersPanels[i].SetNumberRange(min, max);
+                    PlayersPanels[i].SetNumberExceptions(exceptNumbers);
                 }
                 else
                     PlayersPanels[i].Visibility = ViewStates.Gone;

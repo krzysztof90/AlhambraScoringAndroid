@@ -11,13 +11,13 @@
   <string name="yes">Tak</string>
   <string name="no">Nie</string>
   <string name="allowed_range">Dozwolony zakres to {0} - {1}</string>
+  <string name="except_range">Niedozwolona liczna</string>
   <string name="submit">Zatwierdź</string>
   <string name="scoring">Punktacja</string>
   <string name="setup">Przygotowanie</string>
   <string name="tiles">Kafelki</string>
   <string name="cards">Karty</string>
-  <string name="buildings_number">Ilość budynków</string>
-  <string name="medins_number">Ilość medin</string>
+  <string name="purchase_price">Cena zakupu</string>
   <string name="new_game">Nowa gra</string>
   <string name="history">Historia</string>
   <string name="results_history">Historia wyników</string>

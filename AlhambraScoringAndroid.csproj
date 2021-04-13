@@ -82,6 +82,8 @@
     <Compile Include="GamePlay\ScoreType.cs" />
     <Compile Include="Attributes\ImageAttribute.cs" />
     <Compile Include="GamePlay\SetupInstructions.cs" />
+    <Compile Include="NumberFilter.cs" />
+    <Compile Include="TextFilter.cs" />
     <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="Tools\Enums\HighestLowest.cs" />
     <Compile Include="Tools\Enums\HorizontalVertical.cs" />

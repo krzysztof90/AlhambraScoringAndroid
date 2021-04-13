@@ -8482,10 +8482,7 @@ namespace AlhambraScoringAndroid
 			public const int buildingsWithoutServantTile = 2131755070;
 			
 			// aapt resource value: 0x7F10003F
-			public const int buildings_number = 2131755071;
-			
-			// aapt resource value: 0x7F100040
-			public const int buildings_of_power = 2131755072;
+			public const int buildings_of_power = 2131755071;
 			
 			// aapt resource value: 0x7F10003C
 			public const int building_sites = 2131755068;
@@ -8493,113 +8490,116 @@ namespace AlhambraScoringAndroid
 			// aapt resource value: 0x7F10003D
 			public const int building_type_chose = 2131755069;
 			
+			// aapt resource value: 0x7F100040
+			public const int caliphs_guidelines = 2131755072;
+			
 			// aapt resource value: 0x7F100041
-			public const int caliphs_guidelines = 2131755073;
+			public const int caliphs_guidelines_missions = 2131755073;
 			
 			// aapt resource value: 0x7F100042
-			public const int caliphs_guidelines_missions = 2131755074;
+			public const int camps = 2131755074;
 			
 			// aapt resource value: 0x7F100043
-			public const int camps = 2131755075;
+			public const int campsPoints = 2131755075;
 			
 			// aapt resource value: 0x7F100044
-			public const int campsPoints = 2131755076;
+			public const int caravanserai = 2131755076;
 			
 			// aapt resource value: 0x7F100045
-			public const int caravanserai = 2131755077;
+			public const int cards = 2131755077;
 			
 			// aapt resource value: 0x7F100046
-			public const int cards = 2131755078;
+			public const int chambers = 2131755078;
 			
 			// aapt resource value: 0x7F100047
-			public const int chambers = 2131755079;
+			public const int chambersCount = 2131755079;
 			
 			// aapt resource value: 0x7F100048
-			public const int chambersCount = 2131755080;
-			
-			// aapt resource value: 0x7F100049
-			public const int change = 2131755081;
-			
-			// aapt resource value: 0x7F10004D
-			public const int characters = 2131755085;
-			
-			// aapt resource value: 0x7F10004A
-			public const int character_counter_content_description = 2131755082;
-			
-			// aapt resource value: 0x7F10004B
-			public const int character_counter_overflowed_content_description = 2131755083;
+			public const int change = 2131755080;
 			
 			// aapt resource value: 0x7F10004C
-			public const int character_counter_pattern = 2131755084;
+			public const int characters = 2131755084;
+			
+			// aapt resource value: 0x7F100049
+			public const int character_counter_content_description = 2131755081;
+			
+			// aapt resource value: 0x7F10004A
+			public const int character_counter_overflowed_content_description = 2131755082;
+			
+			// aapt resource value: 0x7F10004B
+			public const int character_counter_pattern = 2131755083;
+			
+			// aapt resource value: 0x7F10004D
+			public const int chip_text = 2131755085;
 			
 			// aapt resource value: 0x7F10004E
-			public const int chip_text = 2131755086;
+			public const int chose = 2131755086;
 			
 			// aapt resource value: 0x7F10004F
-			public const int chose = 2131755087;
+			public const int city_alls = 2131755087;
 			
 			// aapt resource value: 0x7F100050
-			public const int city_alls = 2131755088;
+			public const int city_gates = 2131755088;
 			
 			// aapt resource value: 0x7F100051
-			public const int city_gates = 2131755089;
+			public const int clear_text_end_icon_content_description = 2131755089;
 			
 			// aapt resource value: 0x7F100052
-			public const int clear_text_end_icon_content_description = 2131755090;
+			public const int completedGroupOfFruitBoard1 = 2131755090;
 			
 			// aapt resource value: 0x7F100053
-			public const int completedGroupOfFruitBoard1 = 2131755091;
+			public const int completedGroupOfFruitBoard2 = 2131755091;
 			
 			// aapt resource value: 0x7F100054
-			public const int completedGroupOfFruitBoard2 = 2131755092;
+			public const int completedGroupOfFruitBoard3 = 2131755092;
 			
 			// aapt resource value: 0x7F100055
-			public const int completedGroupOfFruitBoard3 = 2131755093;
+			public const int completedGroupOfFruitBoard4 = 2131755093;
 			
 			// aapt resource value: 0x7F100056
-			public const int completedGroupOfFruitBoard4 = 2131755094;
+			public const int completedGroupOfFruitBoard5 = 2131755094;
 			
 			// aapt resource value: 0x7F100057
-			public const int completedGroupOfFruitBoard5 = 2131755095;
+			public const int completedGroupOfFruitBoard6 = 2131755095;
 			
 			// aapt resource value: 0x7F100058
-			public const int completedGroupOfFruitBoard6 = 2131755096;
+			public const int completedProjectArcades = 2131755096;
 			
 			// aapt resource value: 0x7F100059
-			public const int completedProjectArcades = 2131755097;
+			public const int completedProjectChambers = 2131755097;
 			
 			// aapt resource value: 0x7F10005A
-			public const int completedProjectChambers = 2131755098;
+			public const int completedProjectGarden = 2131755098;
 			
 			// aapt resource value: 0x7F10005B
-			public const int completedProjectGarden = 2131755099;
+			public const int completedProjectPavilion = 2131755099;
 			
 			// aapt resource value: 0x7F10005C
-			public const int completedProjectPavilion = 2131755100;
+			public const int completedProjectSeraglio = 2131755100;
 			
 			// aapt resource value: 0x7F10005D
-			public const int completedProjectSeraglio = 2131755101;
+			public const int completedProjectTower = 2131755101;
 			
 			// aapt resource value: 0x7F10005E
-			public const int completedProjectTower = 2131755102;
+			public const int confirm = 2131755102;
 			
 			// aapt resource value: 0x7F10005F
-			public const int confirm = 2131755103;
+			public const int continue_question = 2131755103;
 			
 			// aapt resource value: 0x7F100060
-			public const int continue_question = 2131755104;
+			public const int currency_exchange_cards = 2131755104;
 			
 			// aapt resource value: 0x7F100061
-			public const int currency_exchange_cards = 2131755105;
+			public const int details = 2131755105;
 			
 			// aapt resource value: 0x7F100062
-			public const int details = 2131755106;
+			public const int diamonds = 2131755106;
 			
 			// aapt resource value: 0x7F100063
-			public const int diamonds = 2131755107;
+			public const int error_icon_content_description = 2131755107;
 			
 			// aapt resource value: 0x7F100064
-			public const int error_icon_content_description = 2131755108;
+			public const int except_range = 2131755108;
 			
 			// aapt resource value: 0x7F100065
 			public const int exchange_certificates = 2131755109;
@@ -8926,469 +8926,469 @@ namespace AlhambraScoringAndroid
 			public const int medina_tie_desc = 2131755215;
 			
 			// aapt resource value: 0x7F1000D1
-			public const int medins_number = 2131755217;
+			public const int message_animals_number_exceed = 2131755217;
 			
 			// aapt resource value: 0x7F1000D2
-			public const int message_animals_number_exceed = 2131755218;
+			public const int message_animals_number_previous_exceed = 2131755218;
 			
 			// aapt resource value: 0x7F1000D3
-			public const int message_animals_number_previous_exceed = 2131755219;
+			public const int message_animals_player_exceed = 2131755219;
 			
 			// aapt resource value: 0x7F1000D4
-			public const int message_animals_player_exceed = 2131755220;
+			public const int message_bazaars_number_exceed = 2131755220;
 			
 			// aapt resource value: 0x7F1000D5
-			public const int message_bazaars_number_exceed = 2131755221;
-			
-			// aapt resource value: 0x7F1000D6
-			public const int message_bazaars_points_exceed = 2131755222;
-			
-			// aapt resource value: 0x7F1000D8
-			public const int message_black_dices_number_exceed = 2131755224;
-			
-			// aapt resource value: 0x7F1000D9
-			public const int message_black_dices_number_previous_exceed = 2131755225;
+			public const int message_bazaars_points_exceed = 2131755221;
 			
 			// aapt resource value: 0x7F1000D7
-			public const int message_black_dice_pips_number_exceed = 2131755223;
+			public const int message_black_dices_number_exceed = 2131755223;
+			
+			// aapt resource value: 0x7F1000D8
+			public const int message_black_dices_number_previous_exceed = 2131755224;
+			
+			// aapt resource value: 0x7F1000D6
+			public const int message_black_dice_pips_number_exceed = 2131755222;
+			
+			// aapt resource value: 0x7F1000D9
+			public const int message_black_falcons_number_exceed = 2131755225;
 			
 			// aapt resource value: 0x7F1000DA
-			public const int message_black_falcons_number_exceed = 2131755226;
+			public const int message_bonus_cards_buildings_player_exceed = 2131755226;
 			
 			// aapt resource value: 0x7F1000DB
-			public const int message_bonus_cards_buildings_player_exceed = 2131755227;
+			public const int message_bonus_cards_exceed = 2131755227;
 			
 			// aapt resource value: 0x7F1000DC
-			public const int message_bonus_cards_exceed = 2131755228;
+			public const int message_bonus_cards_player_exceed = 2131755228;
 			
 			// aapt resource value: 0x7F1000DD
-			public const int message_bonus_cards_player_exceed = 2131755229;
+			public const int message_brown_falcons_number_exceed = 2131755229;
 			
 			// aapt resource value: 0x7F1000DE
-			public const int message_brown_falcons_number_exceed = 2131755230;
+			public const int message_building_number_exceed = 2131755230;
 			
 			// aapt resource value: 0x7F1000DF
-			public const int message_building_number_exceed = 2131755231;
+			public const int message_building_number_previous_exceed = 2131755231;
 			
 			// aapt resource value: 0x7F1000E0
-			public const int message_building_number_previous_exceed = 2131755232;
+			public const int message_building_same_price = 2131755232;
 			
 			// aapt resource value: 0x7F1000E1
-			public const int message_building_same_price = 2131755233;
+			public const int message_citizens_buildings_exceed = 2131755233;
 			
 			// aapt resource value: 0x7F1000E2
-			public const int message_citizens_buildings_exceed = 2131755234;
+			public const int message_citizens_exceed = 2131755234;
 			
 			// aapt resource value: 0x7F1000E3
-			public const int message_citizens_exceed = 2131755235;
+			public const int message_culture_counters_player_mismatch = 2131755235;
 			
 			// aapt resource value: 0x7F1000E4
-			public const int message_culture_counters_player_mismatch = 2131755236;
+			public const int message_culture_counters_player_previous_mismatch = 2131755236;
 			
 			// aapt resource value: 0x7F1000E5
-			public const int message_culture_counters_player_previous_mismatch = 2131755237;
+			public const int message_dirk_name = 2131755237;
 			
 			// aapt resource value: 0x7F1000E6
-			public const int message_dirk_name = 2131755238;
+			public const int message_duplicated_name = 2131755238;
 			
 			// aapt resource value: 0x7F1000E7
-			public const int message_duplicated_name = 2131755239;
+			public const int message_empty_name = 2131755239;
 			
 			// aapt resource value: 0x7F1000E8
-			public const int message_empty_name = 2131755240;
+			public const int message_extensions_buildings_player_exceed = 2131755240;
 			
 			// aapt resource value: 0x7F1000E9
-			public const int message_extensions_buildings_player_exceed = 2131755241;
+			public const int message_extensions_exceed = 2131755241;
 			
 			// aapt resource value: 0x7F1000EA
-			public const int message_extensions_exceed = 2131755242;
+			public const int message_fontains_player_points_mismatch = 2131755242;
 			
 			// aapt resource value: 0x7F1000EB
-			public const int message_fontains_player_points_mismatch = 2131755243;
+			public const int message_fontains_points_exceed = 2131755243;
 			
 			// aapt resource value: 0x7F1000EC
-			public const int message_fontains_points_exceed = 2131755244;
+			public const int message_fruits_number_exceed = 2131755244;
 			
 			// aapt resource value: 0x7F1000ED
-			public const int message_fruits_number_exceed = 2131755245;
+			public const int message_handymen_exceed = 2131755245;
 			
 			// aapt resource value: 0x7F1000EE
-			public const int message_handymen_exceed = 2131755246;
+			public const int message_medin_number_exceed = 2131755246;
 			
 			// aapt resource value: 0x7F1000EF
-			public const int message_medin_number_exceed = 2131755247;
+			public const int message_medin_number_previous_exceed = 2131755247;
 			
 			// aapt resource value: 0x7F1000F0
-			public const int message_medin_number_previous_exceed = 2131755248;
+			public const int message_medin_same_price = 2131755248;
 			
 			// aapt resource value: 0x7F1000F1
-			public const int message_medin_same_price = 2131755249;
+			public const int message_moatwall_moat_player = 2131755249;
 			
 			// aapt resource value: 0x7F1000F2
-			public const int message_moatwall_moat_player = 2131755250;
+			public const int message_moatwall_wall_player = 2131755250;
 			
 			// aapt resource value: 0x7F1000F3
-			public const int message_moatwall_wall_player = 2131755251;
+			public const int message_multiple_citywatch = 2131755251;
 			
 			// aapt resource value: 0x7F1000F4
-			public const int message_multiple_citywatch = 2131755252;
+			public const int message_multiple_completed_project = 2131755252;
 			
 			// aapt resource value: 0x7F1000F5
-			public const int message_multiple_completed_project = 2131755253;
+			public const int message_multiple_semi_buildings = 2131755253;
 			
 			// aapt resource value: 0x7F1000F6
-			public const int message_multiple_semi_buildings = 2131755254;
+			public const int message_multiple_wiseman = 2131755254;
 			
 			// aapt resource value: 0x7F1000F7
-			public const int message_multiple_wiseman = 2131755255;
+			public const int message_new_score_cards = 2131755255;
 			
 			// aapt resource value: 0x7F1000F8
-			public const int message_new_score_cards = 2131755256;
+			public const int message_previous_citywatch = 2131755256;
 			
 			// aapt resource value: 0x7F1000F9
-			public const int message_previous_citywatch = 2131755257;
+			public const int message_previous_completed_project = 2131755257;
 			
 			// aapt resource value: 0x7F1000FA
-			public const int message_previous_completed_project = 2131755258;
+			public const int message_previous_semi_buildings = 2131755258;
 			
 			// aapt resource value: 0x7F1000FB
-			public const int message_previous_semi_buildings = 2131755259;
+			public const int message_previous_wiseman = 2131755259;
 			
 			// aapt resource value: 0x7F1000FC
-			public const int message_previous_wiseman = 2131755260;
+			public const int message_second_longest_wall_player_exceed = 2131755260;
 			
 			// aapt resource value: 0x7F1000FD
-			public const int message_second_longest_wall_player_exceed = 2131755261;
+			public const int message_servants_buildings_player_exceed = 2131755261;
 			
 			// aapt resource value: 0x7F1000FE
-			public const int message_servants_buildings_player_exceed = 2131755262;
+			public const int message_single_fruits_number_exceed = 2131755262;
 			
 			// aapt resource value: 0x7F1000FF
-			public const int message_single_fruits_number_exceed = 2131755263;
+			public const int message_squares_buildings_player_exceed = 2131755263;
 			
 			// aapt resource value: 0x7F100100
-			public const int message_squares_buildings_player_exceed = 2131755264;
+			public const int message_squares_number_exceed = 2131755264;
 			
 			// aapt resource value: 0x7F100101
-			public const int message_squares_number_exceed = 2131755265;
+			public const int message_squares_player_exceed = 2131755265;
 			
 			// aapt resource value: 0x7F100102
-			public const int message_squares_player_exceed = 2131755266;
+			public const int message_treasures_number_exceed = 2131755266;
 			
 			// aapt resource value: 0x7F100103
-			public const int message_treasures_number_exceed = 2131755267;
+			public const int message_treasures_player_exceed = 2131755267;
 			
 			// aapt resource value: 0x7F100104
-			public const int message_treasures_player_exceed = 2131755268;
+			public const int message_treasures_points_player_mismatch = 2131755268;
 			
 			// aapt resource value: 0x7F100105
-			public const int message_treasures_points_player_mismatch = 2131755269;
+			public const int message_watchtower_number_exceed = 2131755269;
 			
 			// aapt resource value: 0x7F100106
-			public const int message_watchtower_number_exceed = 2131755270;
+			public const int message_watchtower_wall_player_exceed = 2131755270;
 			
 			// aapt resource value: 0x7F100107
-			public const int message_watchtower_wall_player_exceed = 2131755271;
+			public const int message_white_falcons_number_exceed = 2131755271;
 			
 			// aapt resource value: 0x7F100108
-			public const int message_white_falcons_number_exceed = 2131755272;
+			public const int mission1RowsCount = 2131755272;
 			
 			// aapt resource value: 0x7F100109
-			public const int mission1RowsCount = 2131755273;
+			public const int mission2ColumnsCount = 2131755273;
 			
 			// aapt resource value: 0x7F10010A
-			public const int mission2ColumnsCount = 2131755274;
+			public const int mission3Adjacent2BuildingsCount = 2131755274;
 			
 			// aapt resource value: 0x7F10010B
-			public const int mission3Adjacent2BuildingsCount = 2131755275;
+			public const int mission5LongestDiagonalLine = 2131755275;
 			
 			// aapt resource value: 0x7F10010C
-			public const int mission5LongestDiagonalLine = 2131755276;
+			public const int mission6DoubleWallCount = 2131755276;
 			
 			// aapt resource value: 0x7F10010D
-			public const int mission6DoubleWallCount = 2131755277;
+			public const int mission8PathBuildingsNumber = 2131755277;
 			
 			// aapt resource value: 0x7F10010E
-			public const int mission8PathBuildingsNumber = 2131755278;
+			public const int mission9Grids22Count = 2131755278;
 			
 			// aapt resource value: 0x7F10010F
-			public const int mission9Grids22Count = 2131755279;
+			public const int mission_1 = 2131755279;
 			
 			// aapt resource value: 0x7F100110
-			public const int mission_1 = 2131755280;
+			public const int mission_2 = 2131755280;
 			
 			// aapt resource value: 0x7F100111
-			public const int mission_2 = 2131755281;
+			public const int mission_3 = 2131755281;
 			
 			// aapt resource value: 0x7F100112
-			public const int mission_3 = 2131755282;
+			public const int mission_4 = 2131755282;
 			
 			// aapt resource value: 0x7F100113
-			public const int mission_4 = 2131755283;
+			public const int mission_5 = 2131755283;
 			
 			// aapt resource value: 0x7F100114
-			public const int mission_5 = 2131755284;
+			public const int mission_6 = 2131755284;
 			
 			// aapt resource value: 0x7F100115
-			public const int mission_6 = 2131755285;
+			public const int mission_7 = 2131755285;
 			
 			// aapt resource value: 0x7F100116
-			public const int mission_7 = 2131755286;
+			public const int mission_8 = 2131755286;
 			
 			// aapt resource value: 0x7F100117
-			public const int mission_8 = 2131755287;
+			public const int mission_9 = 2131755287;
 			
 			// aapt resource value: 0x7F100118
-			public const int mission_9 = 2131755288;
+			public const int moatLength = 2131755288;
 			
 			// aapt resource value: 0x7F100119
-			public const int moatLength = 2131755289;
+			public const int modules_details_chose = 2131755289;
 			
 			// aapt resource value: 0x7F10011A
-			public const int modules_details_chose = 2131755290;
+			public const int mtrl_badge_numberless_content_description = 2131755290;
 			
 			// aapt resource value: 0x7F10011B
-			public const int mtrl_badge_numberless_content_description = 2131755291;
+			public const int mtrl_chip_close_icon_content_description = 2131755291;
 			
 			// aapt resource value: 0x7F10011C
-			public const int mtrl_chip_close_icon_content_description = 2131755292;
+			public const int mtrl_exceed_max_badge_number_content_description = 2131755292;
 			
 			// aapt resource value: 0x7F10011D
-			public const int mtrl_exceed_max_badge_number_content_description = 2131755293;
+			public const int mtrl_exceed_max_badge_number_suffix = 2131755293;
 			
 			// aapt resource value: 0x7F10011E
-			public const int mtrl_exceed_max_badge_number_suffix = 2131755294;
+			public const int mtrl_picker_a11y_next_month = 2131755294;
 			
 			// aapt resource value: 0x7F10011F
-			public const int mtrl_picker_a11y_next_month = 2131755295;
+			public const int mtrl_picker_a11y_prev_month = 2131755295;
 			
 			// aapt resource value: 0x7F100120
-			public const int mtrl_picker_a11y_prev_month = 2131755296;
+			public const int mtrl_picker_announce_current_selection = 2131755296;
 			
 			// aapt resource value: 0x7F100121
-			public const int mtrl_picker_announce_current_selection = 2131755297;
+			public const int mtrl_picker_cancel = 2131755297;
 			
 			// aapt resource value: 0x7F100122
-			public const int mtrl_picker_cancel = 2131755298;
+			public const int mtrl_picker_confirm = 2131755298;
 			
 			// aapt resource value: 0x7F100123
-			public const int mtrl_picker_confirm = 2131755299;
+			public const int mtrl_picker_date_header_selected = 2131755299;
 			
 			// aapt resource value: 0x7F100124
-			public const int mtrl_picker_date_header_selected = 2131755300;
+			public const int mtrl_picker_date_header_title = 2131755300;
 			
 			// aapt resource value: 0x7F100125
-			public const int mtrl_picker_date_header_title = 2131755301;
+			public const int mtrl_picker_date_header_unselected = 2131755301;
 			
 			// aapt resource value: 0x7F100126
-			public const int mtrl_picker_date_header_unselected = 2131755302;
+			public const int mtrl_picker_day_of_week_column_header = 2131755302;
 			
 			// aapt resource value: 0x7F100127
-			public const int mtrl_picker_day_of_week_column_header = 2131755303;
+			public const int mtrl_picker_invalid_format = 2131755303;
 			
 			// aapt resource value: 0x7F100128
-			public const int mtrl_picker_invalid_format = 2131755304;
+			public const int mtrl_picker_invalid_format_example = 2131755304;
 			
 			// aapt resource value: 0x7F100129
-			public const int mtrl_picker_invalid_format_example = 2131755305;
+			public const int mtrl_picker_invalid_format_use = 2131755305;
 			
 			// aapt resource value: 0x7F10012A
-			public const int mtrl_picker_invalid_format_use = 2131755306;
+			public const int mtrl_picker_invalid_range = 2131755306;
 			
 			// aapt resource value: 0x7F10012B
-			public const int mtrl_picker_invalid_range = 2131755307;
+			public const int mtrl_picker_navigate_to_year_description = 2131755307;
 			
 			// aapt resource value: 0x7F10012C
-			public const int mtrl_picker_navigate_to_year_description = 2131755308;
+			public const int mtrl_picker_out_of_range = 2131755308;
 			
 			// aapt resource value: 0x7F10012D
-			public const int mtrl_picker_out_of_range = 2131755309;
+			public const int mtrl_picker_range_header_only_end_selected = 2131755309;
 			
 			// aapt resource value: 0x7F10012E
-			public const int mtrl_picker_range_header_only_end_selected = 2131755310;
+			public const int mtrl_picker_range_header_only_start_selected = 2131755310;
 			
 			// aapt resource value: 0x7F10012F
-			public const int mtrl_picker_range_header_only_start_selected = 2131755311;
+			public const int mtrl_picker_range_header_selected = 2131755311;
 			
 			// aapt resource value: 0x7F100130
-			public const int mtrl_picker_range_header_selected = 2131755312;
+			public const int mtrl_picker_range_header_title = 2131755312;
 			
 			// aapt resource value: 0x7F100131
-			public const int mtrl_picker_range_header_title = 2131755313;
+			public const int mtrl_picker_range_header_unselected = 2131755313;
 			
 			// aapt resource value: 0x7F100132
-			public const int mtrl_picker_range_header_unselected = 2131755314;
+			public const int mtrl_picker_save = 2131755314;
 			
 			// aapt resource value: 0x7F100133
-			public const int mtrl_picker_save = 2131755315;
+			public const int mtrl_picker_text_input_date_hint = 2131755315;
 			
 			// aapt resource value: 0x7F100134
-			public const int mtrl_picker_text_input_date_hint = 2131755316;
+			public const int mtrl_picker_text_input_date_range_end_hint = 2131755316;
 			
 			// aapt resource value: 0x7F100135
-			public const int mtrl_picker_text_input_date_range_end_hint = 2131755317;
+			public const int mtrl_picker_text_input_date_range_start_hint = 2131755317;
 			
 			// aapt resource value: 0x7F100136
-			public const int mtrl_picker_text_input_date_range_start_hint = 2131755318;
+			public const int mtrl_picker_text_input_day_abbr = 2131755318;
 			
 			// aapt resource value: 0x7F100137
-			public const int mtrl_picker_text_input_day_abbr = 2131755319;
+			public const int mtrl_picker_text_input_month_abbr = 2131755319;
 			
 			// aapt resource value: 0x7F100138
-			public const int mtrl_picker_text_input_month_abbr = 2131755320;
+			public const int mtrl_picker_text_input_year_abbr = 2131755320;
 			
 			// aapt resource value: 0x7F100139
-			public const int mtrl_picker_text_input_year_abbr = 2131755321;
+			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131755321;
 			
 			// aapt resource value: 0x7F10013A
-			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131755322;
+			public const int mtrl_picker_toggle_to_day_selection = 2131755322;
 			
 			// aapt resource value: 0x7F10013B
-			public const int mtrl_picker_toggle_to_day_selection = 2131755323;
+			public const int mtrl_picker_toggle_to_text_input_mode = 2131755323;
 			
 			// aapt resource value: 0x7F10013C
-			public const int mtrl_picker_toggle_to_text_input_mode = 2131755324;
+			public const int mtrl_picker_toggle_to_year_selection = 2131755324;
 			
 			// aapt resource value: 0x7F10013D
-			public const int mtrl_picker_toggle_to_year_selection = 2131755325;
+			public const int new_building_grounds = 2131755325;
 			
 			// aapt resource value: 0x7F10013E
-			public const int new_building_grounds = 2131755326;
-			
-			// aapt resource value: 0x7F10013F
-			public const int new_game = 2131755327;
-			
-			// aapt resource value: 0x7F100152
-			public const int new_score_cards = 2131755346;
-			
-			// aapt resource value: 0x7F100140
-			public const int new_score_card_1 = 2131755328;
-			
-			// aapt resource value: 0x7F100141
-			public const int new_score_card_10 = 2131755329;
-			
-			// aapt resource value: 0x7F100142
-			public const int new_score_card_11 = 2131755330;
-			
-			// aapt resource value: 0x7F100143
-			public const int new_score_card_12 = 2131755331;
-			
-			// aapt resource value: 0x7F100144
-			public const int new_score_card_13 = 2131755332;
-			
-			// aapt resource value: 0x7F100145
-			public const int new_score_card_14 = 2131755333;
-			
-			// aapt resource value: 0x7F100146
-			public const int new_score_card_15 = 2131755334;
-			
-			// aapt resource value: 0x7F100147
-			public const int new_score_card_16 = 2131755335;
-			
-			// aapt resource value: 0x7F100148
-			public const int new_score_card_17 = 2131755336;
-			
-			// aapt resource value: 0x7F100149
-			public const int new_score_card_18 = 2131755337;
-			
-			// aapt resource value: 0x7F10014A
-			public const int new_score_card_2 = 2131755338;
-			
-			// aapt resource value: 0x7F10014B
-			public const int new_score_card_3 = 2131755339;
-			
-			// aapt resource value: 0x7F10014C
-			public const int new_score_card_4 = 2131755340;
-			
-			// aapt resource value: 0x7F10014D
-			public const int new_score_card_5 = 2131755341;
-			
-			// aapt resource value: 0x7F10014E
-			public const int new_score_card_6 = 2131755342;
-			
-			// aapt resource value: 0x7F10014F
-			public const int new_score_card_7 = 2131755343;
-			
-			// aapt resource value: 0x7F100150
-			public const int new_score_card_8 = 2131755344;
+			public const int new_game = 2131755326;
 			
 			// aapt resource value: 0x7F100151
-			public const int new_score_card_9 = 2131755345;
+			public const int new_score_cards = 2131755345;
+			
+			// aapt resource value: 0x7F10013F
+			public const int new_score_card_1 = 2131755327;
+			
+			// aapt resource value: 0x7F100140
+			public const int new_score_card_10 = 2131755328;
+			
+			// aapt resource value: 0x7F100141
+			public const int new_score_card_11 = 2131755329;
+			
+			// aapt resource value: 0x7F100142
+			public const int new_score_card_12 = 2131755330;
+			
+			// aapt resource value: 0x7F100143
+			public const int new_score_card_13 = 2131755331;
+			
+			// aapt resource value: 0x7F100144
+			public const int new_score_card_14 = 2131755332;
+			
+			// aapt resource value: 0x7F100145
+			public const int new_score_card_15 = 2131755333;
+			
+			// aapt resource value: 0x7F100146
+			public const int new_score_card_16 = 2131755334;
+			
+			// aapt resource value: 0x7F100147
+			public const int new_score_card_17 = 2131755335;
+			
+			// aapt resource value: 0x7F100148
+			public const int new_score_card_18 = 2131755336;
+			
+			// aapt resource value: 0x7F100149
+			public const int new_score_card_2 = 2131755337;
+			
+			// aapt resource value: 0x7F10014A
+			public const int new_score_card_3 = 2131755338;
+			
+			// aapt resource value: 0x7F10014B
+			public const int new_score_card_4 = 2131755339;
+			
+			// aapt resource value: 0x7F10014C
+			public const int new_score_card_5 = 2131755340;
+			
+			// aapt resource value: 0x7F10014D
+			public const int new_score_card_6 = 2131755341;
+			
+			// aapt resource value: 0x7F10014E
+			public const int new_score_card_7 = 2131755342;
+			
+			// aapt resource value: 0x7F10014F
+			public const int new_score_card_8 = 2131755343;
+			
+			// aapt resource value: 0x7F100150
+			public const int new_score_card_9 = 2131755344;
+			
+			// aapt resource value: 0x7F100152
+			public const int no = 2131755346;
 			
 			// aapt resource value: 0x7F100153
-			public const int no = 2131755347;
+			public const int orchards = 2131755347;
 			
 			// aapt resource value: 0x7F100154
-			public const int orchards = 2131755348;
+			public const int ownedCharacterTheCityWatch = 2131755348;
 			
 			// aapt resource value: 0x7F100155
-			public const int ownedCharacterTheCityWatch = 2131755349;
+			public const int ownedCharacterTheWiseMan = 2131755349;
 			
 			// aapt resource value: 0x7F100156
-			public const int ownedCharacterTheWiseMan = 2131755350;
+			public const int ownedSemiBuildingArcades = 2131755350;
 			
 			// aapt resource value: 0x7F100157
-			public const int ownedSemiBuildingArcades = 2131755351;
+			public const int ownedSemiBuildingChambers = 2131755351;
 			
 			// aapt resource value: 0x7F100158
-			public const int ownedSemiBuildingChambers = 2131755352;
+			public const int ownedSemiBuildingGarden = 2131755352;
 			
 			// aapt resource value: 0x7F100159
-			public const int ownedSemiBuildingGarden = 2131755353;
+			public const int ownedSemiBuildingPavilion = 2131755353;
 			
 			// aapt resource value: 0x7F10015A
-			public const int ownedSemiBuildingPavilion = 2131755354;
+			public const int ownedSemiBuildingSeraglio = 2131755354;
 			
 			// aapt resource value: 0x7F10015B
-			public const int ownedSemiBuildingSeraglio = 2131755355;
+			public const int ownedSemiBuildingTower = 2131755355;
 			
 			// aapt resource value: 0x7F10015C
-			public const int ownedSemiBuildingTower = 2131755356;
+			public const int palace_designers = 2131755356;
 			
 			// aapt resource value: 0x7F10015D
-			public const int palace_designers = 2131755357;
+			public const int palace_staff = 2131755357;
 			
 			// aapt resource value: 0x7F10015E
-			public const int palace_staff = 2131755358;
+			public const int park = 2131755358;
 			
 			// aapt resource value: 0x7F10015F
-			public const int park = 2131755359;
+			public const int parkCount = 2131755359;
 			
 			// aapt resource value: 0x7F100160
-			public const int parkCount = 2131755360;
+			public const int password_toggle_content_description = 2131755360;
 			
 			// aapt resource value: 0x7F100161
-			public const int password_toggle_content_description = 2131755361;
+			public const int path_password_eye = 2131755361;
 			
 			// aapt resource value: 0x7F100162
-			public const int path_password_eye = 2131755362;
+			public const int path_password_eye_mask_strike_through = 2131755362;
 			
 			// aapt resource value: 0x7F100163
-			public const int path_password_eye_mask_strike_through = 2131755363;
+			public const int path_password_eye_mask_visible = 2131755363;
 			
 			// aapt resource value: 0x7F100164
-			public const int path_password_eye_mask_visible = 2131755364;
+			public const int path_password_strike_through = 2131755364;
 			
 			// aapt resource value: 0x7F100165
-			public const int path_password_strike_through = 2131755365;
+			public const int pavilion = 2131755365;
 			
 			// aapt resource value: 0x7F100166
-			public const int pavilion = 2131755366;
+			public const int pavilionCount = 2131755366;
 			
 			// aapt resource value: 0x7F100167
-			public const int pavilionCount = 2131755367;
+			public const int personal_building_market = 2131755367;
 			
 			// aapt resource value: 0x7F100168
-			public const int personal_building_market = 2131755368;
+			public const int play = 2131755368;
 			
 			// aapt resource value: 0x7F100169
-			public const int play = 2131755369;
+			public const int players_chose = 2131755369;
 			
 			// aapt resource value: 0x7F10016A
-			public const int players_chose = 2131755370;
+			public const int power_of_sultan = 2131755370;
 			
 			// aapt resource value: 0x7F10016B
-			public const int power_of_sultan = 2131755371;
+			public const int purchase_price = 2131755371;
 			
 			// aapt resource value: 0x7F10016C
 			public const int remove = 2131755372;

@@ -1,27 +1,28 @@
 ﻿using Android.Content;
 using System;
+using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid
 {
-    public class MinMaxFilter : TextFilter
+    public class NumberFilter : TextFilter
     {
-        private readonly int Min;
-        private readonly int Max;
+        private readonly List<int> Numbers;
 
-        public MinMaxFilter(Context context, int minValue, int maxValue) : base(context)
+        public NumberFilter(Context context, List<int> numbers) : base(context)
         {
-            Min = minValue;
-            Max = maxValue;
+            Numbers = numbers;
         }
 
-        protected override string ValidationMessage => System.String.Format(Context.Resources.GetString(Resource.String.allowed_range), Min, Max);
+        protected override string ValidationMessage => Context.Resources.GetString(Resource.String.except_range);
 
         public override bool ValidateNumberRange(string text, bool validateFull, int? defaultValue = null, string fieldName = null)
         {
+            if (!validateFull)
+                return true;
+
             if (Int32.TryParse(text, out int input))
             {
-                if (input <= Max
-                    && (input >= Min || !validateFull))
+                if (!Numbers.Contains(input))
                     return true;
                 else
                     return ValidationError(fieldName);
@@ -30,5 +31,4 @@ namespace AlhambraScoringAndroid
             return ValidateEmptyValue(((int)defaultValue).ToString(), validateFull, null, fieldName);
         }
     }
-
 }

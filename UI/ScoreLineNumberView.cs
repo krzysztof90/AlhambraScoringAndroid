@@ -6,6 +6,8 @@ using Android.Views;
 using Android.Widget;
 using Java.Lang;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AlhambraScoringAndroid.UI
 {
@@ -89,7 +91,16 @@ namespace AlhambraScoringAndroid.UI
 
         public void SetNumberRange(int min, int max)
         {
-            editText.SetFilters(new IInputFilter[] { new MinMaxFilter(Context, min, max, true) });
+            List<IInputFilter> filters = editText.GetFilters().ToList();
+            filters.Add(new MinMaxFilter(Context, min, max));
+            editText.SetFilters(filters.ToArray());
+        }
+
+        public void SetNumberExceptions(List<int> numbers)
+        {
+            List<IInputFilter> filters = editText.GetFilters().ToList();
+            filters.Add(new NumberFilter(Context, numbers));
+            editText.SetFilters(filters.ToArray());
         }
 
         public bool ValidateNumberRange()
@@ -98,6 +109,8 @@ namespace AlhambraScoringAndroid.UI
                 foreach (IInputFilter inputFilter in editText.GetFilters())
                     //TODO do textView.Text dołączone nowe property ValidationMessage z przypisaną nazwą gracza
                     if (inputFilter is MinMaxFilter minMaxFilter && !minMaxFilter.ValidateNumberRange(editText.Text, true, DefaultValue, textView.Text))
+                        return false;
+                    else if (inputFilter is NumberFilter numberFilter && !numberFilter.ValidateNumberRange(editText.Text, true, DefaultValue, textView.Text))
                         return false;
             return true;
         }
