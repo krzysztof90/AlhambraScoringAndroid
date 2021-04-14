@@ -28,7 +28,7 @@ namespace AlhambraScoringAndroid
                     return ValidationError(fieldName);
             }
 
-            return ValidateEmptyValue(((int)defaultValue).ToString(), validateFull, null, fieldName);
+            return ValidateEmptyValue(((int)defaultValue).ToString(), validateFull, defaultValue, fieldName);
         }
     }
 }

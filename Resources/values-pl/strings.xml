@@ -333,6 +333,6 @@
   <string name="marketCount">Liczba Market</string>
   <string name="parkCount">Liczba Park</string>
   <string name="schoolCount">Liczba School</string>
-  <string name="residentialArea">Liczba Residential area</string>
+  <string name="residentialAreaCount">Liczba Residential area</string>
   <string name="wallMoatCombination">Najdłuższa kombinacja mur-fosa</string>
 </resources>

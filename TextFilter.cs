@@ -8,7 +8,7 @@ namespace AlhambraScoringAndroid
     public abstract class TextFilter : Java.Lang.Object, IInputFilter
     {
         protected readonly Context Context;
-        
+
         public abstract bool ValidateNumberRange(string text, bool validateFull, int? defaultValue = null, string fieldName = null);
         protected abstract string ValidationMessage { get; }
 
@@ -25,7 +25,7 @@ namespace AlhambraScoringAndroid
             return ValidateNumberRange(newString, false) ? null : new Java.Lang.String(System.String.Empty);
         }
 
-        protected  bool ValidateEmptyValue(string text, bool validateFull, int? defaultValue , string fieldName )
+        protected bool ValidateEmptyValue(string text, bool validateFull, int? defaultValue, string fieldName)
         {
             return System.String.IsNullOrEmpty(text) && defaultValue != null && ValidateNumberRange(((int)defaultValue).ToString(), validateFull, null, fieldName);
         }

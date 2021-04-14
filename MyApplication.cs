@@ -1,6 +1,5 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.Tools;
-using AlhambraScoringAndroid.UI;
 using AlhambraScoringAndroid.UI.Activities;
 using Android.App;
 using Android.Content;
@@ -16,8 +15,6 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
-        //TODO google play "If you found any issue I would appreciate your feedback. If you are interested in translating to your language let me know. This project is free, if you would like to support me, you can do it by paypal [paypal.me/pools/c/8yrP6WslmB]. Github project: https://github.com/krzysztof90/AlhambraScoringAndroid", link do github; BGG
-
         //TODO przezroczyste obrazki
         //TODO minSdkVersion
         //TODO restore state after application close
@@ -40,9 +37,9 @@ namespace AlhambraScoringAndroid
             {
                 (()=> Game.HasModule(ExpansionModule.ExpansionCharacters) && GameScoreSubmitScoreData.Any(p => p.OwnedCharacterTheWiseMan),
                 typeof(CharacterTheWiseManActivity)),
-                (()=> Game.HasModule(ExpansionModule.QueenieMedina) && MedinaNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Count!=0,
+                (()=> Game.HasModule(ExpansionModule.QueenieMedina) && MedinaNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Count != 0,
                 typeof(MedinaNumberActivity)),
-                (()=> Game.HasModule(ExpansionModule.Granada) && GranadaBuildingsNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Any(d => d.Value.Count!=0),
+                (()=> Game.HasModule(ExpansionModule.Granada) && GranadaBuildingsNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Any(d => d.Value.Count != 0),
                 typeof(GranadaBuildingsNumberActivity)),
             };
             scoreActivities = new List<BaseActivity>();

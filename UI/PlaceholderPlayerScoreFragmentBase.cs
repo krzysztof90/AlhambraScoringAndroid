@@ -52,6 +52,7 @@ namespace AlhambraScoringAndroid.UI
 
         public void Create(LayoutInflater inflater, ViewGroup container)
         {
+            //TODO długie ładowanie https://stackoverflow.com/questions/20223628/how-to-resolve-layout-has-more-than-80-views-bad-for-performance
             Root = inflater.Inflate(GetContentLayout(), container, false);
 
             CreateControls();
