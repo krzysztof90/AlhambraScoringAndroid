@@ -342,15 +342,9 @@ namespace AlhambraScoringAndroid.GamePlay
             PlayersGranadaBuildingsHighestPrices = playersHighestPrices;
         }
 
-        private int GetMinimumNumberFromCount(int count, int interval, int max)
+        private int GetMinimumNumberFromCount(int count, int interval)
         {
-            int minimumNumber = 0;
-            for (int i = 0; i <= max; i += interval)
-                if (count > i)
-                    minimumNumber++;
-                else
-                    break;
-            return minimumNumber;
+            return count == 0 ? 0 : ((count - 1) / interval + 1);
         }
 
         private bool ValidatePreviousAvailableLimit(int roundNumber, List<PlayerScoreData> scoreData, Func<PlayerScoreData, int> countAmountMethod, int maxAmount, string errorMessage)
@@ -423,7 +417,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 foreach (BuildingType building in BuildingsOrder)
                 {
                     int squaresPoints = scoreData[i].SquaresBuildingsCount[building];
-                    int squaresMinimumNumber = GetMinimumNumberFromCount(squaresPoints, 3, 6);
+                    int squaresMinimumNumber = GetMinimumNumberFromCount(squaresPoints, 3);
                     playerSquaresTotalMinimumNumber += squaresMinimumNumber;
 
                     int squareTotalMinimumNumber = 0;
@@ -502,7 +496,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 int bazaarsTotalPoints = scoreData[i].BazaarsTotalPoints;
                 //if (!bazaarsAvailablePoints.Contains(bazaarsTotalPoints))
                 //    return ValidateUtils.CheckFailed(Context, $"{GetPlayer(i + 1).Name}: Niedozwolona ilość punktów z bazarów");
-                bazaarsMinimumNumber += GetMinimumNumberFromCount(bazaarsTotalPoints, 24, 168);
+                bazaarsMinimumNumber += GetMinimumNumberFromCount(bazaarsTotalPoints, 24);
                 bazaarsTotalPointsSum += bazaarsTotalPoints;
             }
             if (bazaarsTotalPointsSum > 192)
@@ -636,7 +630,7 @@ namespace AlhambraScoringAndroid.GamePlay
             for (int i = 0; i < PlayersCount; i++)
             {
                 int blackDiceTotalPips = scoreData[i].BlackDiceTotalPips;
-                blackDicesMinimumNumber += GetMinimumNumberFromCount(blackDiceTotalPips, 6, 12);
+                blackDicesMinimumNumber += GetMinimumNumberFromCount(blackDiceTotalPips, 6);
                 blackDiceTotalPipsSum += blackDiceTotalPips;
             }
             if (blackDiceTotalPipsSum > 18)
@@ -644,7 +638,7 @@ namespace AlhambraScoringAndroid.GamePlay
             if (blackDicesMinimumNumber > 3)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_dices_number_exceed));
 
-            if (!ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => GetMinimumNumberFromCount(p.BlackDiceTotalPips, 6, 12), 3, Context.Resources.GetString(Resource.String.message_black_dices_number_previous_exceed)))
+            if (!ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => GetMinimumNumberFromCount(p.BlackDiceTotalPips, 6), 3, Context.Resources.GetString(Resource.String.message_black_dices_number_previous_exceed)))
                 return false;
 
             foreach (BuildingType building in BuildingsOrder)
