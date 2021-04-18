@@ -1,20 +1,23 @@
-﻿using AlhambraScoringAndroid.Tools;
+﻿using AlhambraScoringAndroid.Options;
+using AlhambraScoringAndroid.Tools;
 using Android.Content;
 using Android.Text;
 using Java.Lang;
 
-namespace AlhambraScoringAndroid
+namespace AlhambraScoringAndroid.InputFilters
 {
     public abstract class TextFilter : Java.Lang.Object, IInputFilter
     {
         protected readonly Context Context;
+        protected readonly SettingsType? ValidationSettingsType;
 
-        public abstract bool ValidateNumberRange(string text, bool validateFull, int? defaultValue = null, string fieldName = null);
+        protected abstract bool ValidateNumber(string text, bool validateFull, int? defaultValue = null, string fieldName = null);
         protected abstract string ValidationMessage { get; }
 
-        public TextFilter(Context context)
+        public TextFilter(Context context, SettingsType? validationSettingsType)
         {
             Context = context;
+            ValidationSettingsType = validationSettingsType;
         }
 
         //TODO pełna walidacja przy lost focus
@@ -23,6 +26,12 @@ namespace AlhambraScoringAndroid
             string newString = dest.ToString().Substring(0, dstart) + source.ToString().Substring(start, end) + dest.ToString().Substring(dend);
 
             return ValidateNumberRange(newString, false) ? null : new Java.Lang.String(System.String.Empty);
+        }
+
+        public bool ValidateNumberRange(string text, bool validateFull, int? defaultValue = null, string fieldName = null)
+        {
+            return (ValidationSettingsType != null && !Settings.IsSet((SettingsType)ValidationSettingsType))
+                || ValidateNumber(text, validateFull, defaultValue, fieldName);
         }
 
         protected bool ValidateEmptyValue(string text, bool validateFull, int? defaultValue, string fieldName)

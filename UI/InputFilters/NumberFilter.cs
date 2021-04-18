@@ -1,21 +1,22 @@
-﻿using Android.Content;
+﻿using AlhambraScoringAndroid.Options;
+using Android.Content;
 using System;
 using System.Collections.Generic;
 
-namespace AlhambraScoringAndroid
+namespace AlhambraScoringAndroid.InputFilters
 {
     public class NumberFilter : TextFilter
     {
         private readonly List<int> Numbers;
 
-        public NumberFilter(Context context, List<int> numbers) : base(context)
+        public NumberFilter(Context context, List<int> numbers, SettingsType? validationSettingsType) : base(context, validationSettingsType)
         {
             Numbers = numbers;
         }
 
         protected override string ValidationMessage => Context.Resources.GetString(Resource.String.except_range);
 
-        public override bool ValidateNumberRange(string text, bool validateFull, int? defaultValue = null, string fieldName = null)
+        protected override bool ValidateNumber(string text, bool validateFull, int? defaultValue = null, string fieldName = null)
         {
             if (!validateFull)
                 return true;

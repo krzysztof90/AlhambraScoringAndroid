@@ -1,4 +1,6 @@
-﻿using Android.Content;
+﻿using AlhambraScoringAndroid.InputFilters;
+using AlhambraScoringAndroid.Options;
+using Android.Content;
 using Android.Content.Res;
 using Android.Text;
 using Android.Util;
@@ -89,17 +91,17 @@ namespace AlhambraScoringAndroid.UI
             return Int32.Parse(text);
         }
 
-        public void SetNumberRange(int min, int max)
+        public void SetNumberRange(int min, int max, SettingsType? validationSettingsType)
         {
             List<IInputFilter> filters = editText.GetFilters().ToList();
-            filters.Add(new MinMaxFilter(Context, min, max));
+            filters.Add(new MinMaxFilter(Context, min, max, validationSettingsType));
             editText.SetFilters(filters.ToArray());
         }
 
-        public void SetNumberExceptions(List<int> numbers)
+        public void SetNumberExceptions(List<int> numbers, SettingsType? validationSettingsType)
         {
             List<IInputFilter> filters = editText.GetFilters().ToList();
-            filters.Add(new NumberFilter(Context, numbers));
+            filters.Add(new NumberFilter(Context, numbers, validationSettingsType));
             editText.SetFilters(filters.ToArray());
         }
 

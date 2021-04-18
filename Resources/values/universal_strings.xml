@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">Alhambra Scoring</string>
+  <string name="developer_name">Krzysztof Szulc</string>
+  <string name="mail_hyperlink">
+    <a href="mailto:chrisek1000@gmail.com">chrisek1000@gmail.com</a>
+  </string>
+  <string name="paypal_hyperlink">
+    <a href="https://www.paypal.com/pools/c/8yrP6WslmB">PayPal</a>
+  </string>
+</resources>

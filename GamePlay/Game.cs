@@ -1,4 +1,5 @@
 ﻿using AlhambraScoringAndroid.Attributes;
+using AlhambraScoringAndroid.Options;
 using AlhambraScoringAndroid.Tools;
 using AlhambraScoringAndroid.Tools.Enums;
 using Android.Content;
@@ -372,8 +373,6 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public bool ValidateScore(List<PlayerScoreData> scoreData)
         {
-            //TODO to co walidowane może być wyłączone w ustawieniach
-
             List<PlayerScoreData> previousBeforeScoreData = null;
             if (RoundNumber == 3 && ThirdBeforeRoundScoring != null)
                 previousBeforeScoreData = ThirdBeforeRoundScoring;
@@ -382,10 +381,10 @@ namespace AlhambraScoringAndroid.GamePlay
             {
                 int playersBuildings = scoreData.Sum(p => p.BuildingsCount[mapEntry.Key]);
 
-                if (playersBuildings > mapEntry.Value)
+                if (Settings.IsSet(SettingsType.ValidateBuildingsNumber) && playersBuildings > mapEntry.Value)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_building_number_exceed), mapEntry.Key.GetEnumDescription(Context.Resources)));
 
-                if (!ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => p.BuildingsCount[mapEntry.Key], mapEntry.Value, String.Format(Context.Resources.GetString(Resource.String.message_building_number_previous_exceed), mapEntry.Key.GetEnumDescription(Context.Resources))))
+                if (Settings.IsSet(SettingsType.ValidateBuildingsNumberPrevious) && !ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => p.BuildingsCount[mapEntry.Key], mapEntry.Value, String.Format(Context.Resources.GetString(Resource.String.message_building_number_previous_exceed), mapEntry.Key.GetEnumDescription(Context.Resources))))
                     return false;
             }
 
@@ -397,18 +396,18 @@ namespace AlhambraScoringAndroid.GamePlay
 
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (scoreData[i].BonusCardsBuildingsCount.Sum(c => c.Value) > playerBonusCardsMax)
+                if (Settings.IsSet(SettingsType.ValidateBonusCardsPlayer) && scoreData[i].BonusCardsBuildingsCount.Sum(c => c.Value) > playerBonusCardsMax)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_bonus_cards_player_exceed), GetPlayer(i + 1).Name));
 
                 foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
                 {
-                    if (scoreData[i].ExtensionsBuildingsCount[mapEntry.Key] > scoreData[i].BuildingsCount[mapEntry.Key])
+                    if (Settings.IsSet(SettingsType.ValidateBonusCardsBuildings) && scoreData[i].ExtensionsBuildingsCount[mapEntry.Key] > scoreData[i].BuildingsCount[mapEntry.Key])
                         return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_bonus_cards_buildings_player_exceed), GetPlayer(i + 1).Name, mapEntry.Key.GetEnumDescription(Context.Resources)));
                 }
             }
             foreach (KeyValuePair<BuildingType, int> mapEntry in BonusCardsMaxCount)
             {
-                if (scoreData.Sum(p => p.BonusCardsBuildingsCount[mapEntry.Key]) > mapEntry.Value)
+                if (Settings.IsSet(SettingsType.ValidateBonusCards) && scoreData.Sum(p => p.BonusCardsBuildingsCount[mapEntry.Key]) > mapEntry.Value)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_bonus_cards_exceed), mapEntry.Key.GetEnumDescription(Context.Resources)));
             }
 
@@ -428,39 +427,35 @@ namespace AlhambraScoringAndroid.GamePlay
                     squareTotalMinimumNumber += squaresMinimumNumber;
                     squaresTotalMinimumNumber[building] = squareTotalMinimumNumber;
 
-                    if (squaresPoints > 9)
-                    {
+                    if (Settings.IsSet(SettingsType.ValidateSquaresPlayer) && squaresMinimumNumber > 3)
                         return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_squares_buildings_player_exceed), GetPlayer(i + 1).Name, building.GetEnumDescription(Context.Resources)));
-                    }
                 }
 
-                if (playerSquaresTotalMinimumNumber > 3)
-                {
+                if (Settings.IsSet(SettingsType.ValidateSquaresPlayer) && playerSquaresTotalMinimumNumber > 3)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_squares_player_exceed), GetPlayer(i + 1).Name));
-                }
             }
             foreach (KeyValuePair<BuildingType, int> mapEntry in SquaresMaxCount)
             {
-                if (squaresTotalMinimumNumber[mapEntry.Key] > mapEntry.Value)
+                if (Settings.IsSet(SettingsType.ValidateSquares) && squaresTotalMinimumNumber[mapEntry.Key] > mapEntry.Value)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_squares_number_exceed), mapEntry.Key.GetEnumDescription(Context.Resources)));
             }
 
-            if (scoreData.Count(p => p.OwnedCharacterTheWiseMan) > 1)
+            if (Settings.IsSet(SettingsType.ValidateMultipleWiseman) && scoreData.Count(p => p.OwnedCharacterTheWiseMan) > 1)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_multiple_wiseman));
-            if (scoreData.Count(p => p.OwnedCharacterTheCityWatch) > 1)
+            if (Settings.IsSet(SettingsType.ValidateMultipleCitywatch) && scoreData.Count(p => p.OwnedCharacterTheCityWatch) > 1)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_multiple_citywatch));
 
             if (PreviousRoundScoring != null)
             {
                 for (int i = 0; i < PlayersCount; i++)
-                    if (PreviousRoundScoring[i].OwnedCharacterTheWiseMan && !scoreData[i].OwnedCharacterTheWiseMan)
+                    if (Settings.IsSet(SettingsType.ValidatePreviousWiseman) && PreviousRoundScoring[i].OwnedCharacterTheWiseMan && !scoreData[i].OwnedCharacterTheWiseMan)
                         return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_previous_wiseman), GetPlayer(i + 1).Name));
             }
 
             if (PreviousRoundScoring != null)
             {
                 for (int i = 0; i < PlayersCount; i++)
-                    if (PreviousRoundScoring[i].OwnedCharacterTheCityWatch && !scoreData[i].OwnedCharacterTheCityWatch)
+                    if (Settings.IsSet(SettingsType.ValidatePreviousCitywatch) && PreviousRoundScoring[i].OwnedCharacterTheCityWatch && !scoreData[i].OwnedCharacterTheCityWatch)
                         return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_previous_citywatch), GetPlayer(i + 1).Name));
             }
 
@@ -468,23 +463,23 @@ namespace AlhambraScoringAndroid.GamePlay
             {
                 foreach (BuildingType building in BuildingsOrder)
                 {
-                    if (scoreData[i].StreetTradersNumber[building] > scoreData[i].BuildingsCount[building])
+                    if (Settings.IsSet(SettingsType.ValidateCitizensBuildings) && scoreData[i].StreetTradersNumber[building] > scoreData[i].BuildingsCount[building])
                         return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_citizens_buildings_exceed), GetPlayer(i + 1).Name, building.GetEnumDescription(Context.Resources)));
                 }
             }
 
             foreach (BuildingType building in BuildingsOrder)
             {
-                if (scoreData.Sum(p => p.StreetTradersNumber[building]) > 7)
+                if (Settings.IsSet(SettingsType.ValidateCitizens) && scoreData.Sum(p => p.StreetTradersNumber[building]) > 7)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_citizens_exceed), building.GetEnumDescription(Context.Resources)));
             }
 
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (scoreData[i].TreasuresCount > scoreData[i].AllBuildingsCount)
+                if (Settings.IsSet(SettingsType.ValidateTreasuresPlayer) && scoreData[i].TreasuresCount > scoreData[i].AllBuildingsCount)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_treasures_player_exceed), GetPlayer(i + 1).Name));
             }
-            if (scoreData.Sum(p => p.TreasuresCount) > 42)
+            if (Settings.IsSet(SettingsType.ValidateTreasures) && scoreData.Sum(p => p.TreasuresCount) > 42)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_treasures_number_exceed));
 
             //TODO get miminum bazaars number from points combination
@@ -501,51 +496,49 @@ namespace AlhambraScoringAndroid.GamePlay
                 bazaarsMinimumNumber += GetMinimumNumberFromCount(bazaarsTotalPoints, 24);
                 bazaarsTotalPointsSum += bazaarsTotalPoints;
             }
-            if (bazaarsTotalPointsSum > 192)
+            if (Settings.IsSet(SettingsType.ValidateBazaarsPoints) && bazaarsTotalPointsSum > 192)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_bazaars_points_exceed));
-            if (bazaarsMinimumNumber > 8)
-                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_bazaars_number_exceed));
 
             //TODO get miminum counters number from points combination, compare all to max 20
             IEnumerable<int> artOfTheMoorsPlayerAvailablePoints = new List<int>() { 0, 3, 6, 10, 15, 21 }.GetMatrixSums(7).Distinct();
 
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (!artOfTheMoorsPlayerAvailablePoints.Contains(scoreData[i].ArtOfTheMoorsPoints))
+                if (Settings.IsSet(SettingsType.ValidateCultureCounters) && !artOfTheMoorsPlayerAvailablePoints.Contains(scoreData[i].ArtOfTheMoorsPoints))
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_culture_counters_player_mismatch), GetPlayer(i + 1).Name));
 
                 if (PreviousRoundScoring != null)
                 {
                     int previousArtOfTheMoorsPoints = PreviousRoundScoring[i].ArtOfTheMoorsPoints;
-                    if (scoreData[i].ArtOfTheMoorsPoints < previousArtOfTheMoorsPoints || !artOfTheMoorsPlayerAvailablePoints.Contains(scoreData[i].ArtOfTheMoorsPoints - previousArtOfTheMoorsPoints))
+                    if (Settings.IsSet(SettingsType.ValidateCultureCountersPrevious) && (scoreData[i].ArtOfTheMoorsPoints < previousArtOfTheMoorsPoints || !artOfTheMoorsPlayerAvailablePoints.Contains(scoreData[i].ArtOfTheMoorsPoints - previousArtOfTheMoorsPoints)))
                         return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_culture_counters_player_previous_mismatch), GetPlayer(i + 1).Name));
                 }
             }
 
-            if (scoreData.Sum(p => p.FalconsBlackNumber) > 5)
+            if (Settings.IsSet(SettingsType.ValidateFalcons) && scoreData.Sum(p => p.FalconsBlackNumber) > 5)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_falcons_number_exceed));
-            if (scoreData.Sum(p => p.FalconsBrownNumber) > 5)
+            if (Settings.IsSet(SettingsType.ValidateFalcons) && scoreData.Sum(p => p.FalconsBrownNumber) > 5)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_brown_falcons_number_exceed));
-            if (scoreData.Sum(p => p.FalconsWhiteNumber) > 5)
+            if (Settings.IsSet(SettingsType.ValidateFalcons) && scoreData.Sum(p => p.FalconsWhiteNumber) > 5)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_white_falcons_number_exceed));
 
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (scoreData[i].WatchtowersNumber > scoreData[i].WallLength)
+                if (Settings.IsSet(SettingsType.ValidateWatchtowerWall) && scoreData[i].WatchtowersNumber > scoreData[i].WallLength)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_watchtower_wall_player_exceed), GetPlayer(i + 1).Name));
             }
-            if (scoreData.Sum(p => p.WatchtowersNumber) > 18)
+            if (Settings.IsSet(SettingsType.ValidateWatchtower) && scoreData.Sum(p => p.WatchtowersNumber) > 18)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_watchtower_number_exceed));
 
-            if (scoreData.Sum(p => p.MedinasNumber) > 9)
+            if (Settings.IsSet(SettingsType.ValidateMedin) && scoreData.Sum(p => p.MedinasNumber) > 9)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_medin_number_exceed));
 
-            if (!ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => p.MedinasNumber, 9, Context.Resources.GetString(Resource.String.message_medin_number_previous_exceed)))
+            if (Settings.IsSet(SettingsType.ValidateMedinPrevious) && !ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => p.MedinasNumber, 9, Context.Resources.GetString(Resource.String.message_medin_number_previous_exceed)))
                 return false;
 
             for (int i = 0; i < PlayersCount; i++)
-                if (scoreData[i].BuildingsWithoutServantTile > scoreData[i].AllBuildingsCount
-                    || (previousBeforeScoreData != null && previousBeforeScoreData[i].BuildingsWithoutServantTile > scoreData[i].AllBuildingsCount))
+                if (Settings.IsSet(SettingsType.ValidateServants) && (scoreData[i].BuildingsWithoutServantTile > scoreData[i].AllBuildingsCount
+                    || (previousBeforeScoreData != null && previousBeforeScoreData[i].BuildingsWithoutServantTile > scoreData[i].AllBuildingsCount)))
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_servants_buildings_player_exceed), GetPlayer(i + 1).Name));
 
             int faceDownFruitsSum = scoreData.Sum(p => p.FaceDownFruitsCount);
@@ -566,9 +559,9 @@ namespace AlhambraScoringAndroid.GamePlay
                     allFruits += 16;
                 allFruits += scoreData[i].FaceDownFruitsCount;
             }
-            if (faceDownFruitsSum > 35)
+            if (Settings.IsSet(SettingsType.ValidateSingleFruits) && faceDownFruitsSum > 35)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_single_fruits_number_exceed));
-            if (allFruits > 56)
+            if (Settings.IsSet(SettingsType.ValidateFruits) && allFruits > 56)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_fruits_number_exceed));
 
             List<int> wishingWellsAvailablePoints = new List<int>() { 3, 3, 4, 4, 5, 5 }.GetCombinationsSums();
@@ -576,10 +569,10 @@ namespace AlhambraScoringAndroid.GamePlay
             int wishingWellsPointsSum = scoreData.Sum(p => p.WishingWellsPoints);
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (!wishingWellsAvailablePoints.Contains(scoreData[i].WishingWellsPoints))
+                if (Settings.IsSet(SettingsType.ValidateFontainsPlayer) && !wishingWellsAvailablePoints.Contains(scoreData[i].WishingWellsPoints))
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_fontains_player_points_mismatch), GetPlayer(i + 1).Name));
             }
-            if (wishingWellsPointsSum > 24)
+            if (Settings.IsSet(SettingsType.ValidateFontains) && wishingWellsPointsSum > 24)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_fontains_points_exceed));
 
             int playerProjectsMax = 3;
@@ -588,13 +581,13 @@ namespace AlhambraScoringAndroid.GamePlay
 
             foreach (BuildingType building in BuildingsOrder)
             {
-                if (scoreData.Count(p => p.CompletedProjects[building]) > playerProjectsMax)
+                if (Settings.IsSet(SettingsType.ValidateMultipleCompletedProject) && scoreData.Count(p => p.CompletedProjects[building]) > playerProjectsMax)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_multiple_completed_project), building.GetEnumDescription(Context.Resources)));
 
                 if (PreviousRoundScoring != null)
                 {
                     for (int i = 0; i < PlayersCount; i++)
-                        if (PreviousRoundScoring[i].CompletedProjects[building] && !scoreData[i].CompletedProjects[building])
+                        if (Settings.IsSet(SettingsType.ValidatePreviousCompletedProject) && PreviousRoundScoring[i].CompletedProjects[building] && !scoreData[i].CompletedProjects[building])
                             return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_previous_completed_project), GetPlayer(i + 1).Name, building.GetEnumDescription(Context.Resources)));
                 }
             }
@@ -602,18 +595,18 @@ namespace AlhambraScoringAndroid.GamePlay
             int animalsPointsSum = scoreData.Sum(p => p.AnimalsPoints);
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (scoreData[i].AnimalsPoints > scoreData[i].BuildingsCount[BuildingType.Garden] * 3)
+                if (Settings.IsSet(SettingsType.ValidateAnimalsPlayer) && scoreData[i].AnimalsPoints > scoreData[i].BuildingsCount[BuildingType.Garden] * 3)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_animals_player_exceed), GetPlayer(i + 1).Name));
             }
-            if (animalsPointsSum > 24)
+            if (Settings.IsSet(SettingsType.ValidateAnimals) && animalsPointsSum > 22)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_animals_number_exceed));
 
-            if (!ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => p.AnimalsPoints, 24, Context.Resources.GetString(Resource.String.message_animals_number_previous_exceed)))
+            if (Settings.IsSet(SettingsType.ValidateAnimalsPrevious) && !ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => p.AnimalsPoints, 24, Context.Resources.GetString(Resource.String.message_animals_number_previous_exceed)))
                 return false;
 
             foreach (BuildingType building in BuildingsOrder)
             {
-                if (scoreData.Count(p => p.OwnedSemiBuildings[building]) > 1)
+                if (Settings.IsSet(SettingsType.ValidateMultipleSemiBuildings) && scoreData.Count(p => p.OwnedSemiBuildings[building]) > 1)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_multiple_semi_buildings), building.GetEnumDescription(Context.Resources)));
             }
 
@@ -622,7 +615,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 foreach (BuildingType building in BuildingsOrder)
                 {
                     for (int i = 0; i < PlayersCount; i++)
-                        if (PreviousRoundScoring[i].OwnedSemiBuildings[building] && !scoreData[i].OwnedSemiBuildings[building])
+                        if (Settings.IsSet(SettingsType.ValidatePreviousSemiBuildings) && PreviousRoundScoring[i].OwnedSemiBuildings[building] && !scoreData[i].OwnedSemiBuildings[building])
                             return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_previous_semi_buildings), GetPlayer(i + 1).Name, building.GetEnumDescription(Context.Resources)));
                 }
             }
@@ -635,28 +628,26 @@ namespace AlhambraScoringAndroid.GamePlay
                 blackDicesMinimumNumber += GetMinimumNumberFromCount(blackDiceTotalPips, 6);
                 blackDiceTotalPipsSum += blackDiceTotalPips;
             }
-            if (blackDiceTotalPipsSum > 18)
+            if (Settings.IsSet(SettingsType.ValidateBlackDicePips) && blackDiceTotalPipsSum > 18)
                 return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_dice_pips_number_exceed));
-            if (blackDicesMinimumNumber > 3)
-                return ValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_black_dices_number_exceed));
 
-            if (!ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => GetMinimumNumberFromCount(p.BlackDiceTotalPips, 6), 3, Context.Resources.GetString(Resource.String.message_black_dices_number_previous_exceed)))
+            if (Settings.IsSet(SettingsType.ValidateBlackDicesPrevious) && !ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => GetMinimumNumberFromCount(p.BlackDiceTotalPips, 6), 3, Context.Resources.GetString(Resource.String.message_black_dices_number_previous_exceed)))
                 return false;
 
             foreach (BuildingType building in BuildingsOrder)
             {
                 for (int i = 0; i < PlayersCount; i++)
                 {
-                    if (scoreData[i].ExtensionsBuildingsCount[building] > scoreData[i].BuildingsCount[building])
+                    if (Settings.IsSet(SettingsType.ValidateExtensionsBuildings) && scoreData[i].ExtensionsBuildingsCount[building] > scoreData[i].BuildingsCount[building])
                         return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_extensions_buildings_player_exceed), GetPlayer(i + 1).Name, building.GetEnumDescription(Context.Resources)));
                 }
-                if (scoreData.Sum(p => p.ExtensionsBuildingsCount[building]) > 2)
+                if (Settings.IsSet(SettingsType.ValidateExtensions) && scoreData.Sum(p => p.ExtensionsBuildingsCount[building]) > 2)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_extensions_exceed), building.GetEnumDescription(Context.Resources)));
             }
 
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (scoreData[i].HandymenTilesHighestNumber > 8)
+                if (Settings.IsSet(SettingsType.ValidateHandymen) && scoreData[i].HandymenTilesHighestNumber > 8)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_handymen_exceed), GetPlayer(i + 1).Name));
             }
 
@@ -664,7 +655,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (!treasuresAvailableValues.Contains(scoreData[i].TreasuresValue))
+                if (Settings.IsSet(SettingsType.ValidateTreasuresPoints) && !treasuresAvailableValues.Contains(scoreData[i].TreasuresValue))
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_treasures_points_player_mismatch), GetPlayer(i + 1).Name));
             }
 
@@ -672,7 +663,7 @@ namespace AlhambraScoringAndroid.GamePlay
             {
                 int wallLength = scoreData[i].WallLength;
                 int secondLongestWallLength = scoreData[i].SecondLongestWallLength;
-                if (wallLength < secondLongestWallLength)
+                if (Settings.IsSet(SettingsType.ValidateSecondLongestWall) && wallLength < secondLongestWallLength)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_second_longest_wall_player_exceed), GetPlayer(i + 1).Name));
             }
 
@@ -680,18 +671,18 @@ namespace AlhambraScoringAndroid.GamePlay
             {
                 int playersBuildings = scoreData.Sum(p => p.GranadaBuildingsCount[building]);
 
-                if (playersBuildings > 6)
+                if (Settings.IsSet(SettingsType.ValidateBuildingsNumber) && playersBuildings > 6)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_building_number_exceed), building.GetEnumDescription(Context.Resources)));
 
-                if (!ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => p.GranadaBuildingsCount[building], 6, String.Format(Context.Resources.GetString(Resource.String.message_building_number_previous_exceed), building.GetEnumDescription(Context.Resources))))
+                if (Settings.IsSet(SettingsType.ValidateBuildingsNumberPrevious) && !ValidatePreviousAvailableLimit(RoundNumber, scoreData, p => p.GranadaBuildingsCount[building], 6, String.Format(Context.Resources.GetString(Resource.String.message_building_number_previous_exceed), building.GetEnumDescription(Context.Resources))))
                     return false;
             }
 
             for (int i = 0; i < PlayersCount; i++)
             {
-                if (scoreData[i].WallMoatCombinationLength > scoreData[i].WallLength)
+                if (Settings.IsSet(SettingsType.ValidateMoatwall) && scoreData[i].WallMoatCombinationLength > scoreData[i].WallLength)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_moatwall_wall_player), GetPlayer(i + 1).Name));
-                if (scoreData[i].WallMoatCombinationLength > scoreData[i].MoatLength)
+                if (Settings.IsSet(SettingsType.ValidateMoatwall) && scoreData[i].WallMoatCombinationLength > scoreData[i].MoatLength)
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_moatwall_moat_player), GetPlayer(i + 1).Name));
             }
 

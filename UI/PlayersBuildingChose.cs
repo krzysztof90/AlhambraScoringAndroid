@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using AlhambraScoringAndroid.Options;
+using Android.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
@@ -30,7 +31,7 @@ namespace AlhambraScoringAndroid.UI
         {
         }
 
-        public PlayersBuildingChose(Context context, string title, int min, int max, List<int> exceptNumbers, Dictionary<int, string> playersToShow) : this(context)
+        public PlayersBuildingChose(Context context, string title, int min, int max, List<int> exceptNumbers, Dictionary<int, string> playersToShow, SettingsType? validationSettingsType) : this(context)
         {
             TextView titleView = FindViewById<TextView>(Resource.Id.title);
             titleView.Text = title;
@@ -40,8 +41,8 @@ namespace AlhambraScoringAndroid.UI
                 if (playersToShow.ContainsKey(i + 1))
                 {
                     PlayersPanels[i].SetLabel(playersToShow[i + 1]);
-                    PlayersPanels[i].SetNumberRange(min, max);
-                    PlayersPanels[i].SetNumberExceptions(exceptNumbers);
+                    PlayersPanels[i].SetNumberRange(min, max, validationSettingsType);
+                    PlayersPanels[i].SetNumberExceptions(exceptNumbers, validationSettingsType);
                 }
                 else
                     PlayersPanels[i].Visibility = ViewStates.Gone;

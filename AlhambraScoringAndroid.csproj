@@ -77,7 +77,11 @@
     <Compile Include="Attributes\DescriptionResourceAttribute.cs" />
     <Compile Include="Attributes\MultipleImageAttribute.cs" />
     <Compile Include="Attributes\NewScoreCardAttribute.cs" />
-    <Compile Include="DialogInterfaceOnClickListener.cs" />
+    <Compile Include="Attributes\SettingNameAttribute.cs" />
+    <Compile Include="Options\Settings.cs" />
+    <Compile Include="Options\SettingsType.cs" />
+    <Compile Include="UI\Activities\SettingsActivity.cs" />
+    <Compile Include="UI\DialogInterfaceOnClickListener.cs" />
     <Compile Include="GamePlay\CaliphsGuidelines.cs" />
     <Compile Include="GamePlay\GranadaBuildingType.cs" />
     <Compile Include="GamePlay\GranadaOption.cs" />
@@ -92,12 +96,13 @@
     <Compile Include="GamePlay\ScoreType.cs" />
     <Compile Include="Attributes\ImageAttribute.cs" />
     <Compile Include="GamePlay\SetupInstructions.cs" />
-    <Compile Include="NumberFilter.cs" />
-    <Compile Include="TextFilter.cs" />
+    <Compile Include="UI\InputFilters\NumberFilter.cs" />
+    <Compile Include="UI\InputFilters\TextFilter.cs" />
     <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="Tools\Enums\HighestLowest.cs" />
     <Compile Include="Tools\Enums\HorizontalVertical.cs" />
     <Compile Include="Tools\Enums\UpDown.cs" />
+    <Compile Include="UI\Activities\AboutActivity.cs" />
     <Compile Include="UI\Activities\BaseActivity.cs" />
     <Compile Include="UI\Activities\CharacterTheWiseManActivity.cs" />
     <Compile Include="UI\Activities\GameDetailsActivity.cs" />
@@ -113,7 +118,7 @@
     <Compile Include="UI\Activities\GameSetupInstructionActivity.cs" />
     <Compile Include="UI\Activities\GranadaBuildingsNumberActivity.cs" />
     <Compile Include="UI\Activities\MainActivity.cs" />
-    <Compile Include="MinMaxFilter.cs" />
+    <Compile Include="UI\InputFilters\MinMaxFilter.cs" />
     <Compile Include="MyApplication.cs" />
     <Compile Include="UI\Activities\MedinaNumberActivity.cs" />
     <Compile Include="UI\Activities\NewGameActivity.cs" />
@@ -183,6 +188,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData">
       <Version>2.3.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>1.6.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.3.0.1" />
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.UI" Version="1.0.0.8" />
@@ -542,6 +550,22 @@
   <ItemGroup>
     <AndroidResource Include="Resources\values-pl\strings.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_about.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\universal_strings.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_settings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

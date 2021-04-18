@@ -1,6 +1,6 @@
 ﻿using Android.Content;
 
-namespace AlhambraScoringAndroid
+namespace AlhambraScoringAndroid.UI
 {
     public class DialogInterfaceOnClickListener : Java.Lang.Object, IDialogInterfaceOnClickListener
     {

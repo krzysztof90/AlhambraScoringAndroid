@@ -42,6 +42,16 @@ namespace AlhambraScoringAndroid.UI.Activities
                 Application.ShowHistory(this);
                 return true;
             }
+            if (id == Resource.Id.action_settings)
+            {
+                Application.ShowSettings();
+                return true;
+            }
+            if (id == Resource.Id.action_about)
+            {
+                Application.ShowAbout();
+                return true;
+            }
 
             return base.OnOptionsItemSelected(item);
         }

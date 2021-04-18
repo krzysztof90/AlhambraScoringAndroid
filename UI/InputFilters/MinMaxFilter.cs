@@ -1,14 +1,15 @@
-﻿using Android.Content;
+﻿using AlhambraScoringAndroid.Options;
+using Android.Content;
 using System;
 
-namespace AlhambraScoringAndroid
+namespace AlhambraScoringAndroid.InputFilters
 {
     public class MinMaxFilter : TextFilter
     {
         private readonly int Min;
         private readonly int Max;
 
-        public MinMaxFilter(Context context, int minValue, int maxValue) : base(context)
+        public MinMaxFilter(Context context, int minValue, int maxValue, SettingsType? validationSettingsType) : base(context, validationSettingsType)
         {
             Min = minValue;
             Max = maxValue;
@@ -16,7 +17,7 @@ namespace AlhambraScoringAndroid
 
         protected override string ValidationMessage => System.String.Format(Context.Resources.GetString(Resource.String.allowed_range), Min, Max);
 
-        public override bool ValidateNumberRange(string text, bool validateFull, int? defaultValue = null, string fieldName = null)
+        protected override bool ValidateNumber(string text, bool validateFull, int? defaultValue = null, string fieldName = null)
         {
             if (Int32.TryParse(text, out int input))
             {

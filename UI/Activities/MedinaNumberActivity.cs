@@ -1,4 +1,5 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
+using AlhambraScoringAndroid.Options;
 using AlhambraScoringAndroid.Tools;
 using Android.App;
 using Android.OS;
@@ -23,7 +24,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
 
-            PlayersBuildingChose playersPanel = new PlayersBuildingChose(this, Resources.GetString(Resource.String.medina), 2, 10, new List<int>(), tiePlayerNumbers.ToDictionary(p => p, p => Game.GetPlayer(p).Name));
+            PlayersBuildingChose playersPanel = new PlayersBuildingChose(this, Resources.GetString(Resource.String.medina), 2, 10, new List<int>(), tiePlayerNumbers.ToDictionary(p => p, p => Game.GetPlayer(p).Name), SettingsType.ValidateBuildingsPrice);
             container.AddView(playersPanel);
             container.RequestLayout();
 

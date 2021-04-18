@@ -1,4 +1,5 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
+using AlhambraScoringAndroid.Options;
 using AlhambraScoringAndroid.Tools;
 using Android.App;
 using Android.OS;
@@ -29,7 +30,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 PlayersBuildingChose playersPanel = null;
                 if (tiePlayerNumbers[building].Count != 0)
                 {
-                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(Resources), 2, 12, new List<int>() { 3, 5, 7, 9, 11 }, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name));
+                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(Resources), 2, 12, new List<int>() { 3, 5, 7, 9, 11 }, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name), SettingsType.ValidateBuildingsPrice);
                     container.AddView(playersPanel);
                     container.RequestLayout();
                 }
