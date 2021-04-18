@@ -15,6 +15,8 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : Application
     {
+        //TODO paypal, copyrights do about
+        //TODO BGG
         //TODO przezroczyste obrazki
         //TODO minSdkVersion
         //TODO restore state after application close

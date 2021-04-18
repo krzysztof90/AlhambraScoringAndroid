@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    //TODO instrukcja przygotowania gry + rund w zależności od wybranych modułów
+    //TODO instrukcja przygotowania gry + rund w zależności od wybranych modułów. Instrukcja o czym pamiętać w trakcie gry
     [Activity(Label = "@string/setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameSetupInstructionActivity : BaseActivity
     {
@@ -35,7 +35,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupTiles, SetupInstructions.ShuffleBuildingTiles, Game.GranadaOption != GranadaOption.Alone);
             AddSetupInstruction(setupTiles, SetupInstructions.GranadaShuffleBuildingTiles, Game.GranadaOption != GranadaOption.Without);
             AddSetupInstruction(setupTiles, SetupInstructions.PlaceBuildings, Game.GranadaOption != GranadaOption.Alone);
-            AddSetupInstruction(setupCards, SetupInstructions.GiveBuildingsToDirk, Game.InvolvedDirk);
+            AddSetupInstruction(setupTiles, SetupInstructions.GiveBuildingsToDirk, Game.InvolvedDirk);
             AddSetupInstruction(setupTiles, SetupInstructions.GranadaPlaceBuildings, Game.GranadaOption != GranadaOption.Without);
             AddSetupInstruction(setupTiles, SetupInstructions.ShuffleSquares, Game.HasModule(ExpansionModule.ExpansionSquares));
             AddSetupInstruction(setupTiles, SetupInstructions.ShuffleWatchtowers, Game.HasModule(ExpansionModule.ExpansionWatchtowers));
