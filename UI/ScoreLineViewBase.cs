@@ -68,6 +68,7 @@ namespace AlhambraScoringAndroid.UI
             set
             {
                 SetValue(value);
+                AssignStoredValue();
             }
         }
     }

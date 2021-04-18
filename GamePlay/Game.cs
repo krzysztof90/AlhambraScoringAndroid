@@ -372,6 +372,8 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public bool ValidateScore(List<PlayerScoreData> scoreData)
         {
+            //TODO to co walidowane może być wyłączone w ustawieniach
+
             List<PlayerScoreData> previousBeforeScoreData = null;
             if (RoundNumber == 3 && ThirdBeforeRoundScoring != null)
                 previousBeforeScoreData = ThirdBeforeRoundScoring;

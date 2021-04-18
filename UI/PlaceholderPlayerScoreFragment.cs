@@ -359,8 +359,6 @@ namespace AlhambraScoringAndroid.UI
             residentialAreaNumericUpDown.SetNumberRange(0, 6);
             wallMoatCombinationNumericUpDown.SetNumberRange(0, Math.Min(Game.WallsMaxLength, Game.MoatMaxLength));
 
-            VisibleSecondLongestWall();
-
             AddConditionToVisible(wallsCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
             AddConditionToVisible(pavilionCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
             AddConditionToVisible(seraglioCountNumericUpDown, Game.GranadaOption != GranadaOption.Alone);
@@ -552,6 +550,8 @@ namespace AlhambraScoringAndroid.UI
                 ownedSemiBuildingGardenCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Garden];
                 ownedSemiBuildingTowerCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Tower];
             }
+
+            VisibleSecondLongestWall();
         }
 
         public PlaceholderPlayerScoreFragment(int _index, Game game, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, adapter)

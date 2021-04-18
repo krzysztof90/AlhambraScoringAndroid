@@ -10,7 +10,7 @@ namespace AlhambraScoringAndroid.UI
     public abstract class PlaceholderPlayerScoreFragmentBase : AndroidX.Fragment.App.Fragment
     {
         private readonly PlayersScoreSectionsPagerAdapter Adapter;
-        
+
         public int PlayerNumber { get; private set; }
         protected Game Game { get; private set; }
 
@@ -30,14 +30,14 @@ namespace AlhambraScoringAndroid.UI
         public PlaceholderPlayerScoreFragmentBase(int index, Game game, PlayersScoreSectionsPagerAdapter adapter)
         {
             Adapter = adapter;
-            
+
             PlayerNumber = index;
             Game = game;
             Controls = new List<IScoreLineView>();
 
             IsDirk = Game.GetPlayer(PlayerNumber).Dirk;
             IsFinalRound = Game.ScoreRound == ScoringRound.Third;
-            PreviousRoundScoring = Game.PreviousRoundScoring?[PlayerNumber-1];
+            PreviousRoundScoring = Game.PreviousRoundScoring?[PlayerNumber - 1];
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -57,8 +57,8 @@ namespace AlhambraScoringAndroid.UI
 
             CreateControls();
             AddControls();
-            SetControlsProperties();
             InitializeControls();
+            SetControlsProperties();
 
             Button submitButton = Root.FindViewById<Button>(Resource.Id.submitButton);
             submitButton.Click += new EventHandler((object sender, EventArgs e) =>
