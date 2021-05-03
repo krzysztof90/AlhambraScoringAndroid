@@ -78,7 +78,6 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupOther, SetupInstructions.DealMasterBuilders, Game.HasModule(ExpansionModule.ExpansionMasterBuilders));
             AddSetupInstruction(setupOther, SetupInstructions.ShuffleInvasion, Game.HasModule(ExpansionModule.ExpansionInvaders));
             AddSetupInstruction(setupOther, SetupInstructions.ShuffleScout, Game.HasModule(ExpansionModule.ExpansionInvaders));
-            AddSetupInstruction(setupOther, SetupInstructions.ShuffleNewScoreCards, Game.HasModule(ExpansionModule.ExpansionNewScoreCards));
             AddSetupInstruction(setupOther, SetupInstructions.PlacePowerOfSultan, Game.HasModule(ExpansionModule.ExpansionPowerOfSultan));
             AddSetupInstruction(setupOther, SetupInstructions.ShuffleCaravanserai, Game.HasModule(ExpansionModule.ExpansionCaravanserai));
             AddSetupInstruction(setupOther, SetupInstructions.PlaceCaravanserai, Game.HasModule(ExpansionModule.ExpansionCaravanserai));

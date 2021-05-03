@@ -113,8 +113,6 @@ namespace AlhambraScoringAndroid.GamePlay
         PlaceTraderTiles,
         [DescriptionResourceAttribute(Resource.String.instruction_place_treasure_chamber)]
         PlaceTreasureChamber,
-        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_new_score_cards)]
-        ShuffleNewScoreCards,
         [DescriptionResourceAttribute(Resource.String.instruction_place_power_of_sultan)]
         PlacePowerOfSultan,
         [DescriptionResourceAttribute(Resource.String.instruction_place_caravanserai)]

@@ -245,7 +245,6 @@
   <string name="instruction_place_trader">Place citizens next to the building market</string>
   <string name="instruction_place_trader_tiles">Each player places trader tiles on starting tile</string>
   <string name="instruction_place_treasure_chamber">Place treasure chamber. Place treasure chests in the bag. Draw 4 chests and place in rooms</string>
-  <string name="instruction_shuffle_new_score_cards">Draw 3 score cards</string>
   <string name="instruction_place_power_of_sultan">Place Power of Sultan\'s marker cubes and die next to to the building market</string>
   <string name="instruction_place_caravanserai">Place caravanserai marker cubes next to caravanserai cards</string>
   <string name="instruction_place_art_of_the_moors">Place culture counters by the number on the reverse side. Place marker cubes and docking strips next to them</string>

@@ -245,7 +245,6 @@
   <string name="instruction_place_trader">Połóż obywateli przy giełdzie budynków</string>
   <string name="instruction_place_trader_tiles">Każdy gracz kładzie kafelek handlowy na kafelku startowym</string>
   <string name="instruction_place_treasure_chamber">Połóż treasure chamber. Połóż skrzynie do worka. Wylosuj 4 skrzynie i umieść w pokojach</string>
-  <string name="instruction_shuffle_new_score_cards">Wylosuj 3 karty nowych punktów</string>
   <string name="instruction_place_power_of_sultan">Power of Sultan znaczniki i kość połóż przy giełdzie budynków</string>
   <string name="instruction_place_caravanserai">Połóż znaczniki caravanserai przy kartach caravanserai</string>
   <string name="instruction_place_art_of_the_moors">Połóż liczniki kultury. Połóż znaczniki i docking strips obok nich</string>
