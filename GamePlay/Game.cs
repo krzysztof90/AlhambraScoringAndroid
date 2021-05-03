@@ -195,6 +195,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public int PlayersCount => Players.Count;
         public bool InvolvedDirk => Players.Any(p => p.Dirk);
+        public int PlayersCountWithoutDirk => Players.Count - (InvolvedDirk ? 1 : 0);
 
         public bool GameInProgress => (ScoreRound != ScoringRound.First || (Players != null && Players.Sum(p => p.Score) != 0)) && !Saved;
 

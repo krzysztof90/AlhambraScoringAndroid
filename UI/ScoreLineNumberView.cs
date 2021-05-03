@@ -24,6 +24,8 @@ namespace AlhambraScoringAndroid.UI
 
         protected override int ResourceLayout => Resource.Layout.view_game_score_line_number;
 
+        public override bool Enabled { get => editText.Enabled; set => editText.Enabled = value; }
+
         protected override void CreateControls()
         {
             textView = FindViewById<TextView>(Resource.Id.scoreLineLabel);

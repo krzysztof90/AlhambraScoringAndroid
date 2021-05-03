@@ -25,6 +25,7 @@ namespace AlhambraScoringAndroid.UI
         public abstract void SetColor(ColorStateList color);
         protected abstract void SetValue(T? value);
         protected abstract T? GetValue();
+        public abstract new bool Enabled { get; set; }
 
         public ScoreLineViewBase(Context context, IAttributeSet attrs) : base(context, attrs)
         {
@@ -63,7 +64,7 @@ namespace AlhambraScoringAndroid.UI
         {
             get
             {
-                return StoredValue ?? DefaultValue;
+                return (Enabled && StoredValue != null) ? (T)StoredValue : DefaultValue;
             }
             set
             {

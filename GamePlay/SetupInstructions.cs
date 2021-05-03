@@ -1,5 +1,4 @@
-﻿
-using AlhambraScoringAndroid.Attributes;
+﻿using AlhambraScoringAndroid.Attributes;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
@@ -23,6 +22,8 @@ namespace AlhambraScoringAndroid.GamePlay
         PutWishingWellTiles,
         [DescriptionResourceAttribute(Resource.String.instruction_shuffle_building_tiles)]
         ShuffleBuildingTiles,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_trader)]
+        DealTrader,
         [DescriptionResourceAttribute(Resource.String.instruction_place_buildings)]
         PlaceBuildings,
         [DescriptionResourceAttribute(Resource.String.instruction_give_buildings_to_dirk)]
@@ -76,20 +77,20 @@ namespace AlhambraScoringAndroid.GamePlay
         [DescriptionResourceAttribute(Resource.String.instruction_join_piles)]
         JoinPiles,
 
-        [DescriptionResourceAttribute(Resource.String.instruction_bonus_cards_deal_3)]
-        BonusCardsDeal3,
-        [DescriptionResourceAttribute(Resource.String.instruction_bonus_cards_deal_2)]
-        BonusCardsDeal2,
-        [DescriptionResourceAttribute(Resource.String.instruction_bonus_cards_deal_1)]
-        BonusCardsDeal1,
-        [DescriptionResourceAttribute(Resource.String.instruction_thieves_deal_4)]
-        ThievesDeal4,
-        [DescriptionResourceAttribute(Resource.String.instruction_thieves_deal_3)]
-        ThievesDeal3,
-        [DescriptionResourceAttribute(Resource.String.instruction_thieves_deal_2)]
-        ThievesDeal2,
-        [DescriptionResourceAttribute(Resource.String.instruction_master_builders_deal)]
-        MasterBuildersDeal,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_bonus_cards_3)]
+        DealBonusCards3,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_bonus_cards_2)]
+        DealBonusCards2,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_bonus_cards_1)]
+        DealBonusCards1,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_thieves_4)]
+        DealThieves4,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_thieves_3)]
+        DealThieves3,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_thieves_2)]
+        DealThieves2,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_master_builders)]
+        DealMasterBuilders,
 
         [DescriptionResourceAttribute(Resource.String.instruction_shuffle_invasion)]
         ShuffleInvasion,
@@ -97,5 +98,78 @@ namespace AlhambraScoringAndroid.GamePlay
         ShuffleScout,
         [DescriptionResourceAttribute(Resource.String.instruction_shuffle_caravanserai)]
         ShuffleCaravanserai,
+
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_vizier)]
+        DealVizier,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_city_gates)]
+        PlaceCityGates,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_city_walls)]
+        PlaceCityWalls,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_change)]
+        PlaceChange,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_trader)]
+        PlaceTrader,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_trader_tiles)]
+        PlaceTraderTiles,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_treasure_chamber)]
+        PlaceTreasureChamber,
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_new_score_cards)]
+        ShuffleNewScoreCards,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_power_of_sultan)]
+        PlacePowerOfSultan,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_caravanserai)]
+        PlaceCaravanserai,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_art_of_the_moors)]
+        PlaceArtOfTheMoors,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_falcons)]
+        PlaceFalcons,
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_building_sites)]
+        ShuffleBuildingSites,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_exchange_certificate)]
+        DealExchangeCertificate,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_exchange_certificate_1)]
+        PlaceExchangeCertificate1,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_exchange_certificate_2)]
+        PlaceExchangeCertificate2,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_exchange_certificate_3)]
+        PlaceExchangeCertificate3,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_magical_buildings)]
+        PlaceMagicalBuildings,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_new_building_grounds)]
+        PlaceNewBuildingGrounds,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_major_construction_marker)]
+        DealMajorConstructionMarker,
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_servant_tiles)]
+        ShuffleServantTiles,
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_orchards_boards)]
+        ShuffleOrchardsBoards,
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_orchards_fruits)]
+        ShuffleOrchardsFruits,
+        [DescriptionResourceAttribute(Resource.String.instruction_remove_craftsmen_5)]
+        RemoveCraftsmen5,
+        [DescriptionResourceAttribute(Resource.String.instruction_remove_craftsmen_6)]
+        RemoveCraftsmen6,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_craftsmen)]
+        DealCraftsmen,
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_project_tiles)]
+        ShuffleProjectTiles,
+        [DescriptionResourceAttribute(Resource.String.instruction_remove_project_tiles)]
+        RemoveProjectTiles,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_color_tiles)]
+        PlaceColorTiles,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_palace_designers)]
+        DealPalaceDesigners,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_palace_designers)]
+        PlacePalaceDesigners,
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_animals)]
+        ShuffleAnimals,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_handymen)]
+        DealHandymen,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_personal_building_market)]
+        DealPersonalBuildingMarket,
+        [DescriptionResourceAttribute(Resource.String.instruction_deal_treasures)]
+        DealTreasures,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_missions)]
+        PlaceMissions,
     }
 }

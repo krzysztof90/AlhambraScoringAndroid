@@ -17,6 +17,8 @@ namespace AlhambraScoringAndroid.UI
 
         protected override int ResourceLayout => Resource.Layout.view_game_score_line_checkbox;
 
+        public override bool Enabled { get => scoreLineCheckBox.Enabled; set => scoreLineCheckBox.Enabled = value; }
+
         protected override void CreateControls()
         {
             scoreLineCheckBox = FindViewById<CheckBox>(Resource.Id.scoreLineCheckBox);

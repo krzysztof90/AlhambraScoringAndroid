@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    //TODO instrukcja przygotowania gry + rund w zależności od wybranych modułów. Instrukcja o czym pamiętać w trakcie gry
+    //TODO instrukcja przygotowania rund. Instrukcja o czym pamiętać w trakcie gry
     [Activity(Label = "@string/setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameSetupInstructionActivity : BaseActivity
     {
@@ -22,7 +22,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             List<SetupInstructions> setupTiles = new List<SetupInstructions>();
             List<SetupInstructions> setupCards = new List<SetupInstructions>();
-            //TODO pozostałe
+            List<SetupInstructions> setupOther = new List<SetupInstructions>();
 
             AddSetupInstruction(setupTiles, SetupInstructions.PutBuildingsOfPowerTiles, Game.HasModule(ExpansionModule.DesignerBuildingsOfPower));
             AddSetupInstruction(setupTiles, SetupInstructions.PutCampTiles, Game.HasModule(ExpansionModule.ExpansionCamps));
@@ -34,14 +34,10 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupTiles, SetupInstructions.PutWishingWellTiles, Game.HasModule(ExpansionModule.DesignerWishingWell));
             AddSetupInstruction(setupTiles, SetupInstructions.ShuffleBuildingTiles, Game.GranadaOption != GranadaOption.Alone);
             AddSetupInstruction(setupTiles, SetupInstructions.GranadaShuffleBuildingTiles, Game.GranadaOption != GranadaOption.Without);
+            AddSetupInstruction(setupTiles, SetupInstructions.DealTrader, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
             AddSetupInstruction(setupTiles, SetupInstructions.PlaceBuildings, Game.GranadaOption != GranadaOption.Alone);
             AddSetupInstruction(setupTiles, SetupInstructions.GiveBuildingsToDirk, Game.InvolvedDirk);
             AddSetupInstruction(setupTiles, SetupInstructions.GranadaPlaceBuildings, Game.GranadaOption != GranadaOption.Without);
-            AddSetupInstruction(setupTiles, SetupInstructions.ShuffleSquares, Game.HasModule(ExpansionModule.ExpansionSquares));
-            AddSetupInstruction(setupTiles, SetupInstructions.ShuffleWatchtowers, Game.HasModule(ExpansionModule.ExpansionWatchtowers));
-            AddSetupInstruction(setupTiles, SetupInstructions.ShuffleMajorConstructionProjects, Game.HasModule(ExpansionModule.DesignerMajorConstructionProjects));
-            AddSetupInstruction(setupTiles, SetupInstructions.ShuffleGateBoard, Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
-            AddSetupInstruction(setupTiles, SetupInstructions.ShuffleExtensions, Game.HasModule(ExpansionModule.DesignerExtensions));
 
             AddSetupInstruction(setupCards, SetupInstructions.RemoveCardDeck, Game.InvolvedDirk);
             AddSetupInstruction(setupCards, SetupInstructions.PutDiamondCards, Game.HasModule(ExpansionModule.ExpansionDiamonds));
@@ -59,21 +55,65 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupCards, SetupInstructions.PutMasterBuilders6, Game.HasModule(ExpansionModule.ExpansionMasterBuilders) && Game.PlayersCount == 6);
             AddSetupInstruction(setupCards, SetupInstructions.PutPowerOfSultan, Game.HasModule(ExpansionModule.ExpansionPowerOfSultan));
             AddSetupInstruction(setupCards, SetupInstructions.JoinPiles);
-            AddSetupInstruction(setupCards, SetupInstructions.BonusCardsDeal3, Game.HasModule(ExpansionModule.ExpansionBonusCards) && Game.PlayersCount == 3);
-            AddSetupInstruction(setupCards, SetupInstructions.BonusCardsDeal2, Game.HasModule(ExpansionModule.ExpansionBonusCards) && (Game.PlayersCount == 4 || Game.PlayersCount == 5));
-            AddSetupInstruction(setupCards, SetupInstructions.BonusCardsDeal1, Game.HasModule(ExpansionModule.ExpansionBonusCards) && Game.PlayersCount == 6);
-            AddSetupInstruction(setupCards, SetupInstructions.ThievesDeal4, Game.HasModule(ExpansionModule.ExpansionThieves) && Game.PlayersCount == 3);
-            AddSetupInstruction(setupCards, SetupInstructions.ThievesDeal3, Game.HasModule(ExpansionModule.ExpansionThieves) && Game.PlayersCount == 4);
-            AddSetupInstruction(setupCards, SetupInstructions.ThievesDeal2, Game.HasModule(ExpansionModule.ExpansionThieves) && (Game.PlayersCount == 5 || Game.PlayersCount == 6));
-            AddSetupInstruction(setupCards, SetupInstructions.MasterBuildersDeal, Game.HasModule(ExpansionModule.ExpansionMasterBuilders));
-            AddSetupInstruction(setupCards, SetupInstructions.ShuffleInvasion, Game.HasModule(ExpansionModule.ExpansionInvaders));
-            AddSetupInstruction(setupCards, SetupInstructions.ShuffleScout, Game.HasModule(ExpansionModule.ExpansionInvaders));
-            AddSetupInstruction(setupCards, SetupInstructions.ShuffleCaravanserai, Game.HasModule(ExpansionModule.ExpansionCaravanserai));
+
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleSquares, Game.HasModule(ExpansionModule.ExpansionSquares));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleWatchtowers, Game.HasModule(ExpansionModule.ExpansionWatchtowers));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleMajorConstructionProjects, Game.HasModule(ExpansionModule.DesignerMajorConstructionProjects));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleGateBoard, Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleExtensions, Game.HasModule(ExpansionModule.DesignerExtensions));
+
+            AddSetupInstruction(setupOther, SetupInstructions.DealVizier, Game.HasModule(ExpansionModule.ExpansionViziersFavour));
+            AddSetupInstruction(setupOther, SetupInstructions.DealBonusCards3, Game.HasModule(ExpansionModule.ExpansionBonusCards) && Game.PlayersCount == 3);
+            AddSetupInstruction(setupOther, SetupInstructions.DealBonusCards2, Game.HasModule(ExpansionModule.ExpansionBonusCards) && (Game.PlayersCount == 4 || Game.PlayersCount == 5));
+            AddSetupInstruction(setupOther, SetupInstructions.DealBonusCards1, Game.HasModule(ExpansionModule.ExpansionBonusCards) && Game.PlayersCount == 6);
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceCityGates, Game.HasModule(ExpansionModule.ExpansionCityGates));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceCityWalls, Game.HasModule(ExpansionModule.ExpansionCityWalls));
+            AddSetupInstruction(setupOther, SetupInstructions.DealThieves4, Game.HasModule(ExpansionModule.ExpansionThieves) && Game.PlayersCount == 3);
+            AddSetupInstruction(setupOther, SetupInstructions.DealThieves3, Game.HasModule(ExpansionModule.ExpansionThieves) && Game.PlayersCount == 4);
+            AddSetupInstruction(setupOther, SetupInstructions.DealThieves2, Game.HasModule(ExpansionModule.ExpansionThieves) && (Game.PlayersCount == 5 || Game.PlayersCount == 6));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceChange, Game.HasModule(ExpansionModule.ExpansionChange));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceTrader, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceTraderTiles, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceTreasureChamber, Game.HasModule(ExpansionModule.ExpansionTreasureChamber));
+            AddSetupInstruction(setupOther, SetupInstructions.DealMasterBuilders, Game.HasModule(ExpansionModule.ExpansionMasterBuilders));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleInvasion, Game.HasModule(ExpansionModule.ExpansionInvaders));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleScout, Game.HasModule(ExpansionModule.ExpansionInvaders));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleNewScoreCards, Game.HasModule(ExpansionModule.ExpansionNewScoreCards));
+            AddSetupInstruction(setupOther, SetupInstructions.PlacePowerOfSultan, Game.HasModule(ExpansionModule.ExpansionPowerOfSultan));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleCaravanserai, Game.HasModule(ExpansionModule.ExpansionCaravanserai));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceCaravanserai, Game.HasModule(ExpansionModule.ExpansionCaravanserai));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceArtOfTheMoors, Game.HasModule(ExpansionModule.ExpansionArtOfTheMoors));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceFalcons, Game.HasModule(ExpansionModule.ExpansionFalconers));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleBuildingSites, Game.HasModule(ExpansionModule.ExpansionBuildingSites));
+            AddSetupInstruction(setupOther, SetupInstructions.DealExchangeCertificate, Game.HasModule(ExpansionModule.ExpansionExchangeCertificates));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceExchangeCertificate1, Game.HasModule(ExpansionModule.ExpansionExchangeCertificates) && Game.PlayersCountWithoutDirk == 2);
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceExchangeCertificate2, Game.HasModule(ExpansionModule.ExpansionExchangeCertificates) && (Game.PlayersCountWithoutDirk == 3 || Game.PlayersCount == 4));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceExchangeCertificate3, Game.HasModule(ExpansionModule.ExpansionExchangeCertificates) && (Game.PlayersCount == 5 || Game.PlayersCount == 6));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceMagicalBuildings, Game.HasModule(ExpansionModule.QueenieMagicalBuildings));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceNewBuildingGrounds, Game.HasModule(ExpansionModule.DesignerNewBuildingGrounds));
+            AddSetupInstruction(setupOther, SetupInstructions.DealMajorConstructionMarker, Game.HasModule(ExpansionModule.DesignerMajorConstructionProjects));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleServantTiles, Game.HasModule(ExpansionModule.DesignerPalaceStaff));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleOrchardsBoards, Game.HasModule(ExpansionModule.DesignerOrchards));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleOrchardsFruits, Game.HasModule(ExpansionModule.DesignerOrchards));
+            AddSetupInstruction(setupOther, SetupInstructions.RemoveCraftsmen5, Game.HasModule(ExpansionModule.DesignerTravellingCraftsmen) && (Game.PlayersCount == 3 || Game.PlayersCount == 4));
+            AddSetupInstruction(setupOther, SetupInstructions.RemoveCraftsmen6, Game.HasModule(ExpansionModule.DesignerTravellingCraftsmen) && (Game.PlayersCount == 5 || Game.PlayersCount == 6));
+            AddSetupInstruction(setupOther, SetupInstructions.DealCraftsmen, Game.HasModule(ExpansionModule.DesignerTravellingCraftsmen));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleProjectTiles, Game.HasModule(ExpansionModule.DesignerFreshColors));
+            AddSetupInstruction(setupOther, SetupInstructions.RemoveProjectTiles, Game.HasModule(ExpansionModule.DesignerFreshColors) && Game.PlayersCount == 3);
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceColorTiles, Game.HasModule(ExpansionModule.DesignerFreshColors));
+            AddSetupInstruction(setupOther, SetupInstructions.DealPalaceDesigners, Game.HasModule(ExpansionModule.DesignerPalaceDesigners));
+            AddSetupInstruction(setupOther, SetupInstructions.PlacePalaceDesigners, Game.HasModule(ExpansionModule.DesignerPalaceDesigners));
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleAnimals, Game.HasModule(ExpansionModule.DesignerAlhambraZoo));
+            AddSetupInstruction(setupOther, SetupInstructions.DealHandymen, Game.HasModule(ExpansionModule.DesignerHandymen));
+            AddSetupInstruction(setupOther, SetupInstructions.DealPersonalBuildingMarket, Game.HasModule(ExpansionModule.FanPersonalBuildingMarket));
+            AddSetupInstruction(setupOther, SetupInstructions.DealTreasures, Game.HasModule(ExpansionModule.FanTreasures));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceMissions, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
 
             Dictionary<string, List<SetupInstructions>> setup = new Dictionary<string, List<SetupInstructions>>()
             {
                 [Resources.GetString(Resource.String.tiles)] = setupTiles,
                 [Resources.GetString(Resource.String.cards)] = setupCards,
+                [Resources.GetString(Resource.String.other)] = setupOther,
             };
 
             expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);

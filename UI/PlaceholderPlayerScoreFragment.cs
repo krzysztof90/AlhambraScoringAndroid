@@ -291,7 +291,7 @@ namespace AlhambraScoringAndroid.UI
 
         protected override void SetControlsProperties()
         {
-            blackDiceTotalPipsNumericUpDown.OnValueChange = () => { VisibleSecondLongestWall(); };
+            blackDiceTotalPipsNumericUpDown.OnValueChange = () => { EnabledSecondLongestWall(); };
 
             //TODO maximum for campsPointsNumericUpDown, mission3Adjacent2BuildingsCountNumericUpDown, mission6DoubleWallCountNumericUpDown, mission9Grids22CountNumericUpDown
             wallsCountNumericUpDown.SetNumberRange(0, Game.WallsMaxLength, SettingsType.ValidateWallLength);
@@ -468,6 +468,8 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission8PathBuildingsNumberNumericUpDown, IsFinalRound);
             AddConditionToVisible(mission9Grids22CountNumericUpDown, IsFinalRound);
 
+            AddConditionToVisible(secondLongestWallNumericUpDown, Game.HasModule(ExpansionModule.DesignerBuildingsOfPower) || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound));
+
             AddConditionToVisible(wallsCountNumericUpDown, !IsDirk);
             AddConditionToVisible(bonusCardsPavilionCountNumericUpDown, !IsDirk);
             AddConditionToVisible(bonusCardsSeraglioCountNumericUpDown, !IsDirk);
@@ -533,6 +535,7 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(mission9Grids22CountNumericUpDown, !IsDirk);
             AddConditionToVisible(moatLengthNumericUpDown, !IsDirk);
             AddConditionToVisible(wallMoatCombinationNumericUpDown, !IsDirk);
+            AddConditionToVisible(secondLongestWallNumericUpDown, !IsDirk);
 
             if (PreviousRoundScoring != null)
             {
@@ -552,16 +555,16 @@ namespace AlhambraScoringAndroid.UI
                 ownedSemiBuildingTowerCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Tower];
             }
 
-            VisibleSecondLongestWall();
+            EnabledSecondLongestWall();
         }
 
         public PlaceholderPlayerScoreFragment(int _index, Game game, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, adapter)
         {
         }
 
-        private void VisibleSecondLongestWall()
+        private void EnabledSecondLongestWall()
         {
-            secondLongestWallNumericUpDown.Visibility = BlackDiceTotalPips != 0 || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4)) ? ViewStates.Visible : ViewStates.Gone;
+            secondLongestWallNumericUpDown.Enabled = BlackDiceTotalPips != 0 || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound);
         }
 
         public int WallLength => wallsCountNumericUpDown.Value;
