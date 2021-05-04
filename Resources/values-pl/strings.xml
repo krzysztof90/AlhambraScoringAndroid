@@ -209,7 +209,7 @@
   <string name="instruction_shuffle_squares">Wymieszaj stosy skwerów</string>
   <string name="instruction_shuffle_watchtowers">Przygotuj stosy wież obserwacyjnych</string>
   <string name="instruction_shuffle_major_construction_projects">Wymieszaj kafelki major project</string>
-  <string name="instruction_shuffle_gate_board">Połóż planszę bramy. Wymiszaj kafelki z bonusami. Mury, połowy budynków i kafelki plaza połóż przy planszy bramy</string>
+  <string name="instruction_shuffle_gate_board">Połóż planszę bramy. Wymieszaj kafelki z bonusami. Mury, połowy budynków i kafelki plaza połóż przy planszy bramy</string>
   <string name="instruction_shuffle_extensions">Połóż planszę roszerzeń. Wymieszaj kafelki rozszerzeń</string>
   <string name="instruction_remove_card_deck">Usuń jeden z trzech zestawów kart</string>
   <string name="instruction_put_diamond_cards">Dodaj karty diamentów do wszystkich kart pieniędzy</string>

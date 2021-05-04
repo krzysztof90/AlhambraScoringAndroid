@@ -161,25 +161,25 @@ namespace AlhambraScoringAndroid
             }
         }
 
-        public void ConfirmTheWiseManChose(BaseActivity activity, BuildingType buildingType)
+        public void ConfirmTheWiseManChose(CharacterTheWiseManActivity activity, BuildingType? buildingType)
         {
-            Game.SetTheWiseManBuildingType(buildingType);
+            activity.SetTheWiseManBuildingType(buildingType);
             TryScore(activity);
         }
 
-        public void ConfirmMedinasNumber(BaseActivity activity, Dictionary<int, int> playersHighestPrices)
+        public void ConfirmMedinasNumber(MedinaNumberActivity activity, Dictionary<int, int> playersHighestPrices)
         {
             if (Game.ValidateMedinasNumbers(playersHighestPrices))
             {
-                Game.SetMedinasNumbers(playersHighestPrices);
+                activity.SetMedinasNumbers(playersHighestPrices);
                 TryScore(activity);
             }
         }
-        public void ConfirmGranadaBuildingsNumbers(BaseActivity activity, Dictionary<GranadaBuildingType, Dictionary<int, int>> playersHighestPrices)
+        public void ConfirmGranadaBuildingsNumbers(GranadaBuildingsNumberActivity activity, Dictionary<GranadaBuildingType, Dictionary<int, int>> playersHighestPrices)
         {
             if (Game.ValidateGranadaBuildingsNumbers(playersHighestPrices))
             {
-                Game.SetGranadaBuildingsNumbers(playersHighestPrices);
+                activity.SetGranadaBuildingsNumbers(playersHighestPrices);
                 TryScore(activity);
             }
         }

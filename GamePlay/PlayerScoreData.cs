@@ -55,6 +55,10 @@ namespace AlhambraScoringAndroid.GamePlay
         public Dictionary<GranadaBuildingType, int> GranadaBuildingsCount { get; private set; }
         public int WallMoatCombinationLength { get; private set; }
 
+        public BuildingType? TheWiseManBuildingType { get; set; }
+        public int? MedinaHighestPrice { get; set; }
+        public Dictionary<GranadaBuildingType, int> GranadaBuildingsHighestPrices { get; set; }
+
         public int AllBuildingsCount => BuildingsCount.Sum(b => b.Value);
 
         public PlayerScoreData(PlaceholderPlayerScoreFragment fragment)

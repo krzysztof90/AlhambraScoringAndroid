@@ -14,19 +14,20 @@ namespace AlhambraScoringAndroid.UI.Activities
     {
         protected override int ContentView => Resource.Layout.activity_building_type_chose;
 
+        private int ChosePlayerNumber;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            int chosePlayerNumber = 0;
             for (int i = 0; i < Game.PlayersCount; i++)
                 if (Application.GameScoreSubmitScoreData[i].OwnedCharacterTheWiseMan)
                 {
-                    chosePlayerNumber = i + 1;
+                    ChosePlayerNumber = i + 1;
                     break;
                 }
 
-            FindViewById<TextView>(Resource.Id.playerName).Text = Game.GetPlayer(chosePlayerNumber).Name;
+            FindViewById<TextView>(Resource.Id.playerName).Text = Game.GetPlayer(ChosePlayerNumber).Name;
 
             Dictionary<BuildingType, RadioButton> radioButtons = new Dictionary<BuildingType, RadioButton>()
             {
@@ -40,23 +41,23 @@ namespace AlhambraScoringAndroid.UI.Activities
             foreach (KeyValuePair<BuildingType, RadioButton> radioButtonPair in radioButtons)
             {
                 StringBuilder radioButtonText = new StringBuilder();
-                Game.SetTheWiseManBuildingType(null);
+                SetTheWiseManBuildingType(null);
                 int pointsNotUsingBonus = 0;
                 Dictionary<int, int> opponentsPoints = new Dictionary<int, int>();
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
                     int points = Game.GetBuildingScore(Application.GameScoreSubmitScoreData, radioButtonPair.Key, i + 1);
-                    if (i == chosePlayerNumber - 1)
+                    if (i == ChosePlayerNumber - 1)
                         pointsNotUsingBonus = points;
                     else
                         opponentsPoints[i] = points;
                 }
-                Game.SetTheWiseManBuildingType(radioButtonPair.Key);
+                SetTheWiseManBuildingType(radioButtonPair.Key);
                 int pointsUsingBonus = 0;
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
                     int points = Game.GetBuildingScore(Application.GameScoreSubmitScoreData, radioButtonPair.Key, i + 1);
-                    if (i == chosePlayerNumber - 1)
+                    if (i == ChosePlayerNumber - 1)
                         pointsUsingBonus = points;
                     else
                     {
@@ -64,12 +65,12 @@ namespace AlhambraScoringAndroid.UI.Activities
                         opponentsPoints[i] = opponentPoints - points;
                     }
                 }
-                Game.SetTheWiseManBuildingType(null);
+                SetTheWiseManBuildingType(null);
 
                 radioButtonText.Append($"{radioButtonPair.Key.GetEnumDescription(Resources)} (+{pointsUsingBonus - pointsNotUsingBonus})");
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
-                    if (i != chosePlayerNumber - 1)
+                    if (i != ChosePlayerNumber - 1)
                     {
                         if (opponentsPoints[i] != 0)
                             radioButtonText.Append($" ({Game.GetPlayer(i + 1).Name}: -{opponentsPoints[i]})");
@@ -118,6 +119,11 @@ namespace AlhambraScoringAndroid.UI.Activities
                     Application.ConfirmTheWiseManChose(this, buildingType);
                 }
             });
+        }
+
+        public void SetTheWiseManBuildingType(BuildingType? buildingType)
+        {
+            Application.GameScoreSubmitScoreData[ChosePlayerNumber - 1].TheWiseManBuildingType = buildingType;
         }
     }
 }

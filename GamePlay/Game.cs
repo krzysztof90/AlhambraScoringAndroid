@@ -83,9 +83,6 @@ namespace AlhambraScoringAndroid.GamePlay
         private List<CaliphsGuidelinesMission> CaliphsGuidelines;
         private List<Player> Players;
         public ScoringRound ScoreRound { get; private set; }
-        public BuildingType? TheWiseManBuildingType { get; private set; }
-        public Dictionary<int, int> PlayersMedinaHighestPrices { get; private set; }
-        public Dictionary<GranadaBuildingType, Dictionary<int, int>> PlayersGranadaBuildingsHighestPrices { get; private set; }
         public Stack<ScoreHistory> ScoreStack { get; private set; }
         public bool Saved { get; set; }
         private List<PlayerScoreData>[] RoundsScoring;
@@ -313,11 +310,6 @@ namespace AlhambraScoringAndroid.GamePlay
             GetPlayer(playerNumber).RevertAddScore(score, ScoreType.Immediately);
         }
 
-        public void SetTheWiseManBuildingType(BuildingType? buildingType)
-        {
-            TheWiseManBuildingType = buildingType;
-        }
-
         public bool ValidateMedinasNumbers(Dictionary<int, int> playersHighestPrices)
         {
             if (playersHighestPrices.Select(d => d.Value).Distinct().Count() != playersHighestPrices.Count())
@@ -333,15 +325,6 @@ namespace AlhambraScoringAndroid.GamePlay
                     return ValidateUtils.CheckFailed(Context, String.Format(Context.Resources.GetString(Resource.String.message_building_same_price), building.GetEnumDescription(Context.Resources)));
             }
             return true;
-        }
-
-        public void SetMedinasNumbers(Dictionary<int, int> playersHighestPrices)
-        {
-            PlayersMedinaHighestPrices = playersHighestPrices;
-        }
-        public void SetGranadaBuildingsNumbers(Dictionary<GranadaBuildingType, Dictionary<int, int>> playersHighestPrices)
-        {
-            PlayersGranadaBuildingsHighestPrices = playersHighestPrices;
         }
 
         private int GetMinimumNumberFromCount(int count, int interval)
@@ -736,7 +719,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 if (HasModule(ExpansionModule.ExpansionSquares))
                     alhambraCount += scoreData.SquaresBuildingsCount[buildingType];
                 if (HasModule(ExpansionModule.ExpansionCharacters)
-                    && scoreData.OwnedCharacterTheWiseMan && TheWiseManBuildingType == buildingType)
+                    && scoreData.OwnedCharacterTheWiseMan && scoreData.TheWiseManBuildingType == buildingType)
                     alhambraCount += 0.5;
                 //Extensions: extended buildings
                 if (HasModule(ExpansionModule.DesignerExtensions))
@@ -750,18 +733,19 @@ namespace AlhambraScoringAndroid.GamePlay
             return alhambraCount;
         }
 
-        private double GetMedinaCount(PlayerScoreData scoreData, int playerNumber)
+        private double GetMedinaCount(PlayerScoreData scoreData)
         {
             double medinaCount = scoreData.MedinasNumber;
-            if (PlayersMedinaHighestPrices != null && PlayersMedinaHighestPrices.ContainsKey(playerNumber))
-                medinaCount += ((double)PlayersMedinaHighestPrices[playerNumber]) / 20;
+            if (scoreData.MedinaHighestPrice != null)
+                medinaCount += ((double)scoreData.MedinaHighestPrice) / 20;
             return medinaCount;
         }
-        private double GetGranadaBuildingCount(PlayerScoreData scoreData, int playerNumber, GranadaBuildingType building)
+
+        private double GetGranadaBuildingCount(PlayerScoreData scoreData, GranadaBuildingType building)
         {
             double buildingCount = scoreData.GranadaBuildingsCount[building];
-            if (PlayersGranadaBuildingsHighestPrices != null && PlayersGranadaBuildingsHighestPrices[building].ContainsKey(playerNumber))
-                buildingCount += ((double)PlayersGranadaBuildingsHighestPrices[building][playerNumber]) / 20;
+            if (scoreData.GranadaBuildingsHighestPrices != null && scoreData.GranadaBuildingsHighestPrices.ContainsKey(building))
+                buildingCount += ((double)scoreData.GranadaBuildingsHighestPrices[building]) / 20;
             return buildingCount;
         }
 
@@ -947,7 +931,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 //Medina
                 for (int i = 0; i < PlayersCount; i++)
                 {
-                    int medinaScore = CountRelativeScore(i + 1, (int j) => GetMedinaCount(scoreData[j], j + 1), MedinaScoring, HighestLowest.Lowest, UpDown.Up, MedinaZeroPenaltiesScoring);
+                    int medinaScore = CountRelativeScore(i + 1, (int j) => GetMedinaCount(scoreData[j]), MedinaScoring, HighestLowest.Lowest, UpDown.Up, MedinaZeroPenaltiesScoring);
 
                     Players[i].RemoveScore(medinaScore, true, ScoreType.Medina);
                 }
@@ -1129,7 +1113,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 {
                     for (int i = 0; i < PlayersCount; i++)
                     {
-                        int buildingScore = CountRelativeScore(i + 1, (int j) => GetGranadaBuildingCount(scoreData[j], j + 1, building), GetGranadaScoring(scoreData, building), HighestLowest.Highest, UpDown.Down);
+                        int buildingScore = CountRelativeScore(i + 1, (int j) => GetGranadaBuildingCount(scoreData[j], building), GetGranadaScoring(scoreData, building), HighestLowest.Highest, UpDown.Down);
 
                         Players[i].AddScore(buildingScore, GranadaBuildingBaseScoreType[building]);
                     }

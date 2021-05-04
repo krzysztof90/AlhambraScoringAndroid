@@ -86,5 +86,20 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             return result;
         }
+
+        public void SetGranadaBuildingsNumbers(Dictionary<GranadaBuildingType, Dictionary<int, int>> playersBuildingsHighestPrices)
+        {
+            for (int i = 0; i < Game.PlayersCount; i++)
+            {
+                Dictionary<GranadaBuildingType, int> granadaBuildingsHighestPrices = new Dictionary<GranadaBuildingType, int>();
+                foreach (GranadaBuildingType building in Game.GranadaBuildingsOrder)
+                {
+                    Dictionary<int, int> playersHighestPrices = playersBuildingsHighestPrices[building];
+                    if (playersHighestPrices.ContainsKey(i + 1))
+                        granadaBuildingsHighestPrices[building] = playersHighestPrices[i + 1];
+                }
+                Application.GameScoreSubmitScoreData[i].GranadaBuildingsHighestPrices = granadaBuildingsHighestPrices;
+            }
+        }
     }
 }

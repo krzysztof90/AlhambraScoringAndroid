@@ -58,5 +58,14 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             return tiePlayerNumbers;
         }
+
+        public void SetMedinasNumbers(Dictionary<int, int> playersHighestPrices)
+        {
+            for (int i = 0; i < Game.PlayersCount; i++)
+            {
+                if (playersHighestPrices.ContainsKey(i + 1))
+                    Application.GameScoreSubmitScoreData[i].MedinaHighestPrice = playersHighestPrices[i + 1];
+            }
+        }
     }
 }

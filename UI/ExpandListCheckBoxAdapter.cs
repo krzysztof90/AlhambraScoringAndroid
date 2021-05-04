@@ -10,6 +10,7 @@ using System.Linq;
 
 namespace AlhambraScoringAndroid.UI
 {
+    //TODO usuwa zaznaczenia przy przekręcaniu ekranu
     public class ExpandListCheckBoxAdapter<EnumType> : BaseExpandableListAdapter where EnumType : struct, IConvertible, IComparable, IFormattable
     {
         private readonly bool MultipleChoice;
