@@ -2,6 +2,7 @@
 using AlhambraScoringAndroid.Options;
 using AlhambraScoringAndroid.Tools;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using System;
@@ -10,7 +11,7 @@ using System.Linq;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "@string/purchase_price", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/purchase_price", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GranadaBuildingsNumberActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_players_granada_buildings_chose;

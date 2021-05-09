@@ -1,5 +1,6 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using System;
@@ -8,7 +9,7 @@ using System.Linq;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "@string/modules_details_chose", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/modules_details_chose", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameModulesDetailsChoseActivity : BaseActivity
     {
         private ExpandableListViewExtension newScoreCardsExpandableListView;

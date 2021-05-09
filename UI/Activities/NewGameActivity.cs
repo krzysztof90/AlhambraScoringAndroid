@@ -1,5 +1,6 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using System;
@@ -7,7 +8,7 @@ using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "@string/new_game", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/new_game", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class NewGameActivity : BaseActivity
     {
         const string expansionModulesName = "EXPANSION MODULES";

@@ -1,6 +1,7 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.Tools;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using System;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "@string/building_type_chose", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/building_type_chose", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class CharacterTheWiseManActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_building_type_chose;

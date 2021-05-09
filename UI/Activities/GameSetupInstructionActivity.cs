@@ -1,6 +1,7 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using System;
@@ -9,7 +10,7 @@ using System.Collections.Generic;
 namespace AlhambraScoringAndroid.UI.Activities
 {
     //TODO instrukcja przygotowania rund. Instrukcja o czym pamiętać w trakcie gry
-    [Activity(Label = "@string/setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameSetupInstructionActivity : BaseActivity
     {
         private ExpandableListViewExtension expandableListView;

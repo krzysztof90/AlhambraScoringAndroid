@@ -70,28 +70,6 @@ namespace AlhambraScoringAndroid.UI.Activities
             PrepareRound();
         }
 
-        //public override void OnBackPressed()
-        //{
-        //    if (Game.GameInProgress)
-        //    {
-        //        new AlertDialog.Builder(this)
-        //            .SetTitle(Resources.GetString(Resource.String.game_ending))
-        //            .SetMessage(Resources.GetString(Resource.String.continue_question))
-        //            .SetPositiveButton(Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) =>
-        //            {
-        //                base.OnBackPressed();
-        //                Game.Reset(true);
-        //            }))
-        //            .SetNegativeButton(Resources.GetString(Resource.String.no), new DialogInterfaceOnClickListener(null))
-        //            .Show();
-        //    }
-        //    else
-        //    {
-        //        base.OnBackPressed();
-        //        Game.Reset(true);
-        //    }
-        //}
-
         public void AddPoints(int player, int score)
         {
             Game.PlayerAddScore(player, score);

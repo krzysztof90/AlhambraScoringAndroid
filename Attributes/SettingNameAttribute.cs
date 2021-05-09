@@ -6,11 +6,13 @@ namespace AlhambraScoringAndroid.Attributes
     {
         public string Name { get; set; }
         public bool DefaultValue { get; set; }
+        public int DescriptionResource { get; set; }
 
-        public SettingNameAttribute(string name, bool defaultValue)
+        public SettingNameAttribute(string name, bool defaultValue, int descriptionResource)
         {
             Name = name;
             DefaultValue = defaultValue;
+            DescriptionResource = descriptionResource;
         }
     }
 }
