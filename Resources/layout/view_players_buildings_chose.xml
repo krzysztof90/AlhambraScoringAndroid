@@ -12,27 +12,27 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"/>
 
-    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+    <AndroidBase.UI.ControlNumberView
         android:id="@+id/player1HighestPurchasePriceNumericUpDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+    <AndroidBase.UI.ControlNumberView
         android:id="@+id/player2HighestPurchasePriceNumericUpDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+    <AndroidBase.UI.ControlNumberView
         android:id="@+id/player3HighestPurchasePriceNumericUpDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+    <AndroidBase.UI.ControlNumberView
         android:id="@+id/player4HighestPurchasePriceNumericUpDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+    <AndroidBase.UI.ControlNumberView
         android:id="@+id/player5HighestPurchasePriceNumericUpDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <AlhambraScoringAndroid.UI.ScoreLineNumberView
+    <AndroidBase.UI.ControlNumberView
         android:id="@+id/player6HighestPurchasePriceNumericUpDown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

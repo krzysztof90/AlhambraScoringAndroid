@@ -1,24 +1,17 @@
-﻿using AlhambraScoringAndroid.UI;
-using Android.Content;
+﻿using AlhambraScoringAndroid.Options;
 using Android.Views;
-using Android.Widget;
+using AndroidBase.UI;
 using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.Tools
 {
     public static class ValidateUtils
     {
-        public static bool CheckFailed(Context context, string text)
+        public static bool ValidatePlayerPanels(this IEnumerable<ControlNumberView> playerPanels)
         {
-            Toast.MakeText(context, text, ToastLength.Long).Show();
-            return false;
-        }
-
-        public static bool ValidatePlayerPanels(this IEnumerable<ScoreLineNumberView> playerPanels)
-        {
-            foreach (ScoreLineNumberView playerPanel in playerPanels)
+            foreach (ControlNumberView playerPanel in playerPanels)
                 if (playerPanel.Visibility == ViewStates.Visible)
-                    if (!playerPanel.ValidateNumberRange())
+                    if (!playerPanel.ValidateNumberRange<SettingsType>())
                         return false;
             return true;
         }

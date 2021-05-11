@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Widget;
+using AndroidBase.UI;
 using AndroidX.ViewPager.Widget;
 using Google.Android.Material.Tabs;
 using static Google.Android.Material.Tabs.TabLayout;

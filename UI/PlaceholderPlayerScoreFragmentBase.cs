@@ -2,6 +2,7 @@
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidBase.UI;
 using System;
 using System.Collections.Generic;
 
@@ -20,7 +21,7 @@ namespace AlhambraScoringAndroid.UI
 
         protected View Root { get; private set; }
 
-        public List<IScoreLineView> Controls { get; private set; }
+        public List<IControlViewBase> Controls { get; private set; }
 
         protected abstract int GetContentLayout();
         protected abstract void CreateControls();
@@ -33,7 +34,7 @@ namespace AlhambraScoringAndroid.UI
 
             PlayerNumber = index;
             Game = game;
-            Controls = new List<IScoreLineView>();
+            Controls = new List<IControlViewBase>();
 
             IsDirk = Game.GetPlayer(PlayerNumber).Dirk;
             IsFinalRound = Game.ScoreRound == ScoringRound.Third;
@@ -69,13 +70,13 @@ namespace AlhambraScoringAndroid.UI
 
         private void InitializeControls()
         {
-            foreach (IScoreLineView control in Controls)
+            foreach (IControlViewBase control in Controls)
                 control.Initialize();
         }
 
         public void RestoreValues()
         {
-            foreach (IScoreLineView control in Controls)
+            foreach (IControlViewBase control in Controls)
                 control.RestoreValue();
         }
 

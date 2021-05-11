@@ -7,12 +7,12 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/scoreLineLabel"
+        android:id="@+id/controlLabel"
         android:layout_width="150dp"
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:id="@+id/scoreLineNumber"
+        android:id="@+id/controlNumber"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="number"/>

@@ -1,10 +1,11 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
+using AndroidBase.UI;
 
 namespace AlhambraScoringAndroid.UI
 {
     public class PlaceholderPlayerScoreBeforeAssignLeftoverFragment : PlaceholderPlayerScoreFragmentBase
     {
-        ScoreLineNumberView buildingsWithoutServantTileNumericUpDown;
+        ControlNumberView buildingsWithoutServantTileNumericUpDown;
 
         protected override int GetContentLayout()
         {
@@ -13,7 +14,7 @@ namespace AlhambraScoringAndroid.UI
 
         protected override void CreateControls()
         {
-            buildingsWithoutServantTileNumericUpDown = Root.FindViewById<ScoreLineNumberView>(Resource.Id.buildingsWithoutServantTileNumericUpDown);
+            buildingsWithoutServantTileNumericUpDown = Root.FindViewById<ControlNumberView>(Resource.Id.buildingsWithoutServantTileNumericUpDown);
         }
 
         protected override void AddControls()

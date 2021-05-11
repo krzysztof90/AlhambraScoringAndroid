@@ -4,6 +4,7 @@ using AlhambraScoringAndroid.UI.Activities;
 using Android.App;
 using Android.Content;
 using Android.Views;
+using AndroidBase.UI;
 using AndroidX.Fragment.App;
 using AndroidX.ViewPager.Widget;
 using Java.Lang;
@@ -13,6 +14,7 @@ using System.Linq;
 
 namespace AlhambraScoringAndroid.UI
 {
+    //TODO jeżeli zmiana zakładki i zanim zmieniona zakładka kliknięcie w pole tekstowe - pole tekstowe zostaje z poprzedniej zakładki
     public class PlayersScoreSectionsPagerAdapter : FragmentPagerAdapter
     {
         public readonly GameScoreActivity Activity;
@@ -117,7 +119,7 @@ namespace AlhambraScoringAndroid.UI
         {
             foreach (PlaceholderPlayerScoreFragment playerScoreFragment in GetAllPlayerScoreFragments())
             {
-                IEnumerable<ScoreLineNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
+                IEnumerable<ControlNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ControlNumberView).Cast<ControlNumberView>();
                 if (!playerPanels.ValidatePlayerPanels())
                     return false;
             }
@@ -129,7 +131,7 @@ namespace AlhambraScoringAndroid.UI
         {
             foreach (PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment in GetAllPlayerScoreBeforeAssignLeftoverFragments())
             {
-                IEnumerable<ScoreLineNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ScoreLineNumberView).Cast<ScoreLineNumberView>();
+                IEnumerable<ControlNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ControlNumberView).Cast<ControlNumberView>();
                 if (!playerPanels.ValidatePlayerPanels())
                     return false;
             }

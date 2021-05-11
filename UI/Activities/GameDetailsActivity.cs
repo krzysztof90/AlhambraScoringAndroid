@@ -1,9 +1,9 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
-using AlhambraScoringAndroid.Tools.Enums;
 using Android.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidBase.Tools.Enums;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

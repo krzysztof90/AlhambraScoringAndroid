@@ -1,6 +1,7 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
-using AlhambraScoringAndroid.Tools;
-using AlhambraScoringAndroid.Tools.Enums;
+using AndroidBase.Attributes;
+using AndroidBase.Tools;
+using AndroidBase.Tools.Enums;
 using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.Attributes

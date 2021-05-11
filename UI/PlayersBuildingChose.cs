@@ -3,27 +3,28 @@ using Android.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using AndroidBase.UI;
 using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI
 {
     public class PlayersBuildingChose : LinearLayout
     {
-        public readonly List<ScoreLineNumberView> PlayersPanels;
+        public readonly List<ControlNumberView> PlayersPanels;
 
         public PlayersBuildingChose(Context context) : base(context)
         {
             LayoutInflater layoutInflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
             layoutInflater.Inflate(Resource.Layout.view_players_buildings_chose, this);
 
-            PlayersPanels = new List<ScoreLineNumberView>()
+            PlayersPanels = new List<ControlNumberView>()
             {
-                FindViewById<ScoreLineNumberView>(Resource.Id.player1HighestPurchasePriceNumericUpDown),
-                FindViewById<ScoreLineNumberView>(Resource.Id.player2HighestPurchasePriceNumericUpDown),
-                FindViewById<ScoreLineNumberView>(Resource.Id.player3HighestPurchasePriceNumericUpDown),
-                FindViewById<ScoreLineNumberView>(Resource.Id.player4HighestPurchasePriceNumericUpDown),
-                FindViewById<ScoreLineNumberView>(Resource.Id.player5HighestPurchasePriceNumericUpDown),
-                FindViewById<ScoreLineNumberView>(Resource.Id.player6HighestPurchasePriceNumericUpDown),
+                FindViewById<ControlNumberView>(Resource.Id.player1HighestPurchasePriceNumericUpDown),
+                FindViewById<ControlNumberView>(Resource.Id.player2HighestPurchasePriceNumericUpDown),
+                FindViewById<ControlNumberView>(Resource.Id.player3HighestPurchasePriceNumericUpDown),
+                FindViewById<ControlNumberView>(Resource.Id.player4HighestPurchasePriceNumericUpDown),
+                FindViewById<ControlNumberView>(Resource.Id.player5HighestPurchasePriceNumericUpDown),
+                FindViewById<ControlNumberView>(Resource.Id.player6HighestPurchasePriceNumericUpDown),
             };
         }
 

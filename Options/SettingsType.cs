@@ -1,106 +1,106 @@
-﻿using AlhambraScoringAndroid.Attributes;
+﻿using AndroidBase.Attributes;
 
 namespace AlhambraScoringAndroid.Options
 {
     public enum SettingsType
     {
-        [SettingNameAttribute("validate_wall_length", true, Resource.Id.validateWallLengthCheckBox)]
+        [SettingNameBoolAttribute("validate_wall_length", true, Resource.String.validateWallLength)]
         ValidateWallLength,
-        [SettingNameAttribute("validate_buildings_number", true, Resource.Id.validateBuildingsNumberCheckBox)]
+        [SettingNameBoolAttribute("validate_buildings_number", true, Resource.String.validateBuildingsNumber)]
         ValidateBuildingsNumber,
-        [SettingNameAttribute("validate_buildings_number_previous", true, Resource.Id.validateBuildingsNumberPreviousCheckBox)]
+        [SettingNameBoolAttribute("validate_buildings_number_previous", true, Resource.String.validateBuildingsNumberPrevious)]
         ValidateBuildingsNumberPrevious,
-        [SettingNameAttribute("validate_buildings_price", true, Resource.Id.validateBuildingsPriceCheckBox)]
+        [SettingNameBoolAttribute("validate_buildings_price", true, Resource.String.validateBuildingsPrice)]
         ValidateBuildingsPrice,
-        [SettingNameAttribute("validate_bonus_cards_player", true, Resource.Id.validateBonusCardsPlayerCheckBox)]
+        [SettingNameBoolAttribute("validate_bonus_cards_player", true, Resource.String.validateBonusCardsPlayer)]
         ValidateBonusCardsPlayer,
-        [SettingNameAttribute("validate_bonus_cards_buildings", true, Resource.Id.validateBonusCardsBuildingsCheckBox)]
+        [SettingNameBoolAttribute("validate_bonus_cards_buildings", true, Resource.String.validateBonusCardsBuildings)]
         ValidateBonusCardsBuildings,
-        [SettingNameAttribute("validate_bonus_cards", true, Resource.Id.validateBonusCardsCheckBox)]
+        [SettingNameBoolAttribute("validate_bonus_cards", true, Resource.String.validateBonusCards)]
         ValidateBonusCards,
-        [SettingNameAttribute("validate_squares_player", true, Resource.Id.validateSquaresPlayerCheckBox)]
+        [SettingNameBoolAttribute("validate_squares_player", true, Resource.String.validateSquaresPlayer)]
         ValidateSquaresPlayer,
-        [SettingNameAttribute("validate_squares", true, Resource.Id.validateSquaresCheckBox)]
+        [SettingNameBoolAttribute("validate_squares", true, Resource.String.validateSquares)]
         ValidateSquares,
-        [SettingNameAttribute("validate_multiple_wiseman", true, Resource.Id.validateMultipleWisemanCheckBox)]
+        [SettingNameBoolAttribute("validate_multiple_wiseman", true, Resource.String.validateMultipleWiseman)]
         ValidateMultipleWiseman,
-        [SettingNameAttribute("validate_previous_wiseman", true, Resource.Id.validatePreviousWisemanCheckBox)]
+        [SettingNameBoolAttribute("validate_previous_wiseman", true, Resource.String.validatePreviousWiseman)]
         ValidatePreviousWiseman,
-        [SettingNameAttribute("validate_multiple_citywatch", true, Resource.Id.validateMultipleCitywatchCheckBox)]
+        [SettingNameBoolAttribute("validate_multiple_citywatch", true, Resource.String.validateMultipleCitywatch)]
         ValidateMultipleCitywatch,
-        [SettingNameAttribute("validate_previous_citywatch", true, Resource.Id.validatePreviousCitywatchCheckBox)]
+        [SettingNameBoolAttribute("validate_previous_citywatch", true, Resource.String.validatePreviousCitywatch)]
         ValidatePreviousCitywatch,
-        [SettingNameAttribute("validate_citizens_buildings", true, Resource.Id.validateCitizensBuildingsCheckBox)]
+        [SettingNameBoolAttribute("validate_citizens_buildings", true, Resource.String.validateCitizensBuildings)]
         ValidateCitizensBuildings,
-        [SettingNameAttribute("validate_citizens", true, Resource.Id.validateCitizensCheckBox)]
+        [SettingNameBoolAttribute("validate_citizens", true, Resource.String.validateCitizens)]
         ValidateCitizens,
-        [SettingNameAttribute("validate_treasures_player", true, Resource.Id.validateTreasuresPlayerCheckBox)]
+        [SettingNameBoolAttribute("validate_treasures_player", true, Resource.String.validateTreasuresPlayer)]
         ValidateTreasuresPlayer,
-        [SettingNameAttribute("validate_treasures", true, Resource.Id.validateTreasuresCheckBox)]
+        [SettingNameBoolAttribute("validate_treasures", true, Resource.String.validateTreasures)]
         ValidateTreasures,
-        [SettingNameAttribute("validate_unprotected_sides", true, Resource.Id.validateUnprotectedSidesCheckBox)]
+        [SettingNameBoolAttribute("validate_unprotected_sides", true, Resource.String.validateUnprotectedSides)]
         ValidateUnprotectedSides,
-        [SettingNameAttribute("validate_bazaars_points", true, Resource.Id.validateBazaarsPointsCheckBox)]
+        [SettingNameBoolAttribute("validate_bazaars_points", true, Resource.String.validateBazaarsPoints)]
         ValidateBazaarsPoints,
-        [SettingNameAttribute("validate_culture_counters", true, Resource.Id.validateCultureCountersCheckBox)]
+        [SettingNameBoolAttribute("validate_culture_counters", true, Resource.String.validateCultureCounters)]
         ValidateCultureCounters,
-        [SettingNameAttribute("validate_culture_counters_previous", true, Resource.Id.validateCultureCountersPreviousCheckBox)]
+        [SettingNameBoolAttribute("validate_culture_counters_previous", true, Resource.String.validateCultureCountersPrevious)]
         ValidateCultureCountersPrevious,
-        [SettingNameAttribute("validate_falcons", true, Resource.Id.validateFalconsCheckBox)]
+        [SettingNameBoolAttribute("validate_falcons", true, Resource.String.validateFalcons)]
         ValidateFalcons,
-        [SettingNameAttribute("validate_watchtower_wall", true, Resource.Id.validateWatchtowerWallCheckBox)]
+        [SettingNameBoolAttribute("validate_watchtower_wall", true, Resource.String.validateWatchtowerWall)]
         ValidateWatchtowerWall,
-        [SettingNameAttribute("validate_watchtower", true, Resource.Id.validateWatchtowerCheckBox)]
+        [SettingNameBoolAttribute("validate_watchtower", true, Resource.String.validateWatchtower)]
         ValidateWatchtower,
-        [SettingNameAttribute("validate_medin", true, Resource.Id.validateMedinCheckBox)]
+        [SettingNameBoolAttribute("validate_medin", true, Resource.String.validateMedin)]
         ValidateMedin,
-        [SettingNameAttribute("validate_medin_previous", true, Resource.Id.validateMedinPreviousCheckBox)]
+        [SettingNameBoolAttribute("validate_medin_previous", true, Resource.String.validateMedinPrevious)]
         ValidateMedinPrevious,
-        [SettingNameAttribute("validate_servants", true, Resource.Id.validateServantsCheckBox)]
+        [SettingNameBoolAttribute("validate_servants", true, Resource.String.validateServants)]
         ValidateServants,
-        [SettingNameAttribute("validate_single_fruits", true, Resource.Id.validateSingleFruitsCheckBox)]
+        [SettingNameBoolAttribute("validate_single_fruits", true, Resource.String.validateSingleFruits)]
         ValidateSingleFruits,
-        [SettingNameAttribute("validate_fruits", true, Resource.Id.validateFruitsCheckBox)]
+        [SettingNameBoolAttribute("validate_fruits", true, Resource.String.validateFruits)]
         ValidateFruits,
-        [SettingNameAttribute("validate_bathhouses", true, Resource.Id.validateBathhousesCheckBox)]
+        [SettingNameBoolAttribute("validate_bathhouses", true, Resource.String.validateBathhouses)]
         ValidateBathhouses,
-        [SettingNameAttribute("validate_fontains_player", true, Resource.Id.validateFontainsPlayerCheckBox)]
+        [SettingNameBoolAttribute("validate_fontains_player", true, Resource.String.validateFontainsPlayer)]
         ValidateFontainsPlayer,
-        [SettingNameAttribute("validate_fontains", true, Resource.Id.validateFontainsCheckBox)]
+        [SettingNameBoolAttribute("validate_fontains", true, Resource.String.validateFontains)]
         ValidateFontains,
-        [SettingNameAttribute("validate_multiple_completed_project", true, Resource.Id.validateMultipleCompletedProjectCheckBox)]
+        [SettingNameBoolAttribute("validate_multiple_completed_project", true, Resource.String.validateMultipleCompletedProject)]
         ValidateMultipleCompletedProject,
-        [SettingNameAttribute("validate_previous_completed_project", true, Resource.Id.validatePreviousCompletedProjectCheckBox)]
+        [SettingNameBoolAttribute("validate_previous_completed_project", true, Resource.String.validatePreviousCompletedProject)]
         ValidatePreviousCompletedProject,
-        [SettingNameAttribute("validate_animals_player", true, Resource.Id.validateAnimalsPlayerCheckBox)]
+        [SettingNameBoolAttribute("validate_animals_player", true, Resource.String.validateAnimalsPlayer)]
         ValidateAnimalsPlayer,
-        [SettingNameAttribute("validate_animals", true, Resource.Id.validateAnimalsCheckBox)]
+        [SettingNameBoolAttribute("validate_animals", true, Resource.String.validateAnimals)]
         ValidateAnimals,
-        [SettingNameAttribute("validate_animals_previous", true, Resource.Id.validateAnimalsPreviousCheckBox)]
+        [SettingNameBoolAttribute("validate_animals_previous", true, Resource.String.validateAnimalsPrevious)]
         ValidateAnimalsPrevious,
-        [SettingNameAttribute("validate_multiple_semi_buildings", true, Resource.Id.validateMultipleSemiBuildingsCheckBox)]
+        [SettingNameBoolAttribute("validate_multiple_semi_buildings", true, Resource.String.validateMultipleSemiBuildings)]
         ValidateMultipleSemiBuildings,
-        [SettingNameAttribute("validate_previous_semi_buildings", true, Resource.Id.validatePreviousSemiBuildingsCheckBox)]
+        [SettingNameBoolAttribute("validate_previous_semi_buildings", true, Resource.String.validatePreviousSemiBuildings)]
         ValidatePreviousSemiBuildings,
-        [SettingNameAttribute("validate_black_dice_pips", true, Resource.Id.validateBlackDicePipsCheckBox)]
+        [SettingNameBoolAttribute("validate_black_dice_pips", true, Resource.String.validateBlackDicePips)]
         ValidateBlackDicePips,
-        [SettingNameAttribute("validate_black_dices_previous", true, Resource.Id.validateBlackDicesPreviousCheckBox)]
+        [SettingNameBoolAttribute("validate_black_dices_previous", true, Resource.String.validateBlackDicesPrevious)]
         ValidateBlackDicesPrevious,
-        [SettingNameAttribute("validate_extensions_buildings", true, Resource.Id.validateExtensionsBuildingsCheckBox)]
+        [SettingNameBoolAttribute("validate_extensions_buildings", true, Resource.String.validateExtensionsBuildings)]
         ValidateExtensionsBuildings,
-        [SettingNameAttribute("validate_extensions", true, Resource.Id.validateExtensionsCheckBox)]
+        [SettingNameBoolAttribute("validate_extensions", true, Resource.String.validateExtensions)]
         ValidateExtensions,
-        [SettingNameAttribute("validate_handymen", true, Resource.Id.validateHandymenCheckBox)]
+        [SettingNameBoolAttribute("validate_handymen", true, Resource.String.validateHandymen)]
         ValidateHandymen,
-        [SettingNameAttribute("validate_treasures_points", true, Resource.Id.validateTreasuresPointsCheckBox)]
+        [SettingNameBoolAttribute("validate_treasures_points", true, Resource.String.validateTreasuresPoints)]
         ValidateTreasuresPoints,
-        [SettingNameAttribute("validate_missions", true, Resource.Id.validateMissionsCheckBox)]
+        [SettingNameBoolAttribute("validate_missions", true, Resource.String.validateMissions)]
         ValidateMissions,
-        [SettingNameAttribute("validate_second_longest_wall", true, Resource.Id.validateSecondLongestWallCheckBox)]
+        [SettingNameBoolAttribute("validate_second_longest_wall", true, Resource.String.validateSecondLongestWall)]
         ValidateSecondLongestWall,
-        [SettingNameAttribute("validate_moat_length", true, Resource.Id.validateMoatLengthCheckBox)]
+        [SettingNameBoolAttribute("validate_moat_length", true, Resource.String.validateMoatLength)]
         ValidateMoatLength,
-        [SettingNameAttribute("validate_moatwall", true, Resource.Id.validateMoatwallCheckBox)]
+        [SettingNameBoolAttribute("validate_moatwall", true, Resource.String.validateMoatwall)]
         ValidateMoatwall,
     }
 }

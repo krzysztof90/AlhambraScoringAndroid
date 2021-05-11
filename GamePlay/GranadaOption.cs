@@ -1,4 +1,4 @@
-﻿using AlhambraScoringAndroid.Attributes;
+﻿using AndroidBase.Attributes;
 
 namespace AlhambraScoringAndroid.GamePlay
 {

@@ -5,47 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        layout="@layout/content_menu"
-        android:id="@+id/menu"/>
+  <include
+      layout="@layout/content_menu"
+      android:id="@+id/menu"/>
 
-    <ScrollView
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_marginTop="@dimen/menu_height"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toTopOf="@+id/guideline"
+      app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/menu_height"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <AlhambraScoringAndroid.UI.ExpandableListViewExtension
-                android:id="@+id/listView1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            <AlhambraScoringAndroid.UI.ExpandableListViewExtension
-                android:id="@+id/listView2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:text="@string/chose"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="75dp" />
+        android:orientation="vertical">
+
+      <AndroidBase.UI.ExpandableListViewExtension
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+      <AndroidBase.UI.ExpandableListViewExtension
+        android:id="@+id/listView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    </LinearLayout>
+  </ScrollView>
+
+  <Button
+      android:id="@+id/startButton"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/button_height"
+      android:text="@string/chose"
+      app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+  <android.support.constraint.Guideline
+      android:id="@+id/guideline"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      app:layout_constraintGuide_end="75dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

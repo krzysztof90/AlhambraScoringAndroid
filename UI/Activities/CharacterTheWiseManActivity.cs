@@ -1,9 +1,9 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
-using AlhambraScoringAndroid.Tools;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
+using AndroidBase.Tools;
 using System;
 using System.Collections.Generic;
 using System.Text;

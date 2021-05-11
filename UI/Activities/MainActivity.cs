@@ -9,7 +9,7 @@ namespace AlhambraScoringAndroid.UI.Activities
     public class MainActivity : BaseActivity
     {
         protected override int ContentView => Resource.Layout.activity_main;
-        
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler((object sender, UnhandledExceptionEventArgs args) =>
@@ -21,7 +21,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             Application.LoadResults();
 
             base.OnCreate(savedInstanceState);
-            
+
             Button newGameButton = FindViewById<Button>(Resource.Id.newGameButton);
             newGameButton.Click += new System.EventHandler((object sender, System.EventArgs e) =>
             {

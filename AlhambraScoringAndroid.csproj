@@ -74,14 +74,10 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\DescriptionResourceAttribute.cs" />
-    <Compile Include="Attributes\MultipleImageAttribute.cs" />
     <Compile Include="Attributes\NewScoreCardAttribute.cs" />
-    <Compile Include="Attributes\SettingNameAttribute.cs" />
     <Compile Include="Options\Settings.cs" />
     <Compile Include="Options\SettingsType.cs" />
     <Compile Include="UI\Activities\SettingsActivity.cs" />
-    <Compile Include="UI\DialogInterfaceOnClickListener.cs" />
     <Compile Include="GamePlay\CaliphsGuidelines.cs" />
     <Compile Include="GamePlay\GranadaBuildingType.cs" />
     <Compile Include="GamePlay\GranadaOption.cs" />
@@ -94,14 +90,8 @@
     <Compile Include="GamePlay\ScoreHistoryImmediately.cs" />
     <Compile Include="GamePlay\ScoreHistoryRound.cs" />
     <Compile Include="GamePlay\ScoreType.cs" />
-    <Compile Include="Attributes\ImageAttribute.cs" />
     <Compile Include="GamePlay\SetupInstructions.cs" />
-    <Compile Include="UI\InputFilters\NumberFilter.cs" />
-    <Compile Include="UI\InputFilters\TextFilter.cs" />
-    <Compile Include="Tools\EnumOperations.cs" />
     <Compile Include="Tools\Enums\HighestLowest.cs" />
-    <Compile Include="Tools\Enums\HorizontalVertical.cs" />
-    <Compile Include="Tools\Enums\UpDown.cs" />
     <Compile Include="UI\Activities\AboutActivity.cs" />
     <Compile Include="UI\Activities\BaseActivity.cs" />
     <Compile Include="UI\Activities\CharacterTheWiseManActivity.cs" />
@@ -118,28 +108,21 @@
     <Compile Include="UI\Activities\GameSetupInstructionActivity.cs" />
     <Compile Include="UI\Activities\GranadaBuildingsNumberActivity.cs" />
     <Compile Include="UI\Activities\MainActivity.cs" />
-    <Compile Include="UI\InputFilters\MinMaxFilter.cs" />
     <Compile Include="MyApplication.cs" />
     <Compile Include="UI\Activities\MedinaNumberActivity.cs" />
     <Compile Include="UI\Activities\NewGameActivity.cs" />
     <Compile Include="UI\Activities\ResultsHistoryActivity.cs" />
-    <Compile Include="UI\ExpandableListViewExtension.cs" />
-    <Compile Include="UI\ExpandListCheckBoxPosition.cs" />
     <Compile Include="UI\HistoryPanel.cs" />
     <Compile Include="UI\PlayerResultPanel.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\CollectionsOperations.cs" />
     <Compile Include="Tools\ValidateUtils.cs" />
-    <Compile Include="UI\ExpandListCheckBoxAdapter.cs" />
     <Compile Include="UI\PlaceholderPlayerScoreBeforeAssignLeftoverFragment.cs" />
     <Compile Include="UI\PlaceholderPlayerScoreFragment.cs" />
     <Compile Include="UI\PlaceholderPlayerScoreFragmentBase.cs" />
     <Compile Include="UI\PlayersBuildingChose.cs" />
     <Compile Include="UI\PlayersScoreSectionsPagerAdapter.cs" />
-    <Compile Include="UI\ScoreLineCheckBoxView.cs" />
-    <Compile Include="UI\ScoreLineNumberView.cs" />
-    <Compile Include="UI\ScoreLineViewBase.cs" />
     <Compile Include="Tools\XmlOperations.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -251,12 +234,12 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_game_score_line_checkbox.xml">
+    <AndroidResource Include="Resources\layout\view_line_checkbox.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_game_score_line_number.xml">
+    <AndroidResource Include="Resources\layout\view_line_number.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -568,6 +551,12 @@
     <AndroidResource Include="Resources\layout\activity_settings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AndroidBase\AndroidBase.csproj">
+      <Project>{F0C75B5C-FD71-4035-ABC5-CF4902F6FCEF}</Project>
+      <Name>AndroidBase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

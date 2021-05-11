@@ -1,12 +1,11 @@
-﻿using AlhambraScoringAndroid.Attributes;
-using AlhambraScoringAndroid.GamePlay;
+﻿using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.Tools;
 using Android.Content;
+using AndroidBase.Options;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using Xamarin.Essentials;
 
 namespace AlhambraScoringAndroid.Options
 {
@@ -16,13 +15,12 @@ namespace AlhambraScoringAndroid.Options
 
         public static void Set(SettingsType settingsType, bool value)
         {
-            Preferences.Set(settingsType.GetEnumAttribute<SettingsType, SettingNameAttribute>().Name, value);
+            AndroidSettings<SettingsType>.Set(settingsType, value);
         }
 
-        public static bool IsSet(SettingsType settingsType)
+        public static bool Get(SettingsType settingsType)
         {
-            SettingNameAttribute settingNameAttribute = settingsType.GetEnumAttribute<SettingsType, SettingNameAttribute>();
-            return Preferences.Get(settingNameAttribute.Name, settingNameAttribute.DefaultValue);
+            return AndroidSettings<SettingsType>.GetBool(settingsType);
         }
 
         public static List<ResultHistory> GetResults()
