@@ -22,36 +22,42 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/blueDicesCombinationsButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:text="@string/blue_dices_combinations" />
+
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="@dimen/player_result_panel_gap"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap" />
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="@dimen/player_result_panel_gap"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap" />
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel3"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="@dimen/player_result_panel_gap"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap" />
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="@dimen/player_result_panel_gap"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap" />
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel5"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="@dimen/player_result_panel_gap"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap" />
             <AlhambraScoringAndroid.UI.PlayerResultPanel
                 android:id="@+id/playerResultPanel6"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/player_result_panel_height"
-                android:layout_marginTop="@dimen/player_result_panel_gap"/>
+                android:layout_marginTop="@dimen/player_result_panel_gap" />
 
         </LinearLayout>
     </ScrollView>

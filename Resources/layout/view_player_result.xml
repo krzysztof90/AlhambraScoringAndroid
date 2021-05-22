@@ -14,25 +14,25 @@
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="10dp"/>
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp" />
         <TextView
             android:id="@+id/textViewScore"
             android:layout_width="30dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="@dimen/panel_elements_gap"/>
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/panel_elements_gap" />
         <Button
             android:id="@+id/point1Button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/panel_elements_gap"
-            android:text="@string/add_point_1"/>
+            android:text="@string/add_point_1" />
         <Button
             android:id="@+id/point2Button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/panel_elements_gap"
-            android:text="@string/add_point_2"/>
+            android:text="@string/add_point_2" />
 
     </LinearLayout>
 </HorizontalScrollView>

@@ -51,6 +51,8 @@ namespace AlhambraScoringAndroid
             ResourcesStore.expandedListItemImageId = Resource.Id.expandedListItemImage;
             ResourcesStore.labelColorAttribute = Resource.Attribute.labelColor;
             ResourcesStore.labelValueAttribute = Resource.Attribute.labelValue;
+            ResourcesStore.columnCountAttribute = Resource.Attribute.columnCount;
+            ResourcesStore.columnWidthAttribute = Resource.Attribute.columnWidth;
         }
 
         public MyApplication(IntPtr javaReference, Android.Runtime.JniHandleOwnership transfer) : base(javaReference, transfer)
@@ -64,7 +66,6 @@ namespace AlhambraScoringAndroid
                 (()=> Game.HasModule(ExpansionModule.Granada) && GranadaBuildingsNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Any(d => d.Value.Count != 0),
                 typeof(GranadaBuildingsNumberActivity)),
             };
-            scoreActivities = new List<BaseActivity>();
         }
 
         public void NewGamePrompt(Context context)
@@ -85,6 +86,7 @@ namespace AlhambraScoringAndroid
         private void NewGame()
         {
             Game = new Game(ApplicationContext);
+            scoreActivities = new List<BaseActivity>();
             NewActivity(typeof(NewGameActivity));
         }
 
@@ -205,6 +207,11 @@ namespace AlhambraScoringAndroid
                 Game.SetNextRound();
                 gameInProgressActivity.PrepareRound();
             }
+        }
+
+        public void BlueDicesCombinations()
+        {
+            NewActivity(typeof(BlueDicesActivity));
         }
 
         public void GameShowDetails(GameInProgressActivity gameInProgressActivity)

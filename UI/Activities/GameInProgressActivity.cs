@@ -16,6 +16,7 @@ namespace AlhambraScoringAndroid.UI.Activities
         private Button roundScoreButton;
         private Button scoreDetailsButton;
         private Button scoreRevertButton;
+        private Button blueDicesCombinationsButton;
 
         protected override int ContentView => Resource.Layout.activity_game_in_progress;
 
@@ -48,6 +49,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             roundScoreButton = FindViewById<Button>(Resource.Id.roundScoreButton);
             scoreDetailsButton = FindViewById<Button>(Resource.Id.scoreDetailsButton);
             scoreRevertButton = FindViewById<Button>(Resource.Id.scoreRevertButton);
+            blueDicesCombinationsButton = FindViewById<Button>(Resource.Id.blueDicesCombinationsButton);
 
             roundScoreButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
@@ -64,6 +66,11 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 Game.RevertScoring();
                 PrepareRound();
+            });
+
+            blueDicesCombinationsButton.Click += new EventHandler((object sender, EventArgs e) =>
+            {
+                Application.BlueDicesCombinations();
             });
 
             PrepareRound();
@@ -102,6 +109,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             else
                 scoreDetailsButton.Text = Resources.GetString(Resource.String.show_details);
             roundScoreButton.Visibility = Game.ScoreRound == ScoringRound.Finish ? ViewStates.Invisible : ViewStates.Visible;
+            blueDicesCombinationsButton.Visibility = Game.ScoreRound != ScoringRound.Finish && Game.HasModule(ExpansionModule.DesignerHandymen) ? ViewStates.Visible : ViewStates.Gone;
 
             for (int i = 0; i < Game.PlayersCount; i++)
             {

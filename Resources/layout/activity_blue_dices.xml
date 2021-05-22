@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/content_menu"
+        android:id="@+id/menu"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/menu_height"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <AndroidBase.UI.ControlNumberView
+                android:id="@+id/dice1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:labelValue="@string/roll1"/>
+
+            <AndroidBase.UI.ControlNumberView
+                android:id="@+id/dice2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:labelValue="@string/roll2"/>
+
+            <AndroidBase.UI.ControlNumberView
+                android:id="@+id/dice3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:labelValue="@string/roll3"/>
+
+            <AndroidBase.UI.AutoGridLayout
+                android:id="@+id/grid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:columnWidth="50dp">
+
+                <ImageView
+                    android:id="@+id/priceFountain"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Fountain" />
+
+                <ImageView
+                    android:id="@+id/price2"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price2" />
+
+                <ImageView
+                    android:id="@+id/price3"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price3" />
+
+                <ImageView
+                    android:id="@+id/price4"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price4" />
+
+                <ImageView
+                    android:id="@+id/price5"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price5" />
+
+                <ImageView
+                    android:id="@+id/price6"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price6" />
+
+                <ImageView
+                    android:id="@+id/price7"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price7" />
+
+                <ImageView
+                    android:id="@+id/price8"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price8" />
+
+                <ImageView
+                    android:id="@+id/price9"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price9" />
+
+                <ImageView
+                    android:id="@+id/price10"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price10" />
+
+                <ImageView
+                    android:id="@+id/price11"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price11" />
+
+                <ImageView
+                    android:id="@+id/price12"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price12" />
+
+                <ImageView
+                    android:id="@+id/price13"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price13" />
+
+                <ImageView
+                    android:id="@+id/price14"
+                    android:layout_width="@dimen/image_size"
+                    android:layout_height="@dimen/image_size"
+                    android:src="@drawable/Price14" />
+
+            </AndroidBase.UI.AutoGridLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
