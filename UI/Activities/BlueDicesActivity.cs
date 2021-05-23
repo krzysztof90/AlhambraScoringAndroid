@@ -1,5 +1,6 @@
 ﻿using AlhambraScoringAndroid.Options;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -9,7 +10,7 @@ using System.Linq;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "@string/blue_dices_combinations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
+    [Activity(Label = "@string/blue_dices_combinations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class BlueDicesActivity : BaseActivity
     {
         private ControlNumberView dice1Control;

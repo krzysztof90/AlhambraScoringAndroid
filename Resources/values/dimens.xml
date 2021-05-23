@@ -1,6 +1,5 @@
 <resources>
   <dimen name="fab_margin">16dp</dimen>
-  <dimen name="image_size">50dp</dimen>
   <dimen name="menu_height">60dp</dimen>
   <dimen name="button_height">75dp</dimen>
   <dimen name="game_details_cell_width">50dp</dimen>

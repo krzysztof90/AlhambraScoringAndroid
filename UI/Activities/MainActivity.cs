@@ -12,23 +12,17 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler((object sender, UnhandledExceptionEventArgs args) =>
-            {
-                Exception exception = (Exception)args.ExceptionObject;
-                //TODO obsłużyć
-            });
-
             Application.LoadResults();
 
             base.OnCreate(savedInstanceState);
 
             Button newGameButton = FindViewById<Button>(Resource.Id.newGameButton);
-            newGameButton.Click += new System.EventHandler((object sender, System.EventArgs e) =>
+            newGameButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
                 Application.NewGamePrompt(this);
             });
             Button showHistoryButton = FindViewById<Button>(Resource.Id.showHistoryButton);
-            showHistoryButton.Click += new System.EventHandler((object sender, System.EventArgs e) =>
+            showHistoryButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
                 Application.ShowHistory(this);
             });

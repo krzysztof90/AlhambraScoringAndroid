@@ -13,8 +13,6 @@
   <string name="activity_ending_continue_question">Are you sure you want to close this activity?</string>
   <string name="yes">Yes</string>
   <string name="no">No</string>
-  <string name="allowed_range">Allowed range is {0} - {1}</string>
-  <string name="except_range">Not allowed number</string>
   <string name="submit">Submit</string>
   <string name="scoring">Scoring</string>
   <string name="setup">Setup</string>

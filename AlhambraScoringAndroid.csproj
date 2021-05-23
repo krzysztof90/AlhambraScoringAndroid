@@ -180,11 +180,6 @@
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.Core.UI" Version="1.0.0.8" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\attrs.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\values\players_count_array.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -221,26 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\fragment_game_score_beforeassignleftover.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\list_extensionmodule_group.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\list_extensionmodule_item.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_line_checkbox.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\view_line_number.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -459,11 +434,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_modules_details.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\list_extensionmodule_item_radiobuttons.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

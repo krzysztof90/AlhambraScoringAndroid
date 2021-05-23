@@ -33,28 +33,6 @@ namespace AlhambraScoringAndroid
         private readonly List<(Func<bool> condition, Type activityType)> neededScoreAdditionalActions;
         private List<BaseActivity> scoreActivities;
 
-        public override void SetResourcesStore()
-        {
-            ResourcesStore.InflateMethod = (LayoutInflater inflater, int resource) => { return inflater.Inflate(resource, null); };
-            ResourcesStore.allowedRangeText = Resource.String.allowed_range;
-            ResourcesStore.exceptRangeText = Resource.String.except_range;
-            ResourcesStore.viewLineNumberLayout = Resource.Layout.view_line_number;
-            ResourcesStore.viewLineCheckboxLayout = Resource.Layout.view_line_checkbox;
-            ResourcesStore.listExtensionModuleGroupLayout = Resource.Layout.list_extensionmodule_group;
-            ResourcesStore.listExtensionModuleItemLayout = Resource.Layout.list_extensionmodule_item;
-            ResourcesStore.listExtensionModuleItemRadioButtonsLayout = Resource.Layout.list_extensionmodule_item_radiobuttons;
-            ResourcesStore.controlLabelId = Resource.Id.controlLabel;
-            ResourcesStore.controlNumberId = Resource.Id.controlNumber;
-            ResourcesStore.controlCheckBoxId = Resource.Id.controlCheckBox;
-            ResourcesStore.listTitleId = Resource.Id.listTitle;
-            ResourcesStore.expandedListItemId = Resource.Id.expandedListItem;
-            ResourcesStore.expandedListItemImageId = Resource.Id.expandedListItemImage;
-            ResourcesStore.labelColorAttribute = Resource.Attribute.labelColor;
-            ResourcesStore.labelValueAttribute = Resource.Attribute.labelValue;
-            ResourcesStore.columnCountAttribute = Resource.Attribute.columnCount;
-            ResourcesStore.columnWidthAttribute = Resource.Attribute.columnWidth;
-        }
-
         public MyApplication(IntPtr javaReference, Android.Runtime.JniHandleOwnership transfer) : base(javaReference, transfer)
         {
             neededScoreAdditionalActions = new List<(Func<bool> condition, Type activityType)>()
