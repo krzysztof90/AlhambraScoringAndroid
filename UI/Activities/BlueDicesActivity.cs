@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using AndroidBase.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -78,8 +79,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                     foreach (int available in available1)
                     {
                         available2.Add(available + dice2);
-                        available2.Add(available - dice2);
-                        available2.Add(dice2 - available);
+                        available2.Add(Math.Abs(available - dice2));
                     }
                     availablePrices = available2.Distinct().ToList();
                     if (dice3 != 0)
@@ -88,8 +88,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                         foreach (int available in available2)
                         {
                             available3.Add(available + dice3);
-                            available3.Add(available - dice3);
-                            available3.Add(dice3 - available);
+                            available3.Add(Math.Abs(available - dice3));
                         }
                         availablePrices = available3.Distinct().ToList();
                     }
