@@ -27,5 +27,10 @@ namespace AlhambraScoringAndroid.UI.Activities
                 Application.ShowHistory(this);
             });
         }
+
+        public override void OnBackPressed()
+        {
+            //base.OnBackPressed();
+        }
     }
 }

@@ -105,5 +105,10 @@ namespace AlhambraScoringAndroid.UI.Activities
                 Application.GameApplyModules(adapter.SelectedListMultiple, adapter2.SelectedListSingle[GranadaName]);
             });
         }
+
+        public override void OnBackPressed()
+        {
+            Application.MainScreen();
+        }
     }
 }

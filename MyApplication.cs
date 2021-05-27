@@ -46,6 +46,11 @@ namespace AlhambraScoringAndroid
             };
         }
 
+        public void MainScreen()
+        {
+            NewActivity(typeof(MainActivity));
+        }
+
         public void NewGamePrompt(Context context)
         {
             if ((Game?.GameInProgress ?? false) || context is GameScoreActivity)
