@@ -17,6 +17,7 @@ namespace AlhambraScoringAndroid.UI
 
         protected bool IsDirk { get; private set; }
         protected bool IsFinalRound { get; private set; }
+        protected PlayerScoreData CorrectingRoundScoring { get; private set; }
         protected PlayerScoreData PreviousRoundScoring { get; private set; }
 
         protected View Root { get; private set; }
@@ -27,8 +28,10 @@ namespace AlhambraScoringAndroid.UI
         protected abstract void CreateControls();
         protected abstract void AddControls();
         protected abstract void SetControlsProperties();
+        protected abstract void ApplyCorrectingRoundScoring();
+        protected abstract void ApplyPreviousRoundScoring();
 
-        public PlaceholderPlayerScoreFragmentBase(int index, Game game, PlayersScoreSectionsPagerAdapter adapter)
+        public PlaceholderPlayerScoreFragmentBase(int index, Game game, List<PlayerScoreData> correctingRoundScoring, PlayersScoreSectionsPagerAdapter adapter)
         {
             Adapter = adapter;
 
@@ -38,6 +41,7 @@ namespace AlhambraScoringAndroid.UI
 
             IsDirk = Game.GetPlayer(PlayerNumber).Dirk;
             IsFinalRound = Game.ScoreRound == ScoringRound.Third;
+            CorrectingRoundScoring = correctingRoundScoring?[PlayerNumber - 1];
             PreviousRoundScoring = Game.PreviousRoundScoring?[PlayerNumber - 1];
         }
 
@@ -60,6 +64,14 @@ namespace AlhambraScoringAndroid.UI
             AddControls();
             InitializeControls();
             SetControlsProperties();
+            if (CorrectingRoundScoring != null)
+            {
+                ApplyCorrectingRoundScoring();
+            }
+            else if (PreviousRoundScoring != null)
+            {
+                ApplyPreviousRoundScoring();
+            }
 
             Button submitButton = Root.FindViewById<Button>(Resource.Id.submitButton);
             submitButton.Click += new EventHandler((object sender, EventArgs e) =>

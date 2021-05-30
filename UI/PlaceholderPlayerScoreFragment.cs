@@ -537,28 +537,121 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(wallMoatCombinationNumericUpDown, !IsDirk);
             AddConditionToVisible(secondLongestWallNumericUpDown, !IsDirk);
 
-            if (PreviousRoundScoring != null)
-            {
-                ownedCharacterTheWiseManCheckBox.Value = PreviousRoundScoring.OwnedCharacterTheWiseMan;
-                ownedCharacterTheCityWatchCheckBox.Value = PreviousRoundScoring.OwnedCharacterTheCityWatch;
-                completedProjectPavilionCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Pavilion];
-                completedProjectSeraglioCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Seraglio];
-                completedProjectArcadesCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Arcades];
-                completedProjectChambersCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Chambers];
-                completedProjectGardenCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Garden];
-                completedProjectTowerCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Tower];
-                ownedSemiBuildingPavilionCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Pavilion];
-                ownedSemiBuildingSeraglioCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Seraglio];
-                ownedSemiBuildingArcadesCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Arcades];
-                ownedSemiBuildingChambersCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Chambers];
-                ownedSemiBuildingGardenCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Garden];
-                ownedSemiBuildingTowerCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Tower];
-            }
-
             EnabledSecondLongestWall();
         }
 
-        public PlaceholderPlayerScoreFragment(int _index, Game game, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, adapter)
+        protected override void ApplyCorrectingRoundScoring()
+        {
+            wallsCountNumericUpDown.Value = CorrectingRoundScoring.WallLength;
+            pavilionCountNumericUpDown.Value = CorrectingRoundScoring.BuildingsCount[BuildingType.Pavilion];
+            seraglioCountNumericUpDown.Value = CorrectingRoundScoring.BuildingsCount[BuildingType.Seraglio];
+            arcadesCountNumericUpDown.Value = CorrectingRoundScoring.BuildingsCount[BuildingType.Arcades];
+            chambersCountNumericUpDown.Value = CorrectingRoundScoring.BuildingsCount[BuildingType.Chambers];
+            gardenCountNumericUpDown.Value = CorrectingRoundScoring.BuildingsCount[BuildingType.Garden];
+            towerCountNumericUpDown.Value = CorrectingRoundScoring.BuildingsCount[BuildingType.Tower];
+            bonusCardsPavilionCountNumericUpDown.Value = CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Pavilion];
+            bonusCardsSeraglioCountNumericUpDown.Value = CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Seraglio];
+            bonusCardsArcadesCountNumericUpDown.Value = CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Arcades];
+            bonusCardsChambersCountNumericUpDown.Value = CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Chambers];
+            bonusCardsGardenCountNumericUpDown.Value = CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Garden];
+            bonusCardsTowerCountNumericUpDown.Value = CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Tower];
+            squaresPavilionCountNumericUpDown.Value = CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Pavilion];
+            squaresSeraglioCountNumericUpDown.Value = CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Seraglio];
+            squaresArcadesCountNumericUpDown.Value = CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Arcades];
+            squaresChambersCountNumericUpDown.Value = CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Chambers];
+            squaresGardenCountNumericUpDown.Value = CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Garden];
+            squaresTowerCountNumericUpDown.Value = CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Tower];
+            ownedCharacterTheWiseManCheckBox.Value = CorrectingRoundScoring.OwnedCharacterTheWiseMan;
+            ownedCharacterTheCityWatchCheckBox.Value = CorrectingRoundScoring.OwnedCharacterTheCityWatch;
+            campsPointsNumericUpDown.Value = CorrectingRoundScoring.CampsPoints;
+            streetTradersPavilionCountNumericUpDown.Value = CorrectingRoundScoring.StreetTradersNumber[BuildingType.Pavilion];
+            streetTradersSeraglioCountNumericUpDown.Value = CorrectingRoundScoring.StreetTradersNumber[BuildingType.Seraglio];
+            streetTradersArcadesCountNumericUpDown.Value = CorrectingRoundScoring.StreetTradersNumber[BuildingType.Arcades];
+            streetTradersChambersCountNumericUpDown.Value = CorrectingRoundScoring.StreetTradersNumber[BuildingType.Chambers];
+            streetTradersGardenCountNumericUpDown.Value = CorrectingRoundScoring.StreetTradersNumber[BuildingType.Garden];
+            streetTradersTowerCountNumericUpDown.Value = CorrectingRoundScoring.StreetTradersNumber[BuildingType.Tower];
+            treasuresCountNumericUpDown.Value = CorrectingRoundScoring.TreasuresCount;
+            unprotectedSidesCountNumericUpDown.Value = CorrectingRoundScoring.UnprotectedSidesCount;
+            unprotectedSidesNeighbouringCountNumericUpDown.Value = CorrectingRoundScoring.UnprotectedSidesNeighbouringCount;
+            bazaarsPointsNumericUpDown.Value = CorrectingRoundScoring.BazaarsTotalPoints;
+            artOfTheMoorsPointsNumericUpDown.Value = CorrectingRoundScoring.ArtOfTheMoorsPoints;
+            falconsBlackNumberNumericUpDown.Value = CorrectingRoundScoring.FalconsBlackNumber;
+            falconsBrownNumberNumericUpDown.Value = CorrectingRoundScoring.FalconsBrownNumber;
+            falconsWhiteNumberNumericUpDown.Value = CorrectingRoundScoring.FalconsWhiteNumber;
+            watchtowersNumberNumericUpDown.Value = CorrectingRoundScoring.WatchtowersNumber;
+            medinasNumberNumericUpDown.Value = CorrectingRoundScoring.MedinasNumber;
+            buildingsWithoutServantTileNumericUpDown.Value = CorrectingRoundScoring.BuildingsWithoutServantTile;
+            completedGroupOfFruitBoard1CheckBox.Value = CorrectingRoundScoring.CompletedGroupOfFruitBoard1;
+            completedGroupOfFruitBoard2CheckBox.Value = CorrectingRoundScoring.CompletedGroupOfFruitBoard2;
+            completedGroupOfFruitBoard3CheckBox.Value = CorrectingRoundScoring.CompletedGroupOfFruitBoard3;
+            completedGroupOfFruitBoard4CheckBox.Value = CorrectingRoundScoring.CompletedGroupOfFruitBoard4;
+            completedGroupOfFruitBoard5CheckBox.Value = CorrectingRoundScoring.CompletedGroupOfFruitBoard5;
+            completedGroupOfFruitBoard6CheckBox.Value = CorrectingRoundScoring.CompletedGroupOfFruitBoard6;
+            faceDownFruitsCountNumericUpDown.Value = CorrectingRoundScoring.FaceDownFruitsCount;
+            bathhousesPointsNumericUpDown.Value = CorrectingRoundScoring.BathhousesPoints;
+            wishingWellsPointsNumericUpDown.Value = CorrectingRoundScoring.WishingWellsPoints;
+            completedProjectPavilionCheckBox.Value = CorrectingRoundScoring.CompletedProjects[BuildingType.Pavilion];
+            completedProjectSeraglioCheckBox.Value = CorrectingRoundScoring.CompletedProjects[BuildingType.Seraglio];
+            completedProjectArcadesCheckBox.Value = CorrectingRoundScoring.CompletedProjects[BuildingType.Arcades];
+            completedProjectChambersCheckBox.Value = CorrectingRoundScoring.CompletedProjects[BuildingType.Chambers];
+            completedProjectGardenCheckBox.Value = CorrectingRoundScoring.CompletedProjects[BuildingType.Garden];
+            completedProjectTowerCheckBox.Value = CorrectingRoundScoring.CompletedProjects[BuildingType.Tower];
+            animalsPointsNumericUpDown.Value = CorrectingRoundScoring.AnimalsPoints;
+            ownedSemiBuildingPavilionCheckBox.Value = CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Pavilion];
+            ownedSemiBuildingSeraglioCheckBox.Value = CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Seraglio];
+            ownedSemiBuildingArcadesCheckBox.Value = CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Arcades];
+            ownedSemiBuildingChambersCheckBox.Value = CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Chambers];
+            ownedSemiBuildingGardenCheckBox.Value = CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Garden];
+            ownedSemiBuildingTowerCheckBox.Value = CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Tower];
+            blackDiceTotalPipsNumericUpDown.Value = CorrectingRoundScoring.BlackDiceTotalPips;
+            extensionsPavilionCountNumericUpDown.Value = CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Pavilion];
+            extensionsSeraglioCountNumericUpDown.Value = CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Seraglio];
+            extensionsArcadesCountNumericUpDown.Value = CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Arcades];
+            extensionsChambersCountNumericUpDown.Value = CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Chambers];
+            extensionsGardenCountNumericUpDown.Value = CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Garden];
+            extensionsTowerCountNumericUpDown.Value = CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Tower];
+            handymenTilesHighestNumberNumericUpDown.Value = CorrectingRoundScoring.HandymenTilesHighestNumber;
+            treasuresValueNumericUpDown.Value = CorrectingRoundScoring.TreasuresValue;
+            mission1RowsCountNumericUpDown.Value = CorrectingRoundScoring.Mission1Count;
+            mission2ColumnsCountNumericUpDown.Value = CorrectingRoundScoring.Mission2Count;
+            mission3Adjacent2BuildingsCountNumericUpDown.Value = CorrectingRoundScoring.Mission3Count;
+            mission5LongestDiagonalLineNumericUpDown.Value = CorrectingRoundScoring.Mission5Count;
+            mission6DoubleWallCountNumericUpDown.Value = CorrectingRoundScoring.Mission6Count;
+            mission8PathBuildingsNumberNumericUpDown.Value = CorrectingRoundScoring.Mission8Count;
+            mission9Grids22CountNumericUpDown.Value = CorrectingRoundScoring.Mission9Count;
+            secondLongestWallNumericUpDown.Value = CorrectingRoundScoring.SecondLongestWallLength;
+            moatLengthNumericUpDown.Value = CorrectingRoundScoring.MoatLength;
+            arenaNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Arena];
+            bathHouseNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.BathHouse];
+            libraryNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Library];
+            hostelNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Hostel];
+            hospitalNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Hospital];
+            marketNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Market];
+            parkNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Park];
+            schoolNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.School];
+            residentialAreaNumericUpDown.Value = CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.ResidentialArea];
+            wallMoatCombinationNumericUpDown.Value = CorrectingRoundScoring.WallMoatCombinationLength;
+        }
+
+        protected override void ApplyPreviousRoundScoring()
+        {
+            ownedCharacterTheWiseManCheckBox.Value = PreviousRoundScoring.OwnedCharacterTheWiseMan;
+            ownedCharacterTheCityWatchCheckBox.Value = PreviousRoundScoring.OwnedCharacterTheCityWatch;
+            completedProjectPavilionCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Pavilion];
+            completedProjectSeraglioCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Seraglio];
+            completedProjectArcadesCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Arcades];
+            completedProjectChambersCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Chambers];
+            completedProjectGardenCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Garden];
+            completedProjectTowerCheckBox.Value = PreviousRoundScoring.CompletedProjects[BuildingType.Tower];
+            ownedSemiBuildingPavilionCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Pavilion];
+            ownedSemiBuildingSeraglioCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Seraglio];
+            ownedSemiBuildingArcadesCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Arcades];
+            ownedSemiBuildingChambersCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Chambers];
+            ownedSemiBuildingGardenCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Garden];
+            ownedSemiBuildingTowerCheckBox.Value = PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Tower];
+        }
+
+        public PlaceholderPlayerScoreFragment(int _index, Game game, List<PlayerScoreData> correctingRoundScoring, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, correctingRoundScoring, adapter)
         {
         }
 

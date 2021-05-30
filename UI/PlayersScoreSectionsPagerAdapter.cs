@@ -62,13 +62,13 @@ namespace AlhambraScoringAndroid.UI
         {
             if (Activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
             {
-                PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, Activity.Game, this);
+                PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, Activity.Game, Activity.CorrectingScoring(), this);
                 PlayerScoreFragments[position] = playerScoreFragment;
                 return playerScoreFragment;
             }
             else
             {
-                PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, Activity.Game, this);
+                PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, Activity.Game, Activity.CorrectingScoring(), this);
                 PlayerScoreBeforeAssignLeftoverFragments[position] = playerScoreFragment;
                 return playerScoreFragment;
             }
@@ -98,7 +98,7 @@ namespace AlhambraScoringAndroid.UI
             for (int i = 0; i < Count; i++)
                 if (PlayerScoreFragments[i] == null)
                 {
-                    PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, Activity.Game, this);
+                    PlayerScoreFragments[i] = new PlaceholderPlayerScoreFragment(i + 1, Activity.Game, Activity.CorrectingScoring(), this);
                     PlayerScoreFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
                 }
             return PlayerScoreFragments.ToList();
@@ -109,7 +109,7 @@ namespace AlhambraScoringAndroid.UI
             for (int i = 0; i < Count; i++)
                 if (PlayerScoreBeforeAssignLeftoverFragments[i] == null)
                 {
-                    PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, Activity.Game, this);
+                    PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, Activity.Game, Activity.CorrectingScoring(), this);
                     PlayerScoreBeforeAssignLeftoverFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
                 }
             return PlayerScoreBeforeAssignLeftoverFragments.ToList();

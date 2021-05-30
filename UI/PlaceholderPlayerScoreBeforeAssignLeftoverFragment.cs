@@ -1,5 +1,6 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using AndroidBase.UI;
+using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI
 {
@@ -29,7 +30,16 @@ namespace AlhambraScoringAndroid.UI
             AddConditionToVisible(buildingsWithoutServantTileNumericUpDown, !IsDirk);
         }
 
-        public PlaceholderPlayerScoreBeforeAssignLeftoverFragment(int _index, Game game, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, adapter)
+        protected override void ApplyCorrectingRoundScoring()
+        {
+            buildingsWithoutServantTileNumericUpDown.Value = CorrectingRoundScoring.BuildingsWithoutServantTile;
+        }
+
+        protected override void ApplyPreviousRoundScoring()
+        {
+        }
+
+        public PlaceholderPlayerScoreBeforeAssignLeftoverFragment(int _index, Game game, List<PlayerScoreData> correctingRoundScoring, PlayersScoreSectionsPagerAdapter adapter) : base(_index, game, correctingRoundScoring, adapter)
         {
         }
 

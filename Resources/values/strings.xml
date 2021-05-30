@@ -13,6 +13,7 @@
   <string name="activity_ending_continue_question">Are you sure you want to close this activity?</string>
   <string name="yes">Yes</string>
   <string name="no">No</string>
+  <string name="cancel">Cancel</string>
   <string name="submit">Submit</string>
   <string name="scoring">Scoring</string>
   <string name="setup">Setup</string>
@@ -288,6 +289,9 @@
   <string name="play">Play</string>
   <string name="start">Start</string>
   <string name="revert">Revert {0}</string>
+  <string name="revert_punctation">Revert punctation</string>
+  <string name="correct">Correct</string>
+  <string name="pullback">Pull back</string>
   <string name="wallsCount">Longest continuous wall</string>
   <string name="pavilionCount">Pavilions number</string>
   <string name="seraglioCount">Seraglios number</string>

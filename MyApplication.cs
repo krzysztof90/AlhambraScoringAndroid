@@ -4,7 +4,6 @@ using AlhambraScoringAndroid.UI.Activities;
 using Android.App;
 using Android.Content;
 using Android.Content.Res;
-using Android.Views;
 using AndroidBase;
 using AndroidBase.UI;
 using System;
@@ -113,6 +112,16 @@ namespace AlhambraScoringAndroid
             NewActivity(typeof(GameScoreActivity));
         }
 
+        public List<PlayerScoreData> CorrectingScoring()
+        {
+            return gameInProgressActivity.CorrectingScoring;
+        }
+
+        public void ResetGameInProgress()
+        {
+            gameInProgressActivity.ResetTemporaryRevert();
+        }
+
         public void SubmitScore(GameScoreActivity activity, List<PlayerScoreData> scoreData)
         {
             if (Game.ValidateScore(scoreData))
@@ -149,6 +158,8 @@ namespace AlhambraScoringAndroid
 
                 scoreActivities = new List<BaseActivity>();
 
+                gameInProgressActivity.PerformProperRevert();
+
                 Game.Score(GameScoreSubmitScoreData);
                 Game.SetNextRound();
                 gameInProgressActivity.PrepareRound();
@@ -184,6 +195,8 @@ namespace AlhambraScoringAndroid
         {
             if (Game.ValidateScoreBeforeAssignLeftoverBuildings(scoreData))
             {
+                gameInProgressActivity.PerformProperRevert();
+
                 activity.Finish();
 
                 Game.ScoreBeforeAssignLeftoverBuildings(scoreData);

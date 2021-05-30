@@ -87,8 +87,8 @@ namespace AlhambraScoringAndroid.GamePlay
         public ScoringRound ScoreRound { get; private set; }
         public Stack<ScoreHistory> ScoreStack { get; private set; }
         public bool Saved { get; set; }
-        private List<PlayerScoreData>[] RoundsScoring;
-        private List<PlayerScoreData> ThirdBeforeRoundScoring;
+        public List<PlayerScoreData>[] RoundsScoring { get; private set; }
+        public List<PlayerScoreData> ThirdBeforeRoundScoring { get; private set; }
         public List<PlayerScoreData> PreviousRoundScoring => RoundNumber != 1 ? RoundsScoring[RoundNumber - 2] : null;
 
         public static List<List<int>[]> ScoringByPosition = new List<List<int>[]>()
@@ -1152,6 +1152,8 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public void ScoreBeforeAssignLeftoverBuildings(List<PlayerScoreData> scoreData)
         {
+            List<(ScoreDetails scoreDetails1, ScoreDetails scoreDetails2, ScoreDetails scoreDetails3, ScoreDetails scoreMeantime)> initialScoring = Players.Select(p => (p.ScoreDetails1.Copy(), p.ScoreDetails2.Copy(), p.ScoreDetails3.Copy(), p.ScoreMeantime.Copy())).ToList();
+
             if (HasModule(ExpansionModule.DesignerPalaceStaff))
             {
                 //Palace Staff: each building without a servant tile
@@ -1160,15 +1162,24 @@ namespace AlhambraScoringAndroid.GamePlay
                         Players[i].RemoveScore(scoreData[i].BuildingsWithoutServantTile, false, ScoreType.BuildingsWithoutServantTile);
             }
 
+            ScoreStack.Push(new ScoreHistoryRound(this, ScoreRound, initialScoring));
+
             ThirdBeforeRoundScoring = scoreData;
         }
 
-        //TODO możliwość poprawy tylko ostatniej rundy punktowej (bez immediately) (z uzupełnionymi poprzednimi wartościami)
+        public void BackRound()
+        {
+            ScoreHistoryRound scoreHistory = (ScoreHistoryRound)ScoreStack.Peek();
+            ScoreRound = scoreHistory.ScoreRound;
+        }
+
         public void RevertScoring()
         {
             ScoreStack.Pop().Revert();
             ResetFinish();
         }
+
+        //    RoundsScoring
 
         public void SetNextRound()
         {

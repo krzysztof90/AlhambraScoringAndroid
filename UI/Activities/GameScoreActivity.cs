@@ -8,6 +8,7 @@ using Android.Widget;
 using AndroidBase.UI;
 using AndroidX.ViewPager.Widget;
 using Google.Android.Material.Tabs;
+using System.Collections.Generic;
 using static Google.Android.Material.Tabs.TabLayout;
 
 namespace AlhambraScoringAndroid.UI.Activities
@@ -40,12 +41,21 @@ namespace AlhambraScoringAndroid.UI.Activities
             }
         }
 
+        public List<PlayerScoreData> CorrectingScoring()
+        {
+            return Application.CorrectingScoring();
+        }
+
         public override void OnBackPressed()
         {
             new AlertDialog.Builder(this)
                 .SetTitle(Resources.GetString(Resource.String.activity_ending))
                 .SetMessage(Resources.GetString(Resource.String.activity_ending_continue_question))
-                .SetPositiveButton(Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) => base.OnBackPressed()))
+                .SetPositiveButton(Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) =>
+                {
+                    Application.ResetGameInProgress();
+                    base.OnBackPressed();
+                }))
                 .SetNegativeButton(Resources.GetString(Resource.String.no), new DialogInterfaceOnClickListener(null))
                 .Show();
         }

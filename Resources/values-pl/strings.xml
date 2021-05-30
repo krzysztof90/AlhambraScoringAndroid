@@ -15,6 +15,7 @@
   <string name="activity_ending_continue_question">Czy napewno zamknąć to okno?</string>
   <string name="yes">Tak</string>
   <string name="no">Nie</string>
+  <string name="cancel">Anuluj</string>
   <string name="submit">Zatwierdź</string>
   <string name="scoring">Punktacja</string>
   <string name="setup">Przygotowanie</string>
@@ -290,6 +291,9 @@
   <string name="play">Graj</string>
   <string name="start">Start</string>
   <string name="revert">Cofnij {0}</string>
+  <string name="revert_punctation">Cofnij punktację</string>
+  <string name="correct">Popraw</string>
+  <string name="pullback">Wycofaj</string>
   <string name="wallsCount">Najdłuższy mur</string>
   <string name="pavilionCount">Liczba Pawilonów</string>
   <string name="seraglioCount">Liczba Serajów</string>
