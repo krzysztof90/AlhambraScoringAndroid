@@ -8,6 +8,7 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "@string/main_title", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true)]
     public class MainActivity : BaseActivity
     {
+        protected override bool ShowBackButton => false;
         protected override int ContentView => Resource.Layout.activity_main;
 
         protected override void OnCreate(Bundle savedInstanceState)
