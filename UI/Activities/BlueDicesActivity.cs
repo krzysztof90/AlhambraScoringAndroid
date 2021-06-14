@@ -59,6 +59,15 @@ namespace AlhambraScoringAndroid.UI.Activities
             dice2Control.OnValueChange = () => { ShowAvailablePrices(); };
             dice3Control.OnValueChange = () => { ShowAvailablePrices(); };
 
+            Button resetButton = FindViewById<Button>(Resource.Id.resetButton);
+            resetButton.Click += new EventHandler((object sender, EventArgs e) =>
+            {
+                dice1Control.ResetValue();
+                dice2Control.ResetValue();
+                dice3Control.ResetValue();
+                dice1Control.SetFocus();
+            });
+
             ShowAvailablePrices();
         }
 

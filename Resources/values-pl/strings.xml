@@ -26,6 +26,7 @@
   <string name="new_game">Nowa gra</string>
   <string name="history">Historia</string>
   <string name="results_history">Historia wyników</string>
+  <string name="reset">Zeruj</string>
   <string name="players_chose">Wybór graczy</string>
   <string name="modules_details_chose">Szczegóły dodatków</string>
   <string name="caliphs_guidelines_missions">Misje Caliph’s Guidelines</string>
