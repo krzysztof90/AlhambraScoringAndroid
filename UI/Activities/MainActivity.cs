@@ -31,7 +31,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         public override void OnBackPressed()
         {
-            //base.OnBackPressed();
+            base.OnBackPressed();
         }
     }
 }

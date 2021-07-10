@@ -108,7 +108,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         public override void OnBackPressed()
         {
-            Application.MainScreen();
+            Application.MainScreen(this);
         }
     }
 }

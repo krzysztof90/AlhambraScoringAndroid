@@ -45,9 +45,12 @@ namespace AlhambraScoringAndroid
             };
         }
 
-        public void MainScreen()
+        public void MainScreen(BaseActivity activity)
         {
-            NewActivity(typeof(MainActivity));
+            Intent intent = new Intent(ApplicationContext, typeof(MainActivity));
+            //intent.AddCategory(Intent.CategoryHome);
+            intent.AddFlags(ActivityFlags.ClearTop);
+            StartActivity(intent);
         }
 
         public void NewGamePrompt(Context context)
