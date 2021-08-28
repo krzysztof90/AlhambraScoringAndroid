@@ -99,8 +99,8 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupOther, SetupInstructions.RemoveCraftsmen5, Game.HasModule(ExpansionModule.DesignerTravellingCraftsmen) && (Game.PlayersCount == 3 || Game.PlayersCount == 4));
             AddSetupInstruction(setupOther, SetupInstructions.RemoveCraftsmen6, Game.HasModule(ExpansionModule.DesignerTravellingCraftsmen) && (Game.PlayersCount == 5 || Game.PlayersCount == 6));
             AddSetupInstruction(setupOther, SetupInstructions.DealCraftsmen, Game.HasModule(ExpansionModule.DesignerTravellingCraftsmen));
-            AddSetupInstruction(setupOther, SetupInstructions.ShuffleProjectTiles, Game.HasModule(ExpansionModule.DesignerFreshColors));
             AddSetupInstruction(setupOther, SetupInstructions.RemoveProjectTiles, Game.HasModule(ExpansionModule.DesignerFreshColors) && Game.PlayersCount == 3);
+            AddSetupInstruction(setupOther, SetupInstructions.ShuffleProjectTiles, Game.HasModule(ExpansionModule.DesignerFreshColors));
             AddSetupInstruction(setupOther, SetupInstructions.PlaceColorTiles, Game.HasModule(ExpansionModule.DesignerFreshColors));
             AddSetupInstruction(setupOther, SetupInstructions.DealPalaceDesigners, Game.HasModule(ExpansionModule.DesignerPalaceDesigners));
             AddSetupInstruction(setupOther, SetupInstructions.PlacePalaceDesigners, Game.HasModule(ExpansionModule.DesignerPalaceDesigners));

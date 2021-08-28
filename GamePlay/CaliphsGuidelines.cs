@@ -4,23 +4,23 @@ namespace AlhambraScoringAndroid.GamePlay
 {
     public enum CaliphsGuidelinesMission
     {
-        [DescriptionResourceAttribute(Resource.String.mission_1)]
+        [DescriptionResourceAttribute(Resource.String.mission1RowsCount)]
         Mission1,
-        [DescriptionResourceAttribute(Resource.String.mission_2)]
+        [DescriptionResourceAttribute(Resource.String.mission2ColumnsCount)]
         Mission2,
-        [DescriptionResourceAttribute(Resource.String.mission_3)]
+        [DescriptionResourceAttribute(Resource.String.mission3Adjacent2BuildingsCount)]
         Mission3,
-        [DescriptionResourceAttribute(Resource.String.mission_4)]
+        [DescriptionResourceAttribute(Resource.String.mission4SecondLongestWall)]
         Mission4,
-        [DescriptionResourceAttribute(Resource.String.mission_5)]
+        [DescriptionResourceAttribute(Resource.String.mission5LongestDiagonalLine)]
         Mission5,
-        [DescriptionResourceAttribute(Resource.String.mission_6)]
+        [DescriptionResourceAttribute(Resource.String.mission6DoubleWallCount)]
         Mission6,
-        [DescriptionResourceAttribute(Resource.String.mission_7)]
+        [DescriptionResourceAttribute(Resource.String.mission7NumberOfDifferentTypesOfBuildings)]
         Mission7,
-        [DescriptionResourceAttribute(Resource.String.mission_8)]
+        [DescriptionResourceAttribute(Resource.String.mission8PathBuildingsNumber)]
         Mission8,
-        [DescriptionResourceAttribute(Resource.String.mission_9)]
+        [DescriptionResourceAttribute(Resource.String.mission9Grids22Count)]
         Mission9,
     }
 }

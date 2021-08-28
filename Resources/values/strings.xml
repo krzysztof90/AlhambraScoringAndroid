@@ -262,13 +262,14 @@
   <string name="instruction_place_new_building_grounds">Place 4 number tiles in a row next to the building market. Place 3 building under construction under each number tile</string>
   <string name="instruction_deal_major_construction_marker">Deal auction marker to each player</string>
   <string name="instruction_shuffle_servant_tiles">Shuffle servant tiles. Draw 6 of them</string>
+  <string name="instruction_place_palace_staff">Each player places marshal on starting tile</string>
   <string name="instruction_shuffle_orchards_boards">Shuffle and deal fruit board to each player</string>
   <string name="instruction_shuffle_orchards_fruits">Shuffle fruit tiles</string>
   <string name="instruction_remove_craftsmen_5">Remove craftsmen marked 6 and 5/6</string>
   <string name="instruction_remove_craftsmen_6">Remove craftsmen marked 6</string>
-  <string name="instruction_deal_craftsmen">Shuffle and deal 2 craftsmen to each player</string>
-  <string name="instruction_shuffle_project_tiles">Shuffle project tiles. Fill 4 project spaces</string>
+  <string name="instruction_deal_craftsmen">Shuffle and deal 2 craftsmen to each player. Deal third face down craftsman to the first player</string>
   <string name="instruction_remove_project_tiles">Remove project tiles marked *</string>
+  <string name="instruction_shuffle_project_tiles">Shuffle project tiles. Fill 4 project spaces</string>
   <string name="instruction_place_color_tiles">Place color tiles next to the project board</string>
   <string name="instruction_deal_palace_designers">Deal designer to each player</string>
   <string name="instruction_place_palace_designers">Each player places designer on starting tile</string>
@@ -366,8 +367,10 @@
   <string name="mission1RowsCount">(Mission 1) Number of rows with at least 3 consecutive buildings</string>
   <string name="mission2ColumnsCount">(Mission 2) Number of columns with at least 3 consecutive buildings</string>
   <string name="mission3Adjacent2BuildingsCount">(Mission 3) Number of 2 buildings of the same type built adjacent to each other</string>
+  <string name="mission4SecondLongestWall">(Mission 4) Second longest wall</string>
   <string name="mission5LongestDiagonalLine">(Mission 5) Number of buildings along the longest diagonal line</string>
   <string name="mission6DoubleWallCount">(Mission 6) Number of double-wall</string>
+  <string name="mission7NumberOfDifferentTypesOfBuildings">(Mission 7) Number of different types of buildings</string>
   <string name="mission8PathBuildingsNumber">(Mission 8) Number of buildings along the path from the Lion Fountain to the furthest building</string>
   <string name="mission9Grids22Count">(Mission 9) Number of 2 x 2 grids</string>
   <string name="secondLongestWall">Second longest wall</string>

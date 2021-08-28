@@ -149,10 +149,10 @@ namespace AlhambraScoringAndroid.GamePlay
         RemoveCraftsmen6,
         [DescriptionResourceAttribute(Resource.String.instruction_deal_craftsmen)]
         DealCraftsmen,
-        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_project_tiles)]
-        ShuffleProjectTiles,
         [DescriptionResourceAttribute(Resource.String.instruction_remove_project_tiles)]
         RemoveProjectTiles,
+        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_project_tiles)]
+        ShuffleProjectTiles,
         [DescriptionResourceAttribute(Resource.String.instruction_place_color_tiles)]
         PlaceColorTiles,
         [DescriptionResourceAttribute(Resource.String.instruction_deal_palace_designers)]

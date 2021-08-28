@@ -18,7 +18,7 @@ namespace AlhambraScoringAndroid
         //TODO BGG
         //TODO przezroczyste obrazki
         //TODO minSdkVersion
-        //TODO restore state after application close
+        //TODO restore state after application (automatic) close
         //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
         //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
         //LoadApplication(new App());
