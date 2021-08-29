@@ -385,6 +385,12 @@
   <string name="schoolCount">School number</string>
   <string name="residentialAreaCount">Residential area number</string>
   <string name="wallMoatCombination">Longest stretch of parallel city walls and moats</string>
+  <string name="pips1">1 pip</string>
+  <string name="pips2">2 pips</string>
+  <string name="pips3">3 pips</string>
+  <string name="pips4">4 pips</string>
+  <string name="pips5">5 pips</string>
+  <string name="pips6">6 pips</string>
   <string name="validateWallLength">Validate wall length</string>
   <string name="validateBuildingsNumber">Validate buildings number</string>
   <string name="validateBuildingsNumberPrevious">Validate buildings number based on previous rounds</string>

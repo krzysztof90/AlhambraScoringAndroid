@@ -7,6 +7,7 @@ using AndroidBase.Tools.Enums;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
@@ -53,97 +54,73 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             contentTable = FindViewById<TableLayout>(Resource.Id.contentTable);
 
-            List<List<TableRow>> tableRows = new List<List<TableRow>>()
+            List<List<TableRow>> tableRows = new List<List<int>>()
             {
-                new List<TableRow>()
-                {
-                    FindViewById<TableRow>(Resource.Id.headerPlayer11),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer21),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer31),
-                    FindViewById<TableRow>(Resource.Id.headerPlayerSum1),
-                },
-                new List<TableRow>()
-                {
-                    FindViewById<TableRow>(Resource.Id.headerPlayer12),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer22),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer32),
-                    FindViewById<TableRow>(Resource.Id.headerPlayerSum2),
-                },
-                new List<TableRow>()
-                {
-                    FindViewById<TableRow>(Resource.Id.headerPlayer13),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer23),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer33),
-                    FindViewById<TableRow>(Resource.Id.headerPlayerSum3),
-                },
-                new List<TableRow>()
-                {
-                    FindViewById<TableRow>(Resource.Id.headerPlayer14),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer24),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer34),
-                    FindViewById<TableRow>(Resource.Id.headerPlayerSum4),
-                },
-                new List<TableRow>()
-                {
-                    FindViewById<TableRow>(Resource.Id.headerPlayer15),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer25),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer35),
-                    FindViewById<TableRow>(Resource.Id.headerPlayerSum5),
-                },
-                new List<TableRow>()
-                {
-                    FindViewById<TableRow>(Resource.Id.headerPlayer16),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer26),
-                    FindViewById<TableRow>(Resource.Id.headerPlayer36),
-                    FindViewById<TableRow>(Resource.Id.headerPlayerSum6),
-                },
-            };
+                new List<int>(){
+                    Resource.Id.headerPlayer11,
+                    Resource.Id.headerPlayer21,
+                    Resource.Id.headerPlayer31,
+                    Resource.Id.headerPlayerSum1},
+                new List<int>(){
+                    Resource.Id.headerPlayer12,
+                    Resource.Id.headerPlayer22,
+                    Resource.Id.headerPlayer32,
+                    Resource.Id.headerPlayerSum2},
+                new List<int>(){
+                    Resource.Id.headerPlayer13,
+                    Resource.Id.headerPlayer23,
+                    Resource.Id.headerPlayer33,
+                    Resource.Id.headerPlayerSum3},
+                new List<int>(){
+                    Resource.Id.headerPlayer14,
+                    Resource.Id.headerPlayer24,
+                    Resource.Id.headerPlayer34,
+                    Resource.Id.headerPlayerSum4},
+                new List<int>(){
+                    Resource.Id.headerPlayer15,
+                    Resource.Id.headerPlayer25,
+                    Resource.Id.headerPlayer35,
+                    Resource.Id.headerPlayerSum5},
+                new List<int>(){
+                    Resource.Id.headerPlayer16,
+                    Resource.Id.headerPlayer26,
+                    Resource.Id.headerPlayer36,
+                    Resource.Id.headerPlayerSum6},
+            }.Select(l => l.Select(r => FindViewById<TableRow>(r)).ToList()).ToList();
 
-            List<List<TextView>> textViews = new List<List<TextView>>()
+            List<List<TextView>> textViews = new List<List<int>>()
             {
-                new List<TextView>()
-                {
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer11),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer21),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer31),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayerSum1)
-                },
-                new List<TextView>()
-                {
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer12),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer22),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer32),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayerSum2)
-                },
-                new List<TextView>()
-                {
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer13),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer23),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer33),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayerSum3)
-                },
-                new List<TextView>()
-                {
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer14),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer24),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer34),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayerSum4)
-                },
-                new List<TextView>()
-                {
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer15),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer25),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer35),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayerSum5)
-                },
-                new List<TextView>()
-                {
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer16),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer26),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayer36),
-                    FindViewById<TextView>(Resource.Id.headerTextPlayerSum6)
-                },
-            };
+                new List<int>(){
+                    Resource.Id.headerTextPlayer11,
+                    Resource.Id.headerTextPlayer21,
+                    Resource.Id.headerTextPlayer31,
+                    Resource.Id.headerTextPlayerSum1},
+                new List<int>(){
+                    Resource.Id.headerTextPlayer12,
+                    Resource.Id.headerTextPlayer22,
+                    Resource.Id.headerTextPlayer32,
+                    Resource.Id.headerTextPlayerSum2},
+                new List<int>(){
+                    Resource.Id.headerTextPlayer13,
+                    Resource.Id.headerTextPlayer23,
+                    Resource.Id.headerTextPlayer33,
+                    Resource.Id.headerTextPlayerSum3},
+                new List<int>(){
+                    Resource.Id.headerTextPlayer14,
+                    Resource.Id.headerTextPlayer24,
+                    Resource.Id.headerTextPlayer34,
+                    Resource.Id.headerTextPlayerSum4},
+                new List<int>(){
+                    Resource.Id.headerTextPlayer15,
+                    Resource.Id.headerTextPlayer25,
+                    Resource.Id.headerTextPlayer35,
+                    Resource.Id.headerTextPlayerSum5},
+                new List<int>(){
+                    Resource.Id.headerTextPlayer16,
+                    Resource.Id.headerTextPlayer26,
+                    Resource.Id.headerTextPlayer36,
+                    Resource.Id.headerTextPlayerSum6},
+            }.Select(l => l.Select(r => FindViewById<TextView>(r)).ToList()).ToList();
 
             for (int i = PlayersCount; i < 6; i++)
             {

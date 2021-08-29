@@ -7,6 +7,7 @@ using Android.Widget;
 using AndroidBase.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
@@ -35,15 +36,16 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             CorrectingScoring = null;
 
-            resultPanels = new List<PlayerResultPanel>()
+            resultPanels = new List<int>()
             {
-                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel1),
-                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel2),
-                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel3),
-                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel4),
-                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel5),
-                FindViewById<PlayerResultPanel>(Resource.Id.playerResultPanel6),
-            };
+                Resource.Id.playerResultPanel1,
+                Resource.Id.playerResultPanel2,
+                Resource.Id.playerResultPanel3,
+                Resource.Id.playerResultPanel4,
+                Resource.Id.playerResultPanel5,
+                Resource.Id.playerResultPanel6
+            }.Select(r => FindViewById<PlayerResultPanel>(r)).ToList();
+
             for (int i = 0; i < Game.PlayersCount; i++)
             {
                 resultPanels[i].Initialize(i + 1);

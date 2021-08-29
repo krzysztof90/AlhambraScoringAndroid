@@ -387,6 +387,12 @@
   <string name="schoolCount">Liczba School</string>
   <string name="residentialAreaCount">Liczba Residential area</string>
   <string name="wallMoatCombination">Najdłuższa kombinacja mur-fosa</string>
+  <string name="pips1">1 oczko</string>
+  <string name="pips2">2 oczka</string>
+  <string name="pips3">3 oczka</string>
+  <string name="pips4">4 oczka</string>
+  <string name="pips5">5 oczek</string>
+  <string name="pips6">6 oczek</string>
   <string name="validateWallLength">Waliduj najdłuższy mur</string>
   <string name="validateBuildingsNumber">Waliduj liczbę budynków</string>
   <string name="validateBuildingsNumberPrevious">Waliduj liczbę budynków na podstawie wcześniejszych rund</string>

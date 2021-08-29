@@ -26,15 +26,15 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 [Resources.GetString(Resource.String.scoring_score_card_1)] = new List<NewScoreCard>()
                 {
-                    NewScoreCard.Card1, NewScoreCard.Card2,NewScoreCard.Card3,NewScoreCard.Card4,NewScoreCard.Card5,NewScoreCard.Card6,NewScoreCard.Card7,NewScoreCard.Card8,NewScoreCard.Card9,NewScoreCard.Card10,NewScoreCard.Card11,NewScoreCard.Card12,NewScoreCard.Card13,NewScoreCard.Card14,NewScoreCard.Card15,NewScoreCard.Card16,NewScoreCard.Card17,NewScoreCard.Card18
+                    NewScoreCard.Card1, NewScoreCard.Card2, NewScoreCard.Card3, NewScoreCard.Card4, NewScoreCard.Card5, NewScoreCard.Card6, NewScoreCard.Card7, NewScoreCard.Card8, NewScoreCard.Card9, NewScoreCard.Card10, NewScoreCard.Card11, NewScoreCard.Card12, NewScoreCard.Card13, NewScoreCard.Card14, NewScoreCard.Card15, NewScoreCard.Card16, NewScoreCard.Card17, NewScoreCard.Card18
                 },
                 [Resources.GetString(Resource.String.scoring_score_card_2)] = new List<NewScoreCard>()
                 {
-                    NewScoreCard.Card1, NewScoreCard.Card2,NewScoreCard.Card3,NewScoreCard.Card4,NewScoreCard.Card5,NewScoreCard.Card6,NewScoreCard.Card7,NewScoreCard.Card8,NewScoreCard.Card9,NewScoreCard.Card10,NewScoreCard.Card11,NewScoreCard.Card12,NewScoreCard.Card13,NewScoreCard.Card14,NewScoreCard.Card15,NewScoreCard.Card16,NewScoreCard.Card17,NewScoreCard.Card18
+                    NewScoreCard.Card1, NewScoreCard.Card2, NewScoreCard.Card3, NewScoreCard.Card4, NewScoreCard.Card5, NewScoreCard.Card6, NewScoreCard.Card7, NewScoreCard.Card8, NewScoreCard.Card9, NewScoreCard.Card10, NewScoreCard.Card11, NewScoreCard.Card12, NewScoreCard.Card13, NewScoreCard.Card14, NewScoreCard.Card15, NewScoreCard.Card16, NewScoreCard.Card17, NewScoreCard.Card18
                 },
                 [Resources.GetString(Resource.String.scoring_score_card_3)] = new List<NewScoreCard>()
                 {
-                    NewScoreCard.Card1, NewScoreCard.Card2,NewScoreCard.Card3,NewScoreCard.Card4,NewScoreCard.Card5,NewScoreCard.Card6,NewScoreCard.Card7,NewScoreCard.Card8,NewScoreCard.Card9,NewScoreCard.Card10,NewScoreCard.Card11,NewScoreCard.Card12,NewScoreCard.Card13,NewScoreCard.Card14,NewScoreCard.Card15,NewScoreCard.Card16,NewScoreCard.Card17,NewScoreCard.Card18
+                    NewScoreCard.Card1, NewScoreCard.Card2, NewScoreCard.Card3, NewScoreCard.Card4, NewScoreCard.Card5, NewScoreCard.Card6, NewScoreCard.Card7, NewScoreCard.Card8, NewScoreCard.Card9, NewScoreCard.Card10, NewScoreCard.Card11, NewScoreCard.Card12, NewScoreCard.Card13, NewScoreCard.Card14, NewScoreCard.Card15, NewScoreCard.Card16, NewScoreCard.Card17, NewScoreCard.Card18
                 },
             };
 

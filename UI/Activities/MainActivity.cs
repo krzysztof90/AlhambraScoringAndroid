@@ -19,7 +19,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             Button newGameButton = FindViewById<Button>(Resource.Id.newGameButton);
             newGameButton.Click += new EventHandler((object sender, EventArgs e) =>
-            {
+            { 
                 Application.NewGamePrompt(this);
             });
             Button showHistoryButton = FindViewById<Button>(Resource.Id.showHistoryButton);

@@ -1,10 +1,8 @@
-﻿using AlhambraScoringAndroid.Options;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using AndroidBase.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +12,9 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "@string/blue_dices_combinations", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class BlueDicesActivity : BaseActivity
     {
-        private ControlNumberView dice1Control;
-        private ControlNumberView dice2Control;
-        private ControlNumberView dice3Control;
-        private AutoGridLayout grid;
+        private ControlBlueDices dice1Control;
+        private ControlBlueDices dice2Control;
+        private ControlBlueDices dice3Control;
         private Dictionary<int, ImageView> pricesImages;
         private ImageView priceFountain;
 
@@ -27,33 +24,28 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            pricesImages = new Dictionary<int, ImageView>()
+            pricesImages = new Dictionary<int, int>()
             {
-                [2] = FindViewById<ImageView>(Resource.Id.price2),
-                [3] = FindViewById<ImageView>(Resource.Id.price3),
-                [4] = FindViewById<ImageView>(Resource.Id.price4),
-                [5] = FindViewById<ImageView>(Resource.Id.price5),
-                [6] = FindViewById<ImageView>(Resource.Id.price6),
-                [7] = FindViewById<ImageView>(Resource.Id.price7),
-                [8] = FindViewById<ImageView>(Resource.Id.price8),
-                [9] = FindViewById<ImageView>(Resource.Id.price9),
-                [10] = FindViewById<ImageView>(Resource.Id.price10),
-                [11] = FindViewById<ImageView>(Resource.Id.price11),
-                [12] = FindViewById<ImageView>(Resource.Id.price12),
-                [13] = FindViewById<ImageView>(Resource.Id.price13),
-                [14] = FindViewById<ImageView>(Resource.Id.price14),
-            };
+                [2] = Resource.Id.price2,
+                [3] = Resource.Id.price3,
+                [4] = Resource.Id.price4,
+                [5] = Resource.Id.price5,
+                [6] = Resource.Id.price6,
+                [7] = Resource.Id.price7,
+                [8] = Resource.Id.price8,
+                [9] = Resource.Id.price9,
+                [10] = Resource.Id.price10,
+                [11] = Resource.Id.price11,
+                [12] = Resource.Id.price12,
+                [13] = Resource.Id.price13,
+                [14] = Resource.Id.price14,
+            }.ToDictionary(d => d.Key, d => FindViewById<ImageView>(d.Value));
+
             priceFountain = FindViewById<ImageView>(Resource.Id.priceFountain);
 
-            grid = FindViewById<AutoGridLayout>(Resource.Id.grid);
-
-            dice1Control = FindViewById<ControlNumberView>(Resource.Id.dice1);
-            dice2Control = FindViewById<ControlNumberView>(Resource.Id.dice2);
-            dice3Control = FindViewById<ControlNumberView>(Resource.Id.dice3);
-
-            dice1Control.SetNumberRange<SettingsType>(0, 6, null);
-            dice2Control.SetNumberRange<SettingsType>(0, 6, null);
-            dice3Control.SetNumberRange<SettingsType>(0, 6, null);
+            dice1Control = FindViewById<ControlBlueDices>(Resource.Id.dice1);
+            dice2Control = FindViewById<ControlBlueDices>(Resource.Id.dice2);
+            dice3Control = FindViewById<ControlBlueDices>(Resource.Id.dice3);
 
             dice1Control.OnValueChange = () => { ShowAvailablePrices(); };
             dice2Control.OnValueChange = () => { ShowAvailablePrices(); };
@@ -76,6 +68,36 @@ namespace AlhambraScoringAndroid.UI.Activities
             int dice1 = dice1Control.Value;
             int dice2 = dice2Control.Value;
             int dice3 = dice3Control.Value;
+
+            if (dice1 == 0)
+            {
+                if (dice2 != 0)
+                {
+                    if (dice3 != 0)
+                    {
+                        dice1 = dice3;
+                        dice3 = 0;
+                    }
+                    else
+                    {
+                        dice1 = dice2;
+                        dice2 = 0;
+                    }
+                }
+                else if (dice3 != 0)
+                {
+                    dice1 = dice3;
+                    dice3 = 0;
+                }
+            }
+            else if (dice2 == 0)
+            {
+                if (dice3 != 0)
+                {
+                    dice2 = dice3;
+                    dice3 = 0;
+                }
+            }
 
             List<int> availablePrices = new List<int>();
             if (dice1 != 0)

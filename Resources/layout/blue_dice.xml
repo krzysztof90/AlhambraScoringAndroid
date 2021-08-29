@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/pips1"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:src="@drawable/Dice1"
+        android:contentDescription="@string/pips1"/>
+    <ImageView
+        android:id="@+id/pips2"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:src="@drawable/Dice2"
+        android:contentDescription="@string/pips2"/>
+    <ImageView
+        android:id="@+id/pips3"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:src="@drawable/Dice3"
+        android:contentDescription="@string/pips3"/>
+    <ImageView
+        android:id="@+id/pips4"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:src="@drawable/Dice4"
+        android:contentDescription="@string/pips4"/>
+    <ImageView
+        android:id="@+id/pips5"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:src="@drawable/Dice5"
+        android:contentDescription="@string/pips5"/>
+    <ImageView
+        android:id="@+id/pips6"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:src="@drawable/Dice6"
+        android:contentDescription="@string/pips6"/>
+
+</LinearLayout>

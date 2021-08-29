@@ -5,6 +5,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidBase.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AlhambraScoringAndroid.UI
 {
@@ -17,15 +18,15 @@ namespace AlhambraScoringAndroid.UI
             LayoutInflater layoutInflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
             layoutInflater.Inflate(Resource.Layout.view_players_buildings_chose, this);
 
-            PlayersPanels = new List<ControlNumberView>()
+            PlayersPanels = new List<int>()
             {
-                FindViewById<ControlNumberView>(Resource.Id.player1HighestPurchasePriceNumericUpDown),
-                FindViewById<ControlNumberView>(Resource.Id.player2HighestPurchasePriceNumericUpDown),
-                FindViewById<ControlNumberView>(Resource.Id.player3HighestPurchasePriceNumericUpDown),
-                FindViewById<ControlNumberView>(Resource.Id.player4HighestPurchasePriceNumericUpDown),
-                FindViewById<ControlNumberView>(Resource.Id.player5HighestPurchasePriceNumericUpDown),
-                FindViewById<ControlNumberView>(Resource.Id.player6HighestPurchasePriceNumericUpDown),
-            };
+                Resource.Id.player1HighestPurchasePriceNumericUpDown,
+                Resource.Id.player2HighestPurchasePriceNumericUpDown,
+                Resource.Id.player3HighestPurchasePriceNumericUpDown,
+                Resource.Id.player4HighestPurchasePriceNumericUpDown,
+                Resource.Id.player5HighestPurchasePriceNumericUpDown,
+                Resource.Id.player6HighestPurchasePriceNumericUpDown
+            }.Select(r => FindViewById<ControlNumberView>(r)).ToList();
         }
 
         public PlayersBuildingChose(Context context, IAttributeSet attrs) : base(context, attrs)
