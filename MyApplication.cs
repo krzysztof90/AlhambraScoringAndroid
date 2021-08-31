@@ -48,8 +48,8 @@ namespace AlhambraScoringAndroid
         public void MainScreen(BaseActivity activity)
         {
             Intent intent = new Intent(ApplicationContext, typeof(MainActivity));
-            //intent.AddCategory(Intent.CategoryHome);
             intent.AddFlags(ActivityFlags.ClearTop);
+            intent.AddFlags(ActivityFlags.NewTask);
             StartActivity(intent);
         }
 
