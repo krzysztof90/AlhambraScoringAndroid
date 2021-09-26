@@ -89,7 +89,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public bool Saved { get; set; }
         public List<PlayerScoreData>[] RoundsScoring { get; private set; }
         public List<PlayerScoreData> ThirdBeforeRoundScoring { get; private set; }
-        public List<PlayerScoreData> PreviousRoundScoring => RoundNumber != 1 ? RoundsScoring[RoundNumber - 2] : null;
+        public List<PlayerScoreData> PreviousRoundScoring => RoundNumber != 1 ? (ScoreRound == ScoringRound.Finish ? RoundsScoring[2] : RoundsScoring[RoundNumber - 2]) : null;
 
         public static List<List<int>[]> ScoringByPosition = new List<List<int>[]>()
         {
@@ -187,6 +187,8 @@ namespace AlhambraScoringAndroid.GamePlay
                         return 3;
                     case ScoringRound.Third:
                         return 3;
+                    //case ScoringRound.Finish:
+                    //    return 4;
                 }
                 return 0;
             }
