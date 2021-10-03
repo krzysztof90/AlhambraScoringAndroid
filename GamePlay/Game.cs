@@ -228,7 +228,7 @@ namespace AlhambraScoringAndroid.GamePlay
                     throw new NotSupportedException();
 
                 if (newScoreCards.Distinct().Count() != newScoreCards.Count())
-                    return AndroidValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.new_score_cards));
+                    return AndroidValidateUtils.CheckFailed(Context, Context.Resources.GetString(Resource.String.message_new_score_cards));
             }
 
             return true;

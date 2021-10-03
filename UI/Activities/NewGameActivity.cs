@@ -90,19 +90,19 @@ namespace AlhambraScoringAndroid.UI.Activities
             };
 
             expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
-            ExpandListCheckBoxAdapter<ExpansionModule> adapter = new ExpandListCheckBoxAdapter<ExpansionModule>(this, extensions, true);
+            ExpandListCheckBoxAdapterMultiple<ExpansionModule> adapter = new ExpandListCheckBoxAdapterMultiple<ExpansionModule>(this, extensions);
             expandableListView.SetAdapter(adapter);
             expandableListView.HoldSize = true;
 
             expandableListView2 = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView2);
-            ExpandListCheckBoxAdapter<GranadaOption> adapter2 = new ExpandListCheckBoxAdapter<GranadaOption>(this, granadaOptions, false);
+            ExpandListCheckBoxAdapterSingle<GranadaOption> adapter2 = new ExpandListCheckBoxAdapterSingle<GranadaOption>(this, granadaOptions);
             expandableListView2.SetAdapter(adapter2);
             expandableListView2.HoldSize = true;
 
             Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.GameApplyModules(adapter.SelectedListMultiple, adapter2.SelectedListSingle[GranadaName]);
+                Application.GameApplyModules(adapter.SelectedList, adapter2.SelectedList[GranadaName]);
             });
         }
 

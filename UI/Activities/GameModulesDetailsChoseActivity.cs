@@ -22,6 +22,8 @@ namespace AlhambraScoringAndroid.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
+            //TODO na każdej zakładce przycisk next przechodzący do następnej zakładki
+
             Dictionary<string, List<NewScoreCard>> newScoreCards = new Dictionary<string, List<NewScoreCard>>()
             {
                 [Resources.GetString(Resource.String.scoring_score_card_1)] = new List<NewScoreCard>()
@@ -53,12 +55,12 @@ namespace AlhambraScoringAndroid.UI.Activities
                 },
             };
 
-            ExpandListCheckBoxAdapter<NewScoreCard> adapterNewScoreCards = null;
-            ExpandListCheckBoxAdapter<CaliphsGuidelinesMission> adapterCaliphsGuidelines = null;
+            ExpandListCheckBoxAdapterSingle<NewScoreCard> adapterNewScoreCards = null;
+            ExpandListCheckBoxAdapterMultiple<CaliphsGuidelinesMission> adapterCaliphsGuidelines = null;
             if (Game.HasModule(ExpansionModule.ExpansionNewScoreCards))
             {
                 newScoreCardsExpandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.listView1);
-                adapterNewScoreCards = new ExpandListCheckBoxAdapter<NewScoreCard>(this, newScoreCards, false);
+                adapterNewScoreCards = new ExpandListCheckBoxAdapterSingle<NewScoreCard>(this, newScoreCards);
                 newScoreCardsExpandableListView.SetAdapter(adapterNewScoreCards);
                 newScoreCardsExpandableListView.HoldSize = true;
                 newScoreCardsExpandableListView.Expand();
@@ -67,7 +69,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines))
             {
                 caliphsGuidelinesExpandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.listView2);
-                adapterCaliphsGuidelines = new ExpandListCheckBoxAdapter<CaliphsGuidelinesMission>(this, missions, true);
+                adapterCaliphsGuidelines = new ExpandListCheckBoxAdapterMultiple<CaliphsGuidelinesMission>(this, missions);
                 caliphsGuidelinesExpandableListView.SetAdapter(adapterCaliphsGuidelines);
                 caliphsGuidelinesExpandableListView.HoldSize = true;
                 caliphsGuidelinesExpandableListView.Expand();
@@ -76,7 +78,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.GameApplyModulesDetails(adapterCaliphsGuidelines?.SelectedListMultiple, adapterNewScoreCards?.SelectedListSingle.Select(d => d.Value).ToList());
+                Application.GameApplyModulesDetails(adapterCaliphsGuidelines?.SelectedList, adapterNewScoreCards?.SelectedList.Select(d => d.Value).ToList());
             });
         }
     }

@@ -118,7 +118,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             };
 
             expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
-            ExpandListCheckBoxAdapter<SetupInstructions> adapter = new ExpandListCheckBoxAdapter<SetupInstructions>(this, setup, true);
+            ExpandListCheckBoxAdapterMultiple<SetupInstructions> adapter = new ExpandListCheckBoxAdapterMultiple<SetupInstructions>(this, setup);
             expandableListView.SetAdapter(adapter);
             expandableListView.Expand();
 
