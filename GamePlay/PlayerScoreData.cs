@@ -6,7 +6,10 @@ namespace AlhambraScoringAndroid.GamePlay
 {
     public class PlayerScoreData
     {
+        protected Game Game { get; private set; }
         public int PlayerNumber { get; private set; }
+        public Player Player => Game.GetPlayer(PlayerNumber);
+        public string PlayerName => Player.Name;
 
         public int WallLength { get; private set; }
         public Dictionary<BuildingType, int> BuildingsCount { get; private set; }
@@ -63,7 +66,9 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public PlayerScoreData(PlaceholderPlayerScoreFragment fragment)
         {
+            Game = fragment.Game;
             PlayerNumber = fragment.PlayerNumber;
+
             WallLength = fragment.WallLength;
             BuildingsCount = fragment.BuildingsCount;
             BonusCardsBuildingsCount = fragment.BonusCardsBuildingsCount;
@@ -114,7 +119,9 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public PlayerScoreData(PlaceholderPlayerScoreBeforeAssignLeftoverFragment fragment)
         {
+            Game = fragment.Game;
             PlayerNumber = fragment.PlayerNumber;
+
             BuildingsWithoutServantTile = fragment.BuildingsWithoutServantTile;
         }
     }

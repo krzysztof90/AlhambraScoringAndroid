@@ -107,6 +107,13 @@
   <string name="message_second_longest_wall_player_exceed">{0}: Drugi co do wielkości mur nie może być dłuższy niż najdłuższy mur</string>
   <string name="message_moatwall_wall_player">{0}: Długość kombinacji muru i fosy nie może być dłuższa niż najdłuższy mur</string>
   <string name="message_moatwall_moat_player">{0}: Długość kombinacji muru i fosy nie może być dłuższa niż najdłuższa fosa</string>
+  <string name="message_bathhouses_points_player_exceed">{0}: Przekroczona ilość punktów z łaźni</string>
+  <string name="message_mission1_player_exceed">{0}: Przekroczona liczba rzędów z przynajmniej trzema kolejnymi budynkami (Misja 1)</string>
+  <string name="message_mission2_player_exceed">{0}: Przekroczona liczba kolumn z przynajmniej trzema kolejnymi budynkami (Misja 2)</string>
+  <string name="message_mission5_player_exceed">{0}: Przekroczona liczba budynków w najdłuższej przekątnej (Misja 5)</string>
+  <string name="message_mission8_player_exceed">{0}: Przekroczona liczba budynków na drodze od fontanny do najdalszego budynku (Misja 8)</string>
+  <string name="message_unprotected_sides_count_player_exceed">{0}: Przekroczona liczba niechronionych boków</string>
+  <string name="message_unprotected_sides_neighbouring_count_player_exceed">{0}: Przekroczona liczba niechronionych boków z sąsiednich stron</string>
   <string name="pavilion">Pawilon</string>
   <string name="seraglio">Seraj</string>
   <string name="arcades">Arkady</string>

@@ -105,6 +105,13 @@
   <string name="message_second_longest_wall_player_exceed">{0}: Second longest wall exceeded longest wall</string>
   <string name="message_moatwall_wall_player">{0}: Moat-wall combination length exceeded longest wall</string>
   <string name="message_moatwall_moat_player">{0}: Moat-wall combination length exceeded longest moat</string>
+  <string name="message_bathhouses_points_player_exceed">{0}: Points from bathhouses is exceeded</string>
+  <string name="message_mission1_player_exceed">{0}: Number of rows with at least 3 consecutive buildings is exceeded (Mission 1)</string>
+  <string name="message_mission2_player_exceed">{0}: Number of columns with at least 3 consecutive buildings is exceeded (Mission 2)</string>
+  <string name="message_mission5_player_exceed">{0}: Number of buildings along the longest diagonal line is exceeded (Mission 5)</string>
+  <string name="message_mission8_player_exceed">{0}: Number of buildings along the path from the Lion Fountain to the furthest building is exceeded (Mission 8)</string>
+  <string name="message_unprotected_sides_count_player_exceed">{0}: Number of unprotected sides is exceeded</string>
+  <string name="message_unprotected_sides_neighbouring_count_player_exceed">{0}: Number of unprotected sides from neighbouring directions is exceeded</string>
   <string name="pavilion">Pavilion</string>
   <string name="seraglio">Seraglio</string>
   <string name="arcades">Arcades</string>

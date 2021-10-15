@@ -13,7 +13,7 @@ namespace AlhambraScoringAndroid.UI
         private readonly PlayersScoreSectionsPagerAdapter Adapter;
 
         public int PlayerNumber { get; private set; }
-        protected Game Game { get; private set; }
+        public Game Game { get; private set; }
 
         protected bool IsDirk { get; private set; }
         protected bool IsFinalRound { get; private set; }
