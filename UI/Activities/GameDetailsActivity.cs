@@ -52,6 +52,23 @@ namespace AlhambraScoringAndroid.UI.Activities
             TextView titleDate = FindViewById<TextView>(Resource.Id.titleDate);
             titleDate.Text = $"{Result.StartDateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES"))} - {(Result.EndDateTime != null ? ((DateTime)Result.EndDateTime).ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES")) : String.Empty)}";
 
+            Button previousResult = FindViewById<Button>(Resource.Id.previousResult);
+            Button nextResult = FindViewById<Button>(Resource.Id.nextResult);
+            previousResult.Visibility = Application.ArchiveResult ? ViewStates.Visible : ViewStates.Gone;
+            nextResult.Visibility = Application.ArchiveResult ? ViewStates.Visible : ViewStates.Gone;
+            previousResult.Enabled = Application.Results.Any(r => r.StartDateTime < Result.StartDateTime);
+            nextResult.Enabled = Application.Results.Any(r => r.StartDateTime > Result.StartDateTime);
+            previousResult.Click += new EventHandler((object sender, EventArgs e) =>
+            {
+                Finish();
+                Application.ShowResult(Application.Results.Select(r => r.StartDateTime).Where(s => s < Result.StartDateTime).OrderByDescending(s => s).First());
+            });
+            nextResult.Click += new EventHandler((object sender, EventArgs e) =>
+            {
+                Finish();
+                Application.ShowResult(Application.Results.Select(r => r.StartDateTime).Where(s => s > Result.StartDateTime).OrderBy(s => s).First());
+            });
+
             contentTable = FindViewById<TableLayout>(Resource.Id.contentTable);
 
             List<List<TableRow>> tableRows = new List<List<int>>()

@@ -27,6 +27,7 @@ namespace AlhambraScoringAndroid
         public Game Game { get; private set; }
         private GameInProgressActivity gameInProgressActivity;
         public ResultHistory CurrentResult { get; private set; }
+        public bool ArchiveResult { get; private set; }
         public List<PlayerScoreData> GameScoreSubmitScoreData { get; private set; }
 
         private readonly List<(Func<bool> condition, Type activityType)> neededScoreAdditionalActions;
@@ -216,6 +217,7 @@ namespace AlhambraScoringAndroid
         public void GameShowDetails(GameInProgressActivity gameInProgressActivity)
         {
             CurrentResult = Game.GetResultHistory();
+            ArchiveResult = false;
 
             if (Game.ScoreRound == ScoringRound.Finish && !Game.Saved)
             {
@@ -231,6 +233,7 @@ namespace AlhambraScoringAndroid
         public void ShowResult(DateTime startDateTime)
         {
             CurrentResult = Results.Single(r => r.StartDateTime == startDateTime);
+            ArchiveResult = true;
             NewActivity(typeof(GameDetailsActivity));
         }
 
