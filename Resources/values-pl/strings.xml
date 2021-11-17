@@ -142,7 +142,7 @@
   <string name="theWiseMan">The Wise Man</string>
   <string name="theCityWatch">The City Watch</string>
   <string name="camps">Camps</string>
-  <string name="city_alls">City Walls</string>
+  <string name="city_walls">City Walls</string>
   <string name="thieves">Thieves</string>
   <string name="change">Change</string>
   <string name="street_trader">Street Trader</string>
@@ -270,7 +270,7 @@
   <string name="instruction_place_magical_buildings">Połóż orientation tiles przy giełdzie budynków</string>
   <string name="instruction_place_new_building_grounds">Połóż 4 żetony numerów przy giełdzie budynków. Połóż 3 building under construction pod każdym z numerów</string>
   <string name="instruction_deal_major_construction_marker">Rozdaj znacznik licytacji każdemu graczowi</string>
-  <string name="instruction_shuffle_servant_tiles">Wymieszaj żetony sługi. Wylosuj 6 z nich</string>
+  <string name="instruction_shuffle_servant_tiles">Wymieszaj żetony sługi. Odkryj 6 z nich</string>
   <string name="instruction_place_palace_staff">Każdy gracz kładzie marszala na kafelku startowym</string>
   <string name="instruction_shuffle_orchards_boards">Wymieszaj i rozdaj tablicę owoców każdemu graczowi</string>
   <string name="instruction_shuffle_orchards_fruits">Wymieszaj żetony owoców</string>

@@ -28,7 +28,7 @@ namespace AlhambraScoringAndroid.GamePlay
         [DescriptionResourceAttribute(Resource.String.camps)]
         [ImageAttribute(Resource.Drawable.Camp)]
         ExpansionCamps,
-        [DescriptionResourceAttribute(Resource.String.city_alls)]
+        [DescriptionResourceAttribute(Resource.String.city_walls)]
         [ImageAttribute(Resource.Drawable.CityWalls)]
         ExpansionCityWalls,
         [DescriptionResourceAttribute(Resource.String.thieves)]

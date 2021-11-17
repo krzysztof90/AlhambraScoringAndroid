@@ -14,7 +14,7 @@ namespace AlhambraScoringAndroid
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "1.0.0.0")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "12.1.0.11")]
 	public partial class Resource
 	{
 		
@@ -13839,10 +13839,10 @@ namespace AlhambraScoringAndroid
 			public const int chose = 2131755089;
 			
 			// aapt resource value: 0x7F100052
-			public const int city_alls = 2131755090;
+			public const int city_gates = 2131755090;
 			
 			// aapt resource value: 0x7F100053
-			public const int city_gates = 2131755091;
+			public const int city_walls = 2131755091;
 			
 			// aapt resource value: 0x7F100054
 			public const int clear_text_end_icon_content_description = 2131755092;

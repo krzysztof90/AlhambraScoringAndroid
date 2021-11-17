@@ -140,7 +140,7 @@
   <string name="theWiseMan">The Wise Man</string>
   <string name="theCityWatch">The City Watch</string>
   <string name="camps">Camps</string>
-  <string name="city_alls">City Walls</string>
+  <string name="city_walls">City Walls</string>
   <string name="thieves">Thieves</string>
   <string name="change">Change</string>
   <string name="street_trader">Street Trader</string>
@@ -268,7 +268,7 @@
   <string name="instruction_place_magical_buildings">Place orientation tiles next to the building market</string>
   <string name="instruction_place_new_building_grounds">Place 4 number tiles in a row next to the building market. Place 3 building under construction under each number tile</string>
   <string name="instruction_deal_major_construction_marker">Deal auction marker to each player</string>
-  <string name="instruction_shuffle_servant_tiles">Shuffle servant tiles. Draw 6 of them</string>
+  <string name="instruction_shuffle_servant_tiles">Shuffle servant tiles. Place 6 of them face up</string>
   <string name="instruction_place_palace_staff">Each player places marshal on starting tile</string>
   <string name="instruction_shuffle_orchards_boards">Shuffle and deal fruit board to each player</string>
   <string name="instruction_shuffle_orchards_fruits">Shuffle fruit tiles</string>

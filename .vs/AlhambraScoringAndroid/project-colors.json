@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "2fc00ce6-a42c-4237-9ec6-e79ee6bff0f2": {
+      "ProjectGuid": "2fc00ce6-a42c-4237-9ec6-e79ee6bff0f2",
+      "DisplayName": "AlhambraScoringAndroid",
+      "ColorIndex": 0
+    },
+    "f0c75b5c-fd71-4035-abc5-cf4902f6fcef": {
+      "ProjectGuid": "f0c75b5c-fd71-4035-abc5-cf4902f6fcef",
+      "DisplayName": "AndroidBase",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
