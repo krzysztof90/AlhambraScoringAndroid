@@ -346,6 +346,9 @@ namespace AlhambraScoringAndroid.GamePlay
 
         private bool ValidatePreviousAvailableLimit(List<PlayerScoreData> scoreData, Func<PlayerScoreData, int> countAmountMethod, int maxAmount, ResourcesFormatData errorMessage)
         {
+            if (HasModule(ExpansionModule.FanPersonalBuildingMarket))
+                return true;
+
             return ValidatePreviousAvailableLimit(RoundNumber, scoreData, countAmountMethod, maxAmount, errorMessage);
         }
 
