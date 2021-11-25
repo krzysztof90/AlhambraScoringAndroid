@@ -556,13 +556,13 @@ namespace AlhambraScoringAndroid.GamePlay
                 if (playerScoreData.CompletedGroupOfFruitBoard2)
                     allFruits += 2;
                 if (playerScoreData.CompletedGroupOfFruitBoard3)
-                    allFruits += 4;
+                    allFruits += 3;
                 if (playerScoreData.CompletedGroupOfFruitBoard4)
-                    allFruits += 7;
+                    allFruits += 4;
                 if (playerScoreData.CompletedGroupOfFruitBoard5)
-                    allFruits += 11;
+                    allFruits += 5;
                 if (playerScoreData.CompletedGroupOfFruitBoard6)
-                    allFruits += 16;
+                    allFruits += 6;
                 allFruits += playerScoreData.FaceDownFruitsCount;
             }
             if (Settings.Get(SettingsType.ValidateSingleFruits) && faceDownFruitsSum > 35)
