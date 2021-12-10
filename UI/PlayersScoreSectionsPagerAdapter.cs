@@ -148,7 +148,7 @@ namespace AlhambraScoringAndroid.UI
                     break;
                 }
 
-            if (!visitedAllPages)
+            if (!visitedAllPages && Activity.CorrectingScoring() == null)
             {
                 new AlertDialog.Builder(Activity)
                     .SetTitle(Activity.Resources.GetString(Resource.String.submit_all_players))
