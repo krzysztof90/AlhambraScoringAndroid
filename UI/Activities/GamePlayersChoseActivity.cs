@@ -48,23 +48,23 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         private void Spinner_ItemSelected(object sender, ItemSelectedEventArgs e)
         {
-            EditText editText6 = FindViewById<EditText>(Resource.Id.text_player6);
-            editText6.Visibility = (e.Position + 2 < 6 ? ViewStates.Gone : ViewStates.Visible);
-            EditText editText5 = FindViewById<EditText>(Resource.Id.text_player5);
-            editText5.Visibility = (e.Position + 2 < 5 ? ViewStates.Gone : ViewStates.Visible);
-            EditText editText4 = FindViewById<EditText>(Resource.Id.text_player4);
-            editText4.Visibility = (e.Position + 2 < 4 ? ViewStates.Gone : ViewStates.Visible);
-            EditText editText3 = FindViewById<EditText>(Resource.Id.text_player3);
+            EditText editTextPlayer6 = FindViewById<EditText>(Resource.Id.text_player6);
+            editTextPlayer6.Visibility = (e.Position + 2 < 6 ? ViewStates.Gone : ViewStates.Visible);
+            EditText editTextPlayer5 = FindViewById<EditText>(Resource.Id.text_player5);
+            editTextPlayer5.Visibility = (e.Position + 2 < 5 ? ViewStates.Gone : ViewStates.Visible);
+            EditText editTextPlayer4 = FindViewById<EditText>(Resource.Id.text_player4);
+            editTextPlayer4.Visibility = (e.Position + 2 < 4 ? ViewStates.Gone : ViewStates.Visible);
+            EditText editTextPlayer3 = FindViewById<EditText>(Resource.Id.text_player3);
             if (e.Position + 2 != 2)
             {
-                editText3.Enabled = true;
-                if (editText3.Text == Player.DirkName)
-                    editText3.Text = String.Empty;
+                editTextPlayer3.Enabled = true;
+                if (editTextPlayer3.Text == Player.DirkName)
+                    editTextPlayer3.Text = String.Empty;
             }
             else
             {
-                editText3.Enabled = false;
-                editText3.Text = Player.DirkName;
+                editTextPlayer3.Enabled = false;
+                editTextPlayer3.Text = Player.DirkName;
             }
         }
     }
