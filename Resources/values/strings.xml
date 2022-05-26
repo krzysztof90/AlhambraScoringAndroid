@@ -112,6 +112,11 @@
   <string name="message_mission8_player_exceed">{0}: Number of buildings along the path from the Lion Fountain to the furthest building is exceeded (Mission 8)</string>
   <string name="message_unprotected_sides_count_player_exceed">{0}: Number of unprotected sides is exceeded</string>
   <string name="message_unprotected_sides_neighbouring_count_player_exceed">{0}: Number of unprotected sides from neighbouring directions is exceeded</string>
+  <string name="expansion_modules">EXPANSION MODULES</string>
+  <string name="queenie_expansion_modules">QUEENIE EXPANSION MODULES</string>
+  <string name="designer_expansion_modules">DESIGNER EXPANSION MODULES</string>
+  <string name="new_market_modules">NEW MARKET</string>
+  <string name="granada">GRANADA</string>
   <string name="pavilion">Pavilion</string>
   <string name="seraglio">Seraglio</string>
   <string name="arcades">Arcades</string>
@@ -204,6 +209,7 @@
   <string name="new_score_card_16">New score card 16</string>
   <string name="new_score_card_17">New score card 17</string>
   <string name="new_score_card_18">New score card 18</string>
+  <string name="new_market">New Market</string>
   <string name="instruction_put_buildings_of_power_tiles">Replace the base tiles with buildings of power</string>
   <string name="instruction_put_camp_tiles">Put camps to all of the building tiles</string>
   <string name="instruction_put_bazaars_tiles">Put bazaars to all of the building tiles</string>
@@ -285,6 +291,7 @@
   <string name="instruction_deal_personal_building_market">Deal market tile to each player</string>
   <string name="instruction_deal_treasures">Deal treasures to each player</string>
   <string name="instruction_place_missions">Place mission tiles next to the building market</string>
+  <string name="instruction_place_new_market">Place new market board next to the building market. Place 6 building tiles onto the respective spaces. For each building roll the dice</string>
   <string name="add_point_1">Add 1 point</string>
   <string name="add_point_2">Add 2 points</string>
   <string name="show">Show</string>

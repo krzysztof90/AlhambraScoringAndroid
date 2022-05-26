@@ -109,6 +109,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupOther, SetupInstructions.DealPersonalBuildingMarket, Game.HasModule(ExpansionModule.FanPersonalBuildingMarket));
             AddSetupInstruction(setupOther, SetupInstructions.DealTreasures, Game.HasModule(ExpansionModule.FanTreasures));
             AddSetupInstruction(setupOther, SetupInstructions.PlaceMissions, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceNewMarket, Game.HasModule(ExpansionModule.NewMarket));
 
             Dictionary<string, List<SetupInstructions>> setup = new Dictionary<string, List<SetupInstructions>>()
             {

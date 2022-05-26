@@ -133,6 +133,9 @@ namespace AlhambraScoringAndroid.GamePlay
         [DescriptionResourceAttribute(Resource.String.caliphs_guidelines)]
         [ImageAttribute(Resource.Drawable.Mission1)]
         FanCaliphsGuidelines,
+        [DescriptionResourceAttribute(Resource.String.new_market)]
+        [ImageAttribute(Resource.Drawable.NewMarket)]
+        NewMarket,
 
         Granada,
     }

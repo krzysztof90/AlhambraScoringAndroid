@@ -114,6 +114,11 @@
   <string name="message_mission8_player_exceed">{0}: Przekroczona liczba budynków na drodze od fontanny do najdalszego budynku (Misja 8)</string>
   <string name="message_unprotected_sides_count_player_exceed">{0}: Przekroczona liczba niechronionych boków</string>
   <string name="message_unprotected_sides_neighbouring_count_player_exceed">{0}: Przekroczona liczba niechronionych boków z sąsiednich stron</string>
+  <string name="expansion_modules">EXPANSION MODULES</string>
+  <string name="queenie_expansion_modules">QUEENIE EXPANSION MODULES</string>
+  <string name="designer_expansion_modules">DESIGNER EXPANSION MODULES</string>
+  <string name="new_market_modules">NEW MARKET</string>
+  <string name="granada">GRANADA</string>
   <string name="pavilion">Pawilon</string>
   <string name="seraglio">Seraj</string>
   <string name="arcades">Arkady</string>
@@ -206,6 +211,7 @@
   <string name="new_score_card_16">Karta nowych punktów 16</string>
   <string name="new_score_card_17">Karta nowych punktów 17</string>
   <string name="new_score_card_18">Karta nowych punktów 18</string>
+  <string name="new_market">New Market</string>
   <string name="instruction_put_buildings_of_power_tiles">Zamień podstawowe budynki na buildings of power</string>
   <string name="instruction_put_camp_tiles">Dołóż obozy do wszystkich budynków</string>
   <string name="instruction_put_bazaars_tiles">Dołóż bazary do wszystkich budynków</string>
@@ -287,6 +293,7 @@
   <string name="instruction_deal_personal_building_market">Rozdaj kafelki giełdy każdemu graczowi</string>
   <string name="instruction_deal_treasures">Rozdaj skarby każdemu graczowi</string>
   <string name="instruction_place_missions">Połóż kafelki misji przy giełdzie budynków</string>
+  <string name="instruction_place_new_market">Połóż planszę nowego rynku przy giełdzie budynków. Połóż 6 kafelków budynków na odpowiednich miejscach. Dla każdego budynku rzuć kośćmi</string>
   <string name="add_point_1">Dodaj 1 punkt</string>
   <string name="add_point_2">Dodaj 2 punkty</string>
   <string name="show">Pokaż</string>

@@ -169,5 +169,7 @@ namespace AlhambraScoringAndroid.GamePlay
         DealTreasures,
         [DescriptionResourceAttribute(Resource.String.instruction_place_missions)]
         PlaceMissions,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_new_market)]
+        PlaceNewMarket,
     }
 }
