@@ -9,214 +9,215 @@
       layout="@layout/content_menu"
       android:id="@+id/menu"/>
 
-  <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_marginTop="@dimen/menu_height"
-      app:layout_constraintTop_toTopOf="parent">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/menu_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateWallLengthCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBuildingsNumberCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBuildingsNumberPreviousCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBuildingsPriceCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBonusCardsPlayerCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBonusCardsBuildingsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBonusCardsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateSquaresPlayerCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateSquaresCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMultipleWisemanCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validatePreviousWisemanCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMultipleCitywatchCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validatePreviousCitywatchCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateCitizensBuildingsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateCitizensCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateTreasuresPlayerCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateTreasuresCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateUnprotectedSidesCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBazaarsPointsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateCultureCountersCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateCultureCountersPreviousCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateFalconsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateWatchtowerWallCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateWatchtowerCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMedinCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMedinPreviousCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateServantsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateSingleFruitsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateFruitsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBathhousesCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateFontainsPlayerCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateFontainsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMultipleCompletedProjectCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validatePreviousCompletedProjectCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateAnimalsPlayerCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateAnimalsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateAnimalsPreviousCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMultipleSemiBuildingsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validatePreviousSemiBuildingsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBlackDicePipsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateBlackDicesPreviousCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateExtensionsBuildingsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateExtensionsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateHandymenCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateTreasuresPointsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMissionsCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateSecondLongestWallCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMoatLengthCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
-      <AndroidBase.UI.ControlCheckBoxView
-          android:id="@+id/validateMoatwallCheckBox"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateWallLengthCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBuildingsNumberCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBuildingsNumberPreviousCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBuildingsPriceCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBonusCardsPlayerCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBonusCardsBuildingsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBonusCardsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateSquaresPlayerCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateSquaresCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMultipleWisemanCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validatePreviousWisemanCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMultipleCitywatchCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validatePreviousCitywatchCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateCitizensBuildingsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateCitizensCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateTreasuresPlayerCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateTreasuresCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateUnprotectedSidesCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBazaarsPointsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateCultureCountersCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateCultureCountersPreviousCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateFalconsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateWatchtowerWallCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateWatchtowerCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMedinCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMedinPreviousCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateServantsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateSingleFruitsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateFruitsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBathhousesCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateFontainsPlayerCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateFontainsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMultipleCompletedProjectCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validatePreviousCompletedProjectCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateAnimalsPlayerCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateAnimalsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateAnimalsPreviousCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMultipleSemiBuildingsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validatePreviousSemiBuildingsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBlackDicePipsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateBlackDicesPreviousCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateExtensionsBuildingsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateExtensionsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateHandymenCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateTreasuresPointsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMissionsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateSecondLongestWallCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMoatLengthCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <AndroidBase.UI.ControlCheckBoxView
+                android:id="@+id/validateMoatwallCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-    </LinearLayout>
-  </ScrollView>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
