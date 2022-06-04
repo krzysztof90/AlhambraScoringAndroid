@@ -4,6 +4,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace AlhambraScoringAndroid.UI
@@ -20,6 +21,8 @@ namespace AlhambraScoringAndroid.UI
             ResultsHistoryActivity activity = (ResultsHistoryActivity)Context;
 
             LayoutInflater layoutInflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
+            //TODO LinearLayout layout_height na wrap_content
+            //TODO TextView gravity top
             View view = layoutInflater.Inflate(Resource.Layout.view_game_result, this);
 
             textViewDateTime = FindViewById<TextView>(Resource.Id.dateTimeTextView);
@@ -40,11 +43,11 @@ namespace AlhambraScoringAndroid.UI
         {
         }
 
-        public HistoryPanel(Context context, DateTime start, DateTime end) : this(context)
+        public HistoryPanel(Context context, DateTime start, DateTime end, List<string> playerNames) : this(context)
         {
             StartDateTime = start;
             EndDateTime = end;
-            textViewDateTime.Text = $"{start.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES"))} - {end.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES"))}";
+            textViewDateTime.Text = $"{start.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES"))} - {end.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.CreateSpecificCulture("es-ES"))}{Environment.NewLine}{String.Join(", ", playerNames)}";
         }
     }
 }

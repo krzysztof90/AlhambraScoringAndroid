@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Widget;
 using AndroidBase.UI;
 using System;
+using System.Linq;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
@@ -27,7 +28,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             foreach (ResultHistory resultHistory in Application.Results)
             {
-                HistoryPanel historyPanel = new HistoryPanel(this, resultHistory.StartDateTime, (DateTime)resultHistory.EndDateTime);
+                HistoryPanel historyPanel = new HistoryPanel(this, resultHistory.StartDateTime, (DateTime)resultHistory.EndDateTime, resultHistory.Players.Where(p => p.Name != Player.DirkName).Select(p => p.Name).ToList());
                 container.AddView(historyPanel);
                 container.RequestLayout();
             }

@@ -12773,199 +12773,52 @@ namespace AlhambraScoringAndroid
 			public const int useLogo = 2131297004;
 			
 			// aapt resource value: 0x7F0902ED
-			public const int validateAnimalsCheckBox = 2131297005;
+			public const int view_offset_helper = 2131297005;
 			
 			// aapt resource value: 0x7F0902EE
-			public const int validateAnimalsPlayerCheckBox = 2131297006;
+			public const int view_pager = 2131297006;
 			
 			// aapt resource value: 0x7F0902EF
-			public const int validateAnimalsPreviousCheckBox = 2131297007;
+			public const int view_tree_lifecycle_owner = 2131297007;
 			
 			// aapt resource value: 0x7F0902F0
-			public const int validateBathhousesCheckBox = 2131297008;
+			public const int view_tree_saved_state_registry_owner = 2131297008;
 			
 			// aapt resource value: 0x7F0902F1
-			public const int validateBazaarsPointsCheckBox = 2131297009;
+			public const int view_tree_view_model_store_owner = 2131297009;
 			
 			// aapt resource value: 0x7F0902F2
-			public const int validateBlackDicePipsCheckBox = 2131297010;
+			public const int visible = 2131297010;
 			
 			// aapt resource value: 0x7F0902F3
-			public const int validateBlackDicesPreviousCheckBox = 2131297011;
+			public const int visible_removing_fragment_view_tag = 2131297011;
 			
 			// aapt resource value: 0x7F0902F4
-			public const int validateBonusCardsBuildingsCheckBox = 2131297012;
+			public const int wallMoatCombinationNumericUpDown = 2131297012;
 			
 			// aapt resource value: 0x7F0902F5
-			public const int validateBonusCardsCheckBox = 2131297013;
+			public const int wallsCountNumericUpDown = 2131297013;
 			
 			// aapt resource value: 0x7F0902F6
-			public const int validateBonusCardsPlayerCheckBox = 2131297014;
+			public const int watchtowersNumberNumericUpDown = 2131297014;
 			
 			// aapt resource value: 0x7F0902F7
-			public const int validateBuildingsNumberCheckBox = 2131297015;
-			
-			// aapt resource value: 0x7F0902F8
-			public const int validateBuildingsNumberPreviousCheckBox = 2131297016;
+			public const int wishingWellsPointsNumericUpDown = 2131297015;
 			
 			// aapt resource value: 0x7F0902F9
-			public const int validateBuildingsPriceCheckBox = 2131297017;
+			public const int withinBounds = 2131297017;
+			
+			// aapt resource value: 0x7F0902F8
+			public const int withText = 2131297016;
 			
 			// aapt resource value: 0x7F0902FA
-			public const int validateCitizensBuildingsCheckBox = 2131297018;
+			public const int wrap = 2131297018;
 			
 			// aapt resource value: 0x7F0902FB
-			public const int validateCitizensCheckBox = 2131297019;
+			public const int wrap_content = 2131297019;
 			
 			// aapt resource value: 0x7F0902FC
-			public const int validateCultureCountersCheckBox = 2131297020;
-			
-			// aapt resource value: 0x7F0902FD
-			public const int validateCultureCountersPreviousCheckBox = 2131297021;
-			
-			// aapt resource value: 0x7F0902FE
-			public const int validateExtensionsBuildingsCheckBox = 2131297022;
-			
-			// aapt resource value: 0x7F0902FF
-			public const int validateExtensionsCheckBox = 2131297023;
-			
-			// aapt resource value: 0x7F090300
-			public const int validateFalconsCheckBox = 2131297024;
-			
-			// aapt resource value: 0x7F090301
-			public const int validateFontainsCheckBox = 2131297025;
-			
-			// aapt resource value: 0x7F090302
-			public const int validateFontainsPlayerCheckBox = 2131297026;
-			
-			// aapt resource value: 0x7F090303
-			public const int validateFruitsCheckBox = 2131297027;
-			
-			// aapt resource value: 0x7F090304
-			public const int validateHandymenCheckBox = 2131297028;
-			
-			// aapt resource value: 0x7F090305
-			public const int validateMedinCheckBox = 2131297029;
-			
-			// aapt resource value: 0x7F090306
-			public const int validateMedinPreviousCheckBox = 2131297030;
-			
-			// aapt resource value: 0x7F090307
-			public const int validateMissionsCheckBox = 2131297031;
-			
-			// aapt resource value: 0x7F090308
-			public const int validateMoatLengthCheckBox = 2131297032;
-			
-			// aapt resource value: 0x7F090309
-			public const int validateMoatwallCheckBox = 2131297033;
-			
-			// aapt resource value: 0x7F09030A
-			public const int validateMultipleCitywatchCheckBox = 2131297034;
-			
-			// aapt resource value: 0x7F09030B
-			public const int validateMultipleCompletedProjectCheckBox = 2131297035;
-			
-			// aapt resource value: 0x7F09030C
-			public const int validateMultipleSemiBuildingsCheckBox = 2131297036;
-			
-			// aapt resource value: 0x7F09030D
-			public const int validateMultipleWisemanCheckBox = 2131297037;
-			
-			// aapt resource value: 0x7F09030E
-			public const int validatePreviousCitywatchCheckBox = 2131297038;
-			
-			// aapt resource value: 0x7F09030F
-			public const int validatePreviousCompletedProjectCheckBox = 2131297039;
-			
-			// aapt resource value: 0x7F090310
-			public const int validatePreviousSemiBuildingsCheckBox = 2131297040;
-			
-			// aapt resource value: 0x7F090311
-			public const int validatePreviousWisemanCheckBox = 2131297041;
-			
-			// aapt resource value: 0x7F090312
-			public const int validateSecondLongestWallCheckBox = 2131297042;
-			
-			// aapt resource value: 0x7F090313
-			public const int validateServantsCheckBox = 2131297043;
-			
-			// aapt resource value: 0x7F090314
-			public const int validateSingleFruitsCheckBox = 2131297044;
-			
-			// aapt resource value: 0x7F090315
-			public const int validateSquaresCheckBox = 2131297045;
-			
-			// aapt resource value: 0x7F090316
-			public const int validateSquaresPlayerCheckBox = 2131297046;
-			
-			// aapt resource value: 0x7F090317
-			public const int validateTreasuresCheckBox = 2131297047;
-			
-			// aapt resource value: 0x7F090318
-			public const int validateTreasuresPlayerCheckBox = 2131297048;
-			
-			// aapt resource value: 0x7F090319
-			public const int validateTreasuresPointsCheckBox = 2131297049;
-			
-			// aapt resource value: 0x7F09031A
-			public const int validateUnprotectedSidesCheckBox = 2131297050;
-			
-			// aapt resource value: 0x7F09031B
-			public const int validateWallLengthCheckBox = 2131297051;
-			
-			// aapt resource value: 0x7F09031C
-			public const int validateWatchtowerCheckBox = 2131297052;
-			
-			// aapt resource value: 0x7F09031D
-			public const int validateWatchtowerWallCheckBox = 2131297053;
-			
-			// aapt resource value: 0x7F09031E
-			public const int view_offset_helper = 2131297054;
-			
-			// aapt resource value: 0x7F09031F
-			public const int view_pager = 2131297055;
-			
-			// aapt resource value: 0x7F090320
-			public const int view_tree_lifecycle_owner = 2131297056;
-			
-			// aapt resource value: 0x7F090321
-			public const int view_tree_saved_state_registry_owner = 2131297057;
-			
-			// aapt resource value: 0x7F090322
-			public const int view_tree_view_model_store_owner = 2131297058;
-			
-			// aapt resource value: 0x7F090323
-			public const int visible = 2131297059;
-			
-			// aapt resource value: 0x7F090324
-			public const int visible_removing_fragment_view_tag = 2131297060;
-			
-			// aapt resource value: 0x7F090325
-			public const int wallMoatCombinationNumericUpDown = 2131297061;
-			
-			// aapt resource value: 0x7F090326
-			public const int wallsCountNumericUpDown = 2131297062;
-			
-			// aapt resource value: 0x7F090327
-			public const int watchtowersNumberNumericUpDown = 2131297063;
-			
-			// aapt resource value: 0x7F090328
-			public const int wishingWellsPointsNumericUpDown = 2131297064;
-			
-			// aapt resource value: 0x7F09032A
-			public const int withinBounds = 2131297066;
-			
-			// aapt resource value: 0x7F090329
-			public const int withText = 2131297065;
-			
-			// aapt resource value: 0x7F09032B
-			public const int wrap = 2131297067;
-			
-			// aapt resource value: 0x7F09032C
-			public const int wrap_content = 2131297068;
-			
-			// aapt resource value: 0x7F09032D
-			public const int zero_corner_chip = 2131297069;
+			public const int zero_corner_chip = 2131297020;
 			
 			static Id()
 			{
