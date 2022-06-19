@@ -137,7 +137,7 @@ namespace AlhambraScoringAndroid.GamePlay
         {
             get
             {
-                int availableTilesCount = 1;
+                int availableTilesCount = 1; //fountain
                 if (HasModule(ExpansionModule.DesignerBathhouses))
                     availableTilesCount += 6;
                 if (HasModule(ExpansionModule.DesignerWishingWell))
@@ -721,7 +721,7 @@ namespace AlhambraScoringAndroid.GamePlay
                         if (Settings.Get(SettingsType.ValidateMissions) && playerScoreData.Mission5Count > (playerTilesMaxCount + 1) / 2)
                             return CheckFailed(Resource.String.message_mission5_player_exceed, playerScoreData.PlayerName);
                     if (HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8))
-                        if (Settings.Get(SettingsType.ValidateMissions) && playerScoreData.Mission8Count > (playerTilesMaxCount + 1) / 2)
+                        if (Settings.Get(SettingsType.ValidateMissions) && playerScoreData.Mission8Count > playerTilesMaxCount - 1)
                             return CheckFailed(Resource.String.message_mission8_player_exceed, playerScoreData.PlayerName);
                 }
                 if (HasModule(ExpansionModule.ExpansionInvaders))
@@ -1269,7 +1269,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 ScoreRound = ScoreRound,
                 Players = Players.Select(p => new ResultPlayerHistory() { Name = p.Name, ScoreDetails1 = p.ScoreDetails1, ScoreDetails2 = p.ScoreDetails2, ScoreDetails3 = p.ScoreDetails3, ScoreMeantime = p.ScoreMeantime }).ToList()
             };
-        } 
+        }
 
         private ResourcesFormatData CreateResourcesFormatData(int resourceId, params object[] args)
         {
