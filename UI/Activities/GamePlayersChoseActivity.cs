@@ -67,6 +67,10 @@ namespace AlhambraScoringAndroid.UI.Activities
                 editTextPlayer3.Text = Player.DirkName;
             }
         }
-    }
 
+        public override void OnBackPressed()
+        {
+            Application.MainScreen(this);
+        }
+    }
 }

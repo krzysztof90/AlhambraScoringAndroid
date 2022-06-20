@@ -28,6 +28,7 @@
   <string name="results_history">Historia wyników</string>
   <string name="reset">Zeruj</string>
   <string name="players_chose">Wybór graczy</string>
+  <string name="modules_chose">Wybór dodatków</string>
   <string name="modules_details_chose">Szczegóły dodatków</string>
   <string name="caliphs_guidelines_missions">Misje Caliph’s Guidelines</string>
   <string name="scoring_score_card_1">Pierwsza karta punktowa</string>
@@ -373,7 +374,7 @@
   <string name="ownedSemiBuildingTower">Posiadana połowa Wieże</string>
   <string name="blackDiceTotalPips">Suma oczek na czarnych kostkach</string>
   <string name="extensionsPavilionCount">Liczba rozszerzeń Pawilony</string>
-  <string name="extensionsSeraglioCount">Liczba rozszerzeń </string>
+  <string name="extensionsSeraglioCount">Liczba rozszerzeń Seraje</string>
   <string name="extensionsArcadesCount">Liczba rozszerzeń Arkady</string>
   <string name="extensionsChambersCount">Liczba rozszerzeń Komnaty</string>
   <string name="extensionsGardenCount">Liczba rozszerzeń Ogrody</string>

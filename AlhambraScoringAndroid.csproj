@@ -112,7 +112,7 @@
     <Compile Include="UI\Activities\MainActivity.cs" />
     <Compile Include="MyApplication.cs" />
     <Compile Include="UI\Activities\MedinaNumberActivity.cs" />
-    <Compile Include="UI\Activities\NewGameActivity.cs" />
+    <Compile Include="UI\Activities\GameModulesChoseActivity.cs" />
     <Compile Include="UI\Activities\ResultsHistoryActivity.cs" />
     <Compile Include="UI\BlueDiceBox.cs" />
     <Compile Include="UI\ControlBlueDices.cs" />
@@ -208,7 +208,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_new_game.xml">
+    <AndroidResource Include="Resources\layout\activity_game_modules_chose.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -9,13 +9,13 @@ using System.Collections.Generic;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
-    [Activity(Label = "@string/new_game", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
-    public class NewGameActivity : BaseActivity
+    [Activity(Label = "@string/modules_chose", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
+    public class GameModulesChoseActivity : BaseActivity
     {
         private ExpandableListViewExtension expandableListView;
         private ExpandableListViewExtension expandableListView2;
 
-        protected override int ContentView => Resource.Layout.activity_new_game;
+        protected override int ContentView => Resource.Layout.activity_game_modules_chose;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -108,9 +108,11 @@ namespace AlhambraScoringAndroid.UI.Activities
             });
         }
 
+
         public override void OnBackPressed()
         {
-            Application.MainScreen(this);
+            base.OnBackPressed();
+            Game.Reset(true);
         }
     }
 }

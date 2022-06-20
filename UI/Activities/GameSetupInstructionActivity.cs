@@ -140,7 +140,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                     .SetPositiveButton(Resources.GetString(Resource.String.yes), new DialogInterfaceOnClickListener((IDialogInterface dialog, int which) =>
                     {
                         base.OnBackPressed();
-                        Game.Reset(true);
+                        Game.Reset(false);
                     }))
                     .SetNegativeButton(Resources.GetString(Resource.String.no), new DialogInterfaceOnClickListener(null))
                     .Show();
@@ -148,7 +148,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             else
             {
                 base.OnBackPressed();
-                Game.Reset(true);
+                Game.Reset(false);
             }
         }
 

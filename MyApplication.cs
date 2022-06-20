@@ -73,7 +73,17 @@ namespace AlhambraScoringAndroid
         {
             Game = new Game(ApplicationContext);
             scoreActivities = new List<BaseActivity>();
-            NewActivity(typeof(NewGameActivity));
+            NewActivity(typeof(GamePlayersChoseActivity));
+        }
+
+        public void GameSetPlayers(List<string> players)
+        {
+            if (Game.ValidatePlayers(players))
+            {
+                Game.SetPlayers(players);
+                Game.SetStartDateTime(DateTime.Now);
+                NewActivity(typeof(GameModulesChoseActivity));
+            }
         }
 
         public void GameApplyModules(IEnumerable<ExpansionModule> modules, GranadaOption granadaOption)
@@ -83,7 +93,7 @@ namespace AlhambraScoringAndroid
             if (modules.Contains(ExpansionModule.FanCaliphsGuidelines) || modules.Contains(ExpansionModule.ExpansionNewScoreCards))
                 NewActivity(typeof(GameModulesDetailsChoseActivity));
             else
-                NewActivity(typeof(GamePlayersChoseActivity));
+                NewActivity(typeof(GameSetupInstructionActivity));
         }
 
         public void GameApplyModulesDetails(IEnumerable<CaliphsGuidelinesMission> caliphsGuidelines, List<NewScoreCard> newScoreCards)
@@ -91,16 +101,6 @@ namespace AlhambraScoringAndroid
             if (Game.ValidateNewScoreCards(newScoreCards))
             {
                 Game.SetModulesDetails(caliphsGuidelines, newScoreCards);
-                NewActivity(typeof(GamePlayersChoseActivity));
-            }
-        }
-
-        public void GameSetPlayers(List<string> players)
-        {
-            if (Game.ValidatePlayers(players))
-            {
-                Game.SetPlayers(players);
-                Game.SetStartDateTime(DateTime.Now);
                 NewActivity(typeof(GameSetupInstructionActivity));
             }
         }
