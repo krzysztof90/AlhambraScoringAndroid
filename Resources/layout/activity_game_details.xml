@@ -53,7 +53,8 @@
 
                 <TableLayout
                     android:layout_width="@dimen/game_details_players_header_width"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:id="@+id/headerTable">
 
                     <TableRow
                         android:layout_width="match_parent"
@@ -75,66 +76,6 @@
                             android:text="@string/round_1_text"
                             android:textStyle="bold"/>
                     </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer11"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer11"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer12"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer12"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer13"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer13"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer14"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer14"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer15"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer15"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer16"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer16"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
 
                     <TableRow
                         android:id="@+id/headerRound2"
@@ -146,66 +87,6 @@
                             android:layout_marginStart="@dimen/game_details_header_rows_gap"
                             android:text="@string/round_2_text"
                             android:textStyle="bold"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer21"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer21"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer22"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer22"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer23"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer23"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer24"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer24"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer25"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer25"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer26"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer26"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
                     </TableRow>
 
                     <TableRow
@@ -219,66 +100,6 @@
                             android:text="@string/round_3_text"
                             android:textStyle="bold"/>
                     </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer31"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer31"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer32"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer32"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer33"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer33"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer34"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer34"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer35"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer35"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayer36"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayer36"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
 
                     <TableRow
                         android:id="@+id/headerRoundSum"
@@ -290,66 +111,6 @@
                             android:layout_marginStart="@dimen/game_details_header_rows_gap"
                             android:text="@string/sum"
                             android:textStyle="bold"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayerSum1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayerSum1"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayerSum2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayerSum2"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayerSum3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayerSum3"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayerSum4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayerSum4"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayerSum5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayerSum5"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
-                    </TableRow>
-                    <TableRow
-                        android:id="@+id/headerPlayerSum6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:id="@+id/headerTextPlayerSum6"
-                            android:layout_width="@dimen/game_details_players_header_width"
-                            android:layout_height="@dimen/game_details_cell_height"
-                            android:layout_marginStart="@dimen/game_details_header_rows_gap"/>
                     </TableRow>
                 </TableLayout>
 

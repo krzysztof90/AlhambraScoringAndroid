@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using AndroidBase.Tools;
 using AndroidBase.UI;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,7 @@ namespace AlhambraScoringAndroid.UI
                     PlayersPanels[i].SetNumberExceptions(exceptNumbers, validationSettingsType);
                 }
                 else
-                    PlayersPanels[i].Visibility = ViewStates.Gone;
+                    PlayersPanels[i].SetVisibility(false);
             }
         }
     }

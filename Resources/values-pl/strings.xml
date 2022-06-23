@@ -59,6 +59,7 @@
   <string name="message_duplicated_name">Zduplikowane nazwy</string>
   <string name="message_medin_same_price">Wybrano tą samą cenę zakupu medin</string>
   <string name="message_building_same_price">Wybrano tą samą cenę zakupu dla {0}</string>
+  <string name="message_wall_length_player_exceed">{0}: Przekroczona długość muru</string>
   <string name="message_building_number_exceed">Przekroczona łączna maksymalna ilość budynków {0}</string>
   <string name="message_building_number_previous_exceed">Liczba budynków {0} przekracza dostępną możliwą na podstawie wcześniejszych rund</string>
   <string name="message_bonus_cards_player_exceed">{0}: Przekroczona ilość kart bonusowych</string>
@@ -89,8 +90,8 @@
   <string name="message_servants_buildings_player_exceed">{0}: Liczba budynków bez żetonu sługi przekracza liczbę wszystkich budynków</string>
   <string name="message_single_fruits_number_exceed">Przekroczona łączna maksymalna ilość pojedynczych owoców</string>
   <string name="message_fruits_number_exceed">Przekroczona łączna maksymalna ilość owoców</string>
-  <string name="message_fontains_player_points_mismatch">{0}: Niedozwolona ilość punktów z fontann</string>
-  <string name="message_fontains_points_exceed">Przekroczona łączna maksymalna ilość punktów z fontann</string>
+  <string name="message_wishing_wells_player_points_mismatch">{0}: Niedozwolona ilość punktów ze studni</string>
+  <string name="message_wishing_wells_points_exceed">Przekroczona łączna maksymalna ilość punktów ze studni</string>
   <string name="message_previous_completed_project">{0}: Projekt {1} musi być ukończony na podstawie wcześniejszej rundy</string>
   <string name="message_multiple_completed_project">Za dużo graczy posiada ukończyło projekt {0}</string>
   <string name="message_animals_player_exceed">{0}: Niedozwolona ilość zwierząt</string>
@@ -438,8 +439,8 @@
   <string name="validateSingleFruits">Waliduj łączną maksymalną ilość pojedynczych owoców</string>
   <string name="validateFruits">Waliduj łączną maksymalną ilość owoców</string>
   <string name="validateBathhouses">Waliduj łączną maksymalną ilość punktów z łaźni</string>
-  <string name="validateFontainsPlayer">Waliduj ilość punktów z fontann</string>
-  <string name="validateFontains">Waliduj łączną maksymalną ilość punktów z fontann</string>
+  <string name="validateWishingWellsPlayer">Waliduj ilość punktów ze studni</string>
+  <string name="validateWishingWells">Waliduj łączną maksymalną ilość punktów ze studni</string>
   <string name="validateMultipleCompletedProject">Waliduj wielokrotny ukończony projekt</string>
   <string name="validatePreviousCompletedProject">Waliduj projekt ukończony na podstawie wcześniejszej rundy</string>
   <string name="validateAnimalsPlayer">Waliduj ilość zwierząt maksymalną dla gracza</string>

@@ -56,6 +56,7 @@
   <string name="message_dirk_name">Dirk is reserved name</string>
   <string name="message_duplicated_name">Duplicated names</string>
   <string name="message_medin_same_price">The same medinas price chosen</string>
+  <string name="message_wall_length_player_exceed">{0}: Wall length exceeded</string>
   <string name="message_building_same_price">The same {0} price chosen</string>
   <string name="message_building_number_exceed">Total number of {0} buildings is exceeded</string>
   <string name="message_building_number_previous_exceed">{0} buildings number exceeded available based on previous rounds</string>
@@ -87,8 +88,8 @@
   <string name="message_servants_buildings_player_exceed">{0}: Tiles without servants number exceeded buildings number</string>
   <string name="message_single_fruits_number_exceed">Total number of single fruits is exceeded</string>
   <string name="message_fruits_number_exceed">Total number of fruits is exceeded</string>
-  <string name="message_fontains_player_points_mismatch">{0}: Illegal amount of wishing wells points</string>
-  <string name="message_fontains_points_exceed">Total number of wishing wells points is exceeded</string>
+  <string name="message_wishing_wells_player_points_mismatch">{0}: Illegal amount of wishing wells points</string>
+  <string name="message_wishing_wells_points_exceed">Total number of wishing wells points is exceeded</string>
   <string name="message_previous_completed_project">{0}: {1} project must be completed based on previous round</string>
   <string name="message_multiple_completed_project">Too many players completed project {0}</string>
   <string name="message_animals_player_exceed">{0}: Animals number exceeded</string>
@@ -436,8 +437,8 @@
   <string name="validateSingleFruits">Validate total number of single fruits</string>
   <string name="validateFruits">Validate total number of fruits</string>
   <string name="validateBathhouses">Validate total number of bathhouses points</string>
-  <string name="validateFontainsPlayer">Validate illegal amount of wishing wells points</string>
-  <string name="validateFontains">Validate total number of wishing wells points</string>
+  <string name="validateWishingWellsPlayer">Validate illegal amount of wishing wells points</string>
+  <string name="validateWishingWells">Validate total number of wishing wells points</string>
   <string name="validateMultipleCompletedProject">Validate too many players completed project</string>
   <string name="validatePreviousCompletedProject">Validate project completed based on previous round</string>
   <string name="validateAnimalsPlayer">Validate animals player max number</string>

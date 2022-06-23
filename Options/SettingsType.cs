@@ -64,10 +64,10 @@ namespace AlhambraScoringAndroid.Options
         ValidateFruits,
         [SettingNameBoolAttribute("validate_bathhouses", true, Resource.String.validateBathhouses)]
         ValidateBathhouses,
-        [SettingNameBoolAttribute("validate_fontains_player", true, Resource.String.validateFontainsPlayer)]
-        ValidateFontainsPlayer,
-        [SettingNameBoolAttribute("validate_fontains", true, Resource.String.validateFontains)]
-        ValidateFontains,
+        [SettingNameBoolAttribute("validate_wishing_wells_player", true, Resource.String.validateWishingWellsPlayer)]
+        ValidateWishingWellsPlayer,
+        [SettingNameBoolAttribute("validate_wishing_wells", true, Resource.String.validateWishingWells)]
+        ValidateWishingWells,
         [SettingNameBoolAttribute("validate_multiple_completed_project", true, Resource.String.validateMultipleCompletedProject)]
         ValidateMultipleCompletedProject,
         [SettingNameBoolAttribute("validate_previous_completed_project", true, Resource.String.validatePreviousCompletedProject)]

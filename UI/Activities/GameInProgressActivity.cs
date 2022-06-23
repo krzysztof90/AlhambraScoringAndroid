@@ -4,6 +4,7 @@ using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidBase.Tools;
 using AndroidBase.UI;
 using System;
 using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             }
             for (int i = Game.PlayersCount; i < 6; i++)
             {
-                resultPanels[i].Visibility = ViewStates.Gone;
+                resultPanels[i].SetVisibility(false);
             }
 
             roundScoreButton = FindViewById<Button>(Resource.Id.roundScoreButton);
@@ -162,7 +163,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             else
                 scoreDetailsButton.Text = Resources.GetString(Resource.String.show_details);
             roundScoreButton.Visibility = Game.ScoreRound == ScoringRound.Finish ? ViewStates.Invisible : ViewStates.Visible;
-            blueDicesCombinationsButton.Visibility = Game.ScoreRound != ScoringRound.Finish && Game.HasModule(ExpansionModule.DesignerHandymen) ? ViewStates.Visible : ViewStates.Gone;
+            blueDicesCombinationsButton.SetVisibility(Game.ScoreRound != ScoringRound.Finish && Game.HasModule(ExpansionModule.DesignerHandymen));
 
             for (int i = 0; i < Game.PlayersCount; i++)
             {

@@ -128,7 +128,7 @@ namespace AlhambraScoringAndroid
 
         public void SubmitScore(GameScoreActivity activity, List<PlayerScoreData> scoreData)
         {
-            if (Game.ValidateScore(scoreData))
+            if (Game.ScoreRound != ScoringRound.ThirdBeforeLeftover ? Game.ValidateScore(scoreData) : Game.ValidateScoreBeforeAssignLeftoverBuildings(scoreData))
             {
                 GameScoreSubmitScoreData = scoreData;
                 TryScore(activity);
@@ -164,7 +164,10 @@ namespace AlhambraScoringAndroid
 
                 gameInProgressActivity.PerformProperRevert();
 
-                Game.Score(GameScoreSubmitScoreData);
+                if (Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
+                    Game.Score(GameScoreSubmitScoreData);
+                else
+                    Game.ScoreBeforeAssignLeftoverBuildings(GameScoreSubmitScoreData);
                 Game.SetNextRound();
                 gameInProgressActivity.PrepareRound();
                 if (Game.ScoreRound == ScoringRound.Finish)
@@ -192,20 +195,6 @@ namespace AlhambraScoringAndroid
             {
                 activity.SetGranadaBuildingsNumbers(playersHighestPrices);
                 TryScore(activity);
-            }
-        }
-
-        public void SubmitScoreBeforeAssignLeftoverBuildings(GameScoreActivity activity, List<PlayerScoreData> scoreData)
-        {
-            if (Game.ValidateScoreBeforeAssignLeftoverBuildings(scoreData))
-            {
-                gameInProgressActivity.PerformProperRevert();
-
-                activity.Finish();
-
-                Game.ScoreBeforeAssignLeftoverBuildings(scoreData);
-                Game.SetNextRound();
-                gameInProgressActivity.PrepareRound();
             }
         }
 

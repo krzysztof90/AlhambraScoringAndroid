@@ -1,10 +1,13 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.App;
 using Android.OS;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
+using AndroidBase.Tools;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using static Android.Widget.AdapterView;
 
 namespace AlhambraScoringAndroid.UI.Activities
@@ -14,9 +17,35 @@ namespace AlhambraScoringAndroid.UI.Activities
     {
         protected override int ContentView => Resource.Layout.activity_game_players_chose;
 
+        private List<EditText> textBoxes;
+
+        private EditText GetTextBox(int playerNumber)
+        {
+            return textBoxes[playerNumber - 1];
+        }
+
+        private EditText CreateTextBox()
+        {
+            LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
+
+            EditText textBox = new EditText(this);
+            LinearLayout.LayoutParams layoutParameters = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
+            layoutParameters.TopMargin = (int)Resources.GetDimension(Resource.Dimension.chose_player_panel_gap);
+            textBox.LayoutParameters = layoutParameters;
+            textBox.InputType = InputTypes.TextFlagCapSentences;
+
+            container.AddView(textBox);
+
+            return textBox;
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            textBoxes = new List<EditText>();
+            for (int i = 1; i <= 6; i++)
+                textBoxes.Add(CreateTextBox());
 
             Spinner spinner = FindViewById<Spinner>(Resource.Id.players_count_spinner);
             ArrayAdapter adapter = ArrayAdapter.CreateFromResource(this, Resource.Array.players_count_array, Android.Resource.Layout.SimpleSpinnerItem);
@@ -31,16 +60,8 @@ namespace AlhambraScoringAndroid.UI.Activities
 
                 int playersCount = spinner.SelectedItemPosition + 2;
 
-                players.Add((FindViewById<EditText>(Resource.Id.text_player1)).Text);
-                players.Add((FindViewById<EditText>(Resource.Id.text_player2)).Text);
-                if (playersCount > 2)
-                    players.Add((FindViewById<EditText>(Resource.Id.text_player3)).Text);
-                if (playersCount > 3)
-                    players.Add((FindViewById<EditText>(Resource.Id.text_player4)).Text);
-                if (playersCount > 4)
-                    players.Add((FindViewById<EditText>(Resource.Id.text_player5)).Text);
-                if (playersCount > 5)
-                    players.Add((FindViewById<EditText>(Resource.Id.text_player6)).Text);
+                for (int i = 1; i <= playersCount; i++)
+                    players.Add(GetTextBox(i).Text);
 
                 Application.GameSetPlayers(players);
             });
@@ -48,14 +69,13 @@ namespace AlhambraScoringAndroid.UI.Activities
 
         private void Spinner_ItemSelected(object sender, ItemSelectedEventArgs e)
         {
-            EditText editTextPlayer6 = FindViewById<EditText>(Resource.Id.text_player6);
-            editTextPlayer6.Visibility = (e.Position + 2 < 6 ? ViewStates.Gone : ViewStates.Visible);
-            EditText editTextPlayer5 = FindViewById<EditText>(Resource.Id.text_player5);
-            editTextPlayer5.Visibility = (e.Position + 2 < 5 ? ViewStates.Gone : ViewStates.Visible);
-            EditText editTextPlayer4 = FindViewById<EditText>(Resource.Id.text_player4);
-            editTextPlayer4.Visibility = (e.Position + 2 < 4 ? ViewStates.Gone : ViewStates.Visible);
-            EditText editTextPlayer3 = FindViewById<EditText>(Resource.Id.text_player3);
-            if (e.Position + 2 != 2)
+            int playersCount = e.Position + 2;
+
+            for (int i = 4; i <= 6; i++)
+                GetTextBox(i).SetVisibility(playersCount >= i);
+
+            EditText editTextPlayer3 = GetTextBox(3);
+            if (playersCount != 2)
             {
                 editTextPlayer3.Enabled = true;
                 if (editTextPlayer3.Text == Player.DirkName)

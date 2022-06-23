@@ -20,7 +20,6 @@ namespace AlhambraScoringAndroid.UI
         public readonly GameScoreActivity Activity;
         public ViewPager ViewPager { get; private set; }
         private readonly PlaceholderPlayerScoreFragment[] PlayerScoreFragments;
-        private readonly PlaceholderPlayerScoreBeforeAssignLeftoverFragment[] PlayerScoreBeforeAssignLeftoverFragments;
         private readonly List<int> selectedPages;
 
         public List<PlayerScoreData> AllPlayerScoreData
@@ -30,19 +29,11 @@ namespace AlhambraScoringAndroid.UI
                 return GetAllPlayerScoreFragments().Select(p => new PlayerScoreData(p)).ToList();
             }
         }
-        public List<PlayerScoreData> AllPlayerScoreBeforeAssignLeftoverData
-        {
-            get
-            {
-                return GetAllPlayerScoreBeforeAssignLeftoverFragments().Select(p => new PlayerScoreData(p)).ToList();
-            }
-        }
 
         public PlayersScoreSectionsPagerAdapter(GameScoreActivity context, AndroidX.Fragment.App.FragmentManager fm, ViewPager viewPager) : base(fm)
         {
             Activity = context;
             PlayerScoreFragments = new PlaceholderPlayerScoreFragment[Count];
-            PlayerScoreBeforeAssignLeftoverFragments = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment[Count];
 
             selectedPages = new List<int>();
             selectedPages.Add(0);
@@ -60,18 +51,9 @@ namespace AlhambraScoringAndroid.UI
 
         public override AndroidX.Fragment.App.Fragment GetItem(int position)
         {
-            if (Activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
-            {
-                PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, Activity.Game, Activity.CorrectingScoring(), this);
-                PlayerScoreFragments[position] = playerScoreFragment;
-                return playerScoreFragment;
-            }
-            else
-            {
-                PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(position + 1, Activity.Game, Activity.CorrectingScoring(), this);
-                PlayerScoreBeforeAssignLeftoverFragments[position] = playerScoreFragment;
-                return playerScoreFragment;
-            }
+            PlaceholderPlayerScoreFragment playerScoreFragment = new PlaceholderPlayerScoreFragment(position + 1, Activity.Game, Activity.CorrectingScoring(), this);
+            PlayerScoreFragments[position] = playerScoreFragment;
+            return playerScoreFragment;
         }
 
         public override ICharSequence GetPageTitleFormatted(int position)
@@ -87,10 +69,7 @@ namespace AlhambraScoringAndroid.UI
         /// shit android
         public void RestoreValues(int position)
         {
-            if (Activity.Game.ScoreRound != ScoringRound.ThirdBeforeLeftover)
-                PlayerScoreFragments[position].RestoreValues();
-            else
-                PlayerScoreBeforeAssignLeftoverFragments[position].RestoreValues();
+            PlayerScoreFragments[position].RestoreValues();
         }
 
         private List<PlaceholderPlayerScoreFragment> GetAllPlayerScoreFragments()
@@ -104,17 +83,6 @@ namespace AlhambraScoringAndroid.UI
             return PlayerScoreFragments.ToList();
         }
 
-        private List<PlaceholderPlayerScoreBeforeAssignLeftoverFragment> GetAllPlayerScoreBeforeAssignLeftoverFragments()
-        {
-            for (int i = 0; i < Count; i++)
-                if (PlayerScoreBeforeAssignLeftoverFragments[i] == null)
-                {
-                    PlayerScoreBeforeAssignLeftoverFragments[i] = new PlaceholderPlayerScoreBeforeAssignLeftoverFragment(i + 1, Activity.Game, Activity.CorrectingScoring(), this);
-                    PlayerScoreBeforeAssignLeftoverFragments[i].Create((LayoutInflater)Activity.GetSystemService(Context.LayoutInflaterService), ViewPager);
-                }
-            return PlayerScoreBeforeAssignLeftoverFragments.ToList();
-        }
-
         public bool ValidateAllPlayerScoreFragments()
         {
             foreach (PlaceholderPlayerScoreFragment playerScoreFragment in GetAllPlayerScoreFragments())
@@ -124,17 +92,6 @@ namespace AlhambraScoringAndroid.UI
                     return false;
             }
 
-            return true;
-        }
-
-        public bool ValidateAllPlayerScoreBeforeAssignLeftoverFragments()
-        {
-            foreach (PlaceholderPlayerScoreBeforeAssignLeftoverFragment playerScoreFragment in GetAllPlayerScoreBeforeAssignLeftoverFragments())
-            {
-                IEnumerable<ControlNumberView> playerPanels = playerScoreFragment.Controls.Where(c => c is ControlNumberView).Cast<ControlNumberView>();
-                if (!playerPanels.ValidatePlayerPanels())
-                    return false;
-            }
             return true;
         }
 

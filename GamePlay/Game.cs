@@ -575,11 +575,11 @@ namespace AlhambraScoringAndroid.GamePlay
             int wishingWellsPointsSum = scoreData.Sum(p => p.WishingWellsPoints);
             foreach (PlayerScoreData playerScoreData in scoreData)
             {
-                if (Settings.Get(SettingsType.ValidateFontainsPlayer) && !wishingWellsAvailablePoints.Contains(playerScoreData.WishingWellsPoints))
-                    return CheckFailed(Resource.String.message_fontains_player_points_mismatch, playerScoreData.PlayerName);
+                if (Settings.Get(SettingsType.ValidateWishingWellsPlayer) && !wishingWellsAvailablePoints.Contains(playerScoreData.WishingWellsPoints))
+                    return CheckFailed(Resource.String.message_wishing_wells_player_points_mismatch, playerScoreData.PlayerName);
             }
-            if (Settings.Get(SettingsType.ValidateFontains) && wishingWellsPointsSum > 24)
-                return CheckFailed(Resource.String.message_fontains_points_exceed);
+            if (Settings.Get(SettingsType.ValidateWishingWells) && wishingWellsPointsSum > 24)
+                return CheckFailed(Resource.String.message_wishing_wells_points_exceed);
 
             int playerProjectsMax = 3;
             if (PlayersCount < 4)
@@ -595,11 +595,6 @@ namespace AlhambraScoringAndroid.GamePlay
             }
 
             int animalsPointsSum = scoreData.Sum(p => p.AnimalsPoints);
-            foreach (PlayerScoreData playerScoreData in scoreData)
-            {
-                if (Settings.Get(SettingsType.ValidateAnimalsPlayer) && playerScoreData.AnimalsPoints > playerScoreData.BuildingsCount[BuildingType.Garden] * 3)
-                    return CheckFailed(Resource.String.message_animals_player_exceed, playerScoreData.PlayerName);
-            }
             if (Settings.Get(SettingsType.ValidateAnimals) && animalsPointsSum > 22)
                 return CheckFailed(Resource.String.message_animals_number_exceed);
 
@@ -653,7 +648,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
             foreach (PlayerScoreData playerScoreData in scoreData)
             {
-                if (Settings.Get(SettingsType.ValidateTreasuresPoints) && !treasuresAvailableValues.Contains(playerScoreData.TreasuresValue))
+                if (Settings.Get(SettingsType.ValidateTreasuresPoints) && !treasuresAvailableValues.Contains(playerScoreData.TreasuresPoints))
                     return CheckFailed(Resource.String.message_treasures_points_player_mismatch, playerScoreData.PlayerName);
             }
 
@@ -695,14 +690,17 @@ namespace AlhambraScoringAndroid.GamePlay
                     {
                         if (HasModule(ExpansionModule.DesignerBathhouses))
                             if (scoreData[j].BathhousesPoints > 0)
-                                otherPlayersMinBathhousesCount += 1;
+                                otherPlayersMinBathhousesCount ++;
                         if (HasModule(ExpansionModule.DesignerWishingWell))
                             if (scoreData[j].WishingWellsPoints > 0)
-                                otherPlayersMinWishingWellsCount += 1;
-                        ;
+                                otherPlayersMinWishingWellsCount ++;
                     }
                 playerTilesMaxCount -= otherPlayersMinBathhousesCount;
                 playerTilesMaxCount -= otherPlayersMinWishingWellsCount;
+
+                //TODO walidacja moat length
+                if (Settings.Get(SettingsType.ValidateWallLength) && playerScoreData.WallLength > playerTilesMaxCount * 2 + 2)
+                    return CheckFailed(Resource.String.message_wall_length_player_exceed, playerScoreData.PlayerName);
 
                 if (HasModule(ExpansionModule.DesignerBathhouses))
                 {
@@ -1097,7 +1095,7 @@ namespace AlhambraScoringAndroid.GamePlay
                 {
                     foreach (PlayerScoreData playerScoreData in scoreData)
                         if (!playerScoreData.Player.Dirk)
-                            playerScoreData.Player.AddScore(playerScoreData.TreasuresValue, ScoreType.Treasures);
+                            playerScoreData.Player.AddScore(playerScoreData.TreasuresPoints, ScoreType.Treasures);
                 }
             }
 
@@ -1187,19 +1185,8 @@ namespace AlhambraScoringAndroid.GamePlay
             RoundsScoring[RoundNumber - 1] = scoreData;
         }
 
-        public void RoundRevertScore(ScoringRound scoreRound, List<(ScoreDetails scoreDetails1, ScoreDetails scoreDetails2, ScoreDetails scoreDetails3, ScoreDetails scoreMeantime)> initialScoring)
-        {
-            ScoreRound = scoreRound;
-            for (int i = 0; i < PlayersCount; i++)
-            {
-                Players[i].RestoreScore(initialScoring[i]);
-            }
-        }
-
         public bool ValidateScoreBeforeAssignLeftoverBuildings(List<PlayerScoreData> scoreData)
         {
-            List<PlayerScoreData> previousScoreData = RoundsScoring[1];
-
             return true;
         }
 
@@ -1218,6 +1205,15 @@ namespace AlhambraScoringAndroid.GamePlay
             ScoreStack.Push(new ScoreHistoryRound(this, ScoreRound, initialScoring));
 
             ThirdBeforeRoundScoring = scoreData;
+        }
+
+        public void RoundRevertScore(ScoringRound scoreRound, List<(ScoreDetails scoreDetails1, ScoreDetails scoreDetails2, ScoreDetails scoreDetails3, ScoreDetails scoreMeantime)> initialScoring)
+        {
+            ScoreRound = scoreRound;
+            for (int i = 0; i < PlayersCount; i++)
+            {
+                Players[i].RestoreScore(initialScoring[i]);
+            }
         }
 
         public void BackRound()

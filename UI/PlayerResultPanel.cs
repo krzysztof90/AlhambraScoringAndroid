@@ -4,6 +4,7 @@ using Android.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using AndroidBase.Tools;
 using System;
 
 namespace AlhambraScoringAndroid.UI
@@ -65,8 +66,8 @@ namespace AlhambraScoringAndroid.UI
         {
             bool showMain = show;
             showMain = showMain && allowAddPoints;
-            addPoint1Button.Visibility = showMain ? ViewStates.Visible : ViewStates.Gone;
-            addPoint2Button.Visibility = showMain ? ViewStates.Visible : ViewStates.Gone;
+            addPoint1Button.SetVisibility(showMain);
+            addPoint2Button.SetVisibility(showMain);
         }
     }
 }

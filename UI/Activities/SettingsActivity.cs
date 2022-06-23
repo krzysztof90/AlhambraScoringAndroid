@@ -24,7 +24,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             foreach (SettingsType settingsType in Enum.GetValues(typeof(SettingsType)).Cast<SettingsType>().ToList())
             {
-                ControlCheckBoxView checkBox = new ControlCheckBoxView(this, null);
+                ControlCheckBoxView checkBox = new ControlCheckBoxView(this);
                 checkBox.LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
                 checkBox.SetLabel(settingsType.GetEnumDescription(Resources));
                 checkBox.Value = Settings.Get(settingsType);
@@ -32,7 +32,6 @@ namespace AlhambraScoringAndroid.UI.Activities
 
                 container.AddView(checkBox);
             }
-            //container.RequestLayout();
         }
     }
 }
