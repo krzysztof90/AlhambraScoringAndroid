@@ -685,16 +685,19 @@ namespace AlhambraScoringAndroid.GamePlay
 
                 int otherPlayersMinBathhousesCount = 0;
                 int otherPlayersMinWishingWellsCount = 0;
-                for (int j = 0; j < PlayersCount; j++)
-                    if (j != playerScoreData.PlayerNumber - 1)
-                    {
-                        if (HasModule(ExpansionModule.DesignerBathhouses))
-                            if (scoreData[j].BathhousesPoints > 0)
-                                otherPlayersMinBathhousesCount ++;
-                        if (HasModule(ExpansionModule.DesignerWishingWell))
-                            if (scoreData[j].WishingWellsPoints > 0)
-                                otherPlayersMinWishingWellsCount ++;
-                    }
+                if (!HasModule(ExpansionModule.FanPersonalBuildingMarket))
+                {
+                    for (int j = 0; j < PlayersCount; j++)
+                        if (j != playerScoreData.PlayerNumber - 1)
+                        {
+                            if (HasModule(ExpansionModule.DesignerBathhouses))
+                                if (scoreData[j].BathhousesPoints > 0)
+                                    otherPlayersMinBathhousesCount++;
+                            if (HasModule(ExpansionModule.DesignerWishingWell))
+                                if (scoreData[j].WishingWellsPoints > 0)
+                                    otherPlayersMinWishingWellsCount++;
+                        }
+                }
                 playerTilesMaxCount -= otherPlayersMinBathhousesCount;
                 playerTilesMaxCount -= otherPlayersMinWishingWellsCount;
 
