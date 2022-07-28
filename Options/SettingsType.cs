@@ -30,6 +30,8 @@ namespace AlhambraScoringAndroid.Options
         ValidateMultipleCitywatch,
         [SettingNameBoolAttribute("validate_previous_citywatch", true, Resource.String.validatePreviousCitywatch)]
         ValidatePreviousCitywatch,
+        [SettingNameBoolAttribute("validate_camps", true, Resource.String.validateCamps)]
+        ValidateCamps,
         [SettingNameBoolAttribute("validate_citizens_buildings", true, Resource.String.validateCitizensBuildings)]
         ValidateCitizensBuildings,
         [SettingNameBoolAttribute("validate_citizens", true, Resource.String.validateCitizens)]

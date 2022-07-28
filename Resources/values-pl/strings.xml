@@ -13,6 +13,7 @@
   <string name="result_removing">Usuwanie wyniku</string>
   <string name="continue_question">Czy kontynuować?</string>
   <string name="activity_ending_continue_question">Czy napewno zamknąć to okno?</string>
+  <string name="or">lub</string>
   <string name="yes">Tak</string>
   <string name="no">Nie</string>
   <string name="cancel">Anuluj</string>
@@ -60,6 +61,7 @@
   <string name="message_medin_same_price">Wybrano tą samą cenę zakupu medin</string>
   <string name="message_building_same_price">Wybrano tą samą cenę zakupu dla {0}</string>
   <string name="message_wall_length_player_exceed">{0}: Przekroczona długość muru</string>
+  <string name="message_moat_length_player_exceed">{0}: Przekroczona długość fosy</string>
   <string name="message_building_number_exceed">Przekroczona łączna maksymalna ilość budynków {0}</string>
   <string name="message_building_number_previous_exceed">Liczba budynków {0} przekracza dostępną możliwą na podstawie wcześniejszych rund</string>
   <string name="message_bonus_cards_player_exceed">{0}: Przekroczona ilość kart bonusowych</string>
@@ -72,17 +74,20 @@
   <string name="message_previous_wiseman">{0}: Charakter The Wise Man musi być posiadany na podstawie wcześniejszej rundy</string>
   <string name="message_multiple_citywatch">Kilku graczy posiada charakter The City Watch</string>
   <string name="message_previous_citywatch">{0}: Charakter The City Watch musi być posiadany na podstawie wcześniejszej rundy</string>
+  <string name="message_camps_points_player_exceed">{0}: Przekroczona ilość punktów z obozów</string>
   <string name="message_citizens_buildings_exceed">{0}: Liczba obywateli przekracza liczbę wszystkich budynków {1}</string>
   <string name="message_citizens_exceed">Przekroczona łączna maksymalna ilość obywateli {0}</string>
   <string name="message_treasures_player_exceed">{0}: Liczba skrzyń przekracza liczbę wszystkich budynków</string>
   <string name="message_treasures_number_exceed">Przekroczona łączna maksymalna ilość skrzyń</string>
   <string name="message_bazaars_points_exceed">Przekroczona łączna maksymalna ilość punktów z bazarów</string>
   <string name="message_bazaars_number_exceed">Przekroczona łączna ilość bazarów</string>
+  <string name="message_culture_counters_number_exceed">Przekroczona łączna maksymalna ilość liczników kultury</string>
   <string name="message_culture_counters_player_mismatch">{0}: Niedozwolona ilość punktów z liczników kultury</string>
   <string name="message_culture_counters_player_previous_mismatch">{0}: Niedozwolona ilość punktów z liczników kultury na podstawie wcześniejszej rundy</string>
   <string name="message_black_falcons_number_exceed">Przekroczona łączna maksymalna ilość czarnych sokołów</string>
   <string name="message_brown_falcons_number_exceed">Przekroczona łączna maksymalna ilość brązowych sokołów</string>
   <string name="message_white_falcons_number_exceed">Przekroczona łączna maksymalna ilość białych sokołów</string>
+  <string name="message_falcons_player_exceed">{0}: Przekroczona ilość sokołów</string>
   <string name="message_watchtower_wall_player_exceed">{0}: Liczba wież obserwacyjnych przekracza długość najdłuższego muru</string>
   <string name="message_watchtower_number_exceed">Przekroczona łączna maksymalna ilość wież obserwacyjnych</string>
   <string name="message_medin_number_exceed">Przekroczona łączna maksymalna ilość medin</string>
@@ -92,6 +97,7 @@
   <string name="message_fruits_number_exceed">Przekroczona łączna maksymalna ilość owoców</string>
   <string name="message_wishing_wells_player_points_mismatch">{0}: Niedozwolona ilość punktów ze studni</string>
   <string name="message_wishing_wells_points_exceed">Przekroczona łączna maksymalna ilość punktów ze studni</string>
+  <string name="message_wishing_wells_number_exceed">Przekroczona łączna maksymalna ilość studni</string>
   <string name="message_previous_completed_project">{0}: Projekt {1} musi być ukończony na podstawie wcześniejszej rundy</string>
   <string name="message_multiple_completed_project">Za dużo graczy posiada ukończyło projekt {0}</string>
   <string name="message_animals_player_exceed">{0}: Niedozwolona ilość zwierząt</string>
@@ -100,6 +106,7 @@
   <string name="message_multiple_semi_buildings">Kilku graczy z tą samą połową budynku {0}</string>
   <string name="message_previous_semi_buildings">{0}: połowa {1} musi być posiadana na podstawie wcześniejszej rundy</string>
   <string name="message_black_dice_pips_number_exceed">Przekroczona łączna maksymalna liczba oczek na czarnych kostkach</string>
+  <string name="message_black_dice_number_exceed">Przekroczona łączna maksymalna ilość czarnych kostkach</string>
   <string name="message_black_dices_number_exceed">Przekroczona ilość użytych czarnych kostek</string>
   <string name="message_black_dices_number_previous_exceed">Ilość użytych czarnych kostek przekracza dostępną możliwą na podstawie wcześniejszych rund</string>
   <string name="message_extensions_buildings_player_exceed">{0}: Liczba rozszerzeń przekracza liczbę wszystkich budynków {1}</string>
@@ -112,10 +119,16 @@
   <string name="message_bathhouses_points_player_exceed">{0}: Przekroczona ilość punktów z łaźni</string>
   <string name="message_mission1_player_exceed">{0}: Przekroczona liczba rzędów z przynajmniej trzema kolejnymi budynkami (Misja 1)</string>
   <string name="message_mission2_player_exceed">{0}: Przekroczona liczba kolumn z przynajmniej trzema kolejnymi budynkami (Misja 2)</string>
+  <string name="message_mission3_player_exceed">{0}: Przekroczona liczba par budynków tego samego typu (Misja 3)</string>
   <string name="message_mission5_player_exceed">{0}: Przekroczona liczba budynków w najdłuższej przekątnej (Misja 5)</string>
+  <string name="message_mission6_player_exceed">{0}: Przekroczona liczba wewnętrznych murów (Misja 6)</string>
   <string name="message_mission8_player_exceed">{0}: Przekroczona liczba budynków na drodze od fontanny do najdalszego budynku (Misja 8)</string>
+  <string name="message_mission9_player_exceed">{0}: Przekroczona liczba siatek 2 x 2 (Misja 9)</string>
   <string name="message_unprotected_sides_count_player_exceed">{0}: Przekroczona liczba niechronionych boków</string>
   <string name="message_unprotected_sides_neighbouring_count_player_exceed">{0}: Przekroczona liczba niechronionych boków z sąsiednich stron</string>
+  <string name="message_check_other_players_bazaars">Sprawdź ilość punktów z bazarów u innych graczy</string>
+  <string name="message_check_other_players_bathhouses">Sprawdź ilość punktów z łaźni u innych graczy</string>
+  <string name="message_check_other_players_wishing_wells">Sprawdź ilość punktów ze studni u innych graczy</string>
   <string name="expansion_modules">EXPANSION MODULES</string>
   <string name="queenie_expansion_modules">QUEENIE EXPANSION MODULES</string>
   <string name="designer_expansion_modules">DESIGNER EXPANSION MODULES</string>
@@ -422,6 +435,7 @@
   <string name="validatePreviousWiseman">Waliduj charakter The Wise Man posiadany na podstawie wcześniejszej rundy</string>
   <string name="validateMultipleCitywatch">Waliduj wielokrotny charakter The City Watch</string>
   <string name="validatePreviousCitywatch">Waliduj charakter The City Watch posiadany na podstawie wcześniejszej rundy</string>
+  <string name="validateCamps">Waliduj punkty z obozów</string>
   <string name="validateCitizensBuildings">Waliduj liczbę obywateli w stosunku do wszystkich budynków</string>
   <string name="validateCitizens">Waliduj łączną maksymalną ilość obywateli</string>
   <string name="validateTreasuresPlayer">Waliduj liczbę skrzyń w stosunku do wszystkich budynków</string>

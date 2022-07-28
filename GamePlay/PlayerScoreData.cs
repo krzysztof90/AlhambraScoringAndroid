@@ -1,6 +1,7 @@
 ﻿using AlhambraScoringAndroid.Attributes;
 using AlhambraScoringAndroid.UI;
 using AndroidBase.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -104,6 +105,16 @@ namespace AlhambraScoringAndroid.GamePlay
         public Dictionary<GranadaBuildingType, int> GranadaBuildingsHighestPrices { get; set; }
 
         public int AllBuildingsCount => BuildingsCount.Sum(b => b.Value);
+        //including 1 starting tile
+        //not 'Available'Tiles
+        public int AllTilesCount => AllBuildingsCount + MedinasNumber + 1;
+        public int AllWallBuildingsCount => BuildingsCount.Sum(b => Math.Min(b.Value, Game.WallBuildingsMaxCount[b.Key]));
+        public int AllWallTilesCount => AllWallBuildingsCount + MedinasNumber;
+        public int AllGranadaBuildingsCount => GranadaBuildingsCount.Sum(b => b.Value);
+        //including 1 starting tile
+        public int AllGranadaTilesCount => GranadaBuildingsCount.Sum(b => b.Value)+1;
+
+        public Dictionary<BuildingType, int> BaseBuildingsCount => BuildingsCount.ToDictionary(b => b.Key, b => Math.Min(b.Value, Game.BaseBuildingsMaxCount[b.Key]));
 
         public PlayerScoreData(PlaceholderPlayerScoreFragment fragment)
         {

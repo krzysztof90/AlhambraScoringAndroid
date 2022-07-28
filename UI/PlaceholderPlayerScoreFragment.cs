@@ -515,7 +515,7 @@ namespace AlhambraScoringAndroid.UI
         {
             SetControlOnValueChange(ResultType.BlackDiceTotalPips, () => { EnabledSecondLongestWall(); });
 
-            //TODO maximum for campsPointsNumericUpDown, mission3Adjacent2BuildingsCountNumericUpDown, mission6DoubleWallCountNumericUpDown, mission9Grids22CountNumericUpDown
+            //TODO wspólne walidacje z Game do metody
             SetControlNumberRange(ResultType.WallLength, 0, Game.WallsMaxLength, SettingsType.ValidateWallLength);
             SetControlNumberRange(ResultType.PavilionNumber, 0, Game.BuildingsMaxCount[BuildingType.Pavilion], SettingsType.ValidateBuildingsNumber);
             SetControlNumberRange(ResultType.SeraglioNumber, 0, Game.BuildingsMaxCount[BuildingType.Seraglio], SettingsType.ValidateBuildingsNumber);
@@ -535,6 +535,7 @@ namespace AlhambraScoringAndroid.UI
             SetControlNumberRange(ResultType.SquaresChambersNumber, 0, 9, SettingsType.ValidateSquares);
             SetControlNumberRange(ResultType.SquaresGardenNumber, 0, 9, SettingsType.ValidateSquares);
             SetControlNumberRange(ResultType.SquaresTowerNumber, 0, 9, SettingsType.ValidateSquares);
+            SetControlNumberRange(ResultType.CampsPoints, 0, Game.AllTilesCount, SettingsType.ValidateCamps);
             SetControlNumberRange(ResultType.StreetTradersPavilionNumber, 0, 7, SettingsType.ValidateCitizens);
             SetControlNumberRange(ResultType.StreetTradersSeraglioNumber, 0, 7, SettingsType.ValidateCitizens);
             SetControlNumberRange(ResultType.StreetTradersArcadesNumber, 0, 7, SettingsType.ValidateCitizens);
@@ -567,8 +568,11 @@ namespace AlhambraScoringAndroid.UI
             SetControlNumberRange(ResultType.TreasuresPoints, 0, 15, SettingsType.ValidateTreasuresPoints);
             SetControlNumberRange(ResultType.Mission1RowsCount, 0, Game.AllTilesCount / 3, SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission2ColumnsCount, 0, Game.AllTilesCount / 3, SettingsType.ValidateMissions);
+            SetControlNumberRange(ResultType.Mission3Adjacent2BuildingsCount, 0, 70, SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission5LongestDiagonalLine, 0, (Game.AllTilesCount + 1) / 2, SettingsType.ValidateMissions);
+            SetControlNumberRange(ResultType.Mission6DoubleWallCount, 0, Game.GetBuildingsAvailableAdjacent(Game.AllWallTilesCount), SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission8PathBuildingsNumber, 0, (Game.AllTilesCount + 1) / 2, SettingsType.ValidateMissions);
+            SetControlNumberRange(ResultType.Mission9Grids22Count, 0, Game.GetBuildingsAvailable2x2Grids(Game.AllTilesCount), SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.SecondLongestWall, 0, Game.WallsMaxLength / 2 - 2, SettingsType.ValidateSecondLongestWall);
             SetControlNumberRange(ResultType.MoatLength, 0, Game.MoatMaxLength, SettingsType.ValidateMoatLength);
             SetControlNumberRange(ResultType.ArenaCount, 0, 6, SettingsType.ValidateBuildingsNumber);
