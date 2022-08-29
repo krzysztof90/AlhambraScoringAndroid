@@ -869,6 +869,8 @@ namespace AlhambraScoringAndroid.GamePlay
             return true;
         }
 
+        //TODO czy inkrement działa [?]
+
         //TODO max ze wszystkich rund (uwzględniając dodatek personal market)
         private (int playerTilesMaxCount, int playerGranadaTilesMaxCount, int otherPlayersMinBathhousesCount, int otherPlayersMinWishingWellsCount, int otherPlayersMinBazaarscount) GetPlayerTilesMaxCount(PlayerScoreData playerScoreData, List<PlayerScoreData> scoreData, bool applyOtherPlayersMin = true)
         {
