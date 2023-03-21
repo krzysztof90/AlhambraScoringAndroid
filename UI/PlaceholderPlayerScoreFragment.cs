@@ -470,7 +470,7 @@ namespace AlhambraScoringAndroid.UI
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission9Grids22Count, CreateControlNumberView(Resource.String.mission9Grids22Count));
-            if (Game.HasModule(ExpansionModule.DesignerBuildingsOfPower) || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound)
+            if ((Game.HasModule(ExpansionModule.DesignerBuildingsOfPower) || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound))
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SecondLongestWall, CreateControlNumberView(Resource.String.secondLongestWall));

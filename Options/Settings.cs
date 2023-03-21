@@ -27,6 +27,7 @@ namespace AlhambraScoringAndroid.Options
         {
             List<ResultHistory> results = new List<ResultHistory>();
 
+            //var a = File.ReadAllText(settingsFileName);
             if (File.Exists(settingsFileName))
             {
                 XmlDocument document = new XmlDocument();
