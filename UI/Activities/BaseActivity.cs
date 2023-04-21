@@ -1,5 +1,6 @@
 ﻿using AlhambraScoringAndroid.GamePlay;
 using Android.OS;
+using Android.Views;
 using AndroidBase;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,9 @@ namespace AlhambraScoringAndroid.UI.Activities
                 Exception exception = (Exception)args.ExceptionObject;
                 //TODO obsłużyć
             });
-         
+
+            Window.AddFlags(WindowManagerFlags.KeepScreenOn);
+
             base.OnCreate(savedInstanceState);
         }
     }
