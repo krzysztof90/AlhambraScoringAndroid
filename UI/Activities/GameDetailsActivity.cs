@@ -18,7 +18,6 @@ namespace AlhambraScoringAndroid.UI.Activities
         public ResultHistory Result => Application.CurrentResult;
         public int PlayersCount => Result.Players.Count;
         public ScoringRound ScoreRound => Result.ScoreRound;
-        public GranadaOption GranadaOption => Result.GranadaOption;
 
         protected override int ContentView => Resource.Layout.activity_game_details;
 
@@ -31,61 +30,61 @@ namespace AlhambraScoringAndroid.UI.Activities
             resultConditions = new List<(Func<bool> condition, int headerRowResourceId, Func<ScoreDetails, bool, string> resultText)>()
             {
                 (() => true, Resource.Id.headerSum, (scoreDetails, summary) => scoreDetails.Sum.ToString()),
-                (() => HasModule(ExpansionModule.DesignerPalaceDesigners) || HasModule(ExpansionModule.DesignerGatesWithoutEnd),Resource.Id.headerImmediatelyPoints, (scoreDetails, summary) => !summary ? String.Empty : scoreDetails.ImmediatelyPoints.ToString()),
-                (() => HasModule(ExpansionModule.DesignerPalaceDesigners),Resource.Id.headerImmediatelyPointsPalaceDesigners, null),
-                (() => HasModule(ExpansionModule.DesignerGatesWithoutEnd),Resource.Id.headerImmediatelyPointsGatesWithoutEnd, null),
+                (() => HasModule(ExpansionModule.DesignerPalaceDesigners) || HasModule(ExpansionModule.DesignerGatesWithoutEnd), Resource.Id.headerImmediatelyPoints, (scoreDetails, summary) => !summary ? String.Empty : scoreDetails.ImmediatelyPoints.ToString()),
+                (() => HasModule(ExpansionModule.DesignerPalaceDesigners), Resource.Id.headerImmediatelyPointsPalaceDesigners, null),
+                (() => HasModule(ExpansionModule.DesignerGatesWithoutEnd), Resource.Id.headerImmediatelyPointsGatesWithoutEnd, null),
                 (() => GranadaOption != GranadaOption.Alone, Resource.Id.headerWalls, (scoreDetails, summary) => scoreDetails.WallLength.ToString()),
-                (() => GranadaOption != GranadaOption.Alone,Resource.Id.headerPavilion, (scoreDetails, summary) => scoreDetails.Pavilion.ToString()),
-                (() => GranadaOption != GranadaOption.Alone,Resource.Id.headerSeraglio, (scoreDetails, summary) => scoreDetails.Seraglio.ToString()),
-                (() => GranadaOption != GranadaOption.Alone,Resource.Id.headerArcades, (scoreDetails, summary) => scoreDetails.Arcades.ToString()),
-                (() => GranadaOption != GranadaOption.Alone,Resource.Id.headerChambers, (scoreDetails, summary) => scoreDetails.Chambers.ToString()),
-                (() => GranadaOption != GranadaOption.Alone,Resource.Id.headerGarden, (scoreDetails, summary) => scoreDetails.Garden.ToString()),
-                (() => GranadaOption != GranadaOption.Alone,Resource.Id.headerTower, (scoreDetails, summary) => scoreDetails.Tower.ToString()),
-                (() => HasModule(ExpansionModule.ExpansionBonusCards) || HasModule(ExpansionModule.ExpansionSquares) || HasModule(ExpansionModule.ExpansionCharacters) || HasModule(ExpansionModule.DesignerExtensions) || HasModule(ExpansionModule.DesignerGatesWithoutEnd),Resource.Id.headerBonuses, (scoreDetails, summary) => $"(+{scoreDetails.BuildingsBonuses})"),
-                (() => HasModule(ExpansionModule.ExpansionBonusCards),Resource.Id.headerBonusesBonusCards, null),
-                (() => HasModule(ExpansionModule.ExpansionSquares),Resource.Id.headerBonusesSquares, null),
-                (() => HasModule(ExpansionModule.DesignerExtensions),Resource.Id.headerBonusesExtensions, null),
-                (() => HasModule(ExpansionModule.DesignerGatesWithoutEnd),Resource.Id.headerBonusesGatesWithoutEnd, null),
-                (() => HasModule(ExpansionModule.ExpansionCharacters),Resource.Id.headerBonusesTheWiseMan, null),
-                (() => HasModule(ExpansionModule.ExpansionCharacters),Resource.Id.headerTheCityWatch, (scoreDetails, summary) => scoreDetails.TheCityWatch.ToString()),
-                (() => HasModule(ExpansionModule.ExpansionCamps),Resource.Id.headerCamps, (scoreDetails, summary) => scoreDetails.Camps.ToString()),
-                (() => HasModule(ExpansionModule.ExpansionStreetTrader),Resource.Id.headerStreetTraders, (scoreDetails, summary) => scoreDetails.StreetTraders.ToString()),
-                (() => HasModule(ExpansionModule.ExpansionTreasureChamber),Resource.Id.headerTreasureChamber, (scoreDetails, summary) => scoreDetails.TreasureChamber.ToString()),
-                (() => HasModule(ExpansionModule.ExpansionInvaders),Resource.Id.headerInvaders, (scoreDetails, summary) => $"-{scoreDetails.Invaders}"),
-                (() => HasModule(ExpansionModule.ExpansionBazaars) && ScoreRound == ScoringRound.Finish,Resource.Id.headerBazaars, (scoreDetails, summary) => scoreDetails.Bazaars.ToString()),
-                (() => HasModule(ExpansionModule.ExpansionArtOfTheMoors),Resource.Id.headerArtOfTheMoors, (scoreDetails, summary) => scoreDetails.ArtOfTheMoors.ToString()),
-                (() => HasModule(ExpansionModule.ExpansionFalconers),Resource.Id.headerFalconers, (scoreDetails, summary) => scoreDetails.Falconers.ToString()),
-                (() => HasModule(ExpansionModule.ExpansionWatchtowers),Resource.Id.headerWatchtowers, (scoreDetails, summary) => scoreDetails.Watchtowers.ToString()),
-                (() => HasModule(ExpansionModule.QueenieMedina),Resource.Id.headerMedina, (scoreDetails, summary) => $"-{scoreDetails.Medina}"),
-                (() => HasModule(ExpansionModule.DesignerPalaceStaff),Resource.Id.headerBuildingsWithoutServantTile, (scoreDetails, summary) => $"-{scoreDetails.BuildingsWithoutServantTile}"),
-                (() => HasModule(ExpansionModule.DesignerOrchards) && ScoreRound == ScoringRound.Finish,Resource.Id.headerOrchards, (scoreDetails, summary) => scoreDetails.Orchards.ToString()),
-                (() => HasModule(ExpansionModule.DesignerBathhouses),Resource.Id.headerBathhouses, (scoreDetails, summary) => scoreDetails.Bathhouses.ToString()),
-                (() => HasModule(ExpansionModule.DesignerWishingWell),Resource.Id.headerWishingWells, (scoreDetails, summary) => scoreDetails.WishingWells.ToString()),
-                (() => HasModule(ExpansionModule.DesignerFreshColors),Resource.Id.headerCompletedProjects, (scoreDetails, summary) => scoreDetails.CompletedProjects.ToString()),
-                (() => HasModule(ExpansionModule.DesignerAlhambraZoo),Resource.Id.headerAnimals, (scoreDetails, summary) => scoreDetails.Animals.ToString()),
-                (() => HasModule(ExpansionModule.DesignerBuildingsOfPower),Resource.Id.headerBlackDices, (scoreDetails, summary) => scoreDetails.BlackDices.ToString()),
-                (() => HasModule(ExpansionModule.DesignerHandymen),Resource.Id.headerHandymen, (scoreDetails, summary) => scoreDetails.Handymen.ToString()),
-                (() => HasModule(ExpansionModule.FanTreasures) && ScoreRound == ScoringRound.Finish,Resource.Id.headerTreasures, (scoreDetails, summary) => scoreDetails.Treasures.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission1, (scoreDetails, summary) => scoreDetails.Mission1.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission2, (scoreDetails, summary) => scoreDetails.Mission2.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission3, (scoreDetails, summary) => scoreDetails.Mission3.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission4, (scoreDetails, summary) => scoreDetails.Mission4.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission5, (scoreDetails, summary) => scoreDetails.Mission5.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission6, (scoreDetails, summary) => scoreDetails.Mission6.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission7, (scoreDetails, summary) => scoreDetails.Mission7.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission8, (scoreDetails, summary) => scoreDetails.Mission8.ToString()),
-                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9) && ScoreRound == ScoringRound.Finish,Resource.Id.headerMission9, (scoreDetails, summary) => scoreDetails.Mission9.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerMoatLength, (scoreDetails, summary) => scoreDetails.MoatLength.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerArena, (scoreDetails, summary) => scoreDetails.Arena.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerBathHouse, (scoreDetails, summary) => scoreDetails.BathHouse.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerLibrary, (scoreDetails, summary) => scoreDetails.Library.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerHostel, (scoreDetails, summary) => scoreDetails.Hostel.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerHospital, (scoreDetails, summary) => scoreDetails.Hospital.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerMarket, (scoreDetails, summary) => scoreDetails.Market.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerPark, (scoreDetails, summary) => scoreDetails.Park.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerSchool, (scoreDetails, summary) => scoreDetails.School.ToString()),
-                (() => HasModule(ExpansionModule.Granada),Resource.Id.headerResidentialArea, (scoreDetails, summary) => scoreDetails.ResidentialArea.ToString()),
-                (() => GranadaOption == GranadaOption.With,Resource.Id.headerWallMoat, (scoreDetails, summary) => scoreDetails.WallMoatCombination.ToString()),
+                (() => GranadaOption != GranadaOption.Alone, Resource.Id.headerPavilion, (scoreDetails, summary) => scoreDetails.Pavilion.ToString()),
+                (() => GranadaOption != GranadaOption.Alone, Resource.Id.headerSeraglio, (scoreDetails, summary) => scoreDetails.Seraglio.ToString()),
+                (() => GranadaOption != GranadaOption.Alone, Resource.Id.headerArcades, (scoreDetails, summary) => scoreDetails.Arcades.ToString()),
+                (() => GranadaOption != GranadaOption.Alone, Resource.Id.headerChambers, (scoreDetails, summary) => scoreDetails.Chambers.ToString()),
+                (() => GranadaOption != GranadaOption.Alone, Resource.Id.headerGarden, (scoreDetails, summary) => scoreDetails.Garden.ToString()),
+                (() => GranadaOption != GranadaOption.Alone, Resource.Id.headerTower, (scoreDetails, summary) => scoreDetails.Tower.ToString()),
+                (() => HasModule(ExpansionModule.ExpansionBonusCards) || HasModule(ExpansionModule.ExpansionSquares) || HasModule(ExpansionModule.ExpansionCharacters) || HasModule(ExpansionModule.DesignerExtensions) || HasModule(ExpansionModule.DesignerGatesWithoutEnd), Resource.Id.headerBonuses, (scoreDetails, summary) => $"(+{scoreDetails.BuildingsBonuses})"),
+                (() => HasModule(ExpansionModule.ExpansionBonusCards), Resource.Id.headerBonusesBonusCards, null),
+                (() => HasModule(ExpansionModule.ExpansionSquares), Resource.Id.headerBonusesSquares, null),
+                (() => HasModule(ExpansionModule.DesignerExtensions), Resource.Id.headerBonusesExtensions, null),
+                (() => HasModule(ExpansionModule.DesignerGatesWithoutEnd), Resource.Id.headerBonusesGatesWithoutEnd, null),
+                (() => HasModule(ExpansionModule.ExpansionCharacters), Resource.Id.headerBonusesTheWiseMan, null),
+                (() => HasModule(ExpansionModule.ExpansionCharacters), Resource.Id.headerTheCityWatch, (scoreDetails, summary) => scoreDetails.TheCityWatch.ToString()),
+                (() => HasModule(ExpansionModule.ExpansionCamps), Resource.Id.headerCamps, (scoreDetails, summary) => scoreDetails.Camps.ToString()),
+                (() => HasModule(ExpansionModule.ExpansionStreetTrader), Resource.Id.headerStreetTraders, (scoreDetails, summary) => scoreDetails.StreetTraders.ToString()),
+                (() => HasModule(ExpansionModule.ExpansionTreasureChamber), Resource.Id.headerTreasureChamber, (scoreDetails, summary) => scoreDetails.TreasureChamber.ToString()),
+                (() => HasModule(ExpansionModule.ExpansionInvaders), Resource.Id.headerInvaders, (scoreDetails, summary) => $"-{scoreDetails.Invaders}"),
+                (() => HasModule(ExpansionModule.ExpansionBazaars) && ScoreRound == ScoringRound.Finish, Resource.Id.headerBazaars, (scoreDetails, summary) => scoreDetails.Bazaars.ToString()),
+                (() => HasModule(ExpansionModule.ExpansionArtOfTheMoors), Resource.Id.headerArtOfTheMoors, (scoreDetails, summary) => scoreDetails.ArtOfTheMoors.ToString()),
+                (() => HasModule(ExpansionModule.ExpansionFalconers), Resource.Id.headerFalconers, (scoreDetails, summary) => scoreDetails.Falconers.ToString()),
+                (() => HasModule(ExpansionModule.ExpansionWatchtowers), Resource.Id.headerWatchtowers, (scoreDetails, summary) => scoreDetails.Watchtowers.ToString()),
+                (() => HasModule(ExpansionModule.QueenieMedina), Resource.Id.headerMedina, (scoreDetails, summary) => $"-{scoreDetails.Medina}"),
+                (() => HasModule(ExpansionModule.DesignerPalaceStaff), Resource.Id.headerBuildingsWithoutServantTile, (scoreDetails, summary) => $"-{scoreDetails.BuildingsWithoutServantTile}"),
+                (() => HasModule(ExpansionModule.DesignerOrchards) && ScoreRound == ScoringRound.Finish, Resource.Id.headerOrchards, (scoreDetails, summary) => scoreDetails.Orchards.ToString()),
+                (() => HasModule(ExpansionModule.DesignerBathhouses), Resource.Id.headerBathhouses, (scoreDetails, summary) => scoreDetails.Bathhouses.ToString()),
+                (() => HasModule(ExpansionModule.DesignerWishingWell), Resource.Id.headerWishingWells, (scoreDetails, summary) => scoreDetails.WishingWells.ToString()),
+                (() => HasModule(ExpansionModule.DesignerFreshColors), Resource.Id.headerCompletedProjects, (scoreDetails, summary) => scoreDetails.CompletedProjects.ToString()),
+                (() => HasModule(ExpansionModule.DesignerAlhambraZoo), Resource.Id.headerAnimals, (scoreDetails, summary) => scoreDetails.Animals.ToString()),
+                (() => HasModule(ExpansionModule.DesignerBuildingsOfPower), Resource.Id.headerBlackDices, (scoreDetails, summary) => scoreDetails.BlackDices.ToString()),
+                (() => HasModule(ExpansionModule.DesignerHandymen), Resource.Id.headerHandymen, (scoreDetails, summary) => scoreDetails.Handymen.ToString()),
+                (() => HasModule(ExpansionModule.FanTreasures) && ScoreRound == ScoringRound.Finish, Resource.Id.headerTreasures, (scoreDetails, summary) => scoreDetails.Treasures.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission1, (scoreDetails, summary) => scoreDetails.Mission1.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission2, (scoreDetails, summary) => scoreDetails.Mission2.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission3, (scoreDetails, summary) => scoreDetails.Mission3.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission4, (scoreDetails, summary) => scoreDetails.Mission4.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission5, (scoreDetails, summary) => scoreDetails.Mission5.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission6, (scoreDetails, summary) => scoreDetails.Mission6.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission7) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission7, (scoreDetails, summary) => scoreDetails.Mission7.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission8, (scoreDetails, summary) => scoreDetails.Mission8.ToString()),
+                (() => HasModule(ExpansionModule.FanCaliphsGuidelines) && HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9) && ScoreRound == ScoringRound.Finish, Resource.Id.headerMission9, (scoreDetails, summary) => scoreDetails.Mission9.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerMoatLength, (scoreDetails, summary) => scoreDetails.MoatLength.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerArena, (scoreDetails, summary) => scoreDetails.Arena.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerBathHouse, (scoreDetails, summary) => scoreDetails.BathHouse.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerLibrary, (scoreDetails, summary) => scoreDetails.Library.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerHostel, (scoreDetails, summary) => scoreDetails.Hostel.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerHospital, (scoreDetails, summary) => scoreDetails.Hospital.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerMarket, (scoreDetails, summary) => scoreDetails.Market.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerPark, (scoreDetails, summary) => scoreDetails.Park.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerSchool, (scoreDetails, summary) => scoreDetails.School.ToString()),
+                (() => HasModule(ExpansionModule.Granada), Resource.Id.headerResidentialArea, (scoreDetails, summary) => scoreDetails.ResidentialArea.ToString()),
+                (() => GranadaOption == GranadaOption.With, Resource.Id.headerWallMoat, (scoreDetails, summary) => scoreDetails.WallMoatCombination.ToString()),
             };
         }
 
@@ -94,7 +93,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             return Result.Players[playerNumber - 1];
         }
 
-        public bool HasModule(ExpansionModule module)
+        private bool HasModule(ExpansionModule module)
         {
             if (module == ExpansionModule.Granada)
                 return GranadaOption != GranadaOption.Without;
@@ -102,7 +101,9 @@ namespace AlhambraScoringAndroid.UI.Activities
                 || Game.GranadaCompatibleModules.Contains(module));
         }
 
-        public bool HasCaliphsGuideline(CaliphsGuidelinesMission module)
+        private GranadaOption GranadaOption => Result.GranadaOption;
+
+        private bool HasCaliphsGuideline(CaliphsGuidelinesMission module)
         {
             return Result.CaliphsGuidelines.Contains(module);
         }

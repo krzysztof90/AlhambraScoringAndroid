@@ -1382,9 +1382,7 @@ namespace AlhambraScoringAndroid.GamePlay
         {
             ScoreRound = scoreRound;
             for (int i = 0; i < PlayersCount; i++)
-            {
                 Players[i].RestoreScore(initialScoring[i]);
-            }
         }
 
         public void BackRound()

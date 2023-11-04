@@ -273,13 +273,13 @@ namespace AlhambraScoringAndroid.UI
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.UnprotectedSidesNumber, CreateControlNumberView(Resource.String.unprotectedSidesCount));
             if (Game.HasModule(ExpansionModule.ExpansionInvaders)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.UnprotectedSidesNeighbouringNumber, CreateControlNumberView(Resource.String.unprotectedSidesNeighbouringCount));
             if (Game.HasModule(ExpansionModule.ExpansionBazaars)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BazaarsPoints, CreateControlNumberView(Resource.String.bazaarsPoints));
             if (Game.HasModule(ExpansionModule.ExpansionArtOfTheMoors)
@@ -306,42 +306,42 @@ namespace AlhambraScoringAndroid.UI
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.MedinasNumber, CreateControlNumberView(Resource.String.medinasNumber));
             if (Game.HasModule(ExpansionModule.DesignerPalaceStaff)
-                && !IsFinalRound
-                && !IsDirk)
+                && !IsDirk
+                && !IsFinalRound)
                 Controls.Add(ResultType.BuildingsWithoutServantTile, CreateControlNumberView(Resource.String.buildingsWithoutServantTile));
             if (Game.HasModule(ExpansionModule.DesignerOrchards)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard1, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard1));
             if (Game.HasModule(ExpansionModule.DesignerOrchards)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard2, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard2));
             if (Game.HasModule(ExpansionModule.DesignerOrchards)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard3, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard3));
             if (Game.HasModule(ExpansionModule.DesignerOrchards)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard4, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard4));
             if (Game.HasModule(ExpansionModule.DesignerOrchards)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard5, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard5));
             if (Game.HasModule(ExpansionModule.DesignerOrchards)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard6, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard6));
             if (Game.HasModule(ExpansionModule.DesignerOrchards)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.FaceDownFruitsNumber, CreateControlNumberView(Resource.String.faceDownFruitsCount));
             if (Game.HasModule(ExpansionModule.DesignerBathhouses)
@@ -431,43 +431,43 @@ namespace AlhambraScoringAndroid.UI
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.HandymenTilesHighestNumber, CreateControlNumberView(Resource.String.handymenTilesHighestNumber));
             if (Game.HasModule(ExpansionModule.FanTreasures)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.TreasuresPoints, CreateControlNumberView(Resource.String.treasuresValue));
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission1RowsCount, CreateControlNumberView(Resource.String.mission1RowsCount));
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission2ColumnsCount, CreateControlNumberView(Resource.String.mission2ColumnsCount));
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission3Adjacent2BuildingsCount, CreateControlNumberView(Resource.String.mission3Adjacent2BuildingsCount));
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission5LongestDiagonalLine, CreateControlNumberView(Resource.String.mission5LongestDiagonalLine));
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission6DoubleWallCount, CreateControlNumberView(Resource.String.mission6DoubleWallCount));
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission8PathBuildingsNumber, CreateControlNumberView(Resource.String.mission8PathBuildingsNumber));
             if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9)
-                && IsFinalRound
                 && !IsDirk
+                && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission9Grids22Count, CreateControlNumberView(Resource.String.mission9Grids22Count));
             if ((Game.HasModule(ExpansionModule.DesignerBuildingsOfPower) || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound))

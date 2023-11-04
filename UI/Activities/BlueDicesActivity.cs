@@ -129,9 +129,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             bool wild = dice1 != 0 && dice1 == dice2 && dice1 == dice3;
 
             foreach (KeyValuePair<int, ImageView> priceImage in pricesImages)
-            {
                 priceImage.Value.Visibility = availablePrices.Contains(priceImage.Key) || wild ? ViewStates.Visible : ViewStates.Invisible;
-            }
             priceFountain.Visibility = wild ? ViewStates.Visible : ViewStates.Invisible;
         }
     }

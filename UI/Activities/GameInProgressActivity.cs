@@ -24,7 +24,6 @@ namespace AlhambraScoringAndroid.UI.Activities
         private Button scoreRevertButton;
         private Button blueDicesCombinationsButton;
 
-
         protected override int ContentView => Resource.Layout.activity_game_in_progress;
 
         public GameInProgressActivity()
