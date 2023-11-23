@@ -124,7 +124,6 @@
     <Compile Include="UI\PlaceholderPlayerScoreFragment.cs" />
     <Compile Include="UI\PlayersBuildingChose.cs" />
     <Compile Include="UI\PlayersScoreSectionsPagerAdapter.cs" />
-    <Compile Include="Tools\XmlOperations.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="resources\Lang.resx">

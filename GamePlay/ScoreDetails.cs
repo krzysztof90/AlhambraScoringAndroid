@@ -1,54 +1,104 @@
-﻿namespace AlhambraScoringAndroid.GamePlay
+﻿using System.Xml.Serialization;
+
+namespace AlhambraScoringAndroid.GamePlay
 {
     public class ScoreDetails
     {
+        [XmlAttribute]
         public int ImmediatelyPoints { get; set; }
+        [XmlAttribute]
         public int WallLength { get; set; }
+        [XmlAttribute]
         public int Pavilion { get; set; }
+        [XmlAttribute]
         public int Seraglio { get; set; }
+        [XmlAttribute]
         public int Arcades { get; set; }
+        [XmlAttribute]
         public int Chambers { get; set; }
+        [XmlAttribute]
         public int Garden { get; set; }
+        [XmlAttribute]
         public int Tower { get; set; }
+        [XmlAttribute]
         public int BuildingsBonuses { get; set; }
+        [XmlAttribute]
         public int TheCityWatch { get; set; }
+        [XmlAttribute]
         public int Camps { get; set; }
+        [XmlAttribute]
         public int StreetTraders { get; set; }
+        [XmlAttribute]
         public int TreasureChamber { get; set; }
+        [XmlAttribute]
         public int Invaders { get; set; }
+        [XmlAttribute]
         public int Bazaars { get; set; }
+        [XmlAttribute]
         public int ArtOfTheMoors { get; set; }
+        [XmlAttribute]
         public int Falconers { get; set; }
+        [XmlAttribute]
         public int Watchtowers { get; set; }
+        [XmlAttribute]
         public int Medina { get; set; }
+        [XmlAttribute]
         public int BuildingsWithoutServantTile { get; set; }
+        [XmlAttribute]
         public int Orchards { get; set; }
+        [XmlAttribute]
         public int Bathhouses { get; set; }
+        [XmlAttribute]
         public int WishingWells { get; set; }
+        [XmlAttribute]
         public int CompletedProjects { get; set; }
+        [XmlAttribute]
         public int Animals { get; set; }
+        [XmlAttribute]
         public int BlackDices { get; set; }
+        [XmlAttribute]
         public int Handymen { get; set; }
+        [XmlAttribute]
         public int Treasures { get; set; }
+        [XmlAttribute]
         public int Mission1 { get; set; }
+        [XmlAttribute]
         public int Mission2 { get; set; }
+        [XmlAttribute]
         public int Mission3 { get; set; }
+        [XmlAttribute]
         public int Mission4 { get; set; }
+        [XmlAttribute]
         public int Mission5 { get; set; }
+        [XmlAttribute]
         public int Mission6 { get; set; }
+        [XmlAttribute]
         public int Mission7 { get; set; }
+        [XmlAttribute]
         public int Mission8 { get; set; }
+        [XmlAttribute]
         public int Mission9 { get; set; }
+        [XmlAttribute]
         public int MoatLength { get; set; }
+        [XmlAttribute]
         public int Arena { get; set; }
+        [XmlAttribute]
         public int BathHouse { get; set; }
+        [XmlAttribute]
         public int Library { get; set; }
+        [XmlAttribute]
         public int Hostel { get; set; }
+        [XmlAttribute]
         public int Hospital { get; set; }
+        [XmlAttribute]
         public int Market { get; set; }
+        [XmlAttribute]
         public int Park { get; set; }
+        [XmlAttribute]
         public int School { get; set; }
+        [XmlAttribute]
         public int ResidentialArea { get; set; }
+        [XmlAttribute]
         public int WallMoatCombination { get; set; }
 
         public int Sum => ImmediatelyPoints + WallLength + Pavilion + Seraglio + Arcades + Chambers + Garden + Tower + TheCityWatch + Camps + StreetTraders + TreasureChamber - Invaders + Bazaars + ArtOfTheMoors + Falconers + Watchtowers - Medina - BuildingsWithoutServantTile + Orchards + Bathhouses + WishingWells + CompletedProjects + Animals + BlackDices + Handymen + Treasures + Mission1 + Mission2 + Mission3 + Mission4 + Mission5 + Mission6 + Mission7 + Mission8 + Mission9 + MoatLength + Arena + BathHouse + Library + Hostel + Hospital + Market + Park + School + ResidentialArea + WallMoatCombination;

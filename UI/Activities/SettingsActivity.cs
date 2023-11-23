@@ -4,6 +4,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidBase.Options;
 using AndroidBase.Tools;
 using AndroidBase.UI;
 using System;
@@ -27,8 +28,8 @@ namespace AlhambraScoringAndroid.UI.Activities
                 ControlCheckBoxView checkBox = new ControlCheckBoxView(this);
                 checkBox.LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
                 checkBox.SetLabel(settingsType.GetEnumDescription(Resources));
-                checkBox.Value = Settings.Get(settingsType);
-                checkBox.OnValueChange = () => { Settings.Set(settingsType, checkBox.Value); };
+                checkBox.Value = SettingsManager.Get(settingsType);
+                checkBox.OnValueChange = () => { SettingsManager.Set(settingsType, checkBox.Value); };
 
                 container.AddView(checkBox);
             }

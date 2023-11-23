@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace AlhambraScoringAndroid.GamePlay
 {
     public class ResultPlayerHistory
     {
+        [XmlAttribute(AttributeName = "name")]
         public string Name { get; set; }
         public ScoreDetails ScoreDetails1 { get; set; }
         public ScoreDetails ScoreDetails2 { get; set; }
