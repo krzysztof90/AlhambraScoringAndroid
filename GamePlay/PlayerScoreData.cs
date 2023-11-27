@@ -70,6 +70,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public Dictionary<BuildingType, bool> CompletedProjects { get; private set; }
         [ResultAttribute(ResultType.AnimalsPoints)]
         public int AnimalsPoints { get; private set; }
+        //From gates without end
         public Dictionary<BuildingType, bool> OwnedSemiBuildings { get; private set; }
         [ResultAttribute(ResultType.BlackDiceTotalPips)]
         public int BlackDiceTotalPips { get; private set; }
@@ -92,6 +93,10 @@ namespace AlhambraScoringAndroid.GamePlay
         public int Mission8Count { get; private set; }
         [ResultAttribute(ResultType.Mission9Grids22Count)]
         public int Mission9Count { get; private set; }
+        //From red palace
+        public Dictionary<BuildingType, bool> OwnedHalfBuildings { get; private set; }
+        [ResultAttribute(ResultType.GuardsCount)]
+        public int GuardsCount { get; private set; }
         [ResultAttribute(ResultType.SecondLongestWall)]
         public int SecondLongestWallLength { get; private set; }
         [ResultAttribute(ResultType.MoatLength)]
@@ -188,6 +193,15 @@ namespace AlhambraScoringAndroid.GamePlay
                 [BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.ExtensionsChambersCount),
                 [BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.ExtensionsGardenCount),
                 [BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.ExtensionsTowerCount),
+            };
+            OwnedHalfBuildings = new Dictionary<BuildingType, bool>()
+            {
+                [BuildingType.Pavilion] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingPavilion),
+                [BuildingType.Seraglio] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingSeraglio),
+                [BuildingType.Arcades] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingArcades),
+                [BuildingType.Chambers] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingChambers),
+                [BuildingType.Garden] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingGarden),
+                [BuildingType.Tower] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingTower),
             };
             GranadaBuildingsCount = new Dictionary<GranadaBuildingType, int>()
             {

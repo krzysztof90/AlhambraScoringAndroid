@@ -80,6 +80,14 @@ namespace AlhambraScoringAndroid.UI.Activities
                 {
                     ExpansionModule.NewMarket,
                 },
+                [Resources.GetString(Resource.String.red_palace_modules)] = new List<ExpansionModule>()
+                {
+                    ExpansionModule.RedPalaceLandTiles,
+                    ExpansionModule.ExpansionNewScoreCards,
+                    ExpansionModule.QueenieMedina,
+                    ExpansionModule.ExpansionBazaars,
+                    ExpansionModule.ExpansionCamps,
+                },
             };
             Dictionary<string, List<GranadaOption>> granadaOptions = new Dictionary<string, List<GranadaOption>>()
             {
@@ -107,7 +115,6 @@ namespace AlhambraScoringAndroid.UI.Activities
                 Application.GameApplyModules(adapter.SelectedList, adapter2.SelectedList[granadaName]);
             });
         }
-
 
         public override void OnBackPressed()
         {

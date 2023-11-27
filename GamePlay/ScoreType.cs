@@ -2,7 +2,9 @@
 {
     public enum ScoreType
     {
+        Starting,
         Immediately,
+
         WallLength,
         PavilionNumber,
         SeraglioNumber,
@@ -39,6 +41,7 @@
         Mission7,
         Mission8,
         Mission9,
+        Guards,
         MoatLength,
         Arena,
         BathHouse,

@@ -23,16 +23,21 @@
             android:layout_marginStart="@dimen/panel_elements_gap" />
         <Button
             android:id="@+id/point1Button"
-            android:layout_width="100dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/panel_elements_gap"
             android:text="@string/add_point_1" />
         <Button
             android:id="@+id/point2Button"
-            android:layout_width="100dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/panel_elements_gap"
             android:text="@string/add_point_2" />
+        <Button
+            android:id="@+id/pointsGuardsButton"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/panel_elements_gap" />
 
     </LinearLayout>
 </HorizontalScrollView>

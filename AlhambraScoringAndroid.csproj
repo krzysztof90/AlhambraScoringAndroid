@@ -74,10 +74,13 @@
   <ItemGroup>
     <Compile Include="Attributes\NewScoreCardAttribute.cs" />
     <Compile Include="Attributes\ResultAttribute.cs" />
+    <Compile Include="Attributes\ScoreDetailsPointsAttribute.cs" />
     <Compile Include="GamePlay\ResultType.cs" />
+    <Compile Include="GamePlay\RoundScoring.cs" />
     <Compile Include="Options\Settings.cs" />
     <Compile Include="Options\SettingsType.cs" />
     <Compile Include="UI\Activities\BlueDicesActivity.cs" />
+    <Compile Include="UI\Activities\RoundScoringDataActivity.cs" />
     <Compile Include="UI\Activities\SettingsActivity.cs" />
     <Compile Include="GamePlay\CaliphsGuidelines.cs" />
     <Compile Include="GamePlay\GranadaBuildingType.cs" />
@@ -433,13 +436,13 @@
     <AndroidResource Include="Resources\drawable\CharacterTheWiseMan.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_building_type_chose.xml">
+    <AndroidResource Include="Resources\layout\activity_CharacterTheWiseMan_building_type_chose.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_players_buildings_chose.xml">
+    <AndroidResource Include="Resources\layout\activity_MedinaNumber_players_buildings_chose.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -475,7 +478,7 @@
     <AndroidResource Include="Resources\drawable\Moat.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_players_granada_buildings_chose.xml">
+    <AndroidResource Include="Resources\layout\activity_GranadaBuildingsNumber_players_buildings_chose.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -622,6 +625,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\NewMarket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\LandTile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\RedPalaceScoringBoard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Guard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_RoundScoringData_chose.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ScoringMarker.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

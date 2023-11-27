@@ -136,6 +136,9 @@ namespace AlhambraScoringAndroid.GamePlay
         [DescriptionResourceAttribute(Resource.String.new_market)]
         [ImageAttribute(Resource.Drawable.NewMarket)]
         NewMarket,
+        [DescriptionResourceAttribute(Resource.String.red_palace_land_tiles)]
+        [ImageAttribute(Resource.Drawable.LandTile)]
+        RedPalaceLandTiles,
 
         Granada,
     }

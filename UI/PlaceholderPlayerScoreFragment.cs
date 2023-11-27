@@ -27,7 +27,7 @@ namespace AlhambraScoringAndroid.UI
 
         public Dictionary<ResultType, IControlViewBase> Controls { get; private set; }
 
-        public PlaceholderPlayerScoreFragment(int index, Game game, List<PlayerScoreData> correctingRoundScoring, PlayersScoreSectionsPagerAdapter adapter)
+        public PlaceholderPlayerScoreFragment(int index, Game game, RoundScoring correctingRoundScoring, PlayersScoreSectionsPagerAdapter adapter)
         {
             Adapter = adapter;
 
@@ -38,8 +38,8 @@ namespace AlhambraScoringAndroid.UI
             IsDirk = Game.GetPlayer(PlayerNumber).Dirk;
             IsFinalRound = Game.ScoreRound == ScoringRound.Third;
             IsThirdBeforeLeftoverRound = Game.ScoreRound == ScoringRound.ThirdBeforeLeftover;
-            CorrectingRoundScoring = correctingRoundScoring?[PlayerNumber - 1];
-            PreviousRoundScoring = Game.PreviousRoundScoring?[PlayerNumber - 1];
+            CorrectingRoundScoring = correctingRoundScoring?.PlayersScoreData[PlayerNumber - 1];
+            PreviousRoundScoring = Game.PreviousRoundScoring?.PlayersScoreData[PlayerNumber - 1];
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -470,6 +470,34 @@ namespace AlhambraScoringAndroid.UI
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission9Grids22Count, CreateControlNumberView(Resource.String.mission9Grids22Count));
+            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+                && !IsDirk
+                && !IsThirdBeforeLeftoverRound)
+                Controls.Add(ResultType.OwnedHalfBuildingPavilion, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingPavilion, Resource.Color.colorPavilion));
+            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+                && !IsDirk
+                && !IsThirdBeforeLeftoverRound)
+                Controls.Add(ResultType.OwnedHalfBuildingSeraglio, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingSeraglio, Resource.Color.colorSeraglio));
+            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+                && !IsDirk
+                && !IsThirdBeforeLeftoverRound)
+                Controls.Add(ResultType.OwnedHalfBuildingArcades, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingArcades, Resource.Color.colorArcades));
+            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+                && !IsDirk
+                && !IsThirdBeforeLeftoverRound)
+                Controls.Add(ResultType.OwnedHalfBuildingChambers, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingChambers, Resource.Color.colorChambers));
+            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+                && !IsDirk
+                && !IsThirdBeforeLeftoverRound)
+                Controls.Add(ResultType.OwnedHalfBuildingGarden, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingGarden, Resource.Color.colorGarden));
+            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+                && !IsDirk
+                && !IsThirdBeforeLeftoverRound)
+                Controls.Add(ResultType.OwnedHalfBuildingTower, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingTower, Resource.Color.colorTower));
+            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+                && !IsDirk
+                && !IsThirdBeforeLeftoverRound)
+                Controls.Add(ResultType.GuardsCount, CreateControlNumberView(Resource.String.guardsCount));
             if ((Game.HasModule(ExpansionModule.DesignerBuildingsOfPower) || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound))
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
@@ -529,61 +557,62 @@ namespace AlhambraScoringAndroid.UI
             SetControlNumberRange(ResultType.BonusCardsChambersNumber, 0, Game.BonusCardsMaxCount[BuildingType.Chambers], SettingsType.ValidateBonusCards);
             SetControlNumberRange(ResultType.BonusCardsGardenNumber, 0, Game.BonusCardsMaxCount[BuildingType.Garden], SettingsType.ValidateBonusCards);
             SetControlNumberRange(ResultType.BonusCardsTowerNumber, 0, Game.BonusCardsMaxCount[BuildingType.Tower], SettingsType.ValidateBonusCards);
-            SetControlNumberRange(ResultType.SquaresPavilionNumber, 0, 9, SettingsType.ValidateSquares);
-            SetControlNumberRange(ResultType.SquaresSeraglioNumber, 0, 9, SettingsType.ValidateSquares);
-            SetControlNumberRange(ResultType.SquaresArcadesNumber, 0, 9, SettingsType.ValidateSquares);
-            SetControlNumberRange(ResultType.SquaresChambersNumber, 0, 9, SettingsType.ValidateSquares);
-            SetControlNumberRange(ResultType.SquaresGardenNumber, 0, 9, SettingsType.ValidateSquares);
-            SetControlNumberRange(ResultType.SquaresTowerNumber, 0, 9, SettingsType.ValidateSquares);
+            SetControlNumberRange(ResultType.SquaresPavilionNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
+            SetControlNumberRange(ResultType.SquaresSeraglioNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
+            SetControlNumberRange(ResultType.SquaresArcadesNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
+            SetControlNumberRange(ResultType.SquaresChambersNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
+            SetControlNumberRange(ResultType.SquaresGardenNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
+            SetControlNumberRange(ResultType.SquaresTowerNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
             SetControlNumberRange(ResultType.CampsPoints, 0, Game.AllTilesCount, SettingsType.ValidateCamps);
-            SetControlNumberRange(ResultType.StreetTradersPavilionNumber, 0, 7, SettingsType.ValidateCitizens);
-            SetControlNumberRange(ResultType.StreetTradersSeraglioNumber, 0, 7, SettingsType.ValidateCitizens);
-            SetControlNumberRange(ResultType.StreetTradersArcadesNumber, 0, 7, SettingsType.ValidateCitizens);
-            SetControlNumberRange(ResultType.StreetTradersChambersNumber, 0, 7, SettingsType.ValidateCitizens);
-            SetControlNumberRange(ResultType.StreetTradersGardenNumber, 0, 7, SettingsType.ValidateCitizens);
-            SetControlNumberRange(ResultType.StreetTradersTowerNumber, 0, 7, SettingsType.ValidateCitizens);
-            SetControlNumberRange(ResultType.TreasuresValue, 0, 42, SettingsType.ValidateTreasures);
+            SetControlNumberRange(ResultType.StreetTradersPavilionNumber, 0, Game.StreetTradersTypeMaxCount, SettingsType.ValidateCitizens);
+            SetControlNumberRange(ResultType.StreetTradersSeraglioNumber, 0, Game.StreetTradersTypeMaxCount, SettingsType.ValidateCitizens);
+            SetControlNumberRange(ResultType.StreetTradersArcadesNumber, 0, Game.StreetTradersTypeMaxCount, SettingsType.ValidateCitizens);
+            SetControlNumberRange(ResultType.StreetTradersChambersNumber, 0, Game.StreetTradersTypeMaxCount, SettingsType.ValidateCitizens);
+            SetControlNumberRange(ResultType.StreetTradersGardenNumber, 0, Game.StreetTradersTypeMaxCount, SettingsType.ValidateCitizens);
+            SetControlNumberRange(ResultType.StreetTradersTowerNumber, 0, Game.StreetTradersTypeMaxCount, SettingsType.ValidateCitizens);
+            SetControlNumberRange(ResultType.TreasuresValue, 0, Game.TreasuresMaxCount, SettingsType.ValidateTreasures);
             SetControlNumberRange(ResultType.UnprotectedSidesNumber, 0, Game.AllTilesCount, SettingsType.ValidateUnprotectedSides);
             SetControlNumberRange(ResultType.UnprotectedSidesNeighbouringNumber, 0, Game.AllTilesCount, SettingsType.ValidateUnprotectedSides);
-            SetControlNumberRange(ResultType.BazaarsPoints, 0, 192, SettingsType.ValidateBazaarsPoints);
+            SetControlNumberRange(ResultType.BazaarsPoints, 0, Game.BazaarsMaxCount*Game.BazaarPointsMaxCount, SettingsType.ValidateBazaarsPoints);
             SetControlNumberRange(ResultType.ArtOfTheMoorsPoints, 0, 147, SettingsType.ValidateCultureCounters);
-            SetControlNumberRange(ResultType.FalconsBlackNumber, 0, 5, SettingsType.ValidateFalcons);
-            SetControlNumberRange(ResultType.FalconsBrownNumber, 0, 5, SettingsType.ValidateFalcons);
-            SetControlNumberRange(ResultType.FalconsWhiteNumber, 0, 5, SettingsType.ValidateFalcons);
-            SetControlNumberRange(ResultType.WatchtowersNumber, 0, 18, SettingsType.ValidateWatchtower);
-            SetControlNumberRange(ResultType.MedinasNumber, 0, 9, SettingsType.ValidateMedin);
+            SetControlNumberRange(ResultType.FalconsBlackNumber, 0, Game.FalconsTypeMaxCount, SettingsType.ValidateFalcons);
+            SetControlNumberRange(ResultType.FalconsBrownNumber, 0, Game.FalconsTypeMaxCount, SettingsType.ValidateFalcons);
+            SetControlNumberRange(ResultType.FalconsWhiteNumber, 0, Game.FalconsTypeMaxCount, SettingsType.ValidateFalcons);
+            SetControlNumberRange(ResultType.WatchtowersNumber, 0, Game.AllWatchtowersNumber, SettingsType.ValidateWatchtower);
+            SetControlNumberRange(ResultType.MedinasNumber, 0, Game.AllMedinasNumber, SettingsType.ValidateMedin);
             SetControlNumberRange(ResultType.BuildingsWithoutServantTile, 0, Game.AllBuildingsCount, SettingsType.ValidateServants);
-            SetControlNumberRange(ResultType.FaceDownFruitsNumber, 0, 35, SettingsType.ValidateSingleFruits);
-            SetControlNumberRange(ResultType.BathhousesPoints, 0, (Game.AllTilesCount - 1) * 4 * 6, SettingsType.ValidateBathhouses);
-            SetControlNumberRange(ResultType.WishingWellsPoints, 0, 24, SettingsType.ValidateWishingWells);
-            SetControlNumberRange(ResultType.AnimalsPoints, 0, 24, SettingsType.ValidateAnimals);
-            SetControlNumberRange(ResultType.BlackDiceTotalPips, 0, 18, SettingsType.ValidateBlackDicePips);
-            SetControlNumberRange(ResultType.ExtensionsPavilionCount, 0, 2, SettingsType.ValidateExtensions);
-            SetControlNumberRange(ResultType.ExtensionsSeraglioCount, 0, 2, SettingsType.ValidateExtensions);
-            SetControlNumberRange(ResultType.ExtensionsArcadesCount, 0, 2, SettingsType.ValidateExtensions);
-            SetControlNumberRange(ResultType.ExtensionsChambersCount, 0, 2, SettingsType.ValidateExtensions);
-            SetControlNumberRange(ResultType.ExtensionsGardenCount, 0, 2, SettingsType.ValidateExtensions);
-            SetControlNumberRange(ResultType.ExtensionsTowerCount, 0, 2, SettingsType.ValidateExtensions);
-            SetControlNumberRange(ResultType.HandymenTilesHighestNumber, 0, 48, SettingsType.ValidateHandymen);
-            SetControlNumberRange(ResultType.TreasuresPoints, 0, 15, SettingsType.ValidateTreasuresPoints);
+            SetControlNumberRange(ResultType.FaceDownFruitsNumber, 0, Game.FaceDownFruitsMaxCount, SettingsType.ValidateSingleFruits);
+            SetControlNumberRange(ResultType.BathhousesPoints, 0, (Game.AllTilesCount - 1) * 4 * Game.AllBathhousesCount, SettingsType.ValidateBathhouses);
+            SetControlNumberRange(ResultType.WishingWellsPoints, 0, Game.WishingWellsMaxCount*Game.WishingWellPointsMaxCount, SettingsType.ValidateWishingWells);
+            SetControlNumberRange(ResultType.AnimalsPoints, 0, Game.AnimalsMaxCount, SettingsType.ValidateAnimals);
+            SetControlNumberRange(ResultType.BlackDiceTotalPips, 0, Game.BlackDicesMaxCount *Game.BlackDicePipsMaxCount, SettingsType.ValidateBlackDicePips);
+            SetControlNumberRange(ResultType.ExtensionsPavilionCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
+            SetControlNumberRange(ResultType.ExtensionsSeraglioCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
+            SetControlNumberRange(ResultType.ExtensionsArcadesCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
+            SetControlNumberRange(ResultType.ExtensionsChambersCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
+            SetControlNumberRange(ResultType.ExtensionsGardenCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
+            SetControlNumberRange(ResultType.ExtensionsTowerCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
+            SetControlNumberRange(ResultType.HandymenTilesHighestNumber, 0, Game.PlayerAllHandymenCount, SettingsType.ValidateHandymen);
+            SetControlNumberRange(ResultType.TreasuresPoints, 0, Game.PlayerTreasuresPointsMaxCount, SettingsType.ValidateTreasuresPoints);
             SetControlNumberRange(ResultType.Mission1RowsCount, 0, Game.AllTilesCount / 3, SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission2ColumnsCount, 0, Game.AllTilesCount / 3, SettingsType.ValidateMissions);
-            SetControlNumberRange(ResultType.Mission3Adjacent2BuildingsCount, 0, 70, SettingsType.ValidateMissions);
+            SetControlNumberRange(ResultType.Mission3Adjacent2BuildingsCount, 0, Game.BuildingsAvailableAdjacent, SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission5LongestDiagonalLine, 0, (Game.AllTilesCount + 1) / 2, SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission6DoubleWallCount, 0, Game.GetBuildingsAvailableAdjacent(Game.AllWallTilesCount), SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission8PathBuildingsNumber, 0, (Game.AllTilesCount + 1) / 2, SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission9Grids22Count, 0, Game.GetBuildingsAvailable2x2Grids(Game.AllTilesCount), SettingsType.ValidateMissions);
+            SetControlNumberRange(ResultType.GuardsCount, 0, Game.AllGuardsCount, SettingsType.ValidateGuardsCount);
             SetControlNumberRange(ResultType.SecondLongestWall, 0, Game.WallsMaxLength / 2 - 2, SettingsType.ValidateSecondLongestWall);
             SetControlNumberRange(ResultType.MoatLength, 0, Game.MoatMaxLength, SettingsType.ValidateMoatLength);
-            SetControlNumberRange(ResultType.ArenaCount, 0, 6, SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.BathHouseCount, 0, 6, SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.LibraryCount, 0, 6, SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.HostelCount, 0, 6, SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.HospitalCount, 0, 6, SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.MarketCount, 0, 6, SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.ParkCount, 0, 6, SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.SchoolCount, 0, 6, SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.ResidentialAreaCount, 0, 6, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.ArenaCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.BathHouseCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.LibraryCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.HostelCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.HospitalCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.MarketCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.ParkCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.SchoolCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.ResidentialAreaCount, 0, Game.GranadaBuildingsTypeMaxCount, SettingsType.ValidateBuildingsNumber);
             SetControlNumberRange(ResultType.WallMoatCombination, 0, Math.Min(Game.WallsMaxLength, Game.MoatMaxLength), SettingsType.ValidateMoatwall);
 
             EnabledSecondLongestWall();
@@ -668,6 +697,13 @@ namespace AlhambraScoringAndroid.UI
             SetControlValue(ResultType.Mission6DoubleWallCount, CorrectingRoundScoring.Mission6Count);
             SetControlValue(ResultType.Mission8PathBuildingsNumber, CorrectingRoundScoring.Mission8Count);
             SetControlValue(ResultType.Mission9Grids22Count, CorrectingRoundScoring.Mission9Count);
+            SetControlValue(ResultType.OwnedHalfBuildingPavilion, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Pavilion]);
+            SetControlValue(ResultType.OwnedHalfBuildingSeraglio, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Seraglio]);
+            SetControlValue(ResultType.OwnedHalfBuildingArcades, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Arcades]);
+            SetControlValue(ResultType.OwnedHalfBuildingChambers, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Chambers]);
+            SetControlValue(ResultType.OwnedHalfBuildingGarden, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Garden]);
+            SetControlValue(ResultType.OwnedHalfBuildingTower, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Tower]);
+            SetControlValue(ResultType.GuardsCount, CorrectingRoundScoring.GuardsCount);
             SetControlValue(ResultType.SecondLongestWall, CorrectingRoundScoring.SecondLongestWallLength);
             SetControlValue(ResultType.MoatLength, CorrectingRoundScoring.MoatLength);
             SetControlValue(ResultType.ArenaCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Arena]);
@@ -698,6 +734,12 @@ namespace AlhambraScoringAndroid.UI
             SetControlValue(ResultType.OwnedSemiBuildingChambers, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Chambers]);
             SetControlValue(ResultType.OwnedSemiBuildingGarden, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Garden]);
             SetControlValue(ResultType.OwnedSemiBuildingTower, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Tower]);
+            SetControlValue(ResultType.OwnedHalfBuildingPavilion, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Pavilion]);
+            SetControlValue(ResultType.OwnedHalfBuildingSeraglio, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Seraglio]);
+            SetControlValue(ResultType.OwnedHalfBuildingArcades, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Arcades]);
+            SetControlValue(ResultType.OwnedHalfBuildingChambers, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Chambers]);
+            SetControlValue(ResultType.OwnedHalfBuildingGarden, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Garden]);
+            SetControlValue(ResultType.OwnedHalfBuildingTower, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Tower]);
         }
 
         private void EnabledSecondLongestWall()

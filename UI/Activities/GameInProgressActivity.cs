@@ -15,7 +15,7 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "@string/results", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class GameInProgressActivity : BaseActivity
     {
-        public List<PlayerScoreData> CorrectingScoring { get; private set; }
+        public RoundScoring CorrectingScoring { get; private set; }
 
         private List<PlayerResultPanel> resultPanels;
 
@@ -132,6 +132,17 @@ namespace AlhambraScoringAndroid.UI.Activities
         public void AddPoints(int player, int score)
         {
             Game.PlayerAddScore(player, score);
+            ShowScore();
+        }
+
+        public bool ValidateRemovePoints(int player, int score)
+        {
+            return Game.ValidatePlayerRemoveScore(player, score);
+        }
+
+        public void RemovePoints(int player, int score)
+        {
+            Game.PlayerRemoveScore(player, score);
             ShowScore();
         }
 

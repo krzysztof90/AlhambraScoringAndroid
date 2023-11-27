@@ -41,7 +41,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             }
         }
 
-        public List<PlayerScoreData> CorrectingScoring()
+        public RoundScoring CorrectingScoring()
         {
             return Application.CorrectingScoring();
         }

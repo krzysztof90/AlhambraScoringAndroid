@@ -28,7 +28,7 @@ namespace AlhambraScoringAndroid
         private GameInProgressActivity gameInProgressActivity;
         public ResultHistory CurrentResult { get; private set; }
         public bool ArchiveResult { get; private set; }
-        public List<PlayerScoreData> GameScoreSubmitScoreData { get; private set; }
+        public RoundScoring GameScoreSubmitScoreData { get; private set; }
 
         private readonly List<(Func<bool> condition, Type activityType)> neededScoreAdditionalActions;
         private List<BaseActivity> scoreActivities;
@@ -37,10 +37,12 @@ namespace AlhambraScoringAndroid
         {
             neededScoreAdditionalActions = new List<(Func<bool> condition, Type activityType)>()
             {
-                (()=> Game.HasModule(ExpansionModule.ExpansionCharacters) && GameScoreSubmitScoreData.Any(p => p.OwnedCharacterTheWiseMan),
+                (()=> Game.HasModule(ExpansionModule.ExpansionCharacters) && CharacterTheWiseManActivity.Show(GameScoreSubmitScoreData),
                 typeof(CharacterTheWiseManActivity)),
                 (()=> Game.HasModule(ExpansionModule.QueenieMedina) && MedinaNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Count != 0,
                 typeof(MedinaNumberActivity)),
+                (()=> Game.HasModule(ExpansionModule.RedPalaceLandTiles) && RoundScoringDataActivity.Show(GameScoreSubmitScoreData),
+                typeof(RoundScoringDataActivity)),
                 (()=> Game.HasModule(ExpansionModule.Granada) && GranadaBuildingsNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Any(d => d.Value.Count != 0),
                 typeof(GranadaBuildingsNumberActivity)),
             };
@@ -87,7 +89,7 @@ namespace AlhambraScoringAndroid
         {
             Game.SetModules(modules);
             Game.SetGranadaOption(granadaOption);
-            if (modules.Contains(ExpansionModule.FanCaliphsGuidelines) || modules.Contains(ExpansionModule.ExpansionNewScoreCards))
+            if (modules.Contains(ExpansionModule.ExpansionNewScoreCards) || modules.Contains(ExpansionModule.FanCaliphsGuidelines))
                 NewActivity(typeof(GameModulesDetailsChoseActivity));
             else
                 NewActivity(typeof(GameSetupInstructionActivity));
@@ -104,6 +106,7 @@ namespace AlhambraScoringAndroid
 
         public void GameStart()
         {
+            Game.Start();
             NewActivity(typeof(GameInProgressActivity));
         }
 
@@ -113,7 +116,7 @@ namespace AlhambraScoringAndroid
             NewActivity(typeof(GameScoreActivity));
         }
 
-        public List<PlayerScoreData> CorrectingScoring()
+        public RoundScoring CorrectingScoring()
         {
             return gameInProgressActivity.CorrectingScoring;
         }
@@ -125,9 +128,11 @@ namespace AlhambraScoringAndroid
 
         public void SubmitScore(GameScoreActivity activity, List<PlayerScoreData> scoreData)
         {
-            if (Game.ScoreRound != ScoringRound.ThirdBeforeLeftover ? Game.ValidateScore(scoreData) : Game.ValidateScoreBeforeAssignLeftoverBuildings(scoreData))
+            RoundScoring roundScoring = new RoundScoring() { PlayersScoreData = scoreData };
+
+            if (Game.ScoreRound != ScoringRound.ThirdBeforeLeftover ? Game.ValidateScore(roundScoring) : Game.ValidateScoreBeforeAssignLeftoverBuildings(roundScoring))
             {
-                GameScoreSubmitScoreData = scoreData;
+                GameScoreSubmitScoreData = roundScoring;
                 TryScore(activity);
             }
         }
@@ -183,6 +188,14 @@ namespace AlhambraScoringAndroid
             if (Game.ValidateMedinasNumbers(playersHighestPrices))
             {
                 activity.SetMedinasNumbers(playersHighestPrices);
+                TryScore(activity);
+            }
+        }
+        public void ConfirmRoundScoringData(RoundScoringDataActivity activity, int guardsPoints)
+        {
+            if (Game.ValidateRoundScoringData(guardsPoints))
+            {
+                activity.SetRoundScoringData(guardsPoints);
                 TryScore(activity);
             }
         }

@@ -10,6 +10,14 @@
         android:layout_marginStart="@dimen/game_details_cell_gap"
         android:text="@string/sum"
         android:textStyle="bold"/>
+    <ImageView
+        android:id="@+id/headerStartingPoints"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="@dimen/game_details_cell_gap"
+        android:src="@drawable/ScoringMarker"
+        android:contentDescription="@string/startingPoints"
+        android:tooltipText="@string/startingPoints"/>
     <LinearLayout
         android:id="@+id/headerImmediatelyPoints"
         android:layout_width="@dimen/game_details_cell_width"
@@ -30,6 +38,13 @@
             android:src="@drawable/GatesPoints"
             android:contentDescription="@string/gates_without_end"
             android:tooltipText="@string/gates_without_end"/>
+        <ImageView
+            android:id="@+id/headerImmediatelyPointsRedPalace"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:src="@drawable/Guard"
+            android:contentDescription="@string/points_guards_substitute"
+            android:tooltipText="@string/points_guards_substitute"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/headerWalls"
@@ -353,6 +368,14 @@
         android:src="@drawable/Mission9"
         android:contentDescription="@string/mission_9"
         android:tooltipText="@string/mission_9"/>
+    <ImageView
+        android:id="@+id/headerGuards"
+        android:layout_width="@dimen/game_details_cell_width"
+        android:layout_height="@dimen/game_details_header_height"
+        android:layout_marginStart="@dimen/game_details_cell_gap"
+        android:src="@drawable/Guard"
+        android:contentDescription="@string/guardsCount"
+        android:tooltipText="@string/guardsCount"/>
     <ImageView
         android:id="@+id/headerMoatLength"
         android:layout_width="@dimen/game_details_cell_width"

@@ -26,6 +26,8 @@ namespace AlhambraScoringAndroid.GamePlay
         DealTrader,
         [DescriptionResourceAttribute(Resource.String.instruction_place_buildings)]
         PlaceBuildings,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_buildings_on_preview_board)]
+        PlaceBuildingsPreviewBoard,
         [DescriptionResourceAttribute(Resource.String.instruction_give_buildings_to_dirk)]
         GiveBuildingsToDirk,
         [DescriptionResourceAttribute(Resource.String.instruction_granada_shuffle_building_tiles)]
@@ -39,10 +41,12 @@ namespace AlhambraScoringAndroid.GamePlay
         ShuffleWatchtowers,
         [DescriptionResourceAttribute(Resource.String.instruction_shuffle_major_construction_projects)]
         ShuffleMajorConstructionProjects,
-        [DescriptionResourceAttribute(Resource.String.instruction_shuffle_gate_board)]
-        ShuffleGateBoard,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_gate_board)]
+        PlaceGateBoard,
         [DescriptionResourceAttribute(Resource.String.instruction_shuffle_extensions)]
         ShuffleExtensions,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_red_palace_components)]
+        PlaceRedPalaceComponents,
 
         [DescriptionResourceAttribute(Resource.String.instruction_remove_card_deck)]
         RemoveCardDeck,
@@ -52,6 +56,8 @@ namespace AlhambraScoringAndroid.GamePlay
         ShuffleCards,
         [DescriptionResourceAttribute(Resource.String.instruction_deal_money)]
         DealMoney,
+        [DescriptionResourceAttribute(Resource.String.instruction_chose_money)]
+        ChoseMoney,
         [DescriptionResourceAttribute(Resource.String.instruction_place_cards)]
         PlaceCards,
         [DescriptionResourceAttribute(Resource.String.instruction_divide_cards)]
@@ -171,5 +177,7 @@ namespace AlhambraScoringAndroid.GamePlay
         PlaceMissions,
         [DescriptionResourceAttribute(Resource.String.instruction_place_new_market)]
         PlaceNewMarket,
+        [DescriptionResourceAttribute(Resource.String.instruction_place_guard_board)]
+        PlaceGuardBoard,
     }
 }

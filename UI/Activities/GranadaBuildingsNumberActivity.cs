@@ -15,10 +15,12 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "@string/purchase_price", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GranadaBuildingsNumberActivity : BaseActivity
     {
-        protected override int ContentView => Resource.Layout.activity_players_granada_buildings_chose;
+        protected override int ContentView => Resource.Layout.activity_GranadaBuildingsNumber_players_buildings_chose;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            RoundScoring correctingRoundScoring = Application.CorrectingScoring();
+
             base.OnCreate(savedInstanceState);
 
             Dictionary<GranadaBuildingType, List<int>> tiePlayerNumbers = GetTiePlayerNumbers(Application.GameScoreSubmitScoreData, Game.RoundNumber);
@@ -32,7 +34,16 @@ namespace AlhambraScoringAndroid.UI.Activities
                 PlayersBuildingChose playersPanel = null;
                 if (tiePlayerNumbers[building].Count != 0)
                 {
-                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(Resources), 2, 12, new List<int>() { 3, 5, 7, 9, 11 }, tiePlayerNumbers[building].ToDictionary(p => p, p => Game.GetPlayer(p).Name), SettingsType.ValidateBuildingsPrice);
+                    Dictionary<int, int?> correctingPoints = new Dictionary<int, int?>();
+                    for (int i = 0; i < Game.PlayersCount; i++)
+                    {
+                        int? points = null;
+                        if (correctingRoundScoring != null && correctingRoundScoring.PlayersScoreData[i].GranadaBuildingsHighestPrices.ContainsKey(building))
+                            points = correctingRoundScoring.PlayersScoreData[i].GranadaBuildingsHighestPrices[building];
+                        correctingPoints[i + 1] = points;
+                    }
+
+                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(Resources), 2, 12, new List<int>() { 3, 5, 7, 9, 11 }, tiePlayerNumbers[building].ToDictionary(p => p, p => (Game.GetPlayer(p).Name, correctingPoints[p])), SettingsType.ValidateBuildingsPrice);
                     container.AddView(playersPanel);
                     container.RequestLayout();
                 }
@@ -65,7 +76,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             });
         }
 
-        public static Dictionary<GranadaBuildingType, List<int>> GetTiePlayerNumbers(List<PlayerScoreData> gameScoreSubmitScoreData, int roundNumber)
+        public static Dictionary<GranadaBuildingType, List<int>> GetTiePlayerNumbers(RoundScoring gameScoreSubmitScoreData, int roundNumber)
         {
             Dictionary<GranadaBuildingType, List<int>> result = new Dictionary<GranadaBuildingType, List<int>>();
 
@@ -73,12 +84,12 @@ namespace AlhambraScoringAndroid.UI.Activities
             {
                 List<int> tiePlayerNumbers = new List<int>();
 
-                List<int> duplicatedPoints = gameScoreSubmitScoreData.GroupBy(p => p.GranadaBuildingsCount[building]).Where(g => g.Key != 0 && g.Count() > 1).Select(g => g.Key).ToList();
+                List<int> duplicatedPoints = gameScoreSubmitScoreData.PlayersScoreData.GroupBy(p => p.GranadaBuildingsCount[building]).Where(g => g.Key != 0 && g.Count() > 1).Select(g => g.Key).ToList();
 
-                for (int i = 0; i < gameScoreSubmitScoreData.Count; i++)
+                for (int i = 0; i < gameScoreSubmitScoreData.PlayersScoreData.Count; i++)
                 {
-                    int buildingsNumber = gameScoreSubmitScoreData[i].GranadaBuildingsCount[building];
-                    int higherPlayersCount = gameScoreSubmitScoreData.Where(p => p.PlayerNumber != i + 1).Count(p => p.GranadaBuildingsCount[building] > buildingsNumber);
+                    int buildingsNumber = gameScoreSubmitScoreData.PlayersScoreData[i].GranadaBuildingsCount[building];
+                    int higherPlayersCount = gameScoreSubmitScoreData.PlayersScoreData.Where(p => p.PlayerNumber != i + 1).Count(p => p.GranadaBuildingsCount[building] > buildingsNumber);
                     if (duplicatedPoints.Contains(buildingsNumber) && higherPlayersCount < roundNumber)
                         tiePlayerNumbers.Add(i + 1);
                 }
@@ -100,7 +111,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                     if (playersHighestPrices.ContainsKey(i + 1))
                         granadaBuildingsHighestPrices[building] = playersHighestPrices[i + 1];
                 }
-                Application.GameScoreSubmitScoreData[i].GranadaBuildingsHighestPrices = granadaBuildingsHighestPrices;
+                Application.GameScoreSubmitScoreData.PlayersScoreData[i].GranadaBuildingsHighestPrices = granadaBuildingsHighestPrices;
             }
         }
     }

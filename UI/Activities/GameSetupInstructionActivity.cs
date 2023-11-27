@@ -37,14 +37,17 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupTiles, SetupInstructions.ShuffleBuildingTiles, Game.GranadaOption != GranadaOption.Alone);
             AddSetupInstruction(setupTiles, SetupInstructions.GranadaShuffleBuildingTiles, Game.GranadaOption != GranadaOption.Without);
             AddSetupInstruction(setupTiles, SetupInstructions.DealTrader, Game.HasModule(ExpansionModule.ExpansionStreetTrader));
+
             AddSetupInstruction(setupTiles, SetupInstructions.PlaceBuildings, Game.GranadaOption != GranadaOption.Alone);
+            AddSetupInstruction(setupTiles, SetupInstructions.PlaceBuildingsPreviewBoard, Game.HasModule(ExpansionModule.RedPalaceLandTiles));
             AddSetupInstruction(setupTiles, SetupInstructions.GiveBuildingsToDirk, Game.InvolvedDirk);
             AddSetupInstruction(setupTiles, SetupInstructions.GranadaPlaceBuildings, Game.GranadaOption != GranadaOption.Without);
 
             AddSetupInstruction(setupCards, SetupInstructions.RemoveCardDeck, Game.InvolvedDirk);
             AddSetupInstruction(setupCards, SetupInstructions.PutDiamondCards, Game.HasModule(ExpansionModule.ExpansionDiamonds));
             AddSetupInstruction(setupCards, SetupInstructions.ShuffleCards);
-            AddSetupInstruction(setupCards, SetupInstructions.DealMoney);
+            AddSetupInstruction(setupCards, SetupInstructions.DealMoney, !Game.HasModule(ExpansionModule.RedPalaceLandTiles));
+            AddSetupInstruction(setupCards, SetupInstructions.ChoseMoney, Game.HasModule(ExpansionModule.RedPalaceLandTiles));
             AddSetupInstruction(setupCards, SetupInstructions.PlaceCards);
             AddSetupInstruction(setupCards, SetupInstructions.DivideCards);
             AddSetupInstruction(setupCards, SetupInstructions.Put2ScoringCards, Game.GranadaOption != GranadaOption.With);
@@ -61,8 +64,9 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupOther, SetupInstructions.ShuffleSquares, Game.HasModule(ExpansionModule.ExpansionSquares));
             AddSetupInstruction(setupOther, SetupInstructions.ShuffleWatchtowers, Game.HasModule(ExpansionModule.ExpansionWatchtowers));
             AddSetupInstruction(setupOther, SetupInstructions.ShuffleMajorConstructionProjects, Game.HasModule(ExpansionModule.DesignerMajorConstructionProjects));
-            AddSetupInstruction(setupOther, SetupInstructions.ShuffleGateBoard, Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceGateBoard, Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
             AddSetupInstruction(setupOther, SetupInstructions.ShuffleExtensions, Game.HasModule(ExpansionModule.DesignerExtensions));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceRedPalaceComponents, Game.HasModule(ExpansionModule.RedPalaceLandTiles));
 
             AddSetupInstruction(setupOther, SetupInstructions.DealVizier, Game.HasModule(ExpansionModule.ExpansionViziersFavour));
             AddSetupInstruction(setupOther, SetupInstructions.DealBonusCards3, Game.HasModule(ExpansionModule.ExpansionBonusCards) && Game.PlayersCount == 3);
@@ -110,6 +114,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             AddSetupInstruction(setupOther, SetupInstructions.DealTreasures, Game.HasModule(ExpansionModule.FanTreasures));
             AddSetupInstruction(setupOther, SetupInstructions.PlaceMissions, Game.HasModule(ExpansionModule.FanCaliphsGuidelines));
             AddSetupInstruction(setupOther, SetupInstructions.PlaceNewMarket, Game.HasModule(ExpansionModule.NewMarket));
+            AddSetupInstruction(setupOther, SetupInstructions.PlaceGuardBoard, Game.HasModule(ExpansionModule.RedPalaceLandTiles));
 
             Dictionary<string, List<SetupInstructions>> setup = new Dictionary<string, List<SetupInstructions>>()
             {

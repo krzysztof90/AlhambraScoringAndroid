@@ -98,6 +98,16 @@ namespace AlhambraScoringAndroid.Options
         ValidateTreasuresPoints,
         [SettingNameBoolAttribute("validate_missions", true, Resource.String.validateMissions)]
         ValidateMissions,
+        [SettingNameBoolAttribute("validate_multiple_half_buildings", true, Resource.String.validateMultipleHalfBuildings)]
+        ValidateMultipleHalfBuildings,
+        [SettingNameBoolAttribute("validate_previous_half_buildings", true, Resource.String.validatePreviousHalfBuildings)]
+        ValidatePreviousHalfBuildings,
+        [SettingNameBoolAttribute("validate_guards_count", true, Resource.String.validateGuardsCount)]
+        ValidateGuardsCount,
+        [SettingNameBoolAttribute("validate_guards_points", true, Resource.String.validateGuardsPoints)]
+        ValidateGuardsPoints,
+        [SettingNameBoolAttribute("validate_previous_guards_points", true, Resource.String.validatePreviousGuardsPoints)]
+        ValidatePreviousGuardsPoints,
         [SettingNameBoolAttribute("validate_second_longest_wall", true, Resource.String.validateSecondLongestWall)]
         ValidateSecondLongestWall,
         [SettingNameBoolAttribute("validate_moat_length", true, Resource.String.validateMoatLength)]

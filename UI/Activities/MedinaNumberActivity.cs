@@ -15,17 +15,23 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "@string/purchase_price", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MedinaNumberActivity : BaseActivity
     {
-        protected override int ContentView => Resource.Layout.activity_players_buildings_chose;
+        protected override int ContentView => Resource.Layout.activity_MedinaNumber_players_buildings_chose;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            RoundScoring correctingRoundScoring = Application.CorrectingScoring();
+
             base.OnCreate(savedInstanceState);
 
             List<int> tiePlayerNumbers = GetTiePlayerNumbers(Application.GameScoreSubmitScoreData, Game.RoundNumber);
 
             LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
 
-            PlayersBuildingChose playersPanel = new PlayersBuildingChose(this, Resources.GetString(Resource.String.medina), 2, 10, new List<int>(), tiePlayerNumbers.ToDictionary(p => p, p => Game.GetPlayer(p).Name), SettingsType.ValidateBuildingsPrice);
+            Dictionary<int, int?> correctingPoints = new Dictionary<int, int?>();
+            for (int i = 0; i < Game.PlayersCount; i++)
+                correctingPoints[i + 1] = correctingRoundScoring != null ? correctingRoundScoring.PlayersScoreData[i].MedinaHighestPrice : null;
+
+            PlayersBuildingChose playersPanel = new PlayersBuildingChose(this, Resources.GetString(Resource.String.medina), Game.MedinaMinPrice, Game.MedinaMaxPrice, new List<int>(), tiePlayerNumbers.ToDictionary(p => p, p => (Game.GetPlayer(p).Name, correctingPoints[p])), SettingsType.ValidateBuildingsPrice);
             container.AddView(playersPanel);
             container.RequestLayout();
 
@@ -43,16 +49,16 @@ namespace AlhambraScoringAndroid.UI.Activities
             });
         }
 
-        public static List<int> GetTiePlayerNumbers(List<PlayerScoreData> gameScoreSubmitScoreData, int roundNumber)
+        public static List<int> GetTiePlayerNumbers(RoundScoring gameScoreSubmitScoreData, int roundNumber)
         {
             List<int> tiePlayerNumbers = new List<int>();
 
-            List<int> duplicatedPoints = gameScoreSubmitScoreData.GroupBy(p => p.MedinasNumber).Where(g => g.Key != 0 && g.Count() > 1).Select(g => g.Key).ToList();
+            List<int> duplicatedPoints = gameScoreSubmitScoreData.PlayersScoreData.GroupBy(p => p.MedinasNumber).Where(g => g.Key != 0 && g.Count() > 1).Select(g => g.Key).ToList();
 
-            for (int i = 0; i < gameScoreSubmitScoreData.Count; i++)
+            for (int i = 0; i < gameScoreSubmitScoreData.PlayersScoreData.Count; i++)
             {
-                int medinasNumber = gameScoreSubmitScoreData[i].MedinasNumber;
-                int lowerPlayersCount = gameScoreSubmitScoreData.Where(p => p.PlayerNumber != i + 1).Count(p => p.MedinasNumber < medinasNumber);
+                int medinasNumber = gameScoreSubmitScoreData.PlayersScoreData[i].MedinasNumber;
+                int lowerPlayersCount = gameScoreSubmitScoreData.PlayersScoreData.Where(p => p.PlayerNumber != i + 1).Count(p => p.MedinasNumber < medinasNumber);
                 if (duplicatedPoints.Contains(medinasNumber) && lowerPlayersCount < roundNumber)
                     tiePlayerNumbers.Add(i + 1);
             }
@@ -65,7 +71,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             for (int i = 0; i < Game.PlayersCount; i++)
             {
                 if (playersHighestPrices.ContainsKey(i + 1))
-                    Application.GameScoreSubmitScoreData[i].MedinaHighestPrice = playersHighestPrices[i + 1];
+                    Application.GameScoreSubmitScoreData.PlayersScoreData[i].MedinaHighestPrice = playersHighestPrices[i + 1];
             }
         }
     }
