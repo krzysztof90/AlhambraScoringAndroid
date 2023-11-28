@@ -85,10 +85,11 @@ namespace AlhambraScoringAndroid
             }
         }
 
-        public void GameApplyModules(IEnumerable<ExpansionModule> modules, GranadaOption granadaOption)
+        public void GameApplyModules(IEnumerable<ExpansionModule> modules, GranadaOption granadaOption, AlcazabaOption alcazabaOption)
         {
             Game.SetModules(modules);
             Game.SetGranadaOption(granadaOption);
+            Game.SetAlcazabaOption(alcazabaOption);
             if (modules.Contains(ExpansionModule.ExpansionNewScoreCards) || modules.Contains(ExpansionModule.FanCaliphsGuidelines))
                 NewActivity(typeof(GameModulesDetailsChoseActivity));
             else

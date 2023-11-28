@@ -43,7 +43,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                         correctingPoints[i + 1] = points;
                     }
 
-                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(Resources), 2, 12, new List<int>() { 3, 5, 7, 9, 11 }, tiePlayerNumbers[building].ToDictionary(p => p, p => (Game.GetPlayer(p).Name, correctingPoints[p])), SettingsType.ValidateBuildingsPrice);
+                    playersPanel = new PlayersBuildingChose(this, building.GetEnumDescription(Resources), Game.GranadaMinPrice, Game.GranadaMaxPrice, Game.GranadaPricesExcepts, tiePlayerNumbers[building].ToDictionary(p => p, p => (Game.GetPlayer(p).Name, correctingPoints[p])), SettingsType.ValidateBuildingsPrice);
                     container.AddView(playersPanel);
                     container.RequestLayout();
                 }

@@ -12,14 +12,12 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "@string/modules_chose", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameModulesChoseActivity : BaseActivity
     {
-        private ExpandableListViewExtension expandableListView;
-        private ExpandableListViewExtension expandableListView2;
-
         protected override int ContentView => Resource.Layout.activity_game_modules_chose;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             string granadaName = Resources.GetString(Resource.String.granada);
+            string alcazabaName = Resources.GetString(Resource.String.alcazaba);
 
             base.OnCreate(savedInstanceState);
 
@@ -98,21 +96,34 @@ namespace AlhambraScoringAndroid.UI.Activities
                     GranadaOption.Alone,
                 },
             };
+            Dictionary<string, List<AlcazabaOption>> alcazabaOptions = new Dictionary<string, List<AlcazabaOption>>()
+            {
+                [alcazabaName] = new List<AlcazabaOption>()
+                {
+                    AlcazabaOption.WithoutTile,
+                    AlcazabaOption.WithTile,
+                },
+            };
 
-            expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
+            ExpandableListViewExtension expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
             ExpandListCheckBoxAdapterMultiple<ExpansionModule> adapter = new ExpandListCheckBoxAdapterMultiple<ExpansionModule>(this, extensions);
             expandableListView.SetAdapter(adapter);
             expandableListView.HoldSize = true;
 
-            expandableListView2 = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView2);
+            ExpandableListViewExtension expandableListView2 = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView2);
             ExpandListCheckBoxAdapterSingle<GranadaOption> adapter2 = new ExpandListCheckBoxAdapterSingle<GranadaOption>(this, granadaOptions);
             expandableListView2.SetAdapter(adapter2);
             expandableListView2.HoldSize = true;
 
+            ExpandableListViewExtension expandableListView3 = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView3);
+            ExpandListCheckBoxAdapterSingle<AlcazabaOption> adapter3 = new ExpandListCheckBoxAdapterSingle<AlcazabaOption>(this, alcazabaOptions);
+            expandableListView3.SetAdapter(adapter3);
+            expandableListView3.HoldSize = true;
+
             Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.GameApplyModules(adapter.SelectedList, adapter2.SelectedList[granadaName]);
+                Application.GameApplyModules(adapter.SelectedList, adapter2.SelectedList[granadaName], adapter3.SelectedList[alcazabaName]);
             });
         }
 

@@ -113,6 +113,7 @@ namespace AlhambraScoringAndroid.GamePlay
 
         private List<ExpansionModule> Modules;
         public GranadaOption GranadaOption { get; private set; }
+        public AlcazabaOption AlcazabaOption { get; private set; }
         private List<NewScoreCard> NewScoreCards;
         private List<CaliphsGuidelinesMission> CaliphsGuidelines;
         private List<Player> Players;
@@ -170,7 +171,7 @@ namespace AlhambraScoringAndroid.GamePlay
                         [BuildingType.Arcades] = 9,
                         [BuildingType.Chambers] = 9,
                         [BuildingType.Garden] = 11,
-                        [BuildingType.Tower] = 11,
+                        [BuildingType.Tower] = 11 + (AlcazabaOption == AlcazabaOption.WithTile ? 1 : 0),
                     };
                 else
                     return new Dictionary<BuildingType, int>()
@@ -227,6 +228,16 @@ namespace AlhambraScoringAndroid.GamePlay
         }
         public int AllGuardsCount => 32;
         public int GuardsMaxPoints => 8;
+        public List<int> GranadaAvailablePrices => new List<int> { 2, 4, 6, 8, 10, 12 };
+        public int GranadaMinPrice => GranadaAvailablePrices.Min();
+        public int GranadaMaxPrice => GranadaAvailablePrices.Max();
+        public List<int> GranadaPricesExcepts
+        {
+            get
+            {
+                return Enumerable.Range(GranadaMinPrice, GranadaMaxPrice - GranadaMinPrice + 1).Except(GranadaAvailablePrices).ToList();
+            }
+        }
 
         public Dictionary<BuildingType, int> WallBuildingsMaxCount => BaseBuildingsMaxCount.ToDictionary(b => b.Key, b => b.Value + (HasModule(ExpansionModule.QueenieMagicalBuildings) ? 1 : 0) + (HasModule(ExpansionModule.DesignerMajorConstructionProjects) ? 5 : 0));
         public Dictionary<BuildingType, int> BuildingsMaxCount => WallBuildingsMaxCount.ToDictionary(b => b.Key, b => b.Value + (HasModule(ExpansionModule.DesignerNewBuildingGrounds) ? 2 : 0) + (HasModule(ExpansionModule.NewMarket) ? 1 : 0));
@@ -406,6 +417,10 @@ namespace AlhambraScoringAndroid.GamePlay
         public void SetGranadaOption(GranadaOption granadaOption)
         {
             GranadaOption = granadaOption;
+        }
+        public void SetAlcazabaOption(AlcazabaOption alcazabaOption)
+        {
+            AlcazabaOption = alcazabaOption;
         }
 
         public void SetModulesDetails(IEnumerable<CaliphsGuidelinesMission> caliphsGuidelines, List<NewScoreCard> newScoreCards)

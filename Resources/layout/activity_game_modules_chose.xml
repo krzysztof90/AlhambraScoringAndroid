@@ -31,6 +31,10 @@
         android:id="@+id/expandableListView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+      <AndroidBase.UI.ExpandableListViewExtension
+        android:id="@+id/expandableListView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     </LinearLayout>
   </ScrollView>

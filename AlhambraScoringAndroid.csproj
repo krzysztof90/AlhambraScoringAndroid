@@ -75,6 +75,7 @@
     <Compile Include="Attributes\NewScoreCardAttribute.cs" />
     <Compile Include="Attributes\ResultAttribute.cs" />
     <Compile Include="Attributes\ScoreDetailsPointsAttribute.cs" />
+    <Compile Include="GamePlay\AlcazabaOption.cs" />
     <Compile Include="GamePlay\ResultType.cs" />
     <Compile Include="GamePlay\RoundScoring.cs" />
     <Compile Include="Options\Settings.cs" />

@@ -143,6 +143,7 @@
   <string name="new_market_modules">NEW MARKET</string>
   <string name="red_palace_modules">THE RED PALACE</string>
   <string name="granada">GRANADA</string>
+  <string name="alcazaba">ALCAZABA</string>
   <string name="pavilion">Pavilion</string>
   <string name="seraglio">Seraglio</string>
   <string name="arcades">Arcades</string>
@@ -161,6 +162,8 @@
   <string name="granada_without">No Granada</string>
   <string name="granada_with">Alhambra + Granada</string>
   <string name="granada_alone">Only Granada</string>
+  <string name="alcazaba_without">No extra tower tile</string>
+  <string name="alcazaba_with">Extra tower tile</string>
   <string name="viziers_favour">Vizier’s Favour</string>
   <string name="currency_exchange_cards">Currency Exchange Cards</string>
   <string name="bonus_cards">Bonus Cards</string>
