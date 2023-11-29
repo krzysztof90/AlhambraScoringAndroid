@@ -14,8 +14,6 @@ namespace AlhambraScoringAndroid.UI.Activities
     [Activity(Label = "@string/setup", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class GameSetupInstructionActivity : BaseActivity
     {
-        private ExpandableListViewExtension expandableListView;
-
         protected override int ContentView => Resource.Layout.activity_game_setup;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -123,7 +121,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 [Resources.GetString(Resource.String.other)] = setupOther,
             };
 
-            expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
+            ExpandableListViewExtension expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
             ExpandListCheckBoxAdapterMultiple<SetupInstructions> adapter = new ExpandListCheckBoxAdapterMultiple<SetupInstructions>(this, setup);
             expandableListView.SetAdapter(adapter);
             expandableListView.Expand();

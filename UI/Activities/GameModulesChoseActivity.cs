@@ -108,6 +108,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             ExpandableListViewExtension expandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView);
             ExpandListCheckBoxAdapterMultiple<ExpansionModule> adapter = new ExpandListCheckBoxAdapterMultiple<ExpansionModule>(this, extensions);
             expandableListView.SetAdapter(adapter);
+            //TODO HoldSize automatycznie. Ale teraz do GameSetupInstructionActivity nie można dodać, bo się psuje
             expandableListView.HoldSize = true;
 
             ExpandableListViewExtension expandableListView2 = FindViewById<ExpandableListViewExtension>(Resource.Id.expandableListView2);
