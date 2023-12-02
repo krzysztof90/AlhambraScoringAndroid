@@ -164,8 +164,8 @@
   <string name="granada_without">Bez Granady</string>
   <string name="granada_with">Alhambra + Granada</string>
   <string name="granada_alone">Tylko Granada</string>
-  <string name="alcazaba_without">No Granada</string>
-  <string name="alcazaba_with">Alhambra + Granada</string>
+  <string name="alcazaba_without">Bez dodatkowego kafelka wieży</string>
+  <string name="alcazaba_with">Dodatkowy kafelek wieży</string>
   <string name="viziers_favour">Vizier’s Favour</string>
   <string name="currency_exchange_cards">Currency Exchange Cards</string>
   <string name="bonus_cards">Bonus Cards</string>
