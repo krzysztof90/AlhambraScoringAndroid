@@ -265,7 +265,7 @@
   <string name="instruction_put_diamond_cards">Put diamond cards to the other money cards</string>
   <string name="instruction_shuffle_cards">Shuffle cards</string>
   <string name="instruction_deal_money">Deal starting money to each player</string>
-  <string name="instruction_chose_money">Each player choses set of cash cards</string>
+  <string name="instruction_chose_money">Each player choses set of cash cards (after buildings placement)</string>
   <string name="instruction_place_cards">Place 4 cards on the card display</string>
   <string name="instruction_divide_cards">Divide cards into 5 piles</string>
   <string name="instruction_put_2_scoring_cards">Shuffle 1st scoring card into the 2nd pile and 2nd scoring card into the 4th pile</string>

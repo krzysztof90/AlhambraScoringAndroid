@@ -267,7 +267,7 @@
   <string name="instruction_put_diamond_cards">Dodaj karty diamentów do wszystkich kart pieniędzy</string>
   <string name="instruction_shuffle_cards">Wymieszaj karty</string>
   <string name="instruction_deal_money">Rozdaj początkowe pieniądze każdemu graczowi</string>
-  <string name="instruction_chose_money">Każdy gracz wybiera zestaw kart</string>
+  <string name="instruction_chose_money">Każdy gracz wybiera zestaw kart (po wyłożeniu budynków)</string>
   <string name="instruction_place_cards">Połóż 4 karty pieniędzy na giełdzie budynków</string>
   <string name="instruction_divide_cards">Podziel karty na 5 stosów</string>
   <string name="instruction_put_2_scoring_cards">Wmieszaj pierwszą kartę punktowania do drugiego stosu i drugą kartę punktowania do czwartego stosu</string>
