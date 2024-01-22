@@ -1,0 +1,5 @@
+![screenshot1](https://github.com/krzysztof90/AlhambraScoringAndroid/blob/main/screenshots/Screenshot_20240122-211632.png?raw=true)
+![screenshot2](https://github.com/krzysztof90/AlhambraScoringAndroid/blob/main/screenshots/Screenshot_20240122-211804.png?raw=true)
+![screenshot3](https://github.com/krzysztof90/AlhambraScoringAndroid/blob/main/screenshots/Screenshot_20240122-212014.png?raw=true)
+![screenshot4](https://github.com/krzysztof90/AlhambraScoringAndroid/blob/main/screenshots/Screenshot_20240122-211705.png?raw=true)
+![screenshot5](https://github.com/krzysztof90/AlhambraScoringAndroid/blob/main/screenshots/Screenshot_20240122-211643.png?raw=true)
