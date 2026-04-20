@@ -35,8 +35,10 @@ namespace AlhambraScoringAndroid.UI
             Activity = context;
             PlayerScoreFragments = new PlaceholderPlayerScoreFragment[Count];
 
-            selectedPages = new List<int>();
-            selectedPages.Add(0);
+            selectedPages = new List<int>
+            {
+                0
+            };
 
             ViewPager = viewPager;
             ViewPager.Adapter = this;

@@ -9,15 +9,12 @@ namespace AlhambraScoringAndroid.UI
 {
     public class BlueDiceBox : LinearLayout
     {
-        private Dictionary<int, (ImageView imageView, int notSelectedImage, int selectedImage)> pipsImages;
+        private readonly Dictionary<int, (ImageView imageView, int notSelectedImage, int selectedImage)> pipsImages;
 
         public int? SelectedValue { get; private set; }
         public int? Value
         {
-            get
-            {
-                return SelectedValue;
-            }
+            get => SelectedValue;
             set
             {
                 RemoveCurrentSelection();

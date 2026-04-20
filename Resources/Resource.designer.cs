@@ -4729,7 +4729,6 @@ namespace AlhambraScoringAndroid
 			global::AndroidBase.Resource.Xml.standalone_badge_gravity_bottom_start = global::AlhambraScoringAndroid.Resource.Xml.standalone_badge_gravity_bottom_start;
 			global::AndroidBase.Resource.Xml.standalone_badge_gravity_top_start = global::AlhambraScoringAndroid.Resource.Xml.standalone_badge_gravity_top_start;
 			global::AndroidBase.Resource.Xml.standalone_badge_offset = global::AlhambraScoringAndroid.Resource.Xml.standalone_badge_offset;
-			global::AndroidBase.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::AlhambraScoringAndroid.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::AlhambraScoringAndroid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::AlhambraScoringAndroid.Resource.Attribute.font;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::AlhambraScoringAndroid.Resource.Attribute.fontProviderAuthority;
@@ -4858,6 +4857,7 @@ namespace AlhambraScoringAndroid
 			global::Xamarin.Essentials.Resource.Id.text2 = global::AlhambraScoringAndroid.Resource.Id.text2;
 			global::Xamarin.Essentials.Resource.Id.time = global::AlhambraScoringAndroid.Resource.Id.time;
 			global::Xamarin.Essentials.Resource.Id.title = global::AlhambraScoringAndroid.Resource.Id.title;
+			global::Xamarin.Essentials.Resource.Id.view_tree_lifecycle_owner = global::AlhambraScoringAndroid.Resource.Id.view_tree_lifecycle_owner;
 			global::Xamarin.Essentials.Resource.Integer.status_bar_notification_info_maxnum = global::AlhambraScoringAndroid.Resource.Integer.status_bar_notification_info_maxnum;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_page = global::AlhambraScoringAndroid.Resource.Layout.browser_actions_context_menu_page;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_row = global::AlhambraScoringAndroid.Resource.Layout.browser_actions_context_menu_row;
@@ -12527,19 +12527,19 @@ namespace AlhambraScoringAndroid
 			public const int activity_GranadaBuildingsNumber_players_buildings_chose = 2131492901;
 			
 			// aapt resource value: 0x7F0C0026
-			public const int activity_history = 2131492902;
+			public const int activity_GuardsPoints_chose = 2131492902;
 			
 			// aapt resource value: 0x7F0C0027
-			public const int activity_main = 2131492903;
+			public const int activity_history = 2131492903;
 			
 			// aapt resource value: 0x7F0C0028
-			public const int activity_MedinaNumber_players_buildings_chose = 2131492904;
+			public const int activity_main = 2131492904;
 			
 			// aapt resource value: 0x7F0C0029
-			public const int activity_modules_details = 2131492905;
+			public const int activity_MedinaNumber_players_buildings_chose = 2131492905;
 			
 			// aapt resource value: 0x7F0C002A
-			public const int activity_RoundScoringData_chose = 2131492906;
+			public const int activity_modules_details = 2131492906;
 			
 			// aapt resource value: 0x7F0C002B
 			public const int activity_settings = 2131492907;

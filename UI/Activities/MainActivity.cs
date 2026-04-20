@@ -17,6 +17,8 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             base.OnCreate(savedInstanceState);
 
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
             Button newGameButton = FindViewById<Button>(Resource.Id.newGameButton);
             newGameButton.Click += new EventHandler((object sender, EventArgs e) =>
             { 

@@ -1,4 +1,5 @@
-﻿using AlhambraScoringAndroid.GamePlay;
+﻿using AlhambraBase;
+using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.Options;
 using Android.OS;
 using Android.Views;
@@ -111,22 +112,19 @@ namespace AlhambraScoringAndroid.UI
 
         private void SetControlNumberRange(ResultType resultType, int min, int max, SettingsType settingsType)
         {
-            ControlNumberView control = GetControl<int>(resultType) as ControlNumberView;
-            if (control != null)
+            if (GetControl<int>(resultType) is ControlNumberView control)
                 control.SetNumberRange<SettingsType>(min, max, settingsType);
         }
 
         private void SetControlEnabled(ResultType resultType, bool enabled)
         {
-            ControlNumberView control = GetControl<int>(resultType) as ControlNumberView;
-            if (control != null)
+            if (GetControl<int>(resultType) is ControlNumberView control)
                 control.Enabled = enabled;
         }
 
         private void SetControlOnValueChange(ResultType resultType, Action onValueChange)
         {
-            ControlNumberView control = GetControl<int>(resultType) as ControlNumberView;
-            if (control != null)
+            if (GetControl<int>(resultType) is ControlNumberView control)
                 control.OnValueChange = onValueChange;
         }
 
@@ -181,356 +179,356 @@ namespace AlhambraScoringAndroid.UI
             if (Game.GranadaOption != GranadaOption.Alone
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.TowerNumber, CreateControlNumberView(Resource.String.towerCount, Resource.Color.colorTower));
-            if (Game.HasModule(ExpansionModule.ExpansionBonusCards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionBonusCards)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BonusCardsPavilionNumber, CreateControlNumberView(Resource.String.bonusCardsPavilionCount, Resource.Color.colorPavilion));
-            if (Game.HasModule(ExpansionModule.ExpansionBonusCards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionBonusCards)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BonusCardsSeraglioNumber, CreateControlNumberView(Resource.String.bonusCardsSeraglioCount, Resource.Color.colorSeraglio));
-            if (Game.HasModule(ExpansionModule.ExpansionBonusCards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionBonusCards)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BonusCardsArcadesNumber, CreateControlNumberView(Resource.String.bonusCardsArcadesCount, Resource.Color.colorArcades));
-            if (Game.HasModule(ExpansionModule.ExpansionBonusCards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionBonusCards)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BonusCardsChambersNumber, CreateControlNumberView(Resource.String.bonusCardsChambersCount, Resource.Color.colorChambers));
-            if (Game.HasModule(ExpansionModule.ExpansionBonusCards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionBonusCards)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BonusCardsGardenNumber, CreateControlNumberView(Resource.String.bonusCardsGardenCount, Resource.Color.colorGarden));
-            if (Game.HasModule(ExpansionModule.ExpansionBonusCards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionBonusCards)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BonusCardsTowerNumber, CreateControlNumberView(Resource.String.bonusCardsTowerCount, Resource.Color.colorTower));
-            if (Game.HasModule(ExpansionModule.ExpansionSquares)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionSquares)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SquaresPavilionNumber, CreateControlNumberView(Resource.String.squaresPavilionCount, Resource.Color.colorPavilion));
-            if (Game.HasModule(ExpansionModule.ExpansionSquares)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionSquares)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SquaresSeraglioNumber, CreateControlNumberView(Resource.String.squaresSeraglioCount, Resource.Color.colorSeraglio));
-            if (Game.HasModule(ExpansionModule.ExpansionSquares)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionSquares)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SquaresArcadesNumber, CreateControlNumberView(Resource.String.squaresArcadesCount, Resource.Color.colorArcades));
-            if (Game.HasModule(ExpansionModule.ExpansionSquares)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionSquares)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SquaresChambersNumber, CreateControlNumberView(Resource.String.squaresChambersCount, Resource.Color.colorChambers));
-            if (Game.HasModule(ExpansionModule.ExpansionSquares)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionSquares)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SquaresGardenNumber, CreateControlNumberView(Resource.String.squaresGardenCount, Resource.Color.colorGarden));
-            if (Game.HasModule(ExpansionModule.ExpansionSquares)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionSquares)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SquaresTowerNumber, CreateControlNumberView(Resource.String.squaresTowerCount, Resource.Color.colorTower));
-            if (Game.HasModule(ExpansionModule.ExpansionCharacters)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionCharacters)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedCharacterTheWiseMan, CreateControlCheckBoxView(Resource.String.ownedCharacterTheWiseMan));
-            if (Game.HasModule(ExpansionModule.ExpansionCharacters)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionCharacters)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedCharacterTheCityWatch, CreateControlCheckBoxView(Resource.String.ownedCharacterTheCityWatch));
-            if (Game.HasModule(ExpansionModule.ExpansionCamps)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionCamps)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CampsPoints, CreateControlNumberView(Resource.String.campsPoints));
-            if (Game.HasModule(ExpansionModule.ExpansionStreetTrader)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionStreetTrader)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.StreetTradersPavilionNumber, CreateControlNumberView(Resource.String.streetTradersPavilionCount, Resource.Color.colorPavilion));
-            if (Game.HasModule(ExpansionModule.ExpansionStreetTrader)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionStreetTrader)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.StreetTradersSeraglioNumber, CreateControlNumberView(Resource.String.streetTradersSeraglioCount, Resource.Color.colorSeraglio));
-            if (Game.HasModule(ExpansionModule.ExpansionStreetTrader)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionStreetTrader)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.StreetTradersArcadesNumber, CreateControlNumberView(Resource.String.streetTradersArcadesCount, Resource.Color.colorArcades));
-            if (Game.HasModule(ExpansionModule.ExpansionStreetTrader)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionStreetTrader)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.StreetTradersChambersNumber, CreateControlNumberView(Resource.String.streetTradersChambersCount, Resource.Color.colorChambers));
-            if (Game.HasModule(ExpansionModule.ExpansionStreetTrader)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionStreetTrader)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.StreetTradersGardenNumber, CreateControlNumberView(Resource.String.streetTradersGardenCount, Resource.Color.colorGarden));
-            if (Game.HasModule(ExpansionModule.ExpansionStreetTrader)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionStreetTrader)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.StreetTradersTowerNumber, CreateControlNumberView(Resource.String.streetTradersTowerCount, Resource.Color.colorTower));
-            if (Game.HasModule(ExpansionModule.ExpansionTreasureChamber)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionTreasureChamber)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.TreasuresValue, CreateControlNumberView(Resource.String.treasuresCount));
-            if (Game.HasModule(ExpansionModule.ExpansionInvaders)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionInvaders)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.UnprotectedSidesNumber, CreateControlNumberView(Resource.String.unprotectedSidesCount));
-            if (Game.HasModule(ExpansionModule.ExpansionInvaders)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionInvaders)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.UnprotectedSidesNeighbouringNumber, CreateControlNumberView(Resource.String.unprotectedSidesNeighbouringCount));
-            if (Game.HasModule(ExpansionModule.ExpansionBazaars)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionBazaars)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BazaarsPoints, CreateControlNumberView(Resource.String.bazaarsPoints));
-            if (Game.HasModule(ExpansionModule.ExpansionArtOfTheMoors)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionArtOfTheMoors)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ArtOfTheMoorsPoints, CreateControlNumberView(Resource.String.artOfTheMoorsPoints));
-            if (Game.HasModule(ExpansionModule.ExpansionFalconers)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionFalconers)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.FalconsBlackNumber, CreateControlNumberView(Resource.String.falconsBlackNumber));
-            if (Game.HasModule(ExpansionModule.ExpansionFalconers)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionFalconers)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.FalconsBrownNumber, CreateControlNumberView(Resource.String.falconsBrownNumber));
-            if (Game.HasModule(ExpansionModule.ExpansionFalconers)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionFalconers)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.FalconsWhiteNumber, CreateControlNumberView(Resource.String.falconsWhiteNumber));
-            if (Game.HasModule(ExpansionModule.ExpansionWatchtowers)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionWatchtowers)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.WatchtowersNumber, CreateControlNumberView(Resource.String.watchtowersNumber));
-            if (Game.HasModule(ExpansionModule.QueenieMedina)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.QueenieMedina)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.MedinasNumber, CreateControlNumberView(Resource.String.medinasNumber));
-            if (Game.HasModule(ExpansionModule.DesignerPalaceStaff)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerPalaceStaff)
                 && !IsDirk
                 && !IsFinalRound)
                 Controls.Add(ResultType.BuildingsWithoutServantTile, CreateControlNumberView(Resource.String.buildingsWithoutServantTile));
-            if (Game.HasModule(ExpansionModule.DesignerOrchards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerOrchards)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard1, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard1));
-            if (Game.HasModule(ExpansionModule.DesignerOrchards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerOrchards)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard2, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard2));
-            if (Game.HasModule(ExpansionModule.DesignerOrchards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerOrchards)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard3, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard3));
-            if (Game.HasModule(ExpansionModule.DesignerOrchards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerOrchards)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard4, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard4));
-            if (Game.HasModule(ExpansionModule.DesignerOrchards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerOrchards)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard5, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard5));
-            if (Game.HasModule(ExpansionModule.DesignerOrchards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerOrchards)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedGroupOfFruitBoard6, CreateControlCheckBoxView(Resource.String.completedGroupOfFruitBoard6));
-            if (Game.HasModule(ExpansionModule.DesignerOrchards)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerOrchards)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.FaceDownFruitsNumber, CreateControlNumberView(Resource.String.faceDownFruitsCount));
-            if (Game.HasModule(ExpansionModule.DesignerBathhouses)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerBathhouses)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BathhousesPoints, CreateControlNumberView(Resource.String.bathhousesPoints));
-            if (Game.HasModule(ExpansionModule.DesignerWishingWell)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerWishingWell)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.WishingWellsPoints, CreateControlNumberView(Resource.String.wishingWellsPoints));
-            if (Game.HasModule(ExpansionModule.DesignerFreshColors)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerFreshColors)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedProjectPavilion, CreateControlCheckBoxView(Resource.String.completedProjectPavilion, Resource.Color.colorPavilion));
-            if (Game.HasModule(ExpansionModule.DesignerFreshColors)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerFreshColors)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedProjectSeraglio, CreateControlCheckBoxView(Resource.String.completedProjectSeraglio, Resource.Color.colorSeraglio));
-            if (Game.HasModule(ExpansionModule.DesignerFreshColors)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerFreshColors)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedProjectArcades, CreateControlCheckBoxView(Resource.String.completedProjectArcades, Resource.Color.colorArcades));
-            if (Game.HasModule(ExpansionModule.DesignerFreshColors)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerFreshColors)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedProjectChambers, CreateControlCheckBoxView(Resource.String.completedProjectChambers, Resource.Color.colorChambers));
-            if (Game.HasModule(ExpansionModule.DesignerFreshColors)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerFreshColors)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedProjectGarden, CreateControlCheckBoxView(Resource.String.completedProjectGarden, Resource.Color.colorGarden));
-            if (Game.HasModule(ExpansionModule.DesignerFreshColors)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerFreshColors)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.CompletedProjectTower, CreateControlCheckBoxView(Resource.String.completedProjectTower, Resource.Color.colorTower));
-            if (Game.HasModule(ExpansionModule.DesignerAlhambraZoo)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerAlhambraZoo)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.AnimalsPoints, CreateControlNumberView(Resource.String.animalsPoints));
-            if (Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerGatesWithoutEnd)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedSemiBuildingPavilion, CreateControlCheckBoxView(Resource.String.ownedSemiBuildingPavilion, Resource.Color.colorPavilion));
-            if (Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerGatesWithoutEnd)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedSemiBuildingSeraglio, CreateControlCheckBoxView(Resource.String.ownedSemiBuildingSeraglio, Resource.Color.colorSeraglio));
-            if (Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerGatesWithoutEnd)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedSemiBuildingArcades, CreateControlCheckBoxView(Resource.String.ownedSemiBuildingArcades, Resource.Color.colorArcades));
-            if (Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerGatesWithoutEnd)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedSemiBuildingChambers, CreateControlCheckBoxView(Resource.String.ownedSemiBuildingChambers, Resource.Color.colorChambers));
-            if (Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerGatesWithoutEnd)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedSemiBuildingGarden, CreateControlCheckBoxView(Resource.String.ownedSemiBuildingGarden, Resource.Color.colorGarden));
-            if (Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerGatesWithoutEnd)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedSemiBuildingTower, CreateControlCheckBoxView(Resource.String.ownedSemiBuildingTower, Resource.Color.colorTower));
-            if (Game.HasModule(ExpansionModule.DesignerBuildingsOfPower)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerBuildingsOfPower)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BlackDiceTotalPips, CreateControlNumberView(Resource.String.blackDiceTotalPips));
-            if (Game.HasModule(ExpansionModule.DesignerExtensions)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerExtensions)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ExtensionsPavilionCount, CreateControlNumberView(Resource.String.extensionsPavilionCount, Resource.Color.colorPavilion));
-            if (Game.HasModule(ExpansionModule.DesignerExtensions)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerExtensions)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ExtensionsSeraglioCount, CreateControlNumberView(Resource.String.extensionsSeraglioCount, Resource.Color.colorSeraglio));
-            if (Game.HasModule(ExpansionModule.DesignerExtensions)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerExtensions)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ExtensionsArcadesCount, CreateControlNumberView(Resource.String.extensionsArcadesCount, Resource.Color.colorArcades));
-            if (Game.HasModule(ExpansionModule.DesignerExtensions)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerExtensions)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ExtensionsChambersCount, CreateControlNumberView(Resource.String.extensionsChambersCount, Resource.Color.colorChambers));
-            if (Game.HasModule(ExpansionModule.DesignerExtensions)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerExtensions)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ExtensionsGardenCount, CreateControlNumberView(Resource.String.extensionsGardenCount, Resource.Color.colorGarden));
-            if (Game.HasModule(ExpansionModule.DesignerExtensions)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerExtensions)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ExtensionsTowerCount, CreateControlNumberView(Resource.String.extensionsTowerCount, Resource.Color.colorTower));
-            if (Game.HasModule(ExpansionModule.DesignerHandymen)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.DesignerHandymen)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.HandymenTilesHighestNumber, CreateControlNumberView(Resource.String.handymenTilesHighestNumber));
-            if (Game.HasModule(ExpansionModule.FanTreasures)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanTreasures)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.TreasuresPoints, CreateControlNumberView(Resource.String.treasuresValue));
-            if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission1)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission1RowsCount, CreateControlNumberView(Resource.String.mission1RowsCount));
-            if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission2)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission2ColumnsCount, CreateControlNumberView(Resource.String.mission2ColumnsCount));
-            if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission3)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission3Adjacent2BuildingsCount, CreateControlNumberView(Resource.String.mission3Adjacent2BuildingsCount));
-            if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission5)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission5LongestDiagonalLine, CreateControlNumberView(Resource.String.mission5LongestDiagonalLine));
-            if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission6)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission6DoubleWallCount, CreateControlNumberView(Resource.String.mission6DoubleWallCount));
-            if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission8)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission8PathBuildingsNumber, CreateControlNumberView(Resource.String.mission8PathBuildingsNumber));
-            if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission9)
                 && !IsDirk
                 && IsFinalRound
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.Mission9Grids22Count, CreateControlNumberView(Resource.String.mission9Grids22Count));
-            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedHalfBuildingPavilion, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingPavilion, Resource.Color.colorPavilion));
-            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedHalfBuildingSeraglio, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingSeraglio, Resource.Color.colorSeraglio));
-            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedHalfBuildingArcades, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingArcades, Resource.Color.colorArcades));
-            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedHalfBuildingChambers, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingChambers, Resource.Color.colorChambers));
-            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedHalfBuildingGarden, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingGarden, Resource.Color.colorGarden));
-            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.OwnedHalfBuildingTower, CreateControlCheckBoxView(Resource.String.ownedHalfBuildingTower, Resource.Color.colorTower));
-            if (Game.HasModule(ExpansionModule.RedPalaceLandTiles)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.GuardsCount, CreateControlNumberView(Resource.String.guardsCount));
-            if ((Game.HasModule(ExpansionModule.DesignerBuildingsOfPower) || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound))
+            if ((Game.HasModule(AlhambraBase.ExpansionModule.DesignerBuildingsOfPower) || (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound))
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SecondLongestWall, CreateControlNumberView(Resource.String.secondLongestWall));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsDirk
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.MoatLength, CreateControlNumberView(Resource.String.moatLength));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ArenaCount, CreateControlNumberView(Resource.String.arenaCount, Resource.Color.colorArena));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.BathHouseCount, CreateControlNumberView(Resource.String.bathHouseCount, Resource.Color.colorBathHouse));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.LibraryCount, CreateControlNumberView(Resource.String.libraryCount, Resource.Color.colorLibrary));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.HostelCount, CreateControlNumberView(Resource.String.hostelCount, Resource.Color.colorHostel));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.HospitalCount, CreateControlNumberView(Resource.String.hospitalCount, Resource.Color.colorHospital));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.MarketCount, CreateControlNumberView(Resource.String.marketCount, Resource.Color.colorMarket));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ParkCount, CreateControlNumberView(Resource.String.parkCount, Resource.Color.colorPark));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.SchoolCount, CreateControlNumberView(Resource.String.schoolCount, Resource.Color.colorSchool));
-            if (Game.HasModule(ExpansionModule.Granada)
+            if (Game.HasModule(AlhambraBase.ExpansionModule.Granada)
                 && !IsThirdBeforeLeftoverRound)
                 Controls.Add(ResultType.ResidentialAreaCount, CreateControlNumberView(Resource.String.residentialAreaCount, Resource.Color.colorResidentialArea));
             if (Game.GranadaOption == GranadaOption.With
@@ -545,18 +543,18 @@ namespace AlhambraScoringAndroid.UI
 
             //TODO wspólne walidacje z Game do metody
             SetControlNumberRange(ResultType.WallLength, 0, Game.WallsMaxLength, SettingsType.ValidateWallLength);
-            SetControlNumberRange(ResultType.PavilionNumber, 0, Game.BuildingsMaxCount[BuildingType.Pavilion], SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.SeraglioNumber, 0, Game.BuildingsMaxCount[BuildingType.Seraglio], SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.ArcadesNumber, 0, Game.BuildingsMaxCount[BuildingType.Arcades], SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.ChambersNumber, 0, Game.BuildingsMaxCount[BuildingType.Chambers], SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.GardenNumber, 0, Game.BuildingsMaxCount[BuildingType.Garden], SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.TowerNumber, 0, Game.BuildingsMaxCount[BuildingType.Tower], SettingsType.ValidateBuildingsNumber);
-            SetControlNumberRange(ResultType.BonusCardsPavilionNumber, 0, Game.BonusCardsMaxCount[BuildingType.Pavilion], SettingsType.ValidateBonusCards);
-            SetControlNumberRange(ResultType.BonusCardsSeraglioNumber, 0, Game.BonusCardsMaxCount[BuildingType.Seraglio], SettingsType.ValidateBonusCards);
-            SetControlNumberRange(ResultType.BonusCardsArcadesNumber, 0, Game.BonusCardsMaxCount[BuildingType.Arcades], SettingsType.ValidateBonusCards);
-            SetControlNumberRange(ResultType.BonusCardsChambersNumber, 0, Game.BonusCardsMaxCount[BuildingType.Chambers], SettingsType.ValidateBonusCards);
-            SetControlNumberRange(ResultType.BonusCardsGardenNumber, 0, Game.BonusCardsMaxCount[BuildingType.Garden], SettingsType.ValidateBonusCards);
-            SetControlNumberRange(ResultType.BonusCardsTowerNumber, 0, Game.BonusCardsMaxCount[BuildingType.Tower], SettingsType.ValidateBonusCards);
+            SetControlNumberRange(ResultType.PavilionNumber, 0, Game.BuildingsMaxCount[AlhambraBase.BuildingType.Pavilion], SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.SeraglioNumber, 0, Game.BuildingsMaxCount[AlhambraBase.BuildingType.Seraglio], SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.ArcadesNumber, 0, Game.BuildingsMaxCount[AlhambraBase.BuildingType.Arcades], SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.ChambersNumber, 0, Game.BuildingsMaxCount[AlhambraBase.BuildingType.Chambers], SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.GardenNumber, 0, Game.BuildingsMaxCount[AlhambraBase.BuildingType.Garden], SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.TowerNumber, 0, Game.BuildingsMaxCount[AlhambraBase.BuildingType.Tower], SettingsType.ValidateBuildingsNumber);
+            SetControlNumberRange(ResultType.BonusCardsPavilionNumber, 0, GameConstants.BonusCardsMaxCount[AlhambraBase.BuildingType.Pavilion], SettingsType.ValidateBonusCards);
+            SetControlNumberRange(ResultType.BonusCardsSeraglioNumber, 0, GameConstants.BonusCardsMaxCount[AlhambraBase.BuildingType.Seraglio], SettingsType.ValidateBonusCards);
+            SetControlNumberRange(ResultType.BonusCardsArcadesNumber, 0, GameConstants.BonusCardsMaxCount[AlhambraBase.BuildingType.Arcades], SettingsType.ValidateBonusCards);
+            SetControlNumberRange(ResultType.BonusCardsChambersNumber, 0, GameConstants.BonusCardsMaxCount[AlhambraBase.BuildingType.Chambers], SettingsType.ValidateBonusCards);
+            SetControlNumberRange(ResultType.BonusCardsGardenNumber, 0, GameConstants.BonusCardsMaxCount[AlhambraBase.BuildingType.Garden], SettingsType.ValidateBonusCards);
+            SetControlNumberRange(ResultType.BonusCardsTowerNumber, 0, GameConstants.BonusCardsMaxCount[AlhambraBase.BuildingType.Tower], SettingsType.ValidateBonusCards);
             SetControlNumberRange(ResultType.SquaresPavilionNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
             SetControlNumberRange(ResultType.SquaresSeraglioNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
             SetControlNumberRange(ResultType.SquaresArcadesNumber, 0, Game.PlayerSquaresPointsMaxCount, SettingsType.ValidateSquares);
@@ -573,19 +571,19 @@ namespace AlhambraScoringAndroid.UI
             SetControlNumberRange(ResultType.TreasuresValue, 0, Game.TreasuresMaxCount, SettingsType.ValidateTreasures);
             SetControlNumberRange(ResultType.UnprotectedSidesNumber, 0, Game.AllTilesCount, SettingsType.ValidateUnprotectedSides);
             SetControlNumberRange(ResultType.UnprotectedSidesNeighbouringNumber, 0, Game.AllTilesCount, SettingsType.ValidateUnprotectedSides);
-            SetControlNumberRange(ResultType.BazaarsPoints, 0, Game.BazaarsMaxCount*Game.BazaarPointsMaxCount, SettingsType.ValidateBazaarsPoints);
+            SetControlNumberRange(ResultType.BazaarsPoints, 0, Game.BazaarsMaxCount * Game.BazaarPointsMaxCount, SettingsType.ValidateBazaarsPoints);
             SetControlNumberRange(ResultType.ArtOfTheMoorsPoints, 0, 147, SettingsType.ValidateCultureCounters);
             SetControlNumberRange(ResultType.FalconsBlackNumber, 0, Game.FalconsTypeMaxCount, SettingsType.ValidateFalcons);
             SetControlNumberRange(ResultType.FalconsBrownNumber, 0, Game.FalconsTypeMaxCount, SettingsType.ValidateFalcons);
             SetControlNumberRange(ResultType.FalconsWhiteNumber, 0, Game.FalconsTypeMaxCount, SettingsType.ValidateFalcons);
             SetControlNumberRange(ResultType.WatchtowersNumber, 0, Game.AllWatchtowersNumber, SettingsType.ValidateWatchtower);
             SetControlNumberRange(ResultType.MedinasNumber, 0, Game.AllMedinasNumber, SettingsType.ValidateMedin);
-            SetControlNumberRange(ResultType.BuildingsWithoutServantTile, 0, Game.AllBuildingsCount, SettingsType.ValidateServants);
+            SetControlNumberRange(ResultType.BuildingsWithoutServantTile, 0, Game.AllBaseBuildingsCount, SettingsType.ValidateServants);
             SetControlNumberRange(ResultType.FaceDownFruitsNumber, 0, Game.FaceDownFruitsMaxCount, SettingsType.ValidateSingleFruits);
             SetControlNumberRange(ResultType.BathhousesPoints, 0, (Game.AllTilesCount - 1) * 4 * Game.AllBathhousesCount, SettingsType.ValidateBathhouses);
-            SetControlNumberRange(ResultType.WishingWellsPoints, 0, Game.WishingWellsMaxCount*Game.WishingWellPointsMaxCount, SettingsType.ValidateWishingWells);
+            SetControlNumberRange(ResultType.WishingWellsPoints, 0, Game.WishingWellsMaxCount * Game.WishingWellPointsMaxCount, SettingsType.ValidateWishingWells);
             SetControlNumberRange(ResultType.AnimalsPoints, 0, Game.AnimalsMaxCount, SettingsType.ValidateAnimals);
-            SetControlNumberRange(ResultType.BlackDiceTotalPips, 0, Game.BlackDicesMaxCount *Game.BlackDicePipsMaxCount, SettingsType.ValidateBlackDicePips);
+            SetControlNumberRange(ResultType.BlackDiceTotalPips, 0, Game.BlackDicesMaxCount * Game.BlackDicePipsMaxCount, SettingsType.ValidateBlackDicePips);
             SetControlNumberRange(ResultType.ExtensionsPavilionCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
             SetControlNumberRange(ResultType.ExtensionsSeraglioCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
             SetControlNumberRange(ResultType.ExtensionsArcadesCount, 0, Game.ExtensionsBuildingsTypeMaxCount, SettingsType.ValidateExtensions);
@@ -598,9 +596,9 @@ namespace AlhambraScoringAndroid.UI
             SetControlNumberRange(ResultType.Mission2ColumnsCount, 0, Game.AllTilesCount / 3, SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission3Adjacent2BuildingsCount, 0, Game.BuildingsAvailableAdjacent, SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission5LongestDiagonalLine, 0, (Game.AllTilesCount + 1) / 2, SettingsType.ValidateMissions);
-            SetControlNumberRange(ResultType.Mission6DoubleWallCount, 0, Game.GetBuildingsAvailableAdjacent(Game.AllWallTilesCount), SettingsType.ValidateMissions);
+            SetControlNumberRange(ResultType.Mission6DoubleWallCount, 0, GameConstants.GetBuildingsAvailableAdjacent(Game.AllWallTilesCount), SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.Mission8PathBuildingsNumber, 0, (Game.AllTilesCount + 1) / 2, SettingsType.ValidateMissions);
-            SetControlNumberRange(ResultType.Mission9Grids22Count, 0, Game.GetBuildingsAvailable2x2Grids(Game.AllTilesCount), SettingsType.ValidateMissions);
+            SetControlNumberRange(ResultType.Mission9Grids22Count, 0, GameConstants.GetBuildingsAvailable2x2Grids(Game.AllTilesCount), SettingsType.ValidateMissions);
             SetControlNumberRange(ResultType.GuardsCount, 0, Game.AllGuardsCount, SettingsType.ValidateGuardsCount);
             SetControlNumberRange(ResultType.SecondLongestWall, 0, Game.WallsMaxLength / 2 - 2, SettingsType.ValidateSecondLongestWall);
             SetControlNumberRange(ResultType.MoatLength, 0, Game.MoatMaxLength, SettingsType.ValidateMoatLength);
@@ -621,33 +619,33 @@ namespace AlhambraScoringAndroid.UI
         protected void ApplyCorrectingRoundScoring()
         {
             SetControlValue(ResultType.WallLength, CorrectingRoundScoring.WallLength);
-            SetControlValue(ResultType.PavilionNumber, CorrectingRoundScoring.BuildingsCount[BuildingType.Pavilion]);
-            SetControlValue(ResultType.SeraglioNumber, CorrectingRoundScoring.BuildingsCount[BuildingType.Seraglio]);
-            SetControlValue(ResultType.ArcadesNumber, CorrectingRoundScoring.BuildingsCount[BuildingType.Arcades]);
-            SetControlValue(ResultType.ChambersNumber, CorrectingRoundScoring.BuildingsCount[BuildingType.Chambers]);
-            SetControlValue(ResultType.GardenNumber, CorrectingRoundScoring.BuildingsCount[BuildingType.Garden]);
-            SetControlValue(ResultType.TowerNumber, CorrectingRoundScoring.BuildingsCount[BuildingType.Tower]);
-            SetControlValue(ResultType.BonusCardsPavilionNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Pavilion]);
-            SetControlValue(ResultType.BonusCardsSeraglioNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Seraglio]);
-            SetControlValue(ResultType.BonusCardsArcadesNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Arcades]);
-            SetControlValue(ResultType.BonusCardsChambersNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Chambers]);
-            SetControlValue(ResultType.BonusCardsGardenNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Garden]);
-            SetControlValue(ResultType.BonusCardsTowerNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[BuildingType.Tower]);
-            SetControlValue(ResultType.SquaresPavilionNumber, CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Pavilion]);
-            SetControlValue(ResultType.SquaresSeraglioNumber, CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Seraglio]);
-            SetControlValue(ResultType.SquaresArcadesNumber, CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Arcades]);
-            SetControlValue(ResultType.SquaresChambersNumber, CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Chambers]);
-            SetControlValue(ResultType.SquaresGardenNumber, CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Garden]);
-            SetControlValue(ResultType.SquaresTowerNumber, CorrectingRoundScoring.SquaresBuildingsCount[BuildingType.Tower]);
+            SetControlValue(ResultType.PavilionNumber, CorrectingRoundScoring.BuildingsCount[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.SeraglioNumber, CorrectingRoundScoring.BuildingsCount[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.ArcadesNumber, CorrectingRoundScoring.BuildingsCount[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.ChambersNumber, CorrectingRoundScoring.BuildingsCount[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.GardenNumber, CorrectingRoundScoring.BuildingsCount[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.TowerNumber, CorrectingRoundScoring.BuildingsCount[AlhambraBase.BuildingType.Tower]);
+            SetControlValue(ResultType.BonusCardsPavilionNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.BonusCardsSeraglioNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.BonusCardsArcadesNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.BonusCardsChambersNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.BonusCardsGardenNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.BonusCardsTowerNumber, CorrectingRoundScoring.BonusCardsBuildingsCount[AlhambraBase.BuildingType.Tower]);
+            SetControlValue(ResultType.SquaresPavilionNumber, CorrectingRoundScoring.SquaresBuildingsCount[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.SquaresSeraglioNumber, CorrectingRoundScoring.SquaresBuildingsCount[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.SquaresArcadesNumber, CorrectingRoundScoring.SquaresBuildingsCount[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.SquaresChambersNumber, CorrectingRoundScoring.SquaresBuildingsCount[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.SquaresGardenNumber, CorrectingRoundScoring.SquaresBuildingsCount[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.SquaresTowerNumber, CorrectingRoundScoring.SquaresBuildingsCount[AlhambraBase.BuildingType.Tower]);
             SetControlValue(ResultType.OwnedCharacterTheWiseMan, CorrectingRoundScoring.OwnedCharacterTheWiseMan);
             SetControlValue(ResultType.OwnedCharacterTheCityWatch, CorrectingRoundScoring.OwnedCharacterTheCityWatch);
             SetControlValue(ResultType.CampsPoints, CorrectingRoundScoring.CampsPoints);
-            SetControlValue(ResultType.StreetTradersPavilionNumber, CorrectingRoundScoring.StreetTradersNumber[BuildingType.Pavilion]);
-            SetControlValue(ResultType.StreetTradersSeraglioNumber, CorrectingRoundScoring.StreetTradersNumber[BuildingType.Seraglio]);
-            SetControlValue(ResultType.StreetTradersArcadesNumber, CorrectingRoundScoring.StreetTradersNumber[BuildingType.Arcades]);
-            SetControlValue(ResultType.StreetTradersChambersNumber, CorrectingRoundScoring.StreetTradersNumber[BuildingType.Chambers]);
-            SetControlValue(ResultType.StreetTradersGardenNumber, CorrectingRoundScoring.StreetTradersNumber[BuildingType.Garden]);
-            SetControlValue(ResultType.StreetTradersTowerNumber, CorrectingRoundScoring.StreetTradersNumber[BuildingType.Tower]);
+            SetControlValue(ResultType.StreetTradersPavilionNumber, CorrectingRoundScoring.StreetTradersNumber[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.StreetTradersSeraglioNumber, CorrectingRoundScoring.StreetTradersNumber[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.StreetTradersArcadesNumber, CorrectingRoundScoring.StreetTradersNumber[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.StreetTradersChambersNumber, CorrectingRoundScoring.StreetTradersNumber[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.StreetTradersGardenNumber, CorrectingRoundScoring.StreetTradersNumber[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.StreetTradersTowerNumber, CorrectingRoundScoring.StreetTradersNumber[AlhambraBase.BuildingType.Tower]);
             SetControlValue(ResultType.TreasuresValue, CorrectingRoundScoring.TreasuresCount);
             SetControlValue(ResultType.UnprotectedSidesNumber, CorrectingRoundScoring.UnprotectedSidesCount);
             SetControlValue(ResultType.UnprotectedSidesNeighbouringNumber, CorrectingRoundScoring.UnprotectedSidesNeighbouringCount);
@@ -668,26 +666,26 @@ namespace AlhambraScoringAndroid.UI
             SetControlValue(ResultType.FaceDownFruitsNumber, CorrectingRoundScoring.FaceDownFruitsCount);
             SetControlValue(ResultType.BathhousesPoints, CorrectingRoundScoring.BathhousesPoints);
             SetControlValue(ResultType.WishingWellsPoints, CorrectingRoundScoring.WishingWellsPoints);
-            SetControlValue(ResultType.CompletedProjectPavilion, CorrectingRoundScoring.CompletedProjects[BuildingType.Pavilion]);
-            SetControlValue(ResultType.CompletedProjectSeraglio, CorrectingRoundScoring.CompletedProjects[BuildingType.Seraglio]);
-            SetControlValue(ResultType.CompletedProjectArcades, CorrectingRoundScoring.CompletedProjects[BuildingType.Arcades]);
-            SetControlValue(ResultType.CompletedProjectChambers, CorrectingRoundScoring.CompletedProjects[BuildingType.Chambers]);
-            SetControlValue(ResultType.CompletedProjectGarden, CorrectingRoundScoring.CompletedProjects[BuildingType.Garden]);
-            SetControlValue(ResultType.CompletedProjectTower, CorrectingRoundScoring.CompletedProjects[BuildingType.Tower]);
+            SetControlValue(ResultType.CompletedProjectPavilion, CorrectingRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.CompletedProjectSeraglio, CorrectingRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.CompletedProjectArcades, CorrectingRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.CompletedProjectChambers, CorrectingRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.CompletedProjectGarden, CorrectingRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.CompletedProjectTower, CorrectingRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Tower]);
             SetControlValue(ResultType.AnimalsPoints, CorrectingRoundScoring.AnimalsPoints);
-            SetControlValue(ResultType.OwnedSemiBuildingPavilion, CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Pavilion]);
-            SetControlValue(ResultType.OwnedSemiBuildingSeraglio, CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Seraglio]);
-            SetControlValue(ResultType.OwnedSemiBuildingArcades, CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Arcades]);
-            SetControlValue(ResultType.OwnedSemiBuildingChambers, CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Chambers]);
-            SetControlValue(ResultType.OwnedSemiBuildingGarden, CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Garden]);
-            SetControlValue(ResultType.OwnedSemiBuildingTower, CorrectingRoundScoring.OwnedSemiBuildings[BuildingType.Tower]);
+            SetControlValue(ResultType.OwnedSemiBuildingPavilion, CorrectingRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.OwnedSemiBuildingSeraglio, CorrectingRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.OwnedSemiBuildingArcades, CorrectingRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.OwnedSemiBuildingChambers, CorrectingRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.OwnedSemiBuildingGarden, CorrectingRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.OwnedSemiBuildingTower, CorrectingRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Tower]);
             SetControlValue(ResultType.BlackDiceTotalPips, CorrectingRoundScoring.BlackDiceTotalPips);
-            SetControlValue(ResultType.ExtensionsPavilionCount, CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Pavilion]);
-            SetControlValue(ResultType.ExtensionsSeraglioCount, CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Seraglio]);
-            SetControlValue(ResultType.ExtensionsArcadesCount, CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Arcades]);
-            SetControlValue(ResultType.ExtensionsChambersCount, CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Chambers]);
-            SetControlValue(ResultType.ExtensionsGardenCount, CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Garden]);
-            SetControlValue(ResultType.ExtensionsTowerCount, CorrectingRoundScoring.ExtensionsBuildingsCount[BuildingType.Tower]);
+            SetControlValue(ResultType.ExtensionsPavilionCount, CorrectingRoundScoring.ExtensionsBuildingsCount[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.ExtensionsSeraglioCount, CorrectingRoundScoring.ExtensionsBuildingsCount[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.ExtensionsArcadesCount, CorrectingRoundScoring.ExtensionsBuildingsCount[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.ExtensionsChambersCount, CorrectingRoundScoring.ExtensionsBuildingsCount[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.ExtensionsGardenCount, CorrectingRoundScoring.ExtensionsBuildingsCount[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.ExtensionsTowerCount, CorrectingRoundScoring.ExtensionsBuildingsCount[AlhambraBase.BuildingType.Tower]);
             SetControlValue(ResultType.HandymenTilesHighestNumber, CorrectingRoundScoring.HandymenTilesHighestNumber);
             SetControlValue(ResultType.TreasuresPoints, CorrectingRoundScoring.TreasuresPoints);
             SetControlValue(ResultType.Mission1RowsCount, CorrectingRoundScoring.Mission1Count);
@@ -697,24 +695,24 @@ namespace AlhambraScoringAndroid.UI
             SetControlValue(ResultType.Mission6DoubleWallCount, CorrectingRoundScoring.Mission6Count);
             SetControlValue(ResultType.Mission8PathBuildingsNumber, CorrectingRoundScoring.Mission8Count);
             SetControlValue(ResultType.Mission9Grids22Count, CorrectingRoundScoring.Mission9Count);
-            SetControlValue(ResultType.OwnedHalfBuildingPavilion, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Pavilion]);
-            SetControlValue(ResultType.OwnedHalfBuildingSeraglio, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Seraglio]);
-            SetControlValue(ResultType.OwnedHalfBuildingArcades, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Arcades]);
-            SetControlValue(ResultType.OwnedHalfBuildingChambers, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Chambers]);
-            SetControlValue(ResultType.OwnedHalfBuildingGarden, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Garden]);
-            SetControlValue(ResultType.OwnedHalfBuildingTower, CorrectingRoundScoring.OwnedHalfBuildings[BuildingType.Tower]);
+            SetControlValue(ResultType.OwnedHalfBuildingPavilion, CorrectingRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.OwnedHalfBuildingSeraglio, CorrectingRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.OwnedHalfBuildingArcades, CorrectingRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.OwnedHalfBuildingChambers, CorrectingRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.OwnedHalfBuildingGarden, CorrectingRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.OwnedHalfBuildingTower, CorrectingRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Tower]);
             SetControlValue(ResultType.GuardsCount, CorrectingRoundScoring.GuardsCount);
             SetControlValue(ResultType.SecondLongestWall, CorrectingRoundScoring.SecondLongestWallLength);
             SetControlValue(ResultType.MoatLength, CorrectingRoundScoring.MoatLength);
-            SetControlValue(ResultType.ArenaCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Arena]);
-            SetControlValue(ResultType.BathHouseCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.BathHouse]);
-            SetControlValue(ResultType.LibraryCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Library]);
-            SetControlValue(ResultType.HostelCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Hostel]);
-            SetControlValue(ResultType.HospitalCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Hospital]);
-            SetControlValue(ResultType.MarketCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Market]);
-            SetControlValue(ResultType.ParkCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.Park]);
-            SetControlValue(ResultType.SchoolCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.School]);
-            SetControlValue(ResultType.ResidentialAreaCount, CorrectingRoundScoring.GranadaBuildingsCount[GranadaBuildingType.ResidentialArea]);
+            SetControlValue(ResultType.ArenaCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.Arena]);
+            SetControlValue(ResultType.BathHouseCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.BathHouse]);
+            SetControlValue(ResultType.LibraryCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.Library]);
+            SetControlValue(ResultType.HostelCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.Hostel]);
+            SetControlValue(ResultType.HospitalCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.Hospital]);
+            SetControlValue(ResultType.MarketCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.Market]);
+            SetControlValue(ResultType.ParkCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.Park]);
+            SetControlValue(ResultType.SchoolCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.School]);
+            SetControlValue(ResultType.ResidentialAreaCount, CorrectingRoundScoring.GranadaBuildingsCount[AlhambraBase.GranadaBuildingType.ResidentialArea]);
             SetControlValue(ResultType.WallMoatCombination, CorrectingRoundScoring.WallMoatCombinationLength);
         }
 
@@ -722,29 +720,29 @@ namespace AlhambraScoringAndroid.UI
         {
             SetControlValue(ResultType.OwnedCharacterTheWiseMan, PreviousRoundScoring.OwnedCharacterTheWiseMan);
             SetControlValue(ResultType.OwnedCharacterTheCityWatch, PreviousRoundScoring.OwnedCharacterTheCityWatch);
-            SetControlValue(ResultType.CompletedProjectPavilion, PreviousRoundScoring.CompletedProjects[BuildingType.Pavilion]);
-            SetControlValue(ResultType.CompletedProjectSeraglio, PreviousRoundScoring.CompletedProjects[BuildingType.Seraglio]);
-            SetControlValue(ResultType.CompletedProjectArcades, PreviousRoundScoring.CompletedProjects[BuildingType.Arcades]);
-            SetControlValue(ResultType.CompletedProjectChambers, PreviousRoundScoring.CompletedProjects[BuildingType.Chambers]);
-            SetControlValue(ResultType.CompletedProjectGarden, PreviousRoundScoring.CompletedProjects[BuildingType.Garden]);
-            SetControlValue(ResultType.CompletedProjectTower, PreviousRoundScoring.CompletedProjects[BuildingType.Tower]);
-            SetControlValue(ResultType.OwnedSemiBuildingPavilion, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Pavilion]);
-            SetControlValue(ResultType.OwnedSemiBuildingSeraglio, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Seraglio]);
-            SetControlValue(ResultType.OwnedSemiBuildingArcades, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Arcades]);
-            SetControlValue(ResultType.OwnedSemiBuildingChambers, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Chambers]);
-            SetControlValue(ResultType.OwnedSemiBuildingGarden, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Garden]);
-            SetControlValue(ResultType.OwnedSemiBuildingTower, PreviousRoundScoring.OwnedSemiBuildings[BuildingType.Tower]);
-            SetControlValue(ResultType.OwnedHalfBuildingPavilion, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Pavilion]);
-            SetControlValue(ResultType.OwnedHalfBuildingSeraglio, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Seraglio]);
-            SetControlValue(ResultType.OwnedHalfBuildingArcades, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Arcades]);
-            SetControlValue(ResultType.OwnedHalfBuildingChambers, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Chambers]);
-            SetControlValue(ResultType.OwnedHalfBuildingGarden, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Garden]);
-            SetControlValue(ResultType.OwnedHalfBuildingTower, PreviousRoundScoring.OwnedHalfBuildings[BuildingType.Tower]);
+            SetControlValue(ResultType.CompletedProjectPavilion, PreviousRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.CompletedProjectSeraglio, PreviousRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.CompletedProjectArcades, PreviousRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.CompletedProjectChambers, PreviousRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.CompletedProjectGarden, PreviousRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.CompletedProjectTower, PreviousRoundScoring.CompletedProjects[AlhambraBase.BuildingType.Tower]);
+            SetControlValue(ResultType.OwnedSemiBuildingPavilion, PreviousRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.OwnedSemiBuildingSeraglio, PreviousRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.OwnedSemiBuildingArcades, PreviousRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.OwnedSemiBuildingChambers, PreviousRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.OwnedSemiBuildingGarden, PreviousRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.OwnedSemiBuildingTower, PreviousRoundScoring.OwnedSemiBuildings[AlhambraBase.BuildingType.Tower]);
+            SetControlValue(ResultType.OwnedHalfBuildingPavilion, PreviousRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Pavilion]);
+            SetControlValue(ResultType.OwnedHalfBuildingSeraglio, PreviousRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Seraglio]);
+            SetControlValue(ResultType.OwnedHalfBuildingArcades, PreviousRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Arcades]);
+            SetControlValue(ResultType.OwnedHalfBuildingChambers, PreviousRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Chambers]);
+            SetControlValue(ResultType.OwnedHalfBuildingGarden, PreviousRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Garden]);
+            SetControlValue(ResultType.OwnedHalfBuildingTower, PreviousRoundScoring.OwnedHalfBuildings[AlhambraBase.BuildingType.Tower]);
         }
 
         private void EnabledSecondLongestWall()
         {
-            SetControlEnabled(ResultType.SecondLongestWall, GetControlValue<int>(ResultType.BlackDiceTotalPips) != 0 || (Game.HasModule(ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound));
+            SetControlEnabled(ResultType.SecondLongestWall, GetControlValue<int>(ResultType.BlackDiceTotalPips) != 0 || (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines) && Game.HasCaliphsGuideline(CaliphsGuidelinesMission.Mission4) && IsFinalRound));
         }
     }
 }

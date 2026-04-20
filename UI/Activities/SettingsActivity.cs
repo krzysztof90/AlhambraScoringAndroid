@@ -25,8 +25,10 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             foreach (SettingsType settingsType in Enum.GetValues(typeof(SettingsType)).Cast<SettingsType>().ToList())
             {
-                ControlCheckBoxView checkBox = new ControlCheckBoxView(this);
-                checkBox.LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+                ControlCheckBoxView checkBox = new ControlCheckBoxView(this)
+                {
+                    LayoutParameters = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent)
+                };
                 checkBox.SetLabel(settingsType.GetEnumDescription(Resources));
                 checkBox.Value = SettingsManager.Get(settingsType);
                 checkBox.OnValueChange = () => { SettingsManager.Set(settingsType, checkBox.Value); };

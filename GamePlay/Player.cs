@@ -48,21 +48,15 @@ namespace AlhambraScoringAndroid.GamePlay
 
         public ScoreDetails GetScoreDetails(ScoringRound round)
         {
-            switch (round)
+            return round switch
             {
-                case ScoringRound.First:
-                    return ScoreDetails1;
-                case ScoringRound.Second:
-                    return ScoreDetails2;
-                case ScoringRound.ThirdBeforeLeftover:
-                    return ScoreDetails3;
-                case ScoringRound.Third:
-                    return ScoreDetails3;
-                case ScoringRound.Finish:
-                    return ScoreDetails1 + ScoreDetails2 + ScoreDetails3 + ScoreMeantime;
-                default:
-                    throw new ArgumentException();
-            }
+                ScoringRound.First => ScoreDetails1,
+                ScoringRound.Second => ScoreDetails2,
+                ScoringRound.ThirdBeforeLeftover => ScoreDetails3,
+                ScoringRound.Third => ScoreDetails3,
+                ScoringRound.Finish => ScoreDetails1 + ScoreDetails2 + ScoreDetails3 + ScoreMeantime,
+                _ => throw new ArgumentException(),
+            };
         }
 
         public void AddScore(int score, ScoreType scoreType)
@@ -72,8 +66,6 @@ namespace AlhambraScoringAndroid.GamePlay
             ScoreDetails scoreDetails = (scoreType == ScoreType.Immediately || scoreType == ScoreType.Starting) ? ScoreMeantime : CurrentScoreDetails;
             field.SetValue(scoreDetails, ((int)field.GetValue(scoreDetails)) + score);
         }
-        //do Invaders, Medina, BuildingsWithoutServantTile przekazywane dodatnie
-        //do Immediately przekazywane ujemne
         public void RemoveScore(int score, bool allowNegative, ScoreType scoreType)
         {
             //in case you may not have less than 0 points, but there is already

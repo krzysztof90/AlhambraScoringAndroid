@@ -167,7 +167,7 @@
   <string name="viziers_favour">Vizier’s Favour</string>
   <string name="currency_exchange_cards">Currency Exchange Cards</string>
   <string name="bonus_cards">Bonus Cards</string>
-  <string name="squares">Squares</string>
+  <string name="squares">Squares (The Workers’ Huts)</string>
   <string name="city_gates">City Gates</string>
   <string name="diamonds">Diamonds</string>
   <string name="characters">Characters</string>
@@ -336,7 +336,7 @@
   <string name="confirm">Confirm</string>
   <string name="granada_buildings_tie_desc">In case of Granada buildings number tie you need to consider higher purchase price</string>
   <string name="the_wise_man_desc">When owned character The Wise Man you need to chose one half building</string>
-  <string name="medina_tie_desc">In case of medinas number you need to consider higher purchase price</string>
+  <string name="medina_tie_desc">In case of medinas number tie you need to consider higher purchase price</string>
   <string name="guards_desc">You need to consider where guards on placement tiles are standing</string>
   <string name="chose">Chose</string>
   <string name="play">Play</string>

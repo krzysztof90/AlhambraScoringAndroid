@@ -6,6 +6,7 @@ using Android.Widget;
 using AndroidBase.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AlhambraScoringAndroid.UI.Activities
 {
@@ -124,7 +125,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             Button startButton = FindViewById<Button>(Resource.Id.startButton);
             startButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.GameApplyModules(adapter.SelectedList, adapter2.SelectedList[granadaName], adapter3.SelectedList[alcazabaName]);
+                Application.GameApplyModules(adapter.SelectedList.Cast<AlhambraBase.ExpansionModule>(), adapter2.SelectedList[granadaName], adapter3.SelectedList[alcazabaName]);
             });
         }
 

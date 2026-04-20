@@ -17,16 +17,16 @@ namespace AlhambraScoringAndroid.GamePlay
 
         [ResultAttribute(ResultType.WallLength)]
         public int WallLength { get; private set; }
-        public Dictionary<BuildingType, int> BuildingsCount { get; private set; }
-        public Dictionary<BuildingType, int> BonusCardsBuildingsCount { get; private set; }
-        public Dictionary<BuildingType, int> SquaresBuildingsCount { get; private set; }
+        public Dictionary<AlhambraBase.BuildingType, int> BuildingsCount { get; private set; }
+        public Dictionary<AlhambraBase.BuildingType, int> BonusCardsBuildingsCount { get; private set; }
+        public Dictionary<AlhambraBase.BuildingType, int> SquaresBuildingsCount { get; private set; }
         [ResultAttribute(ResultType.OwnedCharacterTheWiseMan)]
         public bool OwnedCharacterTheWiseMan { get; private set; }
         [ResultAttribute(ResultType.OwnedCharacterTheCityWatch)]
         public bool OwnedCharacterTheCityWatch { get; private set; }
         [ResultAttribute(ResultType.CampsPoints)]
         public int CampsPoints { get; private set; }
-        public Dictionary<BuildingType, int> StreetTradersNumber { get; private set; }
+        public Dictionary<AlhambraBase.BuildingType, int> StreetTradersNumber { get; private set; }
         [ResultAttribute(ResultType.TreasuresValue)]
         public int TreasuresCount { get; private set; }
         [ResultAttribute(ResultType.UnprotectedSidesNumber)]
@@ -67,14 +67,14 @@ namespace AlhambraScoringAndroid.GamePlay
         public int BathhousesPoints { get; private set; }
         [ResultAttribute(ResultType.WishingWellsPoints)]
         public int WishingWellsPoints { get; private set; }
-        public Dictionary<BuildingType, bool> CompletedProjects { get; private set; }
+        public Dictionary<AlhambraBase.BuildingType, bool> CompletedProjects { get; private set; }
         [ResultAttribute(ResultType.AnimalsPoints)]
         public int AnimalsPoints { get; private set; }
         //From gates without end
-        public Dictionary<BuildingType, bool> OwnedSemiBuildings { get; private set; }
+        public Dictionary<AlhambraBase.BuildingType, bool> OwnedSemiBuildings { get; private set; }
         [ResultAttribute(ResultType.BlackDiceTotalPips)]
         public int BlackDiceTotalPips { get; private set; }
-        public Dictionary<BuildingType, int> ExtensionsBuildingsCount { get; private set; }
+        public Dictionary<AlhambraBase.BuildingType, int> ExtensionsBuildingsCount { get; private set; }
         [ResultAttribute(ResultType.HandymenTilesHighestNumber)]
         public int HandymenTilesHighestNumber { get; private set; }
         [ResultAttribute(ResultType.TreasuresPoints)]
@@ -94,21 +94,24 @@ namespace AlhambraScoringAndroid.GamePlay
         [ResultAttribute(ResultType.Mission9Grids22Count)]
         public int Mission9Count { get; private set; }
         //From red palace
-        public Dictionary<BuildingType, bool> OwnedHalfBuildings { get; private set; }
+        public Dictionary<AlhambraBase.BuildingType, bool> OwnedHalfBuildings { get; private set; }
         [ResultAttribute(ResultType.GuardsCount)]
         public int GuardsCount { get; private set; }
         [ResultAttribute(ResultType.SecondLongestWall)]
         public int SecondLongestWallLength { get; private set; }
         [ResultAttribute(ResultType.MoatLength)]
         public int MoatLength { get; private set; }
-        public Dictionary<GranadaBuildingType, int> GranadaBuildingsCount { get; private set; }
+        public Dictionary<AlhambraBase.GranadaBuildingType, int> GranadaBuildingsCount { get; private set; }
         [ResultAttribute(ResultType.WallMoatCombination)]
         public int WallMoatCombinationLength { get; private set; }
 
-        public BuildingType? TheWiseManBuildingType { get; set; }
+        public AlhambraBase.BuildingType? TheWiseManBuildingType { get; set; }
         public int? MedinaHighestPrice { get; set; }
-        public Dictionary<GranadaBuildingType, int> GranadaBuildingsHighestPrices { get; set; }
+        public Dictionary<AlhambraBase.GranadaBuildingType, int> GranadaBuildingsHighestPrices { get; set; }
 
+        public Dictionary<AlhambraBase.BuildingType, int> BaseBuildings => BuildingsCount.ToDictionary(b => b.Key, b => Math.Min(b.Value, Game.BaseBuildingsMaxCount[b.Key]));
+
+        public int BaseBuildingsCount => BaseBuildings.Sum(b => b.Value);
         public int AllBuildingsCount => BuildingsCount.Sum(b => b.Value);
         //including 1 starting tile
         //not 'Available'Tiles
@@ -117,9 +120,7 @@ namespace AlhambraScoringAndroid.GamePlay
         public int AllWallTilesCount => AllWallBuildingsCount + MedinasNumber;
         public int AllGranadaBuildingsCount => GranadaBuildingsCount.Sum(b => b.Value);
         //including 1 starting tile
-        public int AllGranadaTilesCount => GranadaBuildingsCount.Sum(b => b.Value)+1;
-
-        public Dictionary<BuildingType, int> BaseBuildingsCount => BuildingsCount.ToDictionary(b => b.Key, b => Math.Min(b.Value, Game.BaseBuildingsMaxCount[b.Key]));
+        public int AllGranadaTilesCount => GranadaBuildingsCount.Sum(b => b.Value) + 1;
 
         public PlayerScoreData(PlaceholderPlayerScoreFragment fragment)
         {
@@ -127,93 +128,91 @@ namespace AlhambraScoringAndroid.GamePlay
             PlayerNumber = fragment.PlayerNumber;
 
             foreach (PropertyInfo field in this.GetType().GetProperties().Where(p => p.GetFieldAttribute<ResultAttribute>() != null))
-            {
                 field.SetValue(this, fragment.GetControlValueObject(field.GetFieldAttribute<ResultAttribute>().ResultType));
-            }
 
-            BuildingsCount = new Dictionary<BuildingType, int>()
+            BuildingsCount = new Dictionary<AlhambraBase.BuildingType, int>()
             {
-                [BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.PavilionNumber),
-                [BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.SeraglioNumber),
-                [BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.ArcadesNumber),
-                [BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.ChambersNumber),
-                [BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.GardenNumber),
-                [BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.TowerNumber),
+                [AlhambraBase.BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.PavilionNumber),
+                [AlhambraBase.BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.SeraglioNumber),
+                [AlhambraBase.BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.ArcadesNumber),
+                [AlhambraBase.BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.ChambersNumber),
+                [AlhambraBase.BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.GardenNumber),
+                [AlhambraBase.BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.TowerNumber),
             };
-            BonusCardsBuildingsCount = new Dictionary<BuildingType, int>()
+            BonusCardsBuildingsCount = new Dictionary<AlhambraBase.BuildingType, int>()
             {
-                [BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.BonusCardsPavilionNumber),
-                [BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.BonusCardsSeraglioNumber),
-                [BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.BonusCardsArcadesNumber),
-                [BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.BonusCardsChambersNumber),
-                [BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.BonusCardsGardenNumber),
-                [BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.BonusCardsTowerNumber),
+                [AlhambraBase.BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.BonusCardsPavilionNumber),
+                [AlhambraBase.BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.BonusCardsSeraglioNumber),
+                [AlhambraBase.BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.BonusCardsArcadesNumber),
+                [AlhambraBase.BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.BonusCardsChambersNumber),
+                [AlhambraBase.BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.BonusCardsGardenNumber),
+                [AlhambraBase.BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.BonusCardsTowerNumber),
             };
-            SquaresBuildingsCount = new Dictionary<BuildingType, int>()
+            SquaresBuildingsCount = new Dictionary<AlhambraBase.BuildingType, int>()
             {
-                [BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.SquaresPavilionNumber),
-                [BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.SquaresSeraglioNumber),
-                [BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.SquaresArcadesNumber),
-                [BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.SquaresChambersNumber),
-                [BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.SquaresGardenNumber),
-                [BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.SquaresTowerNumber),
+                [AlhambraBase.BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.SquaresPavilionNumber),
+                [AlhambraBase.BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.SquaresSeraglioNumber),
+                [AlhambraBase.BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.SquaresArcadesNumber),
+                [AlhambraBase.BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.SquaresChambersNumber),
+                [AlhambraBase.BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.SquaresGardenNumber),
+                [AlhambraBase.BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.SquaresTowerNumber),
             };
-            StreetTradersNumber = new Dictionary<BuildingType, int>()
+            StreetTradersNumber = new Dictionary<AlhambraBase.BuildingType, int>()
             {
-                [BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.StreetTradersPavilionNumber),
-                [BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.StreetTradersSeraglioNumber),
-                [BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.StreetTradersArcadesNumber),
-                [BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.StreetTradersChambersNumber),
-                [BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.StreetTradersGardenNumber),
-                [BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.StreetTradersTowerNumber),
+                [AlhambraBase.BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.StreetTradersPavilionNumber),
+                [AlhambraBase.BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.StreetTradersSeraglioNumber),
+                [AlhambraBase.BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.StreetTradersArcadesNumber),
+                [AlhambraBase.BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.StreetTradersChambersNumber),
+                [AlhambraBase.BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.StreetTradersGardenNumber),
+                [AlhambraBase.BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.StreetTradersTowerNumber),
             };
-            CompletedProjects = new Dictionary<BuildingType, bool>()
+            CompletedProjects = new Dictionary<AlhambraBase.BuildingType, bool>()
             {
-                [BuildingType.Pavilion] = fragment.GetControlValue<bool>(ResultType.CompletedProjectPavilion),
-                [BuildingType.Seraglio] = fragment.GetControlValue<bool>(ResultType.CompletedProjectSeraglio),
-                [BuildingType.Arcades] = fragment.GetControlValue<bool>(ResultType.CompletedProjectArcades),
-                [BuildingType.Chambers] = fragment.GetControlValue<bool>(ResultType.CompletedProjectChambers),
-                [BuildingType.Garden] = fragment.GetControlValue<bool>(ResultType.CompletedProjectGarden),
-                [BuildingType.Tower] = fragment.GetControlValue<bool>(ResultType.CompletedProjectTower),
+                [AlhambraBase.BuildingType.Pavilion] = fragment.GetControlValue<bool>(ResultType.CompletedProjectPavilion),
+                [AlhambraBase.BuildingType.Seraglio] = fragment.GetControlValue<bool>(ResultType.CompletedProjectSeraglio),
+                [AlhambraBase.BuildingType.Arcades] = fragment.GetControlValue<bool>(ResultType.CompletedProjectArcades),
+                [AlhambraBase.BuildingType.Chambers] = fragment.GetControlValue<bool>(ResultType.CompletedProjectChambers),
+                [AlhambraBase.BuildingType.Garden] = fragment.GetControlValue<bool>(ResultType.CompletedProjectGarden),
+                [AlhambraBase.BuildingType.Tower] = fragment.GetControlValue<bool>(ResultType.CompletedProjectTower),
             };
-            OwnedSemiBuildings = new Dictionary<BuildingType, bool>()
+            OwnedSemiBuildings = new Dictionary<AlhambraBase.BuildingType, bool>()
             {
-                [BuildingType.Pavilion] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingPavilion),
-                [BuildingType.Seraglio] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingSeraglio),
-                [BuildingType.Arcades] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingArcades),
-                [BuildingType.Chambers] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingChambers),
-                [BuildingType.Garden] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingGarden),
-                [BuildingType.Tower] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingTower),
+                [AlhambraBase.BuildingType.Pavilion] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingPavilion),
+                [AlhambraBase.BuildingType.Seraglio] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingSeraglio),
+                [AlhambraBase.BuildingType.Arcades] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingArcades),
+                [AlhambraBase.BuildingType.Chambers] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingChambers),
+                [AlhambraBase.BuildingType.Garden] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingGarden),
+                [AlhambraBase.BuildingType.Tower] = fragment.GetControlValue<bool>(ResultType.OwnedSemiBuildingTower),
             };
-            ExtensionsBuildingsCount = new Dictionary<BuildingType, int>()
+            ExtensionsBuildingsCount = new Dictionary<AlhambraBase.BuildingType, int>()
             {
-                [BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.ExtensionsPavilionCount),
-                [BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.ExtensionsSeraglioCount),
-                [BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.ExtensionsArcadesCount),
-                [BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.ExtensionsChambersCount),
-                [BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.ExtensionsGardenCount),
-                [BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.ExtensionsTowerCount),
+                [AlhambraBase.BuildingType.Pavilion] = fragment.GetControlValue<int>(ResultType.ExtensionsPavilionCount),
+                [AlhambraBase.BuildingType.Seraglio] = fragment.GetControlValue<int>(ResultType.ExtensionsSeraglioCount),
+                [AlhambraBase.BuildingType.Arcades] = fragment.GetControlValue<int>(ResultType.ExtensionsArcadesCount),
+                [AlhambraBase.BuildingType.Chambers] = fragment.GetControlValue<int>(ResultType.ExtensionsChambersCount),
+                [AlhambraBase.BuildingType.Garden] = fragment.GetControlValue<int>(ResultType.ExtensionsGardenCount),
+                [AlhambraBase.BuildingType.Tower] = fragment.GetControlValue<int>(ResultType.ExtensionsTowerCount),
             };
-            OwnedHalfBuildings = new Dictionary<BuildingType, bool>()
+            OwnedHalfBuildings = new Dictionary<AlhambraBase.BuildingType, bool>()
             {
-                [BuildingType.Pavilion] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingPavilion),
-                [BuildingType.Seraglio] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingSeraglio),
-                [BuildingType.Arcades] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingArcades),
-                [BuildingType.Chambers] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingChambers),
-                [BuildingType.Garden] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingGarden),
-                [BuildingType.Tower] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingTower),
+                [AlhambraBase.BuildingType.Pavilion] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingPavilion),
+                [AlhambraBase.BuildingType.Seraglio] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingSeraglio),
+                [AlhambraBase.BuildingType.Arcades] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingArcades),
+                [AlhambraBase.BuildingType.Chambers] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingChambers),
+                [AlhambraBase.BuildingType.Garden] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingGarden),
+                [AlhambraBase.BuildingType.Tower] = fragment.GetControlValue<bool>(ResultType.OwnedHalfBuildingTower),
             };
-            GranadaBuildingsCount = new Dictionary<GranadaBuildingType, int>()
+            GranadaBuildingsCount = new Dictionary<AlhambraBase.GranadaBuildingType, int>()
             {
-                [GranadaBuildingType.Arena] = fragment.GetControlValue<int>(ResultType.ArenaCount),
-                [GranadaBuildingType.BathHouse] = fragment.GetControlValue<int>(ResultType.BathHouseCount),
-                [GranadaBuildingType.Library] = fragment.GetControlValue<int>(ResultType.LibraryCount),
-                [GranadaBuildingType.Hostel] = fragment.GetControlValue<int>(ResultType.HostelCount),
-                [GranadaBuildingType.Hospital] = fragment.GetControlValue<int>(ResultType.HospitalCount),
-                [GranadaBuildingType.Market] = fragment.GetControlValue<int>(ResultType.MarketCount),
-                [GranadaBuildingType.Park] = fragment.GetControlValue<int>(ResultType.ParkCount),
-                [GranadaBuildingType.School] = fragment.GetControlValue<int>(ResultType.SchoolCount),
-                [GranadaBuildingType.ResidentialArea] = fragment.GetControlValue<int>(ResultType.ResidentialAreaCount),
+                [AlhambraBase.GranadaBuildingType.Arena] = fragment.GetControlValue<int>(ResultType.ArenaCount),
+                [AlhambraBase.GranadaBuildingType.BathHouse] = fragment.GetControlValue<int>(ResultType.BathHouseCount),
+                [AlhambraBase.GranadaBuildingType.Library] = fragment.GetControlValue<int>(ResultType.LibraryCount),
+                [AlhambraBase.GranadaBuildingType.Hostel] = fragment.GetControlValue<int>(ResultType.HostelCount),
+                [AlhambraBase.GranadaBuildingType.Hospital] = fragment.GetControlValue<int>(ResultType.HospitalCount),
+                [AlhambraBase.GranadaBuildingType.Market] = fragment.GetControlValue<int>(ResultType.MarketCount),
+                [AlhambraBase.GranadaBuildingType.Park] = fragment.GetControlValue<int>(ResultType.ParkCount),
+                [AlhambraBase.GranadaBuildingType.School] = fragment.GetControlValue<int>(ResultType.SchoolCount),
+                [AlhambraBase.GranadaBuildingType.ResidentialArea] = fragment.GetControlValue<int>(ResultType.ResidentialAreaCount),
             };
         }
     }

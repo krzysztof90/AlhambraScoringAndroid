@@ -1,6 +1,6 @@
 <resources>
   <string name="allowed_range">Dozwolony zakres to {0} - {1}</string>
-  <string name="except_range">Niedozwolona liczna</string>
+  <string name="except_range">Niedozwolona liczba</string>
   <string name="main_title">Kalkulator Alhambra</string>
   <string name="action_settings">Ustawienia</string>
   <string name="action_about">Informacje</string>
@@ -169,7 +169,7 @@
   <string name="viziers_favour">Vizier’s Favour</string>
   <string name="currency_exchange_cards">Currency Exchange Cards</string>
   <string name="bonus_cards">Bonus Cards</string>
-  <string name="squares">Squares</string>
+  <string name="squares">Squares (The Workers’ Huts)</string>
   <string name="city_gates">City Gates</string>
   <string name="diamonds">Diamonds</string>
   <string name="characters">Characters</string>

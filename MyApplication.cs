@@ -15,14 +15,6 @@ namespace AlhambraScoringAndroid
     [Application]
     public class MyApplication : AndroidBaseApplication
     {
-        //TODO BGG
-        //TODO przezroczyste obrazki
-        //TODO minSdkVersion
-        //TODO restore state after application (automatic) close
-        //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-        //global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-        //LoadApplication(new App());
-
         public List<ResultHistory> Results { get; private set; }
         public Game Game { get; private set; }
         private GameInProgressActivity gameInProgressActivity;
@@ -37,13 +29,13 @@ namespace AlhambraScoringAndroid
         {
             neededScoreAdditionalActions = new List<(Func<bool> condition, Type activityType)>()
             {
-                (()=> Game.HasModule(ExpansionModule.ExpansionCharacters) && CharacterTheWiseManActivity.Show(GameScoreSubmitScoreData),
+                (()=> Game.HasModule(AlhambraBase.ExpansionModule.ExpansionCharacters) && CharacterTheWiseManActivity.Show(GameScoreSubmitScoreData),
                 typeof(CharacterTheWiseManActivity)),
-                (()=> Game.HasModule(ExpansionModule.QueenieMedina) && MedinaNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Count != 0,
+                (()=> Game.HasModule(AlhambraBase.ExpansionModule.QueenieMedina) && MedinaNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Count != 0,
                 typeof(MedinaNumberActivity)),
-                (()=> Game.HasModule(ExpansionModule.RedPalaceLandTiles) && RoundScoringDataActivity.Show(GameScoreSubmitScoreData),
-                typeof(RoundScoringDataActivity)),
-                (()=> Game.HasModule(ExpansionModule.Granada) && GranadaBuildingsNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Any(d => d.Value.Count != 0),
+                (()=> Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles) && GuardsPointsActivity.Show(GameScoreSubmitScoreData),
+                typeof(GuardsPointsActivity)),
+                (()=> Game.HasModule(AlhambraBase.ExpansionModule.Granada) && GranadaBuildingsNumberActivity.GetTiePlayerNumbers(GameScoreSubmitScoreData, Game.RoundNumber).Any(d => d.Value.Count != 0),
                 typeof(GranadaBuildingsNumberActivity)),
             };
         }
@@ -85,12 +77,12 @@ namespace AlhambraScoringAndroid
             }
         }
 
-        public void GameApplyModules(IEnumerable<ExpansionModule> modules, GranadaOption granadaOption, AlcazabaOption alcazabaOption)
+        public void GameApplyModules(IEnumerable<AlhambraBase.ExpansionModule> modules, GranadaOption granadaOption, AlcazabaOption alcazabaOption)
         {
             Game.SetModules(modules);
             Game.SetGranadaOption(granadaOption);
             Game.SetAlcazabaOption(alcazabaOption);
-            if (modules.Contains(ExpansionModule.ExpansionNewScoreCards) || modules.Contains(ExpansionModule.FanCaliphsGuidelines))
+            if (modules.Contains(AlhambraBase.ExpansionModule.ExpansionNewScoreCards) || modules.Contains(AlhambraBase.ExpansionModule.FanCaliphsGuidelines))
                 NewActivity(typeof(GameModulesDetailsChoseActivity));
             else
                 NewActivity(typeof(GameSetupInstructionActivity));
@@ -178,12 +170,11 @@ namespace AlhambraScoringAndroid
             }
         }
 
-        public void ConfirmTheWiseManChose(CharacterTheWiseManActivity activity, BuildingType? buildingType)
+        public void ConfirmTheWiseManChose(CharacterTheWiseManActivity activity, AlhambraBase.BuildingType? buildingType)
         {
             activity.SetTheWiseManBuildingType(buildingType);
             TryScore(activity);
         }
-
         public void ConfirmMedinasNumber(MedinaNumberActivity activity, Dictionary<int, int> playersHighestPrices)
         {
             if (Game.ValidateMedinasNumbers(playersHighestPrices))
@@ -192,15 +183,15 @@ namespace AlhambraScoringAndroid
                 TryScore(activity);
             }
         }
-        public void ConfirmRoundScoringData(RoundScoringDataActivity activity, int guardsPoints)
+        public void ConfirmGuardsPoints(GuardsPointsActivity activity, int guardsPoints)
         {
-            if (Game.ValidateRoundScoringData(guardsPoints))
+            if (Game.ValidateGuardsPoints(guardsPoints))
             {
-                activity.SetRoundScoringData(guardsPoints);
+                activity.SetGuardsPoints(guardsPoints);
                 TryScore(activity);
             }
         }
-        public void ConfirmGranadaBuildingsNumbers(GranadaBuildingsNumberActivity activity, Dictionary<GranadaBuildingType, Dictionary<int, int>> playersHighestPrices)
+        public void ConfirmGranadaBuildingsNumbers(GranadaBuildingsNumberActivity activity, Dictionary<AlhambraBase.GranadaBuildingType, Dictionary<int, int>> playersHighestPrices)
         {
             if (Game.ValidateGranadaBuildingsNumbers(playersHighestPrices))
             {

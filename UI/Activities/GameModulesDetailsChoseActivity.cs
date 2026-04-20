@@ -55,7 +55,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             ExpandListCheckBoxAdapterSingle<NewScoreCard> adapterNewScoreCards = null;
             ExpandListCheckBoxAdapterMultiple<CaliphsGuidelinesMission> adapterCaliphsGuidelines = null;
 
-            if (Game.HasModule(ExpansionModule.ExpansionNewScoreCards))
+            if (Game.HasModule(AlhambraBase.ExpansionModule.ExpansionNewScoreCards))
             {
                 ExpandableListViewExtension newScoreCardsExpandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.listView1);
                 adapterNewScoreCards = new ExpandListCheckBoxAdapterSingle<NewScoreCard>(this, newScoreCards);
@@ -64,7 +64,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 newScoreCardsExpandableListView.Expand();
             }
 
-            if (Game.HasModule(ExpansionModule.FanCaliphsGuidelines))
+            if (Game.HasModule(AlhambraBase.ExpansionModule.FanCaliphsGuidelines))
             {
                 ExpandableListViewExtension caliphsGuidelinesExpandableListView = FindViewById<ExpandableListViewExtension>(Resource.Id.listView2);
                 adapterCaliphsGuidelines = new ExpandListCheckBoxAdapterMultiple<CaliphsGuidelinesMission>(this, missions);

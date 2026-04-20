@@ -46,14 +46,10 @@ namespace AlhambraScoringAndroid.UI.Activities
                 Resource.Id.playerResultPanel6
             }.Select(r => FindViewById<PlayerResultPanel>(r)).ToList();
 
-            for (int i = 0; i < Game.PlayersCount; i++)
-            {
+            for (int i = 0; i < Game.PlayersCountWithoutDirk; i++)
                 resultPanels[i].Initialize(i + 1);
-            }
-            for (int i = Game.PlayersCount; i < 6; i++)
-            {
+            for (int i = Game.PlayersCountWithoutDirk; i < 6; i++)
                 resultPanels[i].SetVisibility(false);
-            }
 
             roundScoreButton = FindViewById<Button>(Resource.Id.roundScoreButton);
             scoreDetailsButton = FindViewById<Button>(Resource.Id.scoreDetailsButton);
@@ -173,9 +169,9 @@ namespace AlhambraScoringAndroid.UI.Activities
             else
                 scoreDetailsButton.Text = Resources.GetString(Resource.String.show_details);
             roundScoreButton.Visibility = Game.ScoreRound == ScoringRound.Finish ? ViewStates.Invisible : ViewStates.Visible;
-            blueDicesCombinationsButton.SetVisibility(Game.ScoreRound != ScoringRound.Finish && Game.HasModule(ExpansionModule.DesignerHandymen));
+            blueDicesCombinationsButton.SetVisibility(Game.ScoreRound != ScoringRound.Finish && Game.HasModule(AlhambraBase.ExpansionModule.DesignerHandymen));
 
-            for (int i = 0; i < Game.PlayersCount; i++)
+            for (int i = 0; i < Game.PlayersCountWithoutDirk; i++)
             {
                 if (Game.ScoreRound == ScoringRound.Finish)
                     resultPanels[i].ShowPointButtons(false);
@@ -187,10 +183,8 @@ namespace AlhambraScoringAndroid.UI.Activities
         private void ShowScore()
         {
             //TODO sort
-            for (int i = 0; i < Game.PlayersCount; i++)
-            {
+            for (int i = 0; i < Game.PlayersCountWithoutDirk; i++)
                 resultPanels[i].SetScore(Game.GetPlayer(i + 1).Score);
-            }
 
             if (Game.ScoreStack.Count != 0)
             {

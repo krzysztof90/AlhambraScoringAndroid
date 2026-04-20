@@ -7,7 +7,6 @@ using Android.Widget;
 using AndroidBase.Tools;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using static Android.Widget.AdapterView;
 
 namespace AlhambraScoringAndroid.UI.Activities
@@ -29,8 +28,10 @@ namespace AlhambraScoringAndroid.UI.Activities
             LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
 
             EditText textBox = new EditText(this);
-            LinearLayout.LayoutParams layoutParameters = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-            layoutParameters.TopMargin = (int)Resources.GetDimension(Resource.Dimension.chose_player_panel_gap);
+            LinearLayout.LayoutParams layoutParameters = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent)
+            {
+                TopMargin = (int)Resources.GetDimension(Resource.Dimension.chose_player_panel_gap)
+            };
             textBox.LayoutParameters = layoutParameters;
             textBox.InputType = InputTypes.TextFlagCapSentences;
 

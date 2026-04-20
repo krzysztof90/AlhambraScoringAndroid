@@ -1,4 +1,5 @@
-﻿using AlhambraScoringAndroid.GamePlay;
+﻿using AlhambraBase;
+using AlhambraScoringAndroid.GamePlay;
 using AlhambraScoringAndroid.Options;
 using AlhambraScoringAndroid.Tools;
 using Android.App;
@@ -23,13 +24,13 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             base.OnCreate(savedInstanceState);
 
-            Dictionary<GranadaBuildingType, List<int>> tiePlayerNumbers = GetTiePlayerNumbers(Application.GameScoreSubmitScoreData, Game.RoundNumber);
+            Dictionary<AlhambraBase.GranadaBuildingType, List<int>> tiePlayerNumbers = GetTiePlayerNumbers(Application.GameScoreSubmitScoreData, Game.RoundNumber);
 
             LinearLayout container = FindViewById<LinearLayout>(Resource.Id.container);
 
-            Dictionary<GranadaBuildingType, PlayersBuildingChose> playersPanels = new Dictionary<GranadaBuildingType, PlayersBuildingChose>();
+            Dictionary<AlhambraBase.GranadaBuildingType, PlayersBuildingChose> playersPanels = new Dictionary<AlhambraBase.GranadaBuildingType, PlayersBuildingChose>();
 
-            foreach (GranadaBuildingType building in Game.GranadaBuildingsOrder)
+            foreach (AlhambraBase.GranadaBuildingType building in GameConstants.GranadaBuildingsOrder)
             {
                 PlayersBuildingChose playersPanel = null;
                 if (tiePlayerNumbers[building].Count != 0)
@@ -55,8 +56,8 @@ namespace AlhambraScoringAndroid.UI.Activities
             confirmButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
                 bool correct = true;
-                Dictionary<GranadaBuildingType, Dictionary<int, int>> result = new Dictionary<GranadaBuildingType, Dictionary<int, int>>();
-                foreach (KeyValuePair<GranadaBuildingType, PlayersBuildingChose> playersPanel in playersPanels)
+                Dictionary<AlhambraBase.GranadaBuildingType, Dictionary<int, int>> result = new Dictionary<AlhambraBase.GranadaBuildingType, Dictionary<int, int>>();
+                foreach (KeyValuePair<AlhambraBase.GranadaBuildingType, PlayersBuildingChose> playersPanel in playersPanels)
                 {
                     Dictionary<int, int> playersHighestPrices = new Dictionary<int, int>();
                     if (playersPanel.Value != null)
@@ -76,11 +77,11 @@ namespace AlhambraScoringAndroid.UI.Activities
             });
         }
 
-        public static Dictionary<GranadaBuildingType, List<int>> GetTiePlayerNumbers(RoundScoring gameScoreSubmitScoreData, int roundNumber)
+        public static Dictionary<AlhambraBase.GranadaBuildingType, List<int>> GetTiePlayerNumbers(RoundScoring gameScoreSubmitScoreData, int roundNumber)
         {
-            Dictionary<GranadaBuildingType, List<int>> result = new Dictionary<GranadaBuildingType, List<int>>();
+            Dictionary<AlhambraBase.GranadaBuildingType, List<int>> result = new Dictionary<AlhambraBase.GranadaBuildingType, List<int>>();
 
-            foreach (GranadaBuildingType building in Game.GranadaBuildingsOrder)
+            foreach (AlhambraBase.GranadaBuildingType building in GameConstants.GranadaBuildingsOrder)
             {
                 List<int> tiePlayerNumbers = new List<int>();
 
@@ -100,12 +101,12 @@ namespace AlhambraScoringAndroid.UI.Activities
             return result;
         }
 
-        public void SetGranadaBuildingsNumbers(Dictionary<GranadaBuildingType, Dictionary<int, int>> playersBuildingsHighestPrices)
+        public void SetGranadaBuildingsNumbers(Dictionary<AlhambraBase.GranadaBuildingType, Dictionary<int, int>> playersBuildingsHighestPrices)
         {
             for (int i = 0; i < Game.PlayersCount; i++)
             {
-                Dictionary<GranadaBuildingType, int> granadaBuildingsHighestPrices = new Dictionary<GranadaBuildingType, int>();
-                foreach (GranadaBuildingType building in Game.GranadaBuildingsOrder)
+                Dictionary<AlhambraBase.GranadaBuildingType, int> granadaBuildingsHighestPrices = new Dictionary<AlhambraBase.GranadaBuildingType, int>();
+                foreach (AlhambraBase.GranadaBuildingType building in GameConstants.GranadaBuildingsOrder)
                 {
                     Dictionary<int, int> playersHighestPrices = playersBuildingsHighestPrices[building];
                     if (playersHighestPrices.ContainsKey(i + 1))

@@ -29,7 +29,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             Dictionary<int, int?> correctingPoints = new Dictionary<int, int?>();
             for (int i = 0; i < Game.PlayersCount; i++)
-                correctingPoints[i + 1] = correctingRoundScoring != null ? correctingRoundScoring.PlayersScoreData[i].MedinaHighestPrice : null;
+                correctingPoints[i + 1] = correctingRoundScoring?.PlayersScoreData[i].MedinaHighestPrice;
 
             PlayersBuildingChose playersPanel = new PlayersBuildingChose(this, Resources.GetString(Resource.String.medina), Game.MedinaMinPrice, Game.MedinaMaxPrice, new List<int>(), tiePlayerNumbers.ToDictionary(p => p, p => (Game.GetPlayer(p).Name, correctingPoints[p])), SettingsType.ValidateBuildingsPrice);
             container.AddView(playersPanel);

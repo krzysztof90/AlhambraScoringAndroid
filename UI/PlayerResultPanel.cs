@@ -63,9 +63,9 @@ namespace AlhambraScoringAndroid.UI
 
             //ShowPointButtons(true);
             allowAddPoints = !gameActivity.Game.GetPlayer(playerNumber).Dirk
-                && (gameActivity.Game.HasModule(ExpansionModule.DesignerPalaceDesigners) || gameActivity.Game.HasModule(ExpansionModule.DesignerGatesWithoutEnd));
+                && (gameActivity.Game.HasModule(AlhambraBase.ExpansionModule.DesignerPalaceDesigners) || gameActivity.Game.HasModule(AlhambraBase.ExpansionModule.DesignerGatesWithoutEnd));
             allowRemovePoints = !gameActivity.Game.GetPlayer(playerNumber).Dirk
-                && (gameActivity.Game.HasModule(ExpansionModule.RedPalaceLandTiles));
+                && (gameActivity.Game.HasModule(AlhambraBase.ExpansionModule.RedPalaceLandTiles));
         }
 
         public void SetScore(int score)

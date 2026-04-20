@@ -6,21 +6,21 @@ namespace AlhambraScoringAndroid.GamePlay
     {
         [DescriptionResourceAttribute(Resource.String.pavilion)]
         [ImageAttribute(Resource.Drawable.Pavilion)]
-        Pavilion, //Blue
+        Pavilion = AlhambraBase.BuildingType.Pavilion,
         [DescriptionResourceAttribute(Resource.String.seraglio)]
         [ImageAttribute(Resource.Drawable.Seraglio)]
-        Seraglio, //Red
+        Seraglio = AlhambraBase.BuildingType.Seraglio,
         [DescriptionResourceAttribute(Resource.String.arcades)]
         [ImageAttribute(Resource.Drawable.Arcades)]
-        Arcades, //Brown
+        Arcades = AlhambraBase.BuildingType.Arcades,
         [DescriptionResourceAttribute(Resource.String.chambers)]
         [ImageAttribute(Resource.Drawable.Chambers)]
-        Chambers, //White
+        Chambers = AlhambraBase.BuildingType.Chambers,
         [DescriptionResourceAttribute(Resource.String.garden)]
         [ImageAttribute(Resource.Drawable.Garden)]
-        Garden, //Green
+        Garden = AlhambraBase.BuildingType.Garden,
         [DescriptionResourceAttribute(Resource.String.tower)]
         [ImageAttribute(Resource.Drawable.Tower)]
-        Tower, //Purple
+        Tower = AlhambraBase.BuildingType.Tower
     }
 }

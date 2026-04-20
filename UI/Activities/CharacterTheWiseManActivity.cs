@@ -52,17 +52,17 @@ namespace AlhambraScoringAndroid.UI.Activities
                 Dictionary<int, int> opponentsPoints = new Dictionary<int, int>();
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
-                    int points = Game.GetBuildingScore(Application.GameScoreSubmitScoreData.PlayersScoreData, radioButtonPair.Key, i + 1);
+                    int points = Game.GetBuildingScore(Application.GameScoreSubmitScoreData.PlayersScoreData, (AlhambraBase.BuildingType)radioButtonPair.Key, i + 1);
                     if (i == ChosePlayerNumber - 1)
                         pointsNotUsingBonus = points;
                     else
                         opponentsPoints[i] = points;
                 }
-                SetTheWiseManBuildingType(radioButtonPair.Key);
+                SetTheWiseManBuildingType((AlhambraBase.BuildingType)radioButtonPair.Key);
                 int pointsUsingBonus = 0;
                 for (int i = 0; i < Game.PlayersCount; i++)
                 {
-                    int points = Game.GetBuildingScore(Application.GameScoreSubmitScoreData.PlayersScoreData, radioButtonPair.Key, i + 1);
+                    int points = Game.GetBuildingScore(Application.GameScoreSubmitScoreData.PlayersScoreData, (AlhambraBase.BuildingType)radioButtonPair.Key, i + 1);
                     if (i == ChosePlayerNumber - 1)
                         pointsUsingBonus = points;
                     else
@@ -103,7 +103,7 @@ namespace AlhambraScoringAndroid.UI.Activities
                 {
                     BuildingType buildingType = radioButtons.Single(r => r.Value == radioButtonID).Key;
 
-                    Application.ConfirmTheWiseManChose(this, buildingType);
+                    Application.ConfirmTheWiseManChose(this, (AlhambraBase.BuildingType)buildingType);
                 }
             });
         }
@@ -113,7 +113,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             return gameScoreSubmitScoreData.PlayersScoreData.Any(p => p.OwnedCharacterTheWiseMan);
         }
 
-        public void SetTheWiseManBuildingType(BuildingType? buildingType)
+        public void SetTheWiseManBuildingType(AlhambraBase.BuildingType? buildingType)
         {
             Application.GameScoreSubmitScoreData.PlayersScoreData[ChosePlayerNumber - 1].TheWiseManBuildingType = buildingType;
         }

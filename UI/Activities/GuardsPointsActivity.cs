@@ -11,9 +11,9 @@ using System.Linq;
 namespace AlhambraScoringAndroid.UI.Activities
 {
     [Activity(Label = "@string/scoring_round_data", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
-    public class RoundScoringDataActivity : BaseActivity
+    public class GuardsPointsActivity : BaseActivity
     {
-        protected override int ContentView => Resource.Layout.activity_RoundScoringData_chose;
+        protected override int ContentView => Resource.Layout.activity_GuardsPoints_chose;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -21,7 +21,7 @@ namespace AlhambraScoringAndroid.UI.Activities
 
             base.OnCreate(savedInstanceState);
 
-        ControlNumberView guardsPointsNumericUpDown = FindViewById<ControlNumberView>(Resource.Id.guardsPointsNumericUpDown);
+            ControlNumberView guardsPointsNumericUpDown = FindViewById<ControlNumberView>(Resource.Id.guardsPointsNumericUpDown);
 
             guardsPointsNumericUpDown.SetNumberRange<SettingsType>(0, Game.GuardsMaxPoints, SettingsType.ValidateGuardsPoints);
 
@@ -31,7 +31,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             Button confirmButton = FindViewById<Button>(Resource.Id.confirmButton);
             confirmButton.Click += new EventHandler((object sender, EventArgs e) =>
             {
-                Application.ConfirmRoundScoringData(this, guardsPointsNumericUpDown.Value);
+                Application.ConfirmGuardsPoints(this, guardsPointsNumericUpDown.Value);
             });
         }
 
@@ -45,7 +45,7 @@ namespace AlhambraScoringAndroid.UI.Activities
             return gameScoreSubmitScoreData.PlayersScoreData.Any(p => p.GuardsCount != 0);
         }
 
-        public void SetRoundScoringData(int guardsPoints)
+        public void SetGuardsPoints(int guardsPoints)
         {
             Application.GameScoreSubmitScoreData.GuardsPoints = guardsPoints;
         }
